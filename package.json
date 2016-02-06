@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/server.js",
+    "frontend": "webpack-dev-server",
     "build": "webpack",
     "deploy": "",
     "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy"

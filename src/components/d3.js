@@ -1,35 +1,43 @@
 //d3Globe
-import queue from 'd3-queue';
 import d3 from 'd3';
-
+import q from 'd3-queue';
+import topojson from 'topojson';
+import filePath from 'path'
+import json from './world-110m.json'
 
 var d3Globe = {};
 
-d3Globe.width = 960,
-d3Globe.height = 960;
-
-d3Globe.projection = d3.geo.orthographic()
-    .translate([d3Globe.width / 2, d3Globe.height / 2])
-    .scale(d3Globe.width / 2 - 20)
+var width = 960,
+    height = 960;
+console.log(d3)
+console.log(q)
+d3Globe.create = function(props){
+  var projection = d3.geo.orthographic()
+    .translate([props.width / 2, props.height / 2])
+    .scale(props.width / 2 - 20)
     .clipAngle(90)
     .precision(0.6);
 
-d3Globe.canvas = d3.select("body").append("canvas")
-    .attr("width", d3Globe.width)
-    .attr("height", d3Globe.height);
+  var canvas = d3.select("body").append("canvas")
+    .attr("width", props.width)
+    .attr("height", props.height);
 
-d3Globe.c = d3Globe.canvas.node().getContext("2d");
+  var context = canvas.node().getContext("2d");
 
-d3Globe.path = d3.geo.path()
-    .projection(d3Globe.projection)
-    .context(d3Globe.c);
+  var path = d3.geo.path()
+    .projection(projection)
+    .context(context);
 
-d3Globe.title = d3.select("h1");
+  var title = d3.select("h1");
 
-// queue();
-//     .defer(d3.json, './world-110m.json')
-//     .defer(d3.tsv, './world-country-names.tsv')
-//     .await(this.ready);
+  // console.log(d3.json('world-110m.json' ))
+// console.log(__dirname, );
+  q.queue()
+    .defer(d3.json, json)
+    .defer(d3.tsv, __dirname + '/world-country-names.tsv')
+    .await(this.ready);
+}
+
 
 d3Globe.ready = function (error, world, names) {
   if (error) throw error;
@@ -61,7 +69,7 @@ d3Globe.ready = function (error, world, names) {
               r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
           return function(t) {
             projection.rotate(r(t));
-            c.clearRect(0, 0, d3Globe.width, d3Globe.height);
+            c.clearRect(0, 0, width, height);
             c.fillStyle = "#ccc", c.beginPath(), path(land), c.fill();
             c.fillStyle = "#f00", c.beginPath(), path(countries[i]), c.fill();
             c.strokeStyle = "#fff", c.lineWidth = .5, c.beginPath(), path(borders), c.stroke();
@@ -71,7 +79,8 @@ d3Globe.ready = function (error, world, names) {
       .transition()
         .each("end", transition);
   })();
-d3.select(self.frameElement).style("height", d3Globe.height + "px");
+
+d3.select(self.frameElement).style("height", height + "px");
 };
 
-module.exports = d3Globe;
+export default d3Globe;
