@@ -35,23 +35,23 @@ new WebpackDevServer(webpack(config), {
 // console.log(db.Country.build().retrieveAll());
 
 // create a user (accessed at POST http://localhost:3000/api/users)
-app.post('/api/countries', function(req, res) {
-  //TODO: Identify the request object. We need to send a post request through curl
-  console.log('inside post request', req);
-  var username = req.body.countryName; //bodyParser does the magic
+// app.post('/api/countries', function(req, res) {
+//   //TODO: Identify the request object. We need to send a post request through curl
+//   console.log('inside post request', req);
+//   var username = req.body.countryName; //bodyParser does the magic
+//
+//   var country = db.Country.build({ country: username });
+//
+//   country.add(function(success) {
+//     res.json({ message: 'Country added!' });
+//   },
+//
+// 	function(err) {
+//   res.send(err);
+// 	});
+// });
 
-  var country = db.Country.build({ country: username });
-
-  country.add(function(success) {
-    res.json({ message: 'Country added!' });
-  },
-
-	function(err) {
-  res.send(err);
-	});
-});
-
-// get all the users (accessed at GET http://localhost:8080/api/users)
+//TODO: WORKING
 app.get('/api/countries', function(req, res) {
   // var country = db.Country.build();
 
@@ -70,53 +70,53 @@ app.get('/api/countries', function(req, res) {
 });
 
 // update a user (accessed at PUT http://localhost:8080/api/users/:user_id)
-app.put(function(req, res) {
-  //This is using the same instance methods from our sequlize page
-  var country = db.Country.build();
+// app.put(function(req, res) {
+//   //This is using the same instance methods from our sequlize page
+//   var country = db.Country.build();
+//
+//   country.username = req.body.username;
+//
+//   country.updateById(req.params.user_id, function(success) {
+//     //console.log(success);
+//     if (success) {
+//       res.json({ message: 'User updated!' });
+//     } else {
+//       res.send(401, 'User not found');
+//     }
+//   }, function(error) {
+//
+//     res.send('User not found');
+//   });
+// });
 
-  country.username = req.body.username;
+//TODO: WORKING
+app.get('/api/countries/:countryName', function(req, res) {
 
-  country.updateById(req.params.user_id, function(success) {
-    //console.log(success);
-    if (success) {
-      res.json({ message: 'User updated!' });
+  db.Country.build().retrieveByName(req.params.countryName).then(function(country) {
+    // console.log('inside retrieve by one', req.params.id);
+    if (country) {
+      res.json(country);
     } else {
-      res.send(401, 'User not found');
+      res.send(401, 'here is your country');
     }
   }, function(error) {
 
-    res.send('User not found');
-  });
-});
-
-// get a user by id(accessed at GET http://localhost:8080/api/users/:user_id)
-app.get(function(req, res) {
-  var country = db.Country.build();
-
-  country.retrieveById(req.params.user_id, function(users) {
-    if (users) {
-      res.json(users);
-    } else {
-      res.send(401, 'User not found');
-    }
-  }, function(error) {
-
-    res.send('User not found');
+    res.send('not found');
   });
 });
 
 // delete a user by id (accessed at DELETE http://localhost:8080/api/users/:user_id)
-app.delete(function(req, res) {
-  var country = Country.build();
-
-  country.removeById(req.params.user_id, function(users) {
-    if (users) {
-      res.json({ message: 'User removed!' });
-    } else {
-      res.send(401, 'User not found');
-    }
-  }, function(error) {
-
-    res.send('User not found');
-  });
-});
+// app.delete(function(req, res) {
+//   var country = Country.build();
+//
+//   country.removeById(req.params.user_id, function(users) {
+//     if (users) {
+//       res.json({ message: 'User removed!' });
+//     } else {
+//       res.send(401, 'User not found');
+//     }
+//   }, function(error) {
+//
+//     res.send('User not found');
+//   });
+// });

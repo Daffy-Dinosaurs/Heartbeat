@@ -45,8 +45,8 @@ var Country = sequelize.define('country', {
       },
 
       //TODO: Having troubel viewing whether this is called correctly of not. SQL query looks right.
-      retrieveById: function(id) {
-        Country.findOne({ where: { id: id } });
+      retrieveByName: function(passedInName) {
+        return Country.findOne({ where: { countryName: passedInName } });
       },
 
       //TODO: WORKING
