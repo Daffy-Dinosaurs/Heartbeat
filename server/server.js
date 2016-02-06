@@ -34,23 +34,10 @@ new WebpackDevServer(webpack(config), {
 
 // console.log(db.Country.build().retrieveAll());
 
-//this is copied from online also... I want to weed through it and find what is pertinent
-//it uses the instance methods created in the Sequlize file to issue the GET and POST requests
-//
-// =============================================================================
-//TODO: find out what exppress.router is.
-// var router = express.Router();
-
-// on routes that end in /users
-// ----------------------------------------------------
-//this sets all of the below PUT, GET, etc routes to 'users'
-// router.route('/users')
-
 // create a user (accessed at POST http://localhost:3000/api/users)
 app.post('/users', function(req, res) {
   //console.log('inside post request', req);
   var username = req.body.username; //bodyParser does the magic
-  // var password = req.body.password;
 
   var country = db.Country.build({ country: username });
 
@@ -86,8 +73,6 @@ app.put(function(req, res) {
 
   country.username = req.body.username;
 
-  // user.password = req.body.password;
-
   country.updateById(req.params.user_id, function(success) {
     //console.log(success);
     if (success) {
@@ -118,17 +103,17 @@ app.get(function(req, res) {
 });
 
 // delete a user by id (accessed at DELETE http://localhost:8080/api/users/:user_id)
-// app.delete(function(req, res) {
-//   var country = Country.build();
-//
-//   country.removeById(req.params.user_id, function(users) {
-//     if (users) {
-//       res.json({ message: 'User removed!' });
-//     } else {
-//       res.send(401, 'User not found');
-//     }
-//   }, function(error) {
-//
-//     res.send('User not found');
-//   });
-// });
+app.delete(function(req, res) {
+  var country = Country.build();
+
+  country.removeById(req.params.user_id, function(users) {
+    if (users) {
+      res.json({ message: 'User removed!' });
+    } else {
+      res.send(401, 'User not found');
+    }
+  }, function(error) {
+
+    res.send('User not found');
+  });
+});
