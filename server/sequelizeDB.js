@@ -15,7 +15,7 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 
 });
 
-//TODO: Review. This is an example I found online. I will be removing the password component and replacing it with the capital name
+//TODO: These methods successfully perform our CRUD operations
 
 var Country = sequelize.define('country', {
     countryName: Sequelize.STRING,
@@ -28,35 +28,35 @@ var Country = sequelize.define('country', {
       retrieveAll: function(onSuccess, onError) {
         console.log('feeling lucky');
 
-        //TODO: make sure this is working correctly
+        //TODO: WORKING
         Country.findAll({});
 
       },
 
-      // retrieveById: function(user_id, onSuccess, onError) {
-      //   Country.findOne({ where: { id: user_id } }, { raw: true })
-      // .success(onSuccess).error(onError);
-      // },
+      //TODO: Having troubel viewing whether this is called correctly of not. SQL query looks right.
+      retrieveById: function(id) {
+        Country.findOne({ where: { id: id } });
+      },
 
-      //TODO: create
+      //TODO: WORKING
       add: function(name) {
         var countryName = name;
 
         Country.build({ countryName: countryName });
       },
 
-      //TODO: update
-      updateById: function(user_id, onSuccess, onError) {
-        var id = user_id;
-        var countryName = this.username;
+      //TODO: WORKING
+      updateById: function(id, newName) {
+        var id = id;
+        var countryName = newName;
 
-        Country.update({ country: username }, { where: { id: id } });
+        Country.update({ countryName: countryName }, { where: { id: id } });
 
       },
 
-      //TODO: delete
-      removeById: function(user_id, onSuccess, onError) {
-        Country.destroy({ where: { id: user_id } });
+      //TODO: WORKING
+      removeById: function(id) {
+        Country.destroy({ where: { id: id } });
       },
     },
   });
@@ -65,44 +65,7 @@ sequelize.sync().then(function() {
   console.log('this is synced');
 });
 
-Country.build().add('Karunville');
+console.log(Country.build().retrieveById(3));
 
 // Country.build().retrieveAll();
 module.exports = { Country: Country };
-
-//Make it crud
-
-// var User = sequelize.define('User', {
-//   username: Sequelize.STRING,
-//   location: Sequelize.STRING,
-// });
-
-//TODO: find out why these promises do not work
-// sequelize.sync().then(function() {
-//   return User.create({
-//     username: 'Tommy Boy',
-//     location: '',
-//   });
-// }).then(function(tommy) {
-//   tommy.update({ location: 'Compton, CA' });
-// });
-
-// .then(function(tommy) {
-//   tommy.update({
-//     location: 'Compton, CA',
-//   });
-// });
-
-// User.findAll().then(function(countries) {
-//   console.log(countries.length);
-// });
-
-// User.update({
-//   username: 'Tommy Gun',
-// }).then(function(tommy) {
-//   console.log(tommy.get({
-//
-//   }))
-// })
-
-// })
