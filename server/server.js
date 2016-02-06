@@ -26,5 +26,3 @@ new WebpackDevServer(webpack(config), {
   }
    console.log('Listening at localhost:3001');
 });
-
-console.log('karun says server works');
