@@ -42,8 +42,7 @@ var Country = sequelize.define('country', {
       add: function(name) {
         var countryName = name;
 
-        Country.build({ countryName: countryName })
-        .save();
+        Country.build({ countryName: countryName });
       },
 
       //TODO: update
@@ -66,7 +65,7 @@ sequelize.sync().then(function() {
   console.log('this is synced');
 });
 
-Country.build().add('england');
+Country.build().add('Karunville');
 
 // Country.build().retrieveAll();
 module.exports = { Country: Country };
