@@ -3,24 +3,6 @@ var fs = require('fs'),
     async = require('async'),
     csv = require('csv-parse');
 
-
-var raw_data = fs.readFileSync(__dirname + "/../Datasets/test2.json", "utf-8");
-// console.log("\n\n\nRAW DATA", raw_data);
-
-var cleandata = JSON.parse(raw_data);
-// console.log("\n\n--------", typeof cleandata);
-// var row = cleandata.split(',')
-// console.log("SPLIT DATA", row);
-var counter;
-for (var i = 0; i < cleandata; i++) {
-
-  console.log(cleandata[i]);
- 
-}
-
-console.log("COUNTER:", counter);
-
-
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
@@ -70,26 +52,58 @@ var WaterPollution = sequelize.define('WaterPollution', {
   });
 
 
+var raw_data = fs.readFile(__dirname + "/../Datasets/test2.json", "utf-8", function(err, data){
+  console.log(typeof data);
+  var cleandata = JSON.parse(data);
+  console.log(typeof cleandata);
+
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(cleandata);
+
+    
+      sequelize.sync({ force: true }).then(function(err) {
+        
+        for (var i = 0; i < cleandata.length; i++) {
+          
+            WaterPollution.create({
+              CountryName : cleandata[i]["Country Name"],
+              CountryCode : cleandata[i]["Country Code"],
+              _1990 : cleandata[i]["1990"],
+              _1991 : cleandata[i]["1991"]
+            }).then(function(data) {
+              console.log("DATABASE: Data entered!");
+            });
+        }
+
+      });
+  }
+});
+
+
+
+
 //------------------------------------------------------------------------
 // Create the Database
 //------------------------------------------------------------------------
 
 // sync the model with the database
 // force true, cleans the data before loading it back in again.
-sequelize.sync({ force: true }).then(function(err) {
+// sequelize.sync({ force: true }).then(function(err) {
 
-      for (var i = 0; i < cleandata.length; i++) {
+//       for (var i = 0; i < cleandata.length; i++) {
         
-        WaterPollution.create({
-          CountryName : cleandata[i]["Country Name"],
-          CountryCode : cleandata[i]["Country Code"],
-          _1990 : cleandata[i]["1990"],
-          _1991 : cleandata[i]["1991"]
-        }).then(function(data) {
-          console.log("DATABASE: Data entered!");
-        });
-      }
-  });
+//         WaterPollution.create({
+//           CountryName : cleandata[i]["Country Name"],
+//           CountryCode : cleandata[i]["Country Code"],
+//           _1990 : cleandata[i]["1990"],
+//           _1991 : cleandata[i]["1991"]
+//         }).then(function(data) {
+//           console.log("DATABASE: Data entered!");
+//         });
+//       }
+//   });
 
 //------------------------------------------------------------------------
 // Deleting Data from the Database
