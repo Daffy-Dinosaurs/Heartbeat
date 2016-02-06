@@ -57,11 +57,9 @@ var Country = sequelize.define('country', {
       },
 
       //TODO: WORKING
-      updateById: function(id, newName) {
-        var id = id;
-        var countryName = newName;
-
-        Country.update({ countryName: countryName }, { where: { id: id } });
+      updateByName: function(passedInName, newName) {
+        console.log('update is being called', passedInName, newName);
+        return Country.update({ countryName: newName }, { where: { countryName: passedInName } });
 
       },
 
@@ -76,7 +74,6 @@ sequelize.sync().then(function() {
   console.log('this is synced');
 });
 
-// console.log(Country.build().retrieveById(3));
-
-// Country.build().retrieveAll();
+//this worked
+// Country.build().updateByName('england', 'Tanzania');
 module.exports = { Country: Country };

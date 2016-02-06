@@ -53,7 +53,6 @@ new WebpackDevServer(webpack(config), {
 
 //TODO: WORKING
 app.get('/api/countries', function(req, res) {
-  // var country = db.Country.build();
 
   console.log('inside get request');
   db.Country.build().retrieveAll().then(function(countries) {
