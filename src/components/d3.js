@@ -26,10 +26,10 @@ d3Globe.path = d3.geo.path()
 
 d3Globe.title = d3.select("h1");
 
-// queue();
-//     .defer(d3.json, './world-110m.json')
-//     .defer(d3.tsv, './world-country-names.tsv')
-//     .await(this.ready);
+queue();
+    .defer(d3.json, './world-110m.json')
+    .defer(d3.tsv, './world-country-names.tsv')
+    .await(this.ready);
 
 d3Globe.ready = function (error, world, names) {
   if (error) throw error;
@@ -71,7 +71,7 @@ d3Globe.ready = function (error, world, names) {
       .transition()
         .each("end", transition);
   })();
-d3.select(self.frameElement).style("height", d3Globe.height + "px");
 };
+d3.select(self.frameElement).style("height", d3Globe.height + "px");
 
 module.exports = d3Globe;

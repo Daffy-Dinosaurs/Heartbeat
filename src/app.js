@@ -2,6 +2,7 @@
 import React from 'react';
 import d3 from 'd3';
 import approach1 from './components/approach1.js';
+import approach2 from './components/approach2.js';
 
 // document.write("Hello, DOM");
 
@@ -14,18 +15,6 @@ import approach1 from './components/approach1.js';
 //   }
 // })
 
-// React.render(<Globe />, document.body);
-
-// var Globe = React.createClass({
-//   render: function () {
-//     return (
-//       <div className="Globe">
-//       </div>
-//     );
-//   }
-// });
-// React.render(<Globe />, document.body);
-
 var Canvas = React.createClass({
   componentDidMount: function() {
     approach1.graph();
@@ -37,4 +26,18 @@ var Canvas = React.createClass({
     );
   }
 });
-React.render(<Canvas />, document.body);
+
+var Canvas2 = React.createClass({
+  componentDidMount: function() {
+    approach2.setup();
+  },
+  render: function () {
+    return (
+      <div className="approach2">
+      </div>
+    );
+  }
+});
+
+// React.render(<Canvas />, document.body);
+React.render(<Canvas2 />, document.body);
