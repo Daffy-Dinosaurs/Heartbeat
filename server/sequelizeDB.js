@@ -4,22 +4,22 @@ var fs = require('fs'),
     csv = require('csv-parse');
 
 
-var raw_data = fs.readFileSync(__dirname + "/../Datasets/test.json", "utf-8");
+var raw_data = fs.readFileSync(__dirname + "/../Datasets/test2.json", "utf-8");
 // console.log("\n\n\nRAW DATA", raw_data);
 
 var cleandata = JSON.parse(raw_data);
 // console.log("\n\n--------", typeof cleandata);
 // var row = cleandata.split(',')
 // console.log("SPLIT DATA", row);
+var counter;
+for (var i = 0; i < cleandata; i++) {
 
+  console.log(cleandata[i]);
+ 
+}
 
+console.log("COUNTER:", counter);
 
-  
-
-/*var parser = csv.parse({
-  columns: true,
-  relax: true
-});*/
 
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
   host: 'localhost',
@@ -33,64 +33,63 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 
 });
 
-// in your server file - e.g. app.js
-// var WaterPollution = sequelize.import(data);
-
-// var Project = sequelize.define('Project', {
-//   title: Sequelize.STRING,
-//   description: Sequelize.TEXT
-// })
-
-var User = sequelize.define('User', {
-  username: Sequelize.STRING
-});
-
 var WaterPollution = sequelize.define('WaterPollution', {
-  CountryName: Sequelize.STRING
+  _1990: Sequelize.FLOAT,
+  _1991: Sequelize.FLOAT,
+  // _1992: Sequelize.Number,
+  // _1993: Sequelize.Number,
+  // _1994: Sequelize.Number,
+  // _1995: Sequelize.Number,
+  // _1996: Sequelize.Number,
+  // _1997: Sequelize.Number,
+  // _1998: Sequelize.Number,
+  // _1999: Sequelize.Number,
+  // _2000: Sequelize.Number,
+  // _2001: Sequelize.Number,
+  // _2002: Sequelize.Number,
+  // _2003: Sequelize.Number,
+  // _2004: Sequelize.Number,
+  // _2005: Sequelize.Number,
+  // _2006: Sequelize.Number,
+  // _2007: Sequelize.Number,
+  // _2008: Sequelize.Number,
+  // _2009: Sequelize.Number,
+  // _2010: Sequelize.Number,
+  // _2011: Sequelize.Number,
+  // _2012: Sequelize.Number,
+  // _2013: Sequelize.Number,
+  // _2014: Sequelize.Number,
+  // _2015: Sequelize.Number,
+  CountryName: Sequelize.STRING,
+  CountryCode: Sequelize.STRING
+  // IndicatorName : Sequelize.STRING,
   },
   {
     tableName: 'WaterPollution', // this will define the table's name
     timestamps: false           // this will deactivate the timestamp columns
   });
 
-var User = sequelize.define('User', {
-  username: Sequelize.STRING,
-  password: Sequelize.STRING
-}, {
-  tableName: 'my_user_table', // this will define the table's name
-  timestamps: false           // this will deactivate the timestamp columns
-})
-
 
 //------------------------------------------------------------------------
 // Create the Database
 //------------------------------------------------------------------------
-sequelize.sync().then(function() {
-  return User.create({
-    username: 'Tommy Boy',
+
+// sync the model with the database
+// force true, cleans the data before loading it back in again.
+sequelize.sync({ force: true }).then(function(err) {
+
+      for (var i = 0; i < cleandata.length; i++) {
+        
+        WaterPollution.create({
+          CountryName : cleandata[i]["Country Name"],
+          CountryCode : cleandata[i]["Country Code"],
+          _1990 : cleandata[i]["1990"],
+          _1991 : cleandata[i]["1991"]
+        }).then(function(data) {
+          console.log("DATABASE: Data entered!");
+        });
+      }
   });
-}).then(function(tommy) {
-  console.log(tommy.get({
-    plain: true,
-  }));
-});
-
-for (var i = 0; i < cleandata.length; i++) {
-  WaterPollution.create(
-    { CountryName : cleandata[i].CountryName }
-  )
-}
-
-// for (var row in cleandata) {
-// WaterPollution
-// .create([ 
-//   { CountryName : cleandata[row] }
-// ])
-// .save()
-// .success(function() {
-
-// })
-// }
 
 //------------------------------------------------------------------------
 // Deleting Data from the Database
