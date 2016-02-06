@@ -9,14 +9,11 @@ import d3 from 'd3';
 // document.write("Hello, DOM");
 
 var Globe = React.createClass({
-  componentDidMount: function() {
-    d3Globe.go();
-  },
+  // componentDidMount: function() {
+  //   d3Globe.go();
+  // },
   render: function () {
-    return (
-      <div className="Globe">
-      </div>
-    );
+    return d3Globe.go();
   }
 })
 
