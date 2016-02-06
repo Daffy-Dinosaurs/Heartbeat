@@ -35,9 +35,10 @@ new WebpackDevServer(webpack(config), {
 // console.log(db.Country.build().retrieveAll());
 
 // create a user (accessed at POST http://localhost:3000/api/users)
-app.post('/users', function(req, res) {
-  //console.log('inside post request', req);
-  var username = req.body.username; //bodyParser does the magic
+app.post('/api/countries', function(req, res) {
+  //TODO: Identify the request object. We need to send a post request through curl
+  console.log('inside post request', req);
+  var username = req.body.countryName; //bodyParser does the magic
 
   var country = db.Country.build({ country: username });
 
@@ -51,12 +52,14 @@ app.post('/users', function(req, res) {
 });
 
 // get all the users (accessed at GET http://localhost:8080/api/users)
-app.get('/users', function(req, res) {
-  var country = db.Country.build();
+app.get('/api/countries', function(req, res) {
+  // var country = db.Country.build();
 
-  country.retrieveAll(function(users) {
-    if (users) {
-      res.json(users);
+  console.log('inside get request');
+  db.Country.build().retrieveAll().then(function(countries) {
+    console.log('retrieveAll is being called');
+    if (countries) {
+      res.json(countries);
     } else {
       res.send(401, 'Country not found');
     }

@@ -25,11 +25,22 @@ var Country = sequelize.define('country', {
     //these are just like the getter and setter method in th sequelize docs
     instanceMethods: {
       //TODO: read
-      retrieveAll: function(onSuccess, onError) {
-        console.log('feeling lucky');
+      retrieveAll: function() {
+        // console.log('feeling lucky');
 
         //TODO: WORKING
-        Country.findAll({});
+        return Country.findAll({});
+
+        // .then(function(countries) {
+        //   if (countries) {
+        //     res.json(countries);
+        //   } else {
+        //     res.send(401, 'Country not found');
+        //   }
+        // }, function(error) {
+        //
+        //   res.send('Country not found');
+        // });
 
       },
 
@@ -65,7 +76,7 @@ sequelize.sync().then(function() {
   console.log('this is synced');
 });
 
-console.log(Country.build().retrieveById(3));
+// console.log(Country.build().retrieveById(3));
 
 // Country.build().retrieveAll();
 module.exports = { Country: Country };
