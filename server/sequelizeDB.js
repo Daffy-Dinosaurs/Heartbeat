@@ -1,25 +1,7 @@
 var Sequelize = require('sequelize');
-var fs = require('fs'),
-    async = require('async'),
-    csv = require('csv-parse');
+var mysql = require('mysql');
 
-
-var raw_data = fs.readFileSync(__dirname + "/../Datasets/test.json", "utf-8");
-// console.log("\n\n\nRAW DATA", raw_data);
-
-var cleandata = JSON.parse(raw_data);
-// console.log("\n\n--------", typeof cleandata);
-// var row = cleandata.split(',')
-// console.log("SPLIT DATA", row);
-
-
-
-  
-
-/*var parser = csv.parse({
-  columns: true,
-  relax: true
-});*/
+//TODO: Am I adding the instantion of the database in the wrong file?
 
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
   host: 'localhost',
@@ -33,66 +15,65 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 
 });
 
-// in your server file - e.g. app.js
-// var WaterPollution = sequelize.import(data);
+//TODO: These methods successfully perform our CRUD operations
 
-// var Project = sequelize.define('Project', {
-//   title: Sequelize.STRING,
-//   description: Sequelize.TEXT
-// })
-
-var User = sequelize.define('User', {
-  username: Sequelize.STRING
-});
-
-var WaterPollution = sequelize.define('WaterPollution', {
-  CountryName: Sequelize.STRING
+var Country = sequelize.define('country', {
+    countryName: Sequelize.STRING,
   },
+
   {
-    tableName: 'WaterPollution', // this will define the table's name
-    timestamps: false           // this will deactivate the timestamp columns
+    //these are just like the getter and setter method in th sequelize docs
+    instanceMethods: {
+      //TODO: read
+      retrieveAll: function() {
+        // console.log('feeling lucky');
+
+        //TODO: WORKING
+        return Country.findAll({});
+
+        // .then(function(countries) {
+        //   if (countries) {
+        //     res.json(countries);
+        //   } else {
+        //     res.send(401, 'Country not found');
+        //   }
+        // }, function(error) {
+        //
+        //   res.send('Country not found');
+        // });
+
+      },
+
+      //TODO: Having troubel viewing whether this is called correctly of not. SQL query looks right.
+      retrieveByName: function(passedInName) {
+        return Country.findOne({ where: { countryName: passedInName } });
+      },
+
+      //TODO: WORKING
+      add: function(name) {
+        var countryName = name;
+
+        Country.build({ countryName: countryName });
+      },
+
+      //TODO: WORKING
+      updateByName: function(passedInName, newName) {
+        console.log('update is being called', passedInName, newName);
+        return Country.update({ countryName: newName }, { where: { countryName: passedInName } });
+
+      },
+
+      //TODO: WORKING
+      removeById: function(id) {
+        Country.destroy({ where: { id: id } });
+      },
+    },
   });
 
-var User = sequelize.define('User', {
-  username: Sequelize.STRING,
-  password: Sequelize.STRING
-}, {
-  tableName: 'my_user_table', // this will define the table's name
-  timestamps: false           // this will deactivate the timestamp columns
-})
-
-
-//------------------------------------------------------------------------
-// Create the Database
-//------------------------------------------------------------------------
 sequelize.sync().then(function() {
-  return User.create({
-    username: 'Tommy Boy',
-  });
-}).then(function(tommy) {
-  console.log(tommy.get({
-    plain: true,
-  }));
+  console.log('this is synced');
 });
 
-for (var i = 0; i < cleandata.length; i++) {
-  WaterPollution.create(
-    { CountryName : cleandata[i].CountryName }
-  )
-}
-
-// for (var row in cleandata) {
-// WaterPollution
-// .create([ 
-//   { CountryName : cleandata[row] }
-// ])
-// .save()
-// .success(function() {
-
-// })
-// }
-
-//------------------------------------------------------------------------
-// Deleting Data from the Database
-//------------------------------------------------------------------------
-
+//this worked
+// Country.build().updateByName('england', 'Tanzania');
+module.exports = { Country: Country };
