@@ -75,7 +75,7 @@ d3Globe.go = function(){
             };
           })
         .transition()
-          // .each("end", transition);
+          .each("end", transition);
     })();
   d3.select(self.frameElement).style("height", height + "px");
   }
