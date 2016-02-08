@@ -51,6 +51,7 @@
     "postcss-loader": "^0.5.0",
     "qs": "^3.1.0",
     "react": "^0.13.3",
+    "react-dom": "^0.14.7",
     "react-hot-loader": "^1.2.7",
     "sequelize": "^3.19.2",
     "slugger": "^1.0.0",

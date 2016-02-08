@@ -3,7 +3,7 @@ import d3 from 'd3';
 import q from 'd3-queue';
 import topojson from 'topojson';
 import filePath from 'path'
-import json from './world-110m.json'
+
 
 var d3Globe = {};
 
@@ -22,41 +22,42 @@ d3Globe.create = function(props){
     .attr("width", props.width)
     .attr("height", props.height);
 
-  var context = canvas.node().getContext("2d");
+  var c = canvas.node().getContext("2d");
 
   var path = d3.geo.path()
     .projection(projection)
-    .context(context);
+    .context(c);
 
-  var title = d3.select("h1");
 
   // console.log(d3.json('world-110m.json' ))
 // console.log(__dirname, );
-  q.queue()
-    .defer(d3.json, json)
-    .defer(d3.tsv, __dirname + '/world-country-names.tsv')
-    .await(this.ready);
-}
+  // q.queue()
+  //   .defer(d3.json, '/components/world-110m.json')
+  //   .defer(d3.tsv, __dirname + '/world-country-names.tsv')
+  //   .await(this.ready);
+  ready(props.world, props.country)
 
+  function ready (world, names, error) {
+    if (error) throw error;
+    var title = d3.select("h1");
 
-d3Globe.ready = function (error, world, names) {
-  if (error) throw error;
-
-  var globe = {type: "Sphere"},
-      land = topojson.feature(world, world.objects.land),
-      countries = topojson.feature(world, world.objects.countries).features,
-      borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }),
-      i = -1,
-      n = countries.length;
-
-
-  countries = countries.filter(function(d) {
-    return names.some(function(n) {
-      if (d.id == n.id) return d.name = n.name;
-    });
-  }).sort(function(a, b) {
-    return a.name.localeCompare(b.name);
-  });
+    var globe = {type: "Sphere"},
+        land = topojson.feature(world, world.objects.land),
+        countries = topojson.feature(world, world.objects.countries).features,
+        borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }),
+        i = -1,
+        n = countries.length;
+  //
+//       names = names.split("\n");
+// console.log("this is names: ",names)
+//
+//   countries = countries.filter(function(d) {
+//     return names.some(function(n) {
+//       if (d.id == n.id) return d.name = n.name;
+//     });
+//   }).sort(function(a, b) {
+//     return a.name.localeCompare(b.name);
+//   });
 
   (function transition() {
     d3.transition()
@@ -79,8 +80,8 @@ d3Globe.ready = function (error, world, names) {
       .transition()
         .each("end", transition);
   })();
-
-d3.select(self.frameElement).style("height", height + "px");
 };
 
+d3.select(self.frameElement).style("height", height + "px");
+}
 export default d3Globe;
