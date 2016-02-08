@@ -70,6 +70,8 @@ var Country = sequelize.define('country', {
     },
   });
 
+
+
 sequelize.sync().then(function() {
   console.log('this is synced');
 });
