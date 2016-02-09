@@ -60,7 +60,6 @@ d3Globe.go = function(){
       d3.transition()
           .duration(1250)
           .each("start", function() {
-            console.log((i = (i + 1) % n), countries[i = (i + 1) % n]);
             title.text(countries[i = (i + 1) % n].name);
           })
           .tween("rotate", function() {

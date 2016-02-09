@@ -4,9 +4,9 @@ var path = require('path');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('../webpack.config.js');
 var bodyParser = require('body-parser');
-// var db = require('./sequelizeDB.js');
+var db = require('./sequelizeDB.js');
 var mysql = require('mysql');
-var data = require('./DataExtraction.js');
+// var data = require('./DataExtraction.js');
 
 var app = express();
 app.use(bodyParser());

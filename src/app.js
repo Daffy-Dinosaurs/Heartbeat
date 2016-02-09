@@ -1,7 +1,25 @@
-import d3Globe from './components/d3.js';
-import React from 'react';
-import d3 from 'd3';
-import { GET_COUNTRY_LIST } from './redux/actions.js';
+import React from 'react'
+import { connect } from 'react-redux'
+// import { createStore } from 'redux'
+// import countryList from './redux/reducers'
+import d3Globe from './components/d3.js'
+import d3 from 'd3'
+
+// let store = createStore(countryList)
+
+
+import { createStore } from 'redux'
+import todoApp from './redux/reducers'
+
+let store = createStore(todoApp)
+
+
+
+
+
+
+
+
 // import approach1 from './components/approach1.js';
 // import approach2 from './components/approach2.js';
 // import world from './world-110m.json';
