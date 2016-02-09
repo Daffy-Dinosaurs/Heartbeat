@@ -57,6 +57,8 @@
     "raw-loader": "^0.5.1",
     "react": "^0.13.3",
     "react-hot-loader": "^1.2.7",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1",
     "sequelize": "^3.19.2",
     "slugger": "^1.0.0",
     "standard": "^4.3.1",

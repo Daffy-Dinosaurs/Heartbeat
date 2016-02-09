@@ -1,6 +1,25 @@
-import d3Globe from './components/d3.js';
-import React from 'react';
-import d3 from 'd3';
+import React from 'react'
+import { connect } from 'react-redux'
+// import { createStore } from 'redux'
+// import countryList from './redux/reducers'
+import d3Globe from './components/d3.js'
+import d3 from 'd3'
+
+// let store = createStore(countryList)
+
+
+import { createStore } from 'redux'
+import todoApp from './redux/reducers'
+
+let store = createStore(todoApp)
+
+
+
+
+
+
+
+
 // import approach1 from './components/approach1.js';
 // import approach2 from './components/approach2.js';
 // import world from './world-110m.json';
@@ -9,11 +28,11 @@ import d3 from 'd3';
 // document.write("Hello, DOM");
 
 var Globe = React.createClass({
-  // componentDidMount: function() {
-  //   d3Globe.go();
-  // },
+  componentDidMount: function() {
+    d3Globe.go();
+  },
   render: function () {
-    return d3Globe.go();
+    return <h1></h1>;
   }
 })
 
