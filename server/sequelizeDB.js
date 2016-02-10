@@ -19,7 +19,7 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 
 var Country = sequelize.define('country', {
     localeId: Sequelize.INTEGER,
-    countryName: Sequelize.STRING
+    countryName: Sequelize.STRING,
   },
 
   {

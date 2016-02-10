@@ -6,6 +6,7 @@ var config = require('../webpack.config.js');
 var bodyParser = require('body-parser');
 var db = require('./sequelizeDB.js');
 var mysql = require('mysql');
+
 // import React from 'react'
 // import { createStore } from 'redux'
 // import { Provider } from 'react-redux'
@@ -55,9 +56,6 @@ app.use(express.static(__dirname + '/../'));
 //
 // }
 
-
-
-
 // console.log(__dirname + '/../index.html');
 app.listen(port);
 
@@ -100,8 +98,10 @@ app.get('/api/countries', function(req, res) {
 
   console.log('inside get request');
   db.Country.build().retrieveAll().then(function(countries) {
+    // console.log('retrieveAll is being called', countries);
     if (countries) {
       res.json(countries);
+      console.log('GETTING THE COUNTRIES');
     } else {
       res.send(401, 'Nah Man Country not found');
     }
