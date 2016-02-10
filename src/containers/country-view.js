@@ -6,7 +6,7 @@ class CountryView extends Component {
 
     return (
       <div className="country-view">
-        <div>this.props.country</div>
+        <div>this.props.countryName</div>
       </div>
     );
   }

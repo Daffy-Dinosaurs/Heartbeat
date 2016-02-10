@@ -4,7 +4,7 @@
   "description": "Thesis Project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "webpack-dev-server",
     "build": "webpack",
     "deploy": "",
     "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy"
@@ -55,8 +55,10 @@
     "postcss-loader": "^0.5.0",
     "qs": "^3.1.0",
     "raw-loader": "^0.5.1",
-    "react": "^0.13.3",
+    "react": "^0.14.7",
     "react-hot-loader": "^1.2.7",
+    "react-redux": "^4.4.0",
+    "redux": "^3.3.1",
     "sequelize": "^3.19.2",
     "slugger": "^1.0.0",
     "standard": "^4.3.1",

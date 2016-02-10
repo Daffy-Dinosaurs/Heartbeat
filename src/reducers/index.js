@@ -7,4 +7,4 @@ const rootReducer = combineReducers({
   activeCountry: ActiveCountry,
 });
 
-export default rootReducer
+export default rootReducer;
