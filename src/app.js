@@ -1,31 +1,44 @@
+import 'babel-core/polyfill'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import World from './components/world-110m.json'
-import Canvas from './canvas.js'
-import Country from 'raw!./components/world-country-names.tsv'
+import { connect } from 'react-redux'
+// import { createStore } from 'redux'
+// import countryList from './redux/reducers'
+import d3Globe from './components/d3.js'
+import d3 from 'd3'
 
-console.log("the world", World)
-console.log("the country", Country)
-
-const Globe = props => (
-  <div>
-    <Canvas {...props} />
-  </div>
-);
-
-ReactDOM.render( <Globe world={World} countries={Country} height="960" width="960"/>, document.body);
-
-
-// var Globe = React.createClass({
-//   displayName: "Globe",
+// let store = createStore(countryList)
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
+import { createStore, applyMiddleware } from 'redux'
+import { requestCountries } from './redux/actions'
+import rootReducer from './redux/reducers'
+import promiseMiddleware from 'redux-promise'
 //
-//   render: function() {
-//     return (
-//       <div>
-//         <Canvas world={this.props.world} country={this.props.country} width={this.props.width} height={this.props.height} />
-//       </div>
-//     )
-//   }
-// })
+const loggerMiddleware = createLogger()
 //
-// React.render(<Globe world={World} country={Country} width="960" height="960" />, document.body);
+const store = createStore (
+  rootReducer,
+  applyMiddleware(
+    promiseMiddleware,
+    loggerMiddleware
+  )
+)
+// store.dispatch({type: 'REQUEST_COUNTRIES'})
+// store.dispatch(requestCountries()).then(() =>
+//   console.log(store.getState());
+// )
+// )
+//
+
+
+var Globe = React.createClass({
+  componentDidMount: function() {
+    d3Globe.go();
+  },
+  render: function () {
+    return <h1></h1>;
+  }
+})
+
+
+React.render(<Globe />, document.body);

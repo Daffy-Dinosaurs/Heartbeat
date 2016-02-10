@@ -1,4 +1,7 @@
 var Sequelize = require('sequelize');
+var mysql = require('mysql');
+
+//TODO: Am I adding the instantion of the database in the wrong file?
 
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
   host: 'localhost',
@@ -12,16 +15,68 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 
 });
 
-var User = sequelize.define('User', {
-  username: Sequelize.STRING,
-});
+//TODO: These methods successfully perform our CRUD operations
+
+var Country = sequelize.define('country', {
+    localeId: Sequelize.INTEGER,
+    countryName: Sequelize.STRING
+  },
+
+  {
+    //these are just like the getter and setter method in th sequelize docs
+    instanceMethods: {
+      //TODO: read
+      retrieveAll: function() {
+        // console.log('feeling lucky');
+
+        //TODO: WORKING
+        return Country.findAll({});
+
+        // .then(function(countries) {
+        //   if (countries) {
+        //     res.json(countries);
+        //   } else {
+        //     res.send(401, 'Country not found');
+        //   }
+        // }, function(error) {
+        //
+        //   res.send('Country not found');
+        // });
+
+      },
+
+      //TODO: Having troubel viewing whether this is called correctly of not. SQL query looks right.
+      retrieveByName: function(passedInName) {
+        return Country.findOne({ where: { countryName: passedInName } });
+      },
+
+      //TODO: WORKING
+      add: function(name) {
+        var countryName = name;
+
+        Country.build({ countryName: countryName });
+      },
+
+      //TODO: WORKING
+      updateByName: function(passedInName, newName) {
+        console.log('update is being called', passedInName, newName);
+        return Country.update({ countryName: newName }, { where: { countryName: passedInName } });
+
+      },
+
+      //TODO: WORKING
+      removeById: function(id) {
+        Country.destroy({ where: { id: id } });
+      },
+    },
+  });
+
+
 
 sequelize.sync().then(function() {
-  return User.create({
-    username: 'Tommy Boy',
-  });
-}).then(function(tommy) {
-  console.log(tommy.get({
-    plain: true,
-  }));
+  console.log('this is synced');
 });
+
+//this worked
+// Country.build().updateByName('england', 'Tanzania');
+module.exports = { Country: Country };
