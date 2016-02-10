@@ -51,9 +51,9 @@ var Country = sequelize.define('country', {
 
       //TODO: WORKING
       add: function(name) {
-        var countryName = name;
-
-        Country.build({ countryName: countryName });
+        // var countryName = name;
+        console.log('this is being called with', name);
+        return Country.build({ countryName: name }).save();
       },
 
       //TODO: WORKING
@@ -70,12 +70,10 @@ var Country = sequelize.define('country', {
     },
   });
 
-
-
 sequelize.sync().then(function() {
   console.log('this is synced');
 });
 
 //this worked
-// Country.build().updateByName('england', 'Tanzania');
+// Country.build().add('blainville');
 module.exports = { Country: Country };
