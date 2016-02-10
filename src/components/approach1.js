@@ -15,7 +15,7 @@ approach1.graph = function(){
   //scale functions map an input domain to an output range
     //returned scale object is both an object and a function
     //setter method returns the scale itself, allowing for multiple setters to be invoked in one statement
-    //linear scales map continuous inputs (domain) to continuous outputs (range) 
+    //linear scales map continuous inputs (domain) to continuous outputs (range)
     //an output can be expressed as a linear function of the input   (e.g. y = mx + b where x is input and y is output value)
     //output is usually the desired value to be rendered in the histogram
 
@@ -30,7 +30,7 @@ approach1.graph = function(){
     context.fill();
     context.closePath();
   });
-  
+
 }
 
 export default approach1

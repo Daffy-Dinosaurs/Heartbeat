@@ -4,9 +4,13 @@ import { connect } from 'react-redux';
 class CountryView extends Component {
   render() {
 
+    if (!this.props.country) {
+      return <div>Select a country</div>;
+    }
+
     return (
       <div className="country-view">
-        <div>this.props.countryName</div>
+        <div>this.props.country.countryName</div>
       </div>
     );
   }
