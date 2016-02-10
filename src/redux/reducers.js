@@ -1,18 +1,14 @@
 
 import { combineReducers } from 'redux';
-import { REQUEST_COUNTRIES, POST_COUNTRIES } from './actions';
+import { REQUEST_COUNTRIES } from './actions';
 
-const countryList = (state = { isFetching: false, countryList: [] }, action) => {
+const countryList = (state = [], action) => {
   switch (action.type) {
     case REQUEST_COUNTRIES:
-      return Object.assign({}, state, {
-        isFetching: true,
-      });
-    case POST_COUNTRIES:
-      return Object.assign({}, state, {
-        isFetching: false,
-        countryList: action.payload,
-      });
+      console.log('payload data:', action.payload.data);
+      return [
+        action.payload.data, ...state,
+      ];
     default:
       return state;
   }
