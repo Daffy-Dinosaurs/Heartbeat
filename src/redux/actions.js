@@ -12,8 +12,8 @@ import axios from 'axios'
 export const REQUEST_COUNTRIES = 'REQUEST_COUNTRIES'
 export const requestCountries = () => {
   console.log("inside request countries")
-  const url = 'http://localhost:3000/api/countries'
-  const request = return axios({
+  const url = '//localhost:3001/api/countries'
+  const request = axios({
     url: url,
     timeout: 20000,
     method: 'get',
