@@ -4,8 +4,18 @@ import { requestCountries } from '../actions/request_country';
 import { bindActionCreators } from 'redux';
 
 class CountryList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { term: this.props.requestCountries() };
+    this.state.term;
+  }
+
   renderList() {
-    console.log('PROPS:', this.props.countryList);
+    console.log('PROPS:', this.props.countryList[0]);
+
+    // this.props.requestCountries();
+
     return this.props.countryList.map((country) => {
       return (
           <li> { country } </li>
@@ -38,7 +48,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ requestCountries: requestCountries }, dispatch);
+  return bindActionCreators({ requestCountries }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);

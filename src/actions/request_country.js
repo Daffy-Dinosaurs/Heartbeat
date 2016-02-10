@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Send action to server
-export const REQUEST_COUNTRIES = 'REQUEST_COUNTRIES';;
+export const REQUEST_COUNTRIES = 'REQUEST_COUNTRIES';
 
 export function requestCountries() {
   console.log('REQUEST COUNTRIES HAS BEEN CALLED');
