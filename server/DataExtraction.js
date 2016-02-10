@@ -17,16 +17,15 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 
 var Country = sequelize.define('country', {
   localeId: Sequelize.INTEGER,
-  countryName: Sequelize.STRING
+  countryName: Sequelize.STRING,
 });
 
-  // {
-  //   // tableName: 'countries', // this will define the table's name
-  //   timestamps: false           // this will deactivate the timestamp columns
-  // });
+// {
+//   // tableName: 'countries', // this will define the table's name
+//   timestamps: false           // this will deactivate the timestamp columns
+// });
 
-
-var raw_data = fs.readFile(__dirname + "/../Datasets/countries.json", "utf-8", function(err, data){
+var raw_data = fs.readFile(__dirname + '/../Datasets/countries.json', 'utf-8', function(err, data) {
   console.log(typeof data);
   var cleandata = JSON.parse(data);
   console.log(typeof cleandata);
@@ -36,28 +35,25 @@ var raw_data = fs.readFile(__dirname + "/../Datasets/countries.json", "utf-8", f
   } else {
     console.log(cleandata);
 
+    sequelize.sync({ force: true }).then(function(err) {
 
-      sequelize.sync({ force: true }).then(function(err) {
+      for (var i = 0; i < cleandata.length; i++) {
 
-        for (var i = 0; i < cleandata.length; i++) {
+        Country.create({
 
-            Country.create({
+          countryName: cleandata[i]['countryName'],
+          localeId: cleandata[i]['localeId']
 
-              countryName : cleandata[i]["countryName"],
-              localeId: cleandata[i]["localeId"]
-              // CountryCode : cleandata[i]["Country Code"]
+          // CountryCode : cleandata[i]["Country Code"]
 
-            }).then(function(data) {
-              console.log("DATABASE: Data entered!");
+        }).then(function(data) {
+              console.log('DATABASE: Data entered!');
             });
-        }
+      }
 
-      });
+    });
   }
 });
-
-
-
 
 //------------------------------------------------------------------------
 // Create the Database

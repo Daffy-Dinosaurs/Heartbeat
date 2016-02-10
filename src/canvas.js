@@ -1,19 +1,20 @@
 import React from 'react';
 import d3 from 'd3';
-import Globe from './components/d3.js'
-import ReactFauxDOM from 'react-faux-dom'
+import Globe from './components/d3.js';
+import ReactFauxDOM from 'react-faux-dom';
 
 const Canvas = props => {
-  const element = ReactFauxDOM.createElement( 'div' );
+  const element = ReactFauxDOM.createElement('div');
 
   Globe.create({
-    ...props
+    ...props,
   });
 
   return element.toReact();
 };
 
-export default Canvas
+export default Canvas;
+
 //
 // export default React.createClass({
 //   render: function () {

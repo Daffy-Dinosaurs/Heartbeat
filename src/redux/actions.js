@@ -1,36 +1,38 @@
-import axios from 'axios'
+import axios from 'axios';
 /*
  * action types
  */
-// export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
+// export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 /*
  * action creators
  */
+
 // Send action to server
-export const REQUEST_COUNTRIES = 'REQUEST_COUNTRIES'
+export const REQUEST_COUNTRIES = 'REQUEST_COUNTRIES';;
 export const requestCountries = () => {
-  console.log("inside request countries")
-  const url = '//localhost:3001/api/countries'
+  console.log('inside request countries');
+  const url = '//localhost:3001/api/countries';
   const request = axios({
     url: url,
     timeout: 20000,
     method: 'get',
-    responseType: 'json'
-  }).then(function(data){
-    console.log(data)
-  }).catch()
+    responseType: 'json',
+  }).then(function(data) {
+    console.log(data);
+  }).catch();
 
-  console.log("Action request", request)
+  console.log('Action request', request);
 
   return {
     type: REQUEST_COUNTRIES,
-    payload: request
-  }
-}
+    payload: request,
+  };
+};;
 
 requestCountries();
+
 // Recieved Action from server
 // export const RECEIVED_COUNTRIES = 'RECEIVED_COUNTRIES'
 // export const receivedCountries = (countryList, json) => {
@@ -40,7 +42,6 @@ requestCountries();
 //     list: json.data.children.map(child => child.data),
 //   }
 // }
-
 
 // Thunk action creator
 // export const fetchCountries = () => {
