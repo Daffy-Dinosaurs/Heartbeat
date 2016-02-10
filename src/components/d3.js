@@ -2,14 +2,15 @@
 import queue from 'd3-queue';
 import d3 from 'd3';
 import world from './world-110m.json';
-import names from 'raw!./world-country-names.tsv';
+import names from './world-country-names.json';
+// import names from 'raw!./world-country-names.tsv';
 import topojson from 'topojson';
 
 
 var d3Globe = {};
 
 d3Globe.go = function(){
-  
+
   var width = 960,
       height = 960;
 
@@ -47,13 +48,13 @@ d3Globe.go = function(){
         i = -1,
         n = countries.length;
 
-    // countries = countries.filter(function(d) {
-    //   return names.some(function(n) {
-    //     if (d.id == n.id) return d.name = n.name;
-    //   });
-    // }).sort(function(a, b) {
-    //   return a.name.localeCompare(b.name);
-    // });
+    countries = countries.filter(function(d) {
+      return names.some(function(n) {
+        if (d.id == n.id) return d.name = n.name;
+      });
+    }).sort(function(a, b) {
+      return a.name.localeCompare(b.name);
+    });
 
     (function transition() {
       d3.transition()
