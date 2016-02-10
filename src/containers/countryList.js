@@ -1,37 +1,44 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
-import { requestCountries } from '../redux/actions'
-import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux';
+import { requestCountries } from '../actions/request_country';
+import { bindActionCreators } from 'redux';
 
 class CountryList extends Component {
-  renderList (){
-    // console.log('PROPS:', this.props.country[0])
-    return this.props.country[0].map((country) => {
+  renderList() {
+    console.log('PROPS:', this.props.countryList);
+    return this.props.countryList.map((country) => {
       return (
           <li> { country } </li>
+
+          // onClick={ ()=>this.props.requestCountries() }
       );
     });
   }
 
-  render(){
+  render() {
+    // if (!this.props.country) {
+    //   return <div>Select Country</div>;
+    // } else {
     return (
       <div>
-      <button className="btn btn-primary" onClick={ ()=>this.props.requestCountries() }>Fetch country list!</button>
-        <ul> { this.renderList() } </ul>
+        //<button className="btn btn-primary" >Fetch country list!</button>
+          <ul> { this.renderList() } </ul>
       </div>
-    )
-  }
+    );
 
+    // }
+  }
 }
 
-function mapStateToProps(state){
-  console.log('App state:', state)
+function mapStateToProps(state) {
+  console.log('App state:', state);
   return {
-    country: state.countryList
-  }
+    countryList: state.countryList,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ requestCountries: requestCountries }, dispatch)
+  return bindActionCreators({ requestCountries: requestCountries }, dispatch);
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);

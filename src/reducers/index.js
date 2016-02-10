@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import CountryReducer from './reducer_countries';
-import ActiveCountry from './reducer_active_book';
+import ActiveCountry from './reducer_active_country';
+import { REQUEST_COUNTRIES } from '../actions/request_country';
+import CountryList from './reducer_countryList';
 
 const rootReducer = combineReducers({
-  countries: CountryReducer,
   activeCountry: ActiveCountry,
+  countryList: CountryList,
 });
 
 export default rootReducer;
