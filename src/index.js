@@ -9,7 +9,6 @@ import rootReducer from './reducers/index';
 import promiseMiddleware from 'redux-promise';
 import App from './components/app';
 
-//
 const loggerMiddleware = createLogger();
 
 //
@@ -31,4 +30,5 @@ ReactDOM.render(
   <Provider store={ store(rootReducer) }>
     <App />
   </Provider>,
-  document.body);
+  document.querySelector('.container')
+);
