@@ -4,6 +4,7 @@ import { requestCountries } from '../actions/request_country';
 import { bindActionCreators } from 'redux';
 import { selectCountry } from '../actions/country_select';
 
+
 class CountryList extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +34,7 @@ class CountryList extends Component {
     // } else {
     // <button className="btn btn-primary" onClick={ ()=>this.props.requestCountries() }>Fetch country list!</button>
     return (
-      <div>
+      <div className="countryList">
           <ul> { this.renderList() } </ul>
       </div>
     );
