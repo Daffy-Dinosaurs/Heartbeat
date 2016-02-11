@@ -62,15 +62,21 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
     });
 
     function transition() {
+      //traverse countries arr
+      //find "i" for country in countries arr with "name"
+      //set "i" to that country's "i"
       d3.transition()
           .duration(1250)
           .each('start', function() { //transition event listener
-            title.text(countries[i = (i + 1) % n].name); //on start, set title text to new country name in alphabetical order (i = -1)
+          //   title.text(countries[i = (i + 1) % n].name); //on start, set title text to new country name in alphabetical order (i = -1)
+          // })
+            i = (i+1);
+            console.log('\n\n\nhere is I:', i, '\n\n\n');
+            title.text(countries[i].name); //on start, set title text to new country name in alphabetical order (i = -1)
           })
           .tween('rotate', function() { //name of tween, factory function with "i" and "d"
-            var p = d3.geo.centroid(countries[i]), //returns sphere centroid of current country (country boundary)
+            var p = d3.geo.centroid(countries[i]), //returns sphere centroid of current country object 
                 r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]); //returns interpolation from point a (current rotation) to point b (array of two values)
-            console.log('countries var:', countries[i]);
             return function(t) {
               projection.rotate(r(t));
               c.clearRect(0, 0, width, height);
@@ -80,8 +86,8 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
               c.strokeStyle = "#000", c.lineWidth = 2, c.beginPath(), path(globe), c.stroke();
             };
           })
-        .transition();
-          // .each("end", transition);
+        .transition()
+          .each("end", transition);
     };
     transition();
     d3.select(self.frameElement).style("height", height + "px");
