@@ -9,7 +9,7 @@ import topojson from 'topojson';
 
 var d3Globe = {}; //export object
 
-d3Globe.go = function() { //function runs the boilerplate d3 code
+d3Globe.go = function(id) { //function runs the boilerplate d3 code
 
   var width = 960,  //canvas dimensions
       height = 960;
@@ -21,7 +21,7 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
       .precision(0.6);
 
   //CREATES and APPENDS canvas element to first ".container" elem on DOM tree, returns arr [canvas]
-  var canvas = d3.select('.container').append('canvas') 
+  var canvas = d3.select('.container').append('canvas')
       .attr('width', width)
       .attr('height', height);
 
@@ -29,10 +29,10 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
   var c = canvas.node().getContext('2d');
 
   //Create + Store GEOJSON format component via geographic path generator
-    //path -- returns path data string for a given feature arg 
+    //path -- returns path data string for a given feature arg
   var path = d3.geo.path()
       .projection(projection) // see https://goo.gl/rJ51aF
-      .context(c); // 
+      .context(c); //
 
   var title = d3.select('h1');
 
@@ -61,7 +61,7 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
       return a.name.localeCompare(b.name);
     });
 
-    function transition() {
+    function transition(id) {
       //traverse countries arr
       //find "i" for country in countries arr with "name"
       //set "i" to that country's "i"
@@ -70,12 +70,13 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
           .each('start', function() { //transition event listener
           //   title.text(countries[i = (i + 1) % n].name); //on start, set title text to new country name in alphabetical order (i = -1)
           // })
-            i = (i+1);
+            i = id || 1;
+            console.log('\n\n\n')
             console.log('\n\n\nhere is I:', i, '\n\n\n');
             title.text(countries[i].name); //on start, set title text to new country name in alphabetical order (i = -1)
           })
           .tween('rotate', function() { //name of tween, factory function with "i" and "d"
-            var p = d3.geo.centroid(countries[i]), //returns sphere centroid of current country object 
+            var p = d3.geo.centroid(countries[i]), //returns sphere centroid of current country object
                 r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]); //returns interpolation from point a (current rotation) to point b (array of two values)
             return function(t) {
               projection.rotate(r(t));
@@ -86,13 +87,12 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
               c.strokeStyle = "#000", c.lineWidth = 2, c.beginPath(), path(globe), c.stroke();
             };
           })
-        .transition()
-          .each("end", transition);
+        .transition();
+          // .each("end", transition);
     };
-    transition();
+    transition(id);
     d3.select(self.frameElement).style("height", height + "px");
   }
-
 }
 
 module.exports = d3Globe;
