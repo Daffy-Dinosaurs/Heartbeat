@@ -3,9 +3,11 @@ import ActiveCountry from './reducer_active_country';
 import { COUNTRY_SELECTED} from '../actions/country_select';
 import { REQUEST_COUNTRIES } from '../actions/request_country';
 import CountryList from './reducer_countryList';
+import GlobeAction from './reducer_globe_action';
+import { GLOBE_ACTION_SELECTED } from '../actions/globe_action';
 
 const rootReducer = combineReducers({
-  globeCountry: ActiveCountry,
+  globeCountry: GlobeAction,
   activeCountry: ActiveCountry,
   countryList: CountryList,
 });
