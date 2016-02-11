@@ -13,7 +13,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { requestCountries } from './actions/request_country';
 import rootReducer from './reducers/index';
 import promiseMiddleware from 'redux-promise';
-import App from './components/app'
+import App from './components/app';
 
 //
 const loggerMiddleware = createLogger();

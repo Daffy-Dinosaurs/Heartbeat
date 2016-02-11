@@ -1,15 +1,16 @@
-import React, {Component} from 'react';
-import CountryList from '../containers/countryList';
-import ActiveCountry from '../containers/country-view';
+import React, { Component } from 'react';
 
-export default class App extends Componenet {
+import CountryList from '../containers/countryList';
+import Globe from './globe';
+
+//Globe
+
+export default class App extends Component{
   render() {
     return (
       <div>
-        <CountryList />
-      </div>
-      <div>
-        <ActiveCountry />
+          <CountryList />
+          <Globe />
       </div>
     );
   }
