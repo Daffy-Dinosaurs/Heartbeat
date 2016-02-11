@@ -61,11 +61,11 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
       return a.name.localeCompare(b.name);
     });
 
-    (function transition() {
+    function transition() {
       d3.transition()
           .duration(1250)
-          .each('start', function() {
-            title.text(countries[i = (i + 1) % n].name);
+          .each('start', function() { //transition event listener
+            title.text(countries[i = (i + 1) % n].name); //on start, set title text to new country name in alphabetical order
           })
           .tween('rotate', function() {
             var p = d3.geo.centroid(countries[i]),
@@ -79,10 +79,10 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
               c.strokeStyle = "#000", c.lineWidth = 2, c.beginPath(), path(globe), c.stroke();
             };
           })
-        .transition()
-          .each("end", transition);
-    })();
-
+        .transition();
+          // .each("end", transition);
+    };
+    transition();
     d3.select(self.frameElement).style("height", height + "px");
   }
 
