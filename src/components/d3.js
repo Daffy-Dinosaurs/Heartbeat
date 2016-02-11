@@ -9,7 +9,7 @@ import topojson from 'topojson';
 
 var d3Globe = {}; //export object
 
-d3Globe.go = function(id) { //function runs the boilerplate d3 code
+d3Globe.go = function(dbId) { //function runs the boilerplate d3 code
 
   var width = 960;  //canvas dimensions
   var height = 960;
@@ -50,7 +50,7 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
     var countries = topojson.feature(world, world.objects.countries).features;
     var borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
 
-    var i = -1;
+    var i = dbId;
     var n = countries.length;
 
     var countries = countries.filter(function(d) {
@@ -61,7 +61,7 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
       return a.name.localeCompare(b.name);
     });
 
-    function transition(id) {
+    function transition(dbId) {
       //traverse countries arr
       //find "i" for country in countries arr with "name"
       //set "i" to that country's "i"
@@ -70,7 +70,7 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
           .each('start', function() { //transition event listener
             //   title.text(countries[i = (i + 1) % n].name); //on start, set title text to new country name in alphabetical order (i = -1)
             // })
-            i = id || 1;
+            var i = dbId || 1;
             console.log('\n\n\n');
             console.log('\n\n\nhere is I:', i, '\n\n\n');
             title.text(countries[i].name); //on start, set title text to new country name in alphabetical order (i = -1)
@@ -92,7 +92,7 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
       // .each("end", transition);
     };
 
-    transition(id);
+    transition(dbId);
     d3.select(self.frameElement).style('height', height + 'px');
   }
 };
