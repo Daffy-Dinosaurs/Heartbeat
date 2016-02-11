@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { getTweets } from '../actions/get_twitter_feed';
 
 class TwitterFeed extends Component {
   
@@ -12,12 +16,27 @@ class TwitterFeed extends Component {
 
   render() {
     console.log("TWEETS PROPS", this.props);
+      // <button onClick = {() => this.props.selectBook(book)}
     return (
-      <div>Tweets Feed Here</div>
+      <div>
+        <button 
+        onClick = { () => this.props.getTweets() }>
+        Pull Tweets
+        </button>
+      </div>
     );
   }
 
-
 }
 
-export default TwitterFeed;
+function mapStateToProps(state) {
+  return {
+    tweets: state.tweets
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getTweets: getTweets }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TwitterFeed);

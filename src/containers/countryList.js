@@ -13,7 +13,7 @@ class CountryList extends Component {
   }
 
   renderList() {
-    console.log('PROPS:', this.props.countryList);
+    // console.log('PROPS:', this.props.countryList);
 
     // this.props.requestCountries();
 
