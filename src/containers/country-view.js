@@ -1,25 +1,39 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-class CountryView extends Component {
+class ActiveCountry extends Component {
+
+  renderScreen() {
+    console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
+    return (
+      <li> { this.props.activeCountry.countryName } </li>
+    );
+  }
+
+  //TODO:
+  //The counrty list can not populate due to an errorin the above code
+  //since activeCountry is not selected upon intialization, th computer hits and error and does not run
+  //The below conditional allows for the list to show but does not update once the contry is selected
+
   render() {
-
-    if (!this.props.country) {
+    // console.log('inside country-view');
+    if (!this.props.activeCountry) {
       return <div>Select a country</div>;
+    } else {
+      return (
+        <ul className="country-view">
+        {this.renderScreen()}
+        </ul>
+      );
+
     }
 
-    return (
-      <div className="country-view">
-        <div>this.props.country.countryName</div>
-      </div>
-    );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    country: state.activeCountry,
-  };
+function mapStateToProps({ activeCountry }) {
+  return { activeCountry };
 }
 
-export default connect(mapStateToProps)(CountryView);
+export default connect(mapStateToProps)(ActiveCountry);
