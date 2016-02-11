@@ -7,28 +7,32 @@ import names from './world-country-names.json';
 // import names from 'raw!./world-country-names.tsv';
 import topojson from 'topojson';
 
-var d3Globe = {};
+var d3Globe = {}; //export object
 
-d3Globe.go = function() {
+d3Globe.go = function() { //function runs the boilerplate d3 code
 
-  var width = 960,
+  var width = 960,  //canvas dimensions
       height = 960;
 
-  var projection = d3.geo.orthographic()
+  var projection = d3.geo.orthographic() //projection is fed to PATH
       .translate([width / 2, height / 2])
       .scale(width / 2 - 20)
       .clipAngle(90)
       .precision(0.6);
 
-  var canvas = d3.select('.container').append('canvas')
+  //CREATES and APPENDS canvas element to first ".container" elem on DOM tree, returns arr [canvas]
+  var canvas = d3.select('.container').append('canvas') 
       .attr('width', width)
       .attr('height', height);
 
+  //selects first non-null node inside canvas, and returns a drawing context ON the canvas with 2d rendering context (this selection is DRAW-ABLE)
   var c = canvas.node().getContext('2d');
 
+  //Create + Store GEOJSON format component via geographic path generator
+    //path -- returns path data string for a given feature arg 
   var path = d3.geo.path()
-      .projection(projection)
-      .context(c);
+      .projection(projection) // see https://goo.gl/rJ51aF
+      .context(c); // 
 
   var title = d3.select('h1');
 
