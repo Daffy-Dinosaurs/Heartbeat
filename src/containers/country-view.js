@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ListGroup from 'react-bootstrap';
+import ListGroupItem from 'react-bootstrap';
 
 class ActiveCountry extends Component {
 
   renderScreen() {
     console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
     return (
-      <li> { this.props.activeCountry.countryName } </li>
+
+        <li>{ this.props.activeCountry.countryName }</li>
+
     );
   }
 
