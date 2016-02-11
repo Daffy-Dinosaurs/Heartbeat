@@ -7,8 +7,9 @@ export default class Globe extends Component {
     d3Globe.go();
   }
   render(){
-    return (
+    return (<div>
             <h1 className="globeTitle" ></h1>
+            </div>
            )
   }
 }

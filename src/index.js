@@ -21,4 +21,5 @@ ReactDOM.render(
   <Provider store={ store(rootReducer) }>
     <App />
   </Provider>,
-  document.body);
+  document.body
+);

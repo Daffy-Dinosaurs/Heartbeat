@@ -8,12 +8,8 @@ export default class App extends Component{
   render(){
     return (
       <div>
-        <div>
           <CountryList />
-        </div>
-        <div>
           <Globe />
-        </div>
       </div>
     )
   }
