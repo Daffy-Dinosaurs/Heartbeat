@@ -34,17 +34,18 @@ class CountryList extends Component {
     // } else {
     // <button className="btn btn-primary" onClick={ ()=>this.props.requestCountries() }>Fetch country list!</button>
     return (
-      <div className="countryList">
+  //     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  //   Dropdown
+  //   <span class="caret"></span>
+  // </button>
+      <div className="dropdown countryList">
           <ul> { this.renderList() } </ul>
       </div>
     );
-
-    // }
   }
 }
 
 function mapStateToProps({ countryList }) {
-  // console.log('App state:', state);
   return { countryList };
 }
 
