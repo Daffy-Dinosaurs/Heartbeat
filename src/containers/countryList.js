@@ -7,6 +7,7 @@ import { globeAction } from '../actions/globe_action';
 
 
 class CountryList extends Component {
+
   constructor(props) {
     super(props);
 
@@ -15,7 +16,7 @@ class CountryList extends Component {
   }
 
   renderList() {
-    console.log('PROPS:', this.props.countryList);
+    // console.log('PROPS:', this.props.countryList);
 
     return this.props.countryList.map((country) => {
       return (
@@ -31,6 +32,7 @@ class CountryList extends Component {
   }
 
   render() {
+
     // if (!this.props.country) {
     //   return <div>Select Country</div>;
     // } else {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import CountryList from '../containers/countryList';
+import TwitterFeed from './twitter_feed';
 import Globe from '../containers/globeContainer';
 import ActiveCountry from '../containers/country-view';
 
@@ -11,10 +12,10 @@ export default class App extends Component{
     return (
       <div className="container">
           <CountryList />
-
+          <TwitterFeed />
           <Globe />
-
           <ActiveCountry />
+
       </div>
     );
   }
