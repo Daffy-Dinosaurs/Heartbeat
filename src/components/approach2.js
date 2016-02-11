@@ -1,7 +1,7 @@
 var approach2 = {};
 
 approach2.setup = function(){
-
+  
   var base = d3.select('body');
 
   var chart = base.append("canvas")
@@ -16,7 +16,7 @@ approach2.setup = function(){
   // Create a d3 selection for the detached container. We won't
   // actually be attaching it to the DOM.
   var dataContainer = d3.select(detachedContainer);
-
+  
   function drawCustom(data) {
     var scale = d3.scale.linear()
       .range([10, 390])

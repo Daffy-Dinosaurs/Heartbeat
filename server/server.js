@@ -7,54 +7,12 @@ var bodyParser = require('body-parser');
 var db = require('./sequelizeDB.js');
 var mysql = require('mysql');
 
-// import React from 'react'
-// import { createStore } from 'redux'
-// import { Provider } from 'react-redux'
-// import counterApp from './reducers'
-// import App from './src/app'
-// import { renderToString } from 'react-dom/server'
-
-// var data = require('./DataExtraction.js');
-
 var app = express();
 app.use(bodyParser());
 
 var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
-
-// Rendering the intial state of the app server sider
-// app.use(handleRender)
-//
-// function handleRender(req, res) {
-//   const store = createStore(worldApp)
-//
-//   const html = renderToString(
-//     <Provider store={store}>
-//       <App />
-//     <Provider>
-//   )
-//   const initialState = store.getState()
-//
-//   res.send(renderFullPage(html, initialState))
-// }
-// function renderFullPage(html, initialState) {
-//   return
-//    <!doctype html>
-//    <html>
-//      <head>
-//        <title>Redux Universal Example</title>
-//      </head>
-//      <body>
-//        <div id="root">${html}</div>
-//        <script>
-//          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-//        </script>
-//        <script src="/public/bundle.js"></script>
-//      </body>
-//    </html>
-//
-// }
 
 // console.log(__dirname + '/../index.html');
 app.listen(port);
@@ -98,13 +56,15 @@ app.get('/api/countries', function(req, res) {
 
   console.log('inside get request');
   db.Country.build().retrieveAll().then(function(countries) {
-    // console.log('retrieveAll is being called', countries);
+    console.log('retrieveAll is being called');
     if (countries) {
       res.json(countries);
-      console.log('GETTING THE COUNTRIES');
     } else {
-      res.send(401, 'Nah Man Country not found');
+      res.send(401, 'Country not found');
     }
+  }, function(error) {
+
+    res.send('Country not found');
   });
 });
 

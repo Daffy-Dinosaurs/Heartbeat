@@ -18,7 +18,6 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 //TODO: These methods successfully perform our CRUD operations
 
 var Country = sequelize.define('country', {
-    localeId: Sequelize.INTEGER,
     countryName: Sequelize.STRING,
   },
 
@@ -52,9 +51,9 @@ var Country = sequelize.define('country', {
 
       //TODO: WORKING
       add: function(name) {
-        // var countryName = name;
-        console.log('this is being called with', name);
-        return Country.build({ countryName: name }).save();
+        var countryName = name;
+
+        Country.build({ countryName: countryName });
       },
 
       //TODO: WORKING
@@ -71,10 +70,12 @@ var Country = sequelize.define('country', {
     },
   });
 
+
+
 sequelize.sync().then(function() {
   console.log('this is synced');
 });
 
 //this worked
-// Country.build().add('blainville');
+// Country.build().updateByName('england', 'Tanzania');
 module.exports = { Country: Country };
