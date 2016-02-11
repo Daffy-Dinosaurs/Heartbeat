@@ -20,10 +20,19 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
       .clipAngle(90)
       .precision(0.6);
 
-      //CREATES and APPENDS canvas element to first ".container" elem on DOM tree, returns arr [canvas]
-  var canvas = d3.select('.globe').append('canvas')
-      .attr('width', width)
-      .attr('height', height);
+
+  //CREATES and APPENDS canvas element to first ".container" elem on DOM tree, returns arr [canvas]
+  if (d3.selectAll('canvas')[0].length < 1){
+    console.log('THERE WAS NO CANVAS');
+    console.log(d3.selectAll('canvas'));
+
+    var canvas = d3.select('.globe').append('canvas')
+    .attr('width', width)
+    .attr('height', height);
+  } else {
+    console.log('THERE ALREADY WAS THE CANVAS')
+    var canvas = d3.selectAll('canvas');
+  }
 
   //selects first non-null node inside canvas, and returns a drawing context ON the canvas with 2d rendering context (this selection is DRAW-ABLE)
   var c = canvas.node().getContext('2d');
@@ -36,10 +45,6 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
 
   var title = d3.select('.none');
 
-  // queue()
-  //     .defer(d3.json, 'world-110m.json')
-  //     .defer(d3.tsv, "world-country-names.tsv")
-  //     .await(ready);
   ready(world, names);
 
   function ready(world, names, error) {

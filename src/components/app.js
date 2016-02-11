@@ -12,10 +12,10 @@ export default class App extends Component{
       <div className="main">
           <CountryList />
           <div className="col-md-8 globe">
-          <ActiveCountry />
+          <Globe />
           </div>
 
-          <Globe />
+          <ActiveCountry />
       </div>
     );
   }
