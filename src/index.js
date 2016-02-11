@@ -6,8 +6,6 @@ import createLogger from 'redux-logger';
 import promiseMiddleware from 'redux-promise';
 import { createStore, applyMiddleware } from 'redux';
 import { connect, Provider } from 'react-redux';
-// import jQuery from 'jQuery'
-// import bootstrap from 'bootstrap';
 
 import d3Globe from './components/d3.js';
 import rootReducer from './reducers/index';
