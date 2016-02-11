@@ -6,6 +6,8 @@ var config = require('../webpack.config.js');
 var bodyParser = require('body-parser');
 var db = require('./sequelizeDB.js');
 var mysql = require('mysql');
+var request = require('request');
+var env = require('node-env-file');
 
 // import React from 'react'
 // import { createStore } from 'redux'
@@ -15,6 +17,10 @@ var mysql = require('mysql');
 // import { renderToString } from 'react-dom/server'
 
 // var data = require('./DataExtraction.js');
+
+var env = env(__dirname + '/.env');
+var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
+var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
 
 var app = express();
 app.use(bodyParser());
@@ -159,3 +165,70 @@ app.get('/api/countries/:countryName', function(req, res) {
 //     res.send('User not found');
 //   });
 // });
+
+
+
+//////////////////////////////////////////////////////////////////
+//Set up and send a request for our application-only oAuth token.
+///////////////////////////////////////////////////////////////////
+
+// create a variable to hold our token.
+var twitterAppToken;
+
+// store our twitter key and secret
+var consumerKey = TWITTER_CONSUMER_KEY;
+var consumerSecret = TWITTER_CONSUMER_SECRET;
+
+// concat the key and secret seperated by a colon.
+var bearerTokenCred = consumerKey + ':' + consumerSecret;
+
+// pass the key string into Buffer constructor to create a buffer obj.
+var bufferedToken = new Buffer(bearerTokenCred);
+
+// encode the buffer object in base64
+var encodedAndBufferedToken = bufferedToken.toString('base64');
+
+// set up options, you need quotes around keys with hyphens
+var options = {
+  url: 'https://api.twitter.com/oauth2/token',
+  body: 'grant_type=client_credentials',
+  method: 'POST',
+  'Accept-Encoding': 'gzip',
+  headers: {
+    Authorization: 'Basic ' + encodedAndBufferedToken,
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+  },
+};
+
+// request and save an application-only token from twitter
+request(options, function (err, response, body) {
+  twitterAppToken = JSON.parse(body);
+  console.log(twitterAppToken);
+});
+
+
+///////////////////////////////
+// get tweets
+///////////////////////////////
+
+// here we set up the get handler that will send a request for the users tweet and then send it to our client-side app.
+// route has one param, any user's twitter handle
+app.get('/tweets/:hastag', function (req, ourResponse, next) {
+  // set options
+  console.log("FROM THE SERVER:", req.params.hastag);
+  var options = {
+    // append the user's handle to the url
+    url: 'https://api.twitter.com/1.1/search/tweets.json?q=' + req.params.hastag,
+    method: 'GET',
+    headers: {
+      // append the access token to the string Bearer with a space.
+      Authorization: 'Bearer ' + twitterAppToken.access_token,
+    },
+  };
+
+  // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
+  request(options, function (err, responseFromTwitter, body) {
+    // console.log(JSON.parse(body));
+    ourResponse.status(200).send(JSON.parse(body));
+  });
+});
