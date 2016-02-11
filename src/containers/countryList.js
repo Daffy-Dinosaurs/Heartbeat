@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { requestCountries } from '../actions/request_country';
 import { bindActionCreators } from 'redux';
 import { selectCountry } from '../actions/country_select';
+import { globeAction } from '../actions/globe_action';
 
 
 class CountryList extends Component {
@@ -20,8 +21,9 @@ class CountryList extends Component {
       return (
           <li className="list-country-item"
             key={country.countryName}
-            onClick={() => this.props.selectCountry(country)}>
-            <a href='#' >{ country.countryName }</a>
+            onClick={() => {this.props.selectCountry(country), this.props.globeAction(country)}}>
+            <a href='#'>{ country.countryName }</a>
+
           </li>
       );
     });
@@ -47,7 +49,7 @@ function mapStateToProps({ countryList }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ requestCountries, selectCountry }, dispatch);
+  return bindActionCreators({ requestCountries, selectCountry, globeAction }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);
