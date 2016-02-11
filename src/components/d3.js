@@ -65,11 +65,12 @@ d3Globe.go = function() { //function runs the boilerplate d3 code
       d3.transition()
           .duration(1250)
           .each('start', function() { //transition event listener
-            title.text(countries[i = (i + 1) % n].name); //on start, set title text to new country name in alphabetical order
+            title.text(countries[i = (i + 1) % n].name); //on start, set title text to new country name in alphabetical order (i = -1)
           })
-          .tween('rotate', function() {
-            var p = d3.geo.centroid(countries[i]),
-                r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
+          .tween('rotate', function() { //name of tween, factory function with "i" and "d"
+            var p = d3.geo.centroid(countries[i]), //returns sphere centroid of current country (country boundary)
+                r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]); //returns interpolation from point a (current rotation) to point b (array of two values)
+            console.log('countries var:', countries[i]);
             return function(t) {
               projection.rotate(r(t));
               c.clearRect(0, 0, width, height);
