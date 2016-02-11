@@ -15,14 +15,12 @@ class CountryList extends Component {
   renderList() {
     console.log('PROPS:', this.props.countryList);
 
-    // this.props.requestCountries();
-
     return this.props.countryList.map((country) => {
       return (
           <li
             key={country.countryName}
             onClick={() => this.props.selectCountry(country)}>
-          <a href='#'>{ country.countryName }</a>
+            <a href='#'>{ country.countryName }</a>
 
           </li>
       );
