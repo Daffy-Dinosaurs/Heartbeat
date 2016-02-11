@@ -11,8 +11,9 @@ import d3Globe from './components/d3.js';
 import rootReducer from './reducers/index';
 import { requestCountries } from './actions/request_country';
 import CountryList from './containers/countryList';
-import Globe from './components/globe'
-import App from './components/app'
+import Globe from './components/globe';
+import App from './components/app';
+import styles from './style.css';
 
 const loggerMiddleware = createLogger();
 const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
