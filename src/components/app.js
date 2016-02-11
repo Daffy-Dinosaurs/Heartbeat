@@ -9,11 +9,11 @@ import ActiveCountry from '../containers/country-view';
 
 export default class App extends Component{
   render() {
-          <Globe />
     return (
       <div className="container">
           <CountryList />
           <TwitterFeed />
+          <Globe />
           <ActiveCountry />
 
       </div>

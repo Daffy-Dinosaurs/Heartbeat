@@ -14,6 +14,26 @@ class TwitterFeed extends Component {
     this.state.feed;
   }
 
+  renderTweets() {
+    if (this.props.twitterFeed.length <= 0) {
+      return
+    } else {
+        // console.log(tweet.text);
+      console.log("INSIDE renderTWeets", this.props.twitterFeed);
+    return this.props.twitterFeed.map((tweetList) => {
+      return tweetList.statuses.map((tweet) => {
+        return (
+          <div>
+          <li> { tweet.created_at } </li>
+          <li> { tweet.text } </li>
+          </div>
+        );
+      });
+    });
+      
+    }
+  }
+
   render() {
     console.log("TWEETS PROPS", this.props);
       // <button onClick = {() => this.props.selectBook(book)}
@@ -23,16 +43,18 @@ class TwitterFeed extends Component {
         onClick = { () => this.props.getTweets() }>
         Pull Tweets
         </button>
+        <div>
+          <ul> { this.renderTweets() } </ul>
+        </div>
       </div>
     );
   }
 
 }
 
-function mapStateToProps(state) {
-  return {
-    tweets: state.tweets
-  }
+function mapStateToProps({ twitterFeed }) {
+  console.log("TWEETS STATE:", { twitterFeed });
+  return { twitterFeed };
 }
 
 function mapDispatchToProps(dispatch) {

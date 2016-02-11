@@ -228,7 +228,7 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
 
   // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
   request(options, function (err, responseFromTwitter, body) {
-    console.log(JSON.parse(body));
+    // console.log(JSON.parse(body));
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
