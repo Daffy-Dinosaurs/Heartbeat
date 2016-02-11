@@ -1,16 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-class CountryView extends Component {
+class ActiveCountry extends Component {
   render() {
-
-    if (!this.props.country) {
+    // console.log('inside country-view');
+    if (!this.props) {
       return <div>Select a country</div>;
     }
 
     return (
       <div className="country-view">
-        <div>this.props.country.countryName</div>
+        <li>this.props.countryName</li>
       </div>
     );
   }
@@ -22,4 +22,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CountryView);
+export default connect(mapStateToProps)(ActiveCountry);

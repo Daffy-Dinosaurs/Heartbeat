@@ -13,7 +13,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { requestCountries } from './actions/request_country';
 import rootReducer from './reducers/index';
 import promiseMiddleware from 'redux-promise';
-import CountryList from './containers/countryList';
+import App from './components/app'
 
 //
 const loggerMiddleware = createLogger();
@@ -35,6 +35,6 @@ const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
 
 ReactDOM.render(
   <Provider store={ store(rootReducer) }>
-    <CountryList />
+    <App />
   </Provider>,
   document.body);
