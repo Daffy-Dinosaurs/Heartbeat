@@ -16,11 +16,11 @@ d3Globe.go = function() {
 
   var projection = d3.geo.orthographic()
       .translate([width / 2, height / 2])
-      .scale(width / 2 - 20)
+      .scale(width / 2 - 60)
       .clipAngle(90)
       .precision(0.6);
 
-  var canvas = d3.select('.container').append('canvas')
+  var canvas = d3.select('.globe').append('canvas')
       .attr('width', width)
       .attr('height', height);
 
@@ -30,7 +30,7 @@ d3Globe.go = function() {
       .projection(projection)
       .context(c);
 
-  var title = d3.select('h1');
+  var title = d3.select('.none');
 
   // queue()
   //     .defer(d3.json, 'world-110m.json')
