@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ListGroup from 'react-bootstrap';
-import ListGroupItem from 'react-bootstrap';
+
 
 class ActiveCountry extends Component {
 
@@ -10,13 +9,13 @@ class ActiveCountry extends Component {
     console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
     return (
 
-        <li>{ this.props.activeCountry.countryName }</li>
+        <li className='container .countryBox'>{ this.props.activeCountry.countryName }</li>
 
     );
   }
 
   //TODO:
-  //The counrty list can not populate due to an errorin the above code
+  //The country list can not populate due to an errorin the above code
   //since activeCountry is not selected upon intialization, th computer hits and error and does not run
   //The below conditional allows for the list to show but does not update once the contry is selected
 
@@ -26,7 +25,7 @@ class ActiveCountry extends Component {
       return <div>Select a country</div>;
     } else {
       return (
-        <ul className="country-view">
+        <ul>
         {this.renderScreen()}
         </ul>
       );

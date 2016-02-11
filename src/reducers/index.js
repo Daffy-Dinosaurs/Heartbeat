@@ -5,6 +5,7 @@ import { REQUEST_COUNTRIES } from '../actions/request_country';
 import CountryList from './reducer_countryList';
 
 const rootReducer = combineReducers({
+  globeCountry: ActiveCountry,
   activeCountry: ActiveCountry,
   countryList: CountryList,
 });
