@@ -5,18 +5,17 @@ import d3 from 'd3';
 import d3Globe from '../components/d3';
 
 class Globe extends Component {
-  // componentDidMount() {
-  //   d3Globe.go();
-  //
-  //   // PASS THIS TO D3 GLOBE
-  //   // this.props.activeCountry.localeId
-  //
-  // }
+  componentDidMount() {
+    d3Globe.go();
+
+    // PASS THIS TO D3 GLOBE
+    // this.props.activeCountry.localeId
+
+  }
 
   renderGlobe() {
-    // d3Globe.clear();
-    console.log('Globe Props: ', this.props.globeCountry.id);
-    return d3Globe.go(this.props.globeCountry.id);
+    console.log('Globe Props: ', this.props.globeCountry);
+    d3Globe.go(this.props.globeCountry.id);
   }
 
   render() {
