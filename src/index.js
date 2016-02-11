@@ -30,5 +30,5 @@ ReactDOM.render(
   <Provider store={ store(rootReducer) }>
     <App />
   </Provider>,
-  document.querySelector('.container')
+  document.querySelector('.container-fluid')
 );

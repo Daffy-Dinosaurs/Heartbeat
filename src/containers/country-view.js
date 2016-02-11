@@ -2,16 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-
 class ActiveCountry extends Component {
 
   renderScreen() {
     console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
-    return (
-
-        <li className='container .countryBox'>{ this.props.activeCountry.countryName }</li>
-
-    );
+    return this.props.activeCountry.countryName;
   }
 
   //TODO:
@@ -25,9 +20,11 @@ class ActiveCountry extends Component {
       return <div>Select a country</div>;
     } else {
       return (
-        <ul>
+        <div className="col-md-2">
+        <h1 className="country-view">
         {this.renderScreen()}
-        </ul>
+        </h1>
+        </div>
       );
 
     }
