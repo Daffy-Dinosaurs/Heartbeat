@@ -10,11 +10,13 @@ import ActiveCountry from '../containers/country-view';
 export default class App extends Component{
   render() {
     return (
-      <div className="container">
-          <CountryList />
-          <TwitterFeed />
+      <div className="main">
+        <CountryList />
+        <div className="col-md-8 globe">
           <Globe />
-          <ActiveCountry />
+        </div>
+        <ActiveCountry />
+        <TwitterFeed />
 
       </div>
     );

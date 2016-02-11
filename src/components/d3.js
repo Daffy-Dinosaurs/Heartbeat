@@ -16,16 +16,17 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
 
   var projection = d3.geo.orthographic() //projection is fed to PATH
       .translate([width / 2, height / 2])
-      .scale(width / 2 - 20)
+      .scale(width / 2 - 60)
       .clipAngle(90)
       .precision(0.6);
+
 
   //CREATES and APPENDS canvas element to first ".container" elem on DOM tree, returns arr [canvas]
   if (d3.selectAll('canvas')[0].length < 1){
     console.log('THERE WAS NO CANVAS');
     console.log(d3.selectAll('canvas'));
 
-    var canvas = d3.select('.container').append('canvas')
+    var canvas = d3.select('.globe').append('canvas')
     .attr('width', width)
     .attr('height', height);
   } else {
@@ -42,7 +43,7 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
       .projection(projection) // see https://goo.gl/rJ51aF
       .context(c); //
 
-  var title = d3.select('h1');
+  var title = d3.select('.none');
 
   ready(world, names);
 

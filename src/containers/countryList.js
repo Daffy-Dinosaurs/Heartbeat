@@ -20,10 +20,9 @@ class CountryList extends Component {
 
     return this.props.countryList.map((country) => {
       return (
-          <li
+          <li className="list-country-item"
             key={country.countryName}
-            onClick={() => this.props.selectCountry(country)}
-            onClick={() => this.props.globeAction(country)}>
+            onClick={() => {this.props.selectCountry(country), this.props.globeAction(country)}}>
             <a href='#'>{ country.countryName }</a>
 
           </li>
@@ -38,12 +37,10 @@ class CountryList extends Component {
     // } else {
     // <button className="btn btn-primary" onClick={ ()=>this.props.requestCountries() }>Fetch country list!</button>
     return (
-  //     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-  //   Dropdown
-  //   <span class="caret"></span>
-  // </button>
-      <div className="dropdown countryList">
-          <ul> { this.renderList() } </ul>
+      <div className="col-md-2">
+        <div className="countryList">
+          <ul className="list" > { this.renderList() } </ul>
+        </div>
       </div>
     );
   }
