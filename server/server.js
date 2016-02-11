@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var db = require('./sequelizeDB.js');
 var mysql = require('mysql');
 var request = require('request');
+var env = require('node-env-file');
 
 // import React from 'react'
 // import { createStore } from 'redux'
@@ -16,6 +17,10 @@ var request = require('request');
 // import { renderToString } from 'react-dom/server'
 
 // var data = require('./DataExtraction.js');
+
+var env = env(__dirname + '/.env');
+var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
+var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
 
 var app = express();
 app.use(bodyParser());
@@ -171,8 +176,8 @@ app.get('/api/countries/:countryName', function(req, res) {
 var twitterAppToken;
 
 // store our twitter key and secret
-var consumerKey = '9kAkumSFSs3qAzxyv01UchtmZ';
-var consumerSecret = 'HJbARSZWtxBVVTeKPcqUagkzfbpZMMTUFLyG2E6t0IPERqjeQL';
+var consumerKey = TWITTER_CONSUMER_KEY;
+var consumerSecret = TWITTER_CONSUMER_SECRET;
 
 // concat the key and secret seperated by a colon.
 var bearerTokenCred = consumerKey + ':' + consumerSecret;
