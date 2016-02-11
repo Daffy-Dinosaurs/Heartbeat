@@ -20,7 +20,7 @@ d3Globe.go = function() {
       .clipAngle(90)
       .precision(0.6);
 
-  var canvas = d3.select('body').append('canvas')
+  var canvas = d3.select('.container').append('canvas')
       .attr('width', width)
       .attr('height', height);
 

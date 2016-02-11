@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { requestCountries } from '../actions/request_country';
 import { bindActionCreators } from 'redux';
 
+
 class CountryList extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +31,7 @@ class CountryList extends Component {
     //   return <div>Select Country</div>;
     // } else {
     return (
-      <div>
+      <div className="countryList">
           <ul> { this.renderList() } </ul>
       </div>
     );
