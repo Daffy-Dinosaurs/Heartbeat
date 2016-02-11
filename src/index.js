@@ -6,6 +6,8 @@ import createLogger from 'redux-logger';
 import promiseMiddleware from 'redux-promise';
 import { createStore, applyMiddleware } from 'redux';
 import { connect, Provider } from 'react-redux';
+// import jQuery from 'jQuery'
+// import bootstrap from 'bootstrap';
 
 import d3Globe from './components/d3.js';
 import rootReducer from './reducers/index';
@@ -15,6 +17,7 @@ import Globe from './components/globe';
 import App from './components/app';
 import styles from './style.css';
 
+
 const loggerMiddleware = createLogger();
 const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
 
@@ -22,5 +25,5 @@ ReactDOM.render(
   <Provider store={ store(rootReducer) }>
     <App />
   </Provider>,
-  document.body
+  document.querySelector('.container')
 );

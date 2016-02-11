@@ -1,7 +1,56 @@
-var getConfig = require('hjs-webpack')
-
-module.exports = getConfig({
-  in: 'src/index.js',
-  out: 'public',
-  clearBeforeBuild: true
-})
+module.exports = {
+  entry: [
+    './src/index.js'
+  ],
+  output: {
+    path: __dirname,
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      {
+        test: /(\.js$)|(\.jsx$)/,
+        exclude: /node_modules/,
+        loaders: [
+          'babel-loader'
+        ]
+      },
+      {
+        test: /\.json$/,
+        loaders: ['json']
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader?limit=100000"
+      },
+      {
+        test: /\.jpg$/,
+        loader: "file-loader"
+      },
+      // {
+      //   test: /\.(otf|eot|svg|ttf|woff)/,
+      //   loader: 'url-loader?limit=' + spec.urlLoaderLimit
+      // },
+      // {
+      //   test: /\.(jpe?g|png|gif)/,
+      //   loader: 'url-loader?limit=' + spec.urlLoaderLimit
+      // },
+      {
+        test: /\.jade$/,
+        loaders: ['jade']
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './'
+  }
+};
