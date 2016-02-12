@@ -22,7 +22,7 @@ class ActiveCountry extends Component {
       return (
         <div className="col-md-2">
         <h1 className="country-view">
-        {this.renderScreen()}
+        { this.renderScreen() }
         </h1>
         </div>
       );
