@@ -26,9 +26,9 @@ class TwitterFeed extends Component {
     return this.props.twitterFeed.map((tweetList) => {
       return tweetList.statuses.map((tweet) => {
         return (
-          <div>
-            <li> { tweet.created_at } </li>
-            <li> { tweet.text } </li>
+          <div className="tweets">
+            <li className="tweet-date"> { tweet.created_at } </li>
+            <li className="tweet-item"> { tweet.text } </li>
           </div>
         );
       });
@@ -42,7 +42,7 @@ class TwitterFeed extends Component {
       return <div>No Information yet</div>;
     } else {
       return (
-        <div>
+        <div className="col-md-2 tweet-feed">
            { this.renderTweets() }
         </div>
       );
