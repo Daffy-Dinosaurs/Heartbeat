@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 
 import CountryList from '../containers/countryList';
-import Globe from './globe';
+import TwitterFeed from './twitter_feed';
+import Globe from '../containers/globeContainer';
+import ActiveCountry from '../containers/country-view';
+
 //Globe
 
 export default class App extends Component{
-  render(){
+  render() {
     return (
-      <div className="container">
-          <CountryList />
+      <div className="main">
+        <CountryList />
+        <div className="col-md-8 globe">
           <Globe />
+        </div>
+        <ActiveCountry />
+        <TwitterFeed />
+
       </div>
-    )
+    );
   }
 }

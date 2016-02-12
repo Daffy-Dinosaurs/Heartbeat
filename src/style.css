@@ -1,7 +1,64 @@
+.container-fluid{
+  margin: 0;
+
+}
 .countryList {
-  display: inline-block;
+  width: 100%;
+  /* position: relative; */
+  height: 690px;
+  margin: 51px 0 0;
+}
+
+.list{
+  list-style-type: none;
+  height: 100%;
+  padding: 0;
+  /* position: relative; */
+  overflow: scroll;
+}
+
+li.list-country-item {
+  padding: 8px;
+}
+
+li.list-country-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+li.list-country-item:visited {
+  background-color: rgba(0, 0, 255, 0.3);
 }
 
 .globeTitle {
   display: inline-block;
+}
+.globe{
+  text-align: center;
+}
+
+.countryBox {
+  background-color: #ddd
+}
+
+.tweets {
+  border-top: 1px solid black;
+}
+
+.tweet-date {
+  font-size: 12px;
+}
+
+.tweet-item {
+  font-size: 14px;
+  /*padding: 8px 5px;*/
+}
+
+.tweet-feed {
+  width: 100%;
+  height: 690px;
+  overflow: scroll;
+}
+
+.span {
+  padding: 8px 5px;
 }
