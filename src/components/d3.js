@@ -9,7 +9,7 @@ import topojson from 'topojson';
 
 var d3Globe = {}; //export object
 
-d3Globe.go = function(dbId) { //function runs the boilerplate d3 code
+d3Globe.go = function(id) { //function runs the boilerplate d3 code
 
   var width = 960;  //canvas dimensions
   var height = 960;
@@ -54,7 +54,7 @@ d3Globe.go = function(dbId) { //function runs the boilerplate d3 code
     var countries = topojson.feature(world, world.objects.countries).features;
     var borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
 
-    var i = dbId;
+    var i = id;
     var n = countries.length;
 
     var countries = countries.filter(function(d) {
@@ -67,7 +67,7 @@ d3Globe.go = function(dbId) { //function runs the boilerplate d3 code
 
     console.log(countries);
 
-    function transition(dbId) {
+    function transition(id) {
       //traverse countries arr
       //find "i" for country in countries arr with "name"
       //set "i" to that country's "i"
@@ -126,7 +126,7 @@ d3Globe.go = function(dbId) { //function runs the boilerplate d3 code
       // .each("end", transition);
     };
 
-    transition(dbId);
+    transition(id);
     d3.select(self.frameElement).style('height', height + 'px');
   }
 };
