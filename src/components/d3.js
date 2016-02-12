@@ -16,7 +16,7 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
 
   var projection = d3.geo.orthographic() //projection is fed to PATH
       .translate([width / 2, height / 2])
-      .scale(width / 2 - 60)
+      .scale(width / 2 - 20)
       .clipAngle(90)
       .precision(0.6);
 
@@ -54,7 +54,7 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
     var countries = topojson.feature(world, world.objects.countries).features;
     var borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
 
-    var i = id;
+    var i = -1;
     var n = countries.length;
 
     var countries = countries.filter(function(d) {
