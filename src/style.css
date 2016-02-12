@@ -32,7 +32,33 @@ li.list-country-item:visited {
 .globeTitle {
   display: inline-block;
 }
+.globe{
+  text-align: center;
+}
 
 .countryBox {
   background-color: #ddd
+}
+
+.tweets {
+  border-top: 1px solid black;
+}
+
+.tweet-date {
+  font-size: 12px;
+}
+
+.tweet-item {
+  font-size: 14px;
+  /*padding: 8px 5px;*/
+}
+
+.tweet-feed {
+  width: 100%;
+  height: 690px;
+  overflow: scroll;
+}
+
+.span {
+  padding: 8px 5px;
 }
