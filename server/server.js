@@ -1,7 +1,7 @@
 var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
-var WebpackDevServer = require('webpack-dev-server');
+
 var config = require('../webpack.config.js');
 var bodyParser = require('body-parser');
 var db = require('./sequelizeDB.js');
@@ -23,63 +23,45 @@ var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
 
 var app = express();
+var isDevelopment = (process.env.NODE_ENV !== 'production');
 app.use(bodyParser());
 
 var port = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/../'));
+app.use(express.static(__dirname + '/../'))
+  .get('/', function(req, res) {
+    res.sendFile('index.html', {
+      root: static_path,
+    });
+  }).listen(process.env.PORT || 8080, function(err) {
+    if (err) { console.log(err); };
 
-// Rendering the intial state of the app server sider
-// app.use(handleRender)
-//
-// function handleRender(req, res) {
-//   const store = createStore(worldApp)
-//
-//   const html = renderToString(
-//     <Provider store={store}>
-//       <App />
-//     <Provider>
-//   )
-//   const initialState = store.getState()
-//
-//   res.send(renderFullPage(html, initialState))
-// }
-// function renderFullPage(html, initialState) {
-//   return
-//    <!doctype html>
-//    <html>
-//      <head>
-//        <title>Redux Universal Example</title>
-//      </head>
-//      <body>
-//        <div id="root">${html}</div>
-//        <script>
-//          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-//        </script>
-//        <script src="/public/bundle.js"></script>
-//      </body>
-//    </html>
-//
-// }
+    console.log('Listening at localhost:8080');
+  });
 
 // console.log(__dirname + '/../index.html');
-app.listen(port);
 
 // we start a webpack-dev-server with our config
-new WebpackDevServer(webpack(config), {
-  hot: true,
-  historyApiFallback: true,
-  proxy: {
-    '*': 'http://localhost:3000',
-  },
-}).listen(3001, 'localhost', function(err, result) {
-  if (err) {
-    console.log(err);
-  }
 
-  console.log('Listening at localhost:3001');
-});
+if (isDevelopment) {
+  var config = require('./webpack.config');
+  var WebpackDevServer = require('webpack-dev-server');
+  new WebpackDevServer(webpack(config), {
+    hot: true,
+    historyApiFallback: true,
+    proxy: {
+      '*': 'http://localhost:3000',
+    },
+  }).listen(3001, 'localhost', function(err, result) {
+    if (err) {
+      console.log(err);
+    }
 
+    console.log('Listening at localhost:3001');
+  });
+}
+
+app.listen(port);
 // console.log(db.Country.build().retrieveAll());
 
 // create a user (accessed at POST http://localhost:3000/api/users)
@@ -166,8 +148,6 @@ app.get('/api/countries/:countryName', function(req, res) {
 //   });
 // });
 
-
-
 //////////////////////////////////////////////////////////////////
 //Set up and send a request for our application-only oAuth token.
 ///////////////////////////////////////////////////////////////////
@@ -201,11 +181,10 @@ var options = {
 };
 
 // request and save an application-only token from twitter
-request(options, function (err, response, body) {
+request(options, function(err, response, body) {
   twitterAppToken = JSON.parse(body);
   console.log(twitterAppToken);
 });
-
 
 ///////////////////////////////
 // get tweets
@@ -213,9 +192,9 @@ request(options, function (err, response, body) {
 
 // here we set up the get handler that will send a request for the users tweet and then send it to our client-side app.
 // route has one param, any user's twitter handle
-app.get('/tweets/:hastag', function (req, ourResponse, next) {
+app.get('/tweets/:hastag', function(req, ourResponse, next) {
   // set options
-  console.log("FROM THE SERVER:", req.params.hastag);
+  console.log('FROM THE SERVER:', req.params.hastag);
   var options = {
     // append the user's handle to the url
     url: 'https://api.twitter.com/1.1/search/tweets.json?q=' + req.params.hastag,
@@ -227,7 +206,7 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
   };
 
   // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
-  request(options, function (err, responseFromTwitter, body) {
+  request(options, function(err, responseFromTwitter, body) {
     // console.log(JSON.parse(body));
     ourResponse.status(200).send(JSON.parse(body));
   });
