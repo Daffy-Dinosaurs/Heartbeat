@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
-var fs = require('fs'),
-    async = require('async'),
-    csv = require('csv-parse');
+var fs = require('fs');
+var async = require('async');
+var csv = require('csv-parse');
 
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
   host: 'localhost',
@@ -25,24 +25,24 @@ var Country = sequelize.define('country', {
 //   timestamps: false           // this will deactivate the timestamp columns
 // });
 
-var raw_data = fs.readFile(__dirname + '/../Datasets/countries.json', 'utf-8', function(err, data) {
+var rawData = fs.readFile(__dirname + '/../Datasets/countries.json', 'utf-8', function(err, data) {
   console.log(typeof data);
-  var cleandata = JSON.parse(data);
-  console.log(typeof cleandata);
+  var cleanData = JSON.parse(data);
+  console.log(typeof cleanData);
 
   if (err) {
     console.log(err);
   } else {
-    console.log(cleandata);
+    console.log(cleanData);
 
     sequelize.sync({ force: true }).then(function(err) {
 
-      for (var i = 0; i < cleandata.length; i++) {
+      for (var i = 0; i < cleanData.length; i++) {
 
         Country.create({
 
-          countryName: cleandata[i]['countryName'],
-          localeId: cleandata[i]['localeId']
+          countryName: cleanData[i].countryName,
+          localeId: cleanData[i].localeId,
 
           // CountryCode : cleandata[i]["Country Code"]
 

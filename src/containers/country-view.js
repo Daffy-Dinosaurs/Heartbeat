@@ -6,11 +6,11 @@ class ActiveCountry extends Component {
 
   renderScreen() {
     console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
-    return   this.props.activeCountry.countryName ;
+    return this.props.activeCountry.countryName;
   }
 
   //TODO:
-  //The counrty list can not populate due to an errorin the above code
+  //The country list can not populate due to an errorin the above code
   //since activeCountry is not selected upon intialization, th computer hits and error and does not run
   //The below conditional allows for the list to show but does not update once the contry is selected
 
@@ -22,7 +22,7 @@ class ActiveCountry extends Component {
       return (
         <div className="col-md-2">
         <h1 className="country-view">
-        {this.renderScreen()}
+        { this.renderScreen() }
         </h1>
         </div>
       );
