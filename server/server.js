@@ -62,6 +62,7 @@ if (isDevelopment) {
 }
 
 app.listen(port);
+
 // console.log(db.Country.build().retrieveAll());
 
 // create a user (accessed at POST http://localhost:3000/api/users)
