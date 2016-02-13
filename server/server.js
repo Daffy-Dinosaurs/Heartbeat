@@ -9,16 +9,28 @@ var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
 
-var isDevelopment = (process.env.NODE_ENV !== 'production');
 
-// import React from 'react'
-// import { createStore } from 'redux'
-// import { Provider } from 'react-redux'
-// import counterApp from './reducers'
-// import App from './src/app'
-// import { renderToString } from 'react-dom/server'
+var isProduction = (process.env.NODE_ENV === 'production');
 
-// var data = require('./DataExtraction.js');
+
+if (isProduction){
+  app.use(express.static(__dirname + '/../'));
+  app.listen(process.env.PORT || 8080, function (err) {
+    if (err) { console.log(err) };
+    console.log('Listening at localhost:8080');
+  });
+
+}
+
+else {
+  // import React from 'react'
+  // import { createStore } from 'redux'
+  // import { Provider } from 'react-redux'
+  // import counterApp from './reducers'
+  // import App from './src/app'
+  // import { renderToString } from 'react-dom/server'
+
+  // var data = require('./DataExtraction.js');
 
 var env = env(__dirname + '/.env');
 var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
@@ -96,9 +108,9 @@ new WebpackDevServer(webpack(config), {
 //     res.json({ message: 'Country added!' });
 //   },
 //
-// 	function(err) {
+//  function(err) {
 //   res.send(err);
-// 	});
+//  });
 // });
 
 //TODO: WORKING
@@ -234,3 +246,6 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
+
+
+}
