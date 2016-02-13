@@ -17,12 +17,12 @@ class TwitterFeed extends Component {
 
   renderTweets() {
     if (this.props.twitterFeed.length > 1) {
-      console.log('array size is larger than 1');
+      // console.log('array size is larger than 1');
       this.props.twitterFeed.shift();
     }
 
     //The objects are being added to end of the twitterFeed array
-    console.log('Inside the beast', this.props.twitterFeed);
+    // console.log('Inside the beast', this.props.twitterFeed);
     return this.props.twitterFeed.map((tweetList) => {
       return tweetList.statuses.map((tweet) => {
         return (
@@ -52,7 +52,7 @@ class TwitterFeed extends Component {
 }
 
 function mapStateToProps({ twitterFeed }) {
-  console.log('TWEETS STATE:', { twitterFeed });
+  // console.log('TWEETS STATE:', { twitterFeed });
   return { twitterFeed };
 }
 

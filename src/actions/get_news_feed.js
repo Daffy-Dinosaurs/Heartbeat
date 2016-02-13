@@ -12,5 +12,5 @@ export function getNews(country) {
   return {
     type: GET_NEWS,
     payload: request,
-  }
+  };
 }

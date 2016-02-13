@@ -2,12 +2,15 @@ var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
 
+// var config = require('../webpack.config');
+
 var config = require('../webpack.config.js');
 var bodyParser = require('body-parser');
 var db = require('./sequelizeDB.js');
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
+var WebpackDevServer = require('webpack-dev-server');
 
 // import React from 'react'
 // import { createStore } from 'redux'
@@ -23,30 +26,35 @@ var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
 
 var app = express();
-var isDevelopment = (process.env.NODE_ENV !== 'production');
+
+// var isDevelopment = (process.env.NODE_ENV !== 'production');
 app.use(bodyParser());
 
 var port = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/../'))
-  .get('/', function(req, res) {
-    res.sendFile('index.html', {
-      root: static_path,
-    });
-  }).listen(process.env.PORT || 8080, function(err) {
-    if (err) { console.log(err); };
+app.use(express.static(__dirname + '/../'));
 
-    console.log('Listening at localhost:8080');
-  });
+if (process.env.NODE_ENV === 'productions') {
+  var static_path = path.join(__dirname, 'public');
+
+  app.use(express.static(static_path))
+    .get('/', function(req, res) {
+      res.sendFile('index.html', {
+        root: static_path,
+      });
+    }).listen(process.env.PORT || 8080, function(err) {
+      if (err) { console.log(err); };
+
+      console.log('Listening at localhost:8080');
+    });
+}
 
 // console.log(__dirname + '/../index.html');
+app.listen(port);
 
 // we start a webpack-dev-server with our config
 
-if (isDevelopment) {
-  var config = require('./webpack.config');
-  var WebpackDevServer = require('webpack-dev-server');
-  new WebpackDevServer(webpack(config), {
+new WebpackDevServer(webpack(config), {
     hot: true,
     historyApiFallback: true,
     proxy: {
@@ -59,9 +67,6 @@ if (isDevelopment) {
 
     console.log('Listening at localhost:3001');
   });
-}
-
-app.listen(port);
 
 // console.log(db.Country.build().retrieveAll());
 

@@ -4,20 +4,9 @@ import { bindActionCreators } from 'redux';
 
 class ActiveCountry extends Component {
 
-  constructor() {
-    //setting a toogle variable for view
-    const currentView = true;
-
-  }
-
   renderScreen() {
     // console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
-    return (
-      this.props.activeCountry.countryName,
-
-      //attempting to set up some way to have the view disappear based on user interaction
-      <button onClick={ this.currentView = false }>close</button>
-    );
+    return this.props.activeCountry.countryName;
   }
 
   //TODO:
@@ -27,7 +16,7 @@ class ActiveCountry extends Component {
 
   render() {
     // console.log('inside country-view');
-    if (!currentView) {
+    if (!this.props.activeCountry) {
       return <div>Select a country</div>;
     } else {
       return (
