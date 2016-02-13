@@ -4,7 +4,7 @@
   "description": "Thesis Project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
     "frontend": "webpack-dev-server",
     "build": "webpack",
