@@ -14,7 +14,7 @@ var isProduction = (process.env.NODE_ENV === 'production');
 
 
 if (isProduction){
-  app.use(express.static(__dirname + '/../'));
+  app.use(express.static(__dirname));
   app.listen(process.env.PORT || 8080, function (err) {
     if (err) { console.log(err) };
     console.log('Listening at localhost:8080');
