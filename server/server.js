@@ -9,6 +9,8 @@ var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
 
+var isDevelopment = (process.env.NODE_ENV !== 'production');
+
 // import React from 'react'
 // import { createStore } from 'redux'
 // import { Provider } from 'react-redux'

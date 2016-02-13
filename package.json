@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/server.js",
+    "postinstall": "webpack --config ./webpack-prod.config.js --progress --colors",
     "frontend": "webpack-dev-server",
     "build": "webpack",
     "deploy": "",
@@ -28,6 +29,7 @@
     "babel": "^5.5.8",
     "babel-core": "^5.5.8",
     "babel-loader": "^5.1.4",
+    "classnames": "^2.1.3",
     "body-parser": "^1.14.2",
     "bootstrap": "^3.3.6",
     "css-loader": "^0.15.1",
