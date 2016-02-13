@@ -8,12 +8,6 @@ import { getTweets } from '../actions/get_twitter_feed';
 
 class CountryList extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = { term: this.props.requestCountries() };
-    this.state.term;
-  }
 
   renderList() {
     // console.log('PROPS:', this.props.countryList);

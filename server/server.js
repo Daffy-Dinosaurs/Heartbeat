@@ -10,32 +10,20 @@ var request = require('request');
 var env = require('node-env-file');
 
 
-var isProduction = (process.env.NODE_ENV === 'production');
+// import React from 'react'
+// import { createStore } from 'redux'
+// import { Provider } from 'react-redux'
+// import counterApp from './reducers'
+// import App from './src/app'
+// import { renderToString } from 'react-dom/server'
 
-
-if (isProduction){
-  var app=express();
-  app.use(express.static(__dirname + '/../'));
-  app.listen(process.env.PORT || 8080, function (err) {
-    if (err) { console.log(err) };
-    console.log('Listening at localhost:8080');
-  });
-
-}
-
-else {
-  // import React from 'react'
-  // import { createStore } from 'redux'
-  // import { Provider } from 'react-redux'
-  // import counterApp from './reducers'
-  // import App from './src/app'
-  // import { renderToString } from 'react-dom/server'
-
-  // var data = require('./DataExtraction.js');
+// var data = require('./DataExtraction.js');
 
 var env = env(__dirname + '/.env');
 var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
+
+var isDevelopment = (process.env.NODE_ENV !== 'production');
 
 var app = express();
 app.use(bodyParser());
@@ -43,6 +31,22 @@ app.use(bodyParser());
 var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
+
+
+if (process.env.NODE_ENV === 'production') {
+  var static_path = path.join(__dirname, 'public');
+
+  app.use(express.static(static_path))
+    .get('/', function (req, res) {
+      res.sendFile('index.html', {
+        root: static_path
+      });
+    }).listen(process.env.PORT || 8080, function(err) {
+      if (err) { console.log(err)};
+      console.log('Listening at localhost:8080');
+    });
+}
+
 
 // Rendering the intial state of the app server sider
 // app.use(handleRender)
@@ -109,9 +113,9 @@ new WebpackDevServer(webpack(config), {
 //     res.json({ message: 'Country added!' });
 //   },
 //
-//  function(err) {
+// 	function(err) {
 //   res.send(err);
-//  });
+// 	});
 // });
 
 //TODO: WORKING
@@ -181,8 +185,6 @@ app.get('/api/countries/:countryName', function(req, res) {
 //   });
 // });
 
-
-
 //////////////////////////////////////////////////////////////////
 //Set up and send a request for our application-only oAuth token.
 ///////////////////////////////////////////////////////////////////
@@ -216,11 +218,10 @@ var options = {
 };
 
 // request and save an application-only token from twitter
-request(options, function (err, response, body) {
+request(options, function(err, response, body) {
   twitterAppToken = JSON.parse(body);
   console.log(twitterAppToken);
 });
-
 
 ///////////////////////////////
 // get tweets
@@ -228,9 +229,9 @@ request(options, function (err, response, body) {
 
 // here we set up the get handler that will send a request for the users tweet and then send it to our client-side app.
 // route has one param, any user's twitter handle
-app.get('/tweets/:hastag', function (req, ourResponse, next) {
+app.get('/tweets/:hastag', function(req, ourResponse, next) {
   // set options
-  console.log("FROM THE SERVER:", req.params.hastag);
+  console.log('FROM THE SERVER:', req.params.hastag);
   var options = {
     // append the user's handle to the url
     url: 'https://api.twitter.com/1.1/search/tweets.json?q=' + req.params.hastag,
@@ -242,11 +243,8 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
   };
 
   // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
-  request(options, function (err, responseFromTwitter, body) {
+  request(options, function(err, responseFromTwitter, body) {
     // console.log(JSON.parse(body));
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
-
-
-}
