@@ -12,8 +12,8 @@
     "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy"
   },
   "engines": {
-      "node": "5.4.1",
-      "npm": "3.5.3"
+      "npm": "3.5.3",
+      "node": "5.4.1"
     },
   "repository": {
     "type": "git",
