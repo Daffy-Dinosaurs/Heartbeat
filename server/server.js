@@ -41,9 +41,9 @@ if (process.env.NODE_ENV === 'production') {
       res.sendFile('index.html', {
         root: static_path
       });
-    }).listen(process.env.PORT || 8080, function(err) {
+    }).listen(process.env.PORT || 8000, function(err) {
       if (err) { console.log(err)};
-      console.log('Listening at localhost:8080');
+      console.log('Listening at localhost:8000');
     });
 }
 
