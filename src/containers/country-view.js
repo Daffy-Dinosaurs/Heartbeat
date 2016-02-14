@@ -1,18 +1,32 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { clearCountry } from '../actions/clear_country'
 
 class ActiveCountry extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = this.props.activeCountry;
+
+    console.log('this is state inside of constructor', this.state);
+  }
+
   renderScreen() {
     // console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
+    console.log('STATE: ', this.props);
     return this.props.activeCountry.countryName;
   }
 
-  //TODO:
-  //The country list can not populate due to an errorin the above code
-  //since activeCountry is not selected upon intialization, th computer hits and error and does not run
-  //The below conditional allows for the list to show but does not update once the contry is selected
+  changeProps() {
+    // this.setState({ activeCountry: undefined });
+    this.props.clearCountry();
+    console.log('POST setState()', this.props.activeCountry);
+
+    // console.log('calling close function', this.props.activeCountry);
+    return this.props.activeCountry;
+
+  }
 
   render() {
     // console.log('inside country-view');
@@ -24,6 +38,8 @@ class ActiveCountry extends Component {
         <h1 className="country-view">
         { this.renderScreen() }
         </h1>
+        <p onClick= {this.changeProps.bind(this)}>close</p>
+
         </div>
       );
 
@@ -36,4 +52,8 @@ function mapStateToProps({ activeCountry }) {
   return { activeCountry };
 }
 
-export default connect(mapStateToProps)(ActiveCountry);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ clearCountry }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveCountry);
