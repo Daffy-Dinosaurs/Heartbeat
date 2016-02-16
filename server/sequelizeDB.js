@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 var mysql = require('mysql');
-
+var CountryStatistic = require('./country-stats-model.js')
 //TODO: Am I adding the instantion of the database in the wrong file?
 
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
@@ -21,7 +21,6 @@ var Country = sequelize.define('country', {
     localeId: Sequelize.INTEGER,
     countryName: Sequelize.STRING,
   },
-
   {
     //these are just like the getter and setter method in th sequelize docs
     instanceMethods: {
@@ -70,6 +69,8 @@ var Country = sequelize.define('country', {
       },
     },
   });
+
+Country.hasMany(CountryStatistic, {foreignKey: "id"});
 
 sequelize.sync().then(function() {
   console.log('this is synced');
