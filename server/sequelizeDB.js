@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 var mysql = require('mysql');
-var CountryStatistic = require('./country-stats-model.js')
+var CountryStatistic = require('./country-stats-model.js');
 //TODO: Am I adding the instantion of the database in the wrong file?
 
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
