@@ -21,10 +21,10 @@ class ActiveCountry extends Component {
   changeProps() {
     // this.setState({ activeCountry: undefined });
     this.props.clearCountry();
-    console.log('POST setState()', this.props.activeCountry);
+    // console.log('POST setState()', this.props.activeCountry);
 
     // console.log('calling close function', this.props.activeCountry);
-    return this.props.activeCountry;
+    // return this.props.activeCountry;
 
   }
 
