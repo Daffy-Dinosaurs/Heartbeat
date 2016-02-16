@@ -1,27 +1,11 @@
 [
   {
-    "localeId":-1,
-    "countryName":"Northern Cyprus"
-  },
-  {
-    "localeId":-2,
-    "countryName":"Kosovo"
-  },
-  {
-    "localeId":-3,
-    "countryName":"Somaliland"
-  },
-  {
     "localeId":4,
     "countryName":"Afghanistan"
   },
   {
     "localeId":8,
     "countryName":"Albania"
-  },
-  {
-    "localeId":10,
-    "countryName":"Antarctica"
   },
   {
     "localeId":12,
@@ -44,12 +28,16 @@
     "countryName":"Antigua and Barbuda"
   },
   {
-    "localeId":31,
-    "countryName":"Azerbaijan"
-  },
-  {
     "localeId":32,
     "countryName":"Argentina"
+  },
+  {
+    "localeId":51,
+    "countryName":"Armenia"
+  },
+  {
+    "localeId":533,
+    "countryName":"Aruba"
   },
   {
     "localeId":36,
@@ -58,6 +46,10 @@
   {
     "localeId":40,
     "countryName":"Austria"
+  },
+  {
+    "localeId":31,
+    "countryName":"Azerbaijan"
   },
   {
     "localeId":44,
@@ -72,16 +64,24 @@
     "countryName":"Bangladesh"
   },
   {
-    "localeId":51,
-    "countryName":"Armenia"
-  },
-  {
     "localeId":52,
     "countryName":"Barbados"
   },
   {
+    "localeId":112,
+    "countryName":"Belarus"
+  },
+  {
     "localeId":56,
     "countryName":"Belgium"
+  },
+  {
+    "localeId":84,
+    "countryName":"Belize"
+  },
+  {
+    "localeId":204,
+    "countryName":"Benin"
   },
   {
     "localeId":60,
@@ -93,7 +93,7 @@
   },
   {
     "localeId":68,
-    "countryName":"Bolivia, Plurinational State of"
+    "countryName":"Bolivia"
   },
   {
     "localeId":70,
@@ -104,28 +104,8 @@
     "countryName":"Botswana"
   },
   {
-    "localeId":74,
-    "countryName":"Bouvet Island"
-  },
-  {
     "localeId":76,
     "countryName":"Brazil"
-  },
-  {
-    "localeId":84,
-    "countryName":"Belize"
-  },
-  {
-    "localeId":86,
-    "countryName":"British Indian Ocean Territory"
-  },
-  {
-    "localeId":90,
-    "countryName":"Solomon Islands"
-  },
-  {
-    "localeId":92,
-    "countryName":"Virgin Islands, British"
   },
   {
     "localeId":96,
@@ -136,16 +116,16 @@
     "countryName":"Bulgaria"
   },
   {
-    "localeId":104,
-    "countryName":"Myanmar"
+    "localeId":854,
+    "countryName":"Burkina Faso"
   },
   {
     "localeId":108,
     "countryName":"Burundi"
   },
   {
-    "localeId":112,
-    "countryName":"Belarus"
+    "localeId":384,
+    "countryName":"Cabo Verde"
   },
   {
     "localeId":116,
@@ -160,20 +140,12 @@
     "countryName":"Canada"
   },
   {
-    "localeId":132,
-    "countryName":"Cape Verde"
-  },
-  {
     "localeId":136,
     "countryName":"Cayman Islands"
   },
   {
     "localeId":140,
     "countryName":"Central African Republic"
-  },
-  {
-    "localeId":144,
-    "countryName":"Sri Lanka"
   },
   {
     "localeId":148,
@@ -188,18 +160,6 @@
     "countryName":"China"
   },
   {
-    "localeId":158,
-    "countryName":"Taiwan, Province of China"
-  },
-  {
-    "localeId":162,
-    "countryName":"Christmas Island"
-  },
-  {
-    "localeId":166,
-    "countryName":"Cocos (Keeling) Islands"
-  },
-  {
     "localeId":170,
     "countryName":"Colombia"
   },
@@ -208,20 +168,12 @@
     "countryName":"Comoros"
   },
   {
-    "localeId":175,
-    "countryName":"Mayotte"
-  },
-  {
     "localeId":178,
     "countryName":"Congo"
   },
   {
     "localeId":180,
     "countryName":"Congo, the Democratic Republic of the"
-  },
-  {
-    "localeId":184,
-    "countryName":"Cook Islands"
   },
   {
     "localeId":188,
@@ -236,6 +188,10 @@
     "countryName":"Cuba"
   },
   {
+    "localeId":531,
+    "countryName":"Curacao"
+  },
+  {
     "localeId":196,
     "countryName":"Cyprus"
   },
@@ -244,12 +200,12 @@
     "countryName":"Czech Republic"
   },
   {
-    "localeId":204,
-    "countryName":"Benin"
-  },
-  {
     "localeId":208,
     "countryName":"Denmark"
+  },
+  {
+    "localeId":262,
+    "countryName":"Djibouti"
   },
   {
     "localeId":212,
@@ -264,16 +220,16 @@
     "countryName":"Ecuador"
   },
   {
+    "localeId":818,
+    "countryName":"Egypt"
+  },
+  {
     "localeId":222,
     "countryName":"El Salvador"
   },
   {
     "localeId":226,
     "countryName":"Equatorial Guinea"
-  },
-  {
-    "localeId":231,
-    "countryName":"Ethiopia"
   },
   {
     "localeId":232,
@@ -284,16 +240,12 @@
     "countryName":"Estonia"
   },
   {
+    "localeId":231,
+    "countryName":"Ethiopia"
+  },
+  {
     "localeId":234,
     "countryName":"Faroe Islands"
-  },
-  {
-    "localeId":238,
-    "countryName":"Falkland Islands (Malvinas)"
-  },
-  {
-    "localeId":239,
-    "countryName":"South Georgia and the South Sandwich Islands"
   },
   {
     "localeId":242,
@@ -304,44 +256,24 @@
     "countryName":"Finland"
   },
   {
-    "localeId":248,
-    "countryName":"Åland Islands"
-  },
-  {
     "localeId":250,
     "countryName":"France"
-  },
-  {
-    "localeId":254,
-    "countryName":"French Guiana"
   },
   {
     "localeId":258,
     "countryName":"French Polynesia"
   },
   {
-    "localeId":260,
-    "countryName":"French Southern Territories"
-  },
-  {
-    "localeId":262,
-    "countryName":"Djibouti"
-  },
-  {
     "localeId":266,
     "countryName":"Gabon"
-  },
-  {
-    "localeId":268,
-    "countryName":"Georgia"
   },
   {
     "localeId":270,
     "countryName":"Gambia"
   },
   {
-    "localeId":275,
-    "countryName":"Palestinian Territory, Occupied"
+    "localeId":268,
+    "countryName":"Georgia"
   },
   {
     "localeId":276,
@@ -350,14 +282,6 @@
   {
     "localeId":288,
     "countryName":"Ghana"
-  },
-  {
-    "localeId":292,
-    "countryName":"Gibraltar"
-  },
-  {
-    "localeId":296,
-    "countryName":"Kiribati"
   },
   {
     "localeId":300,
@@ -372,10 +296,6 @@
     "countryName":"Grenada"
   },
   {
-    "localeId":312,
-    "countryName":"Guadeloupe"
-  },
-  {
     "localeId":316,
     "countryName":"Guam"
   },
@@ -388,20 +308,16 @@
     "countryName":"Guinea"
   },
   {
+    "localeId":624,
+    "countryName":"Guinea-Bissau"
+  },
+  {
     "localeId":328,
     "countryName":"Guyana"
   },
   {
     "localeId":332,
     "countryName":"Haiti"
-  },
-  {
-    "localeId":334,
-    "countryName":"Heard Island and McDonald Islands"
-  },
-  {
-    "localeId":336,
-    "countryName":"Holy See (Vatican City State)"
   },
   {
     "localeId":340,
@@ -440,16 +356,16 @@
     "countryName":"Ireland"
   },
   {
+    "localeId":833,
+    "countryName":"Isle of Man"
+  },
+  {
     "localeId":376,
     "countryName":"Israel"
   },
   {
     "localeId":380,
     "countryName":"Italy"
-  },
-  {
-    "localeId":384,
-    "countryName":"Côte dIvoire"
   },
   {
     "localeId":388,
@@ -460,16 +376,20 @@
     "countryName":"Japan"
   },
   {
-    "localeId":398,
-    "countryName":"Kazakhstan"
-  },
-  {
     "localeId":400,
     "countryName":"Jordan"
   },
   {
+    "localeId":398,
+    "countryName":"Kazakhstan"
+  },
+  {
     "localeId":404,
     "countryName":"Kenya"
+  },
+  {
+    "localeId":296,
+    "countryName":"Kiribati"
   },
   {
     "localeId":408,
@@ -478,6 +398,10 @@
   {
     "localeId":410,
     "countryName":"Korea, Republic of"
+  },
+  {
+    "localeId":-2,
+    "countryName":"Kosovo"
   },
   {
     "localeId":414,
@@ -492,16 +416,16 @@
     "countryName":"Lao Peoples Democratic Republic"
   },
   {
+    "localeId":428,
+    "countryName":"Latvia"
+  },
+  {
     "localeId":422,
     "countryName":"Lebanon"
   },
   {
     "localeId":426,
     "countryName":"Lesotho"
-  },
-  {
-    "localeId":428,
-    "countryName":"Latvia"
   },
   {
     "localeId":430,
@@ -528,6 +452,10 @@
     "countryName":"Macao"
   },
   {
+    "localeId":807,
+    "countryName":"Macedonia, the former Yugoslav Republic of"
+  },
+  {
     "localeId":450,
     "countryName":"Madagascar"
   },
@@ -552,8 +480,8 @@
     "countryName":"Malta"
   },
   {
-    "localeId":474,
-    "countryName":"Martinique"
+    "localeId":584,
+    "countryName":"Marshall Islands"
   },
   {
     "localeId":478,
@@ -568,6 +496,14 @@
     "countryName":"Mexico"
   },
   {
+    "localeId":583,
+    "countryName":"Micronesia, Federated States of"
+  },
+  {
+    "localeId":498,
+    "countryName":"Moldova, Republic of"
+  },
+  {
     "localeId":492,
     "countryName":"Monaco"
   },
@@ -576,16 +512,8 @@
     "countryName":"Mongolia"
   },
   {
-    "localeId":498,
-    "countryName":"Moldova, Republic of"
-  },
-  {
     "localeId":499,
     "countryName":"Montenegro"
-  },
-  {
-    "localeId":500,
-    "countryName":"Montserrat"
   },
   {
     "localeId":504,
@@ -596,16 +524,12 @@
     "countryName":"Mozambique"
   },
   {
-    "localeId":512,
-    "countryName":"Oman"
+    "localeId":104,
+    "countryName":"Myanmar"
   },
   {
     "localeId":516,
     "countryName":"Namibia"
-  },
-  {
-    "localeId":520,
-    "countryName":"Nauru"
   },
   {
     "localeId":524,
@@ -616,28 +540,8 @@
     "countryName":"Netherlands"
   },
   {
-    "localeId":531,
-    "countryName":"Curaçao"
-  },
-  {
-    "localeId":533,
-    "countryName":"Aruba"
-  },
-  {
-    "localeId":534,
-    "countryName":"Sint Maarten (Dutch part)"
-  },
-  {
-    "localeId":535,
-    "countryName":"Bonaire, Sint Eustatius and Saba"
-  },
-  {
     "localeId":540,
     "countryName":"New Caledonia"
-  },
-  {
-    "localeId":548,
-    "countryName":"Vanuatu"
   },
   {
     "localeId":554,
@@ -656,40 +560,24 @@
     "countryName":"Nigeria"
   },
   {
-    "localeId":570,
-    "countryName":"Niue"
-  },
-  {
-    "localeId":574,
-    "countryName":"Norfolk Island"
+    "localeId":580,
+    "countryName":"Northern Mariana Islands"
   },
   {
     "localeId":578,
     "countryName":"Norway"
   },
   {
-    "localeId":580,
-    "countryName":"Northern Mariana Islands"
-  },
-  {
-    "localeId":581,
-    "countryName":"United States Minor Outlying Islands"
-  },
-  {
-    "localeId":583,
-    "countryName":"Micronesia, Federated States of"
-  },
-  {
-    "localeId":584,
-    "countryName":"Marshall Islands"
-  },
-  {
-    "localeId":585,
-    "countryName":"Palau"
+    "localeId":512,
+    "countryName":"Oman"
   },
   {
     "localeId":586,
     "countryName":"Pakistan"
+  },
+  {
+    "localeId":585,
+    "countryName":"Palau"
   },
   {
     "localeId":591,
@@ -712,10 +600,6 @@
     "countryName":"Philippines"
   },
   {
-    "localeId":612,
-    "countryName":"Pitcairn"
-  },
-  {
     "localeId":616,
     "countryName":"Poland"
   },
@@ -724,24 +608,12 @@
     "countryName":"Portugal"
   },
   {
-    "localeId":624,
-    "countryName":"Guinea-Bissau"
-  },
-  {
-    "localeId":626,
-    "countryName":"Timor-Leste"
-  },
-  {
     "localeId":630,
     "countryName":"Puerto Rico"
   },
   {
     "localeId":634,
     "countryName":"Qatar"
-  },
-  {
-    "localeId":638,
-    "countryName":"Réunion"
   },
   {
     "localeId":642,
@@ -756,36 +628,8 @@
     "countryName":"Rwanda"
   },
   {
-    "localeId":652,
-    "countryName":"Saint Barthélemy"
-  },
-  {
-    "localeId":654,
-    "countryName":"Saint Helena, Ascension and Tristan da Cunha"
-  },
-  {
-    "localeId":659,
-    "countryName":"Saint Kitts and Nevis"
-  },
-  {
-    "localeId":660,
-    "countryName":"Anguilla"
-  },
-  {
-    "localeId":662,
-    "countryName":"Saint Lucia"
-  },
-  {
-    "localeId":663,
-    "countryName":"Saint Martin (French part)"
-  },
-  {
-    "localeId":666,
-    "countryName":"Saint Pierre and Miquelon"
-  },
-  {
-    "localeId":670,
-    "countryName":"Saint Vincent and the Grenadines"
+    "localeId":882,
+    "countryName":"Samoa"
   },
   {
     "localeId":674,
@@ -820,16 +664,20 @@
     "countryName":"Singapore"
   },
   {
+    "localeId":534,
+    "countryName":"Sint Maarten (Dutch part)"
+  },
+  {
     "localeId":703,
     "countryName":"Slovakia"
   },
   {
-    "localeId":704,
-    "countryName":"Viet Nam"
-  },
-  {
     "localeId":705,
     "countryName":"Slovenia"
+  },
+  {
+    "localeId":90,
+    "countryName":"Solomon Islands"
   },
   {
     "localeId":706,
@@ -840,32 +688,24 @@
     "countryName":"South Africa"
   },
   {
-    "localeId":716,
-    "countryName":"Zimbabwe"
+    "localeId":728,
+    "countryName":"South Sudan"
   },
   {
     "localeId":724,
     "countryName":"Spain"
   },
   {
-    "localeId":728,
-    "countryName":"South Sudan"
+    "localeId":144,
+    "countryName":"Sri Lanka"
   },
   {
     "localeId":729,
     "countryName":"Sudan"
   },
   {
-    "localeId":732,
-    "countryName":"Western Sahara"
-  },
-  {
     "localeId":740,
     "countryName":"Suriname"
-  },
-  {
-    "localeId":744,
-    "countryName":"Svalbard and Jan Mayen"
   },
   {
     "localeId":748,
@@ -888,16 +728,20 @@
     "countryName":"Tajikistan"
   },
   {
+    "localeId":834,
+    "countryName":"Tanzania, United Republic of"
+  },
+  {
     "localeId":764,
     "countryName":"Thailand"
   },
   {
-    "localeId":768,
-    "countryName":"Togo"
+    "localeId":626,
+    "countryName":"Timor-Leste"
   },
   {
-    "localeId":772,
-    "countryName":"Tokelau"
+    "localeId":768,
+    "countryName":"Togo"
   },
   {
     "localeId":776,
@@ -906,10 +750,6 @@
   {
     "localeId":780,
     "countryName":"Trinidad and Tobago"
-  },
-  {
-    "localeId":784,
-    "countryName":"United Arab Emirates"
   },
   {
     "localeId":788,
@@ -940,44 +780,16 @@
     "countryName":"Ukraine"
   },
   {
-    "localeId":807,
-    "countryName":"Macedonia, the former Yugoslav Republic of"
-  },
-  {
-    "localeId":818,
-    "countryName":"Egypt"
+    "localeId":784,
+    "countryName":"United Arab Emirates"
   },
   {
     "localeId":826,
     "countryName":"United Kingdom"
   },
   {
-    "localeId":831,
-    "countryName":"Guernsey"
-  },
-  {
-    "localeId":832,
-    "countryName":"Jersey"
-  },
-  {
-    "localeId":833,
-    "countryName":"Isle of Man"
-  },
-  {
-    "localeId":834,
-    "countryName":"Tanzania, United Republic of"
-  },
-  {
     "localeId":840,
     "countryName":"United States"
-  },
-  {
-    "localeId":850,
-    "countryName":"Virgin Islands, U.S."
-  },
-  {
-    "localeId":854,
-    "countryName":"Burkina Faso"
   },
   {
     "localeId":858,
@@ -988,16 +800,20 @@
     "countryName":"Uzbekistan"
   },
   {
+    "localeId":548,
+    "countryName":"Vanuatu"
+  },
+  {
     "localeId":862,
     "countryName":"Venezuela, Bolivarian Republic of"
   },
   {
-    "localeId":876,
-    "countryName":"Wallis and Futuna"
+    "localeId":704,
+    "countryName":"Vietnam"
   },
   {
-    "localeId":882,
-    "countryName":"Samoa"
+    "localeId":850,
+    "countryName":"Virgin Islands, U.S."
   },
   {
     "localeId":887,
@@ -1006,5 +822,9 @@
   {
     "localeId":894,
     "countryName":"Zambia"
+  },
+  {
+    "localeId":716,
+    "countryName":"Zimbabwe"
   }
 ]
