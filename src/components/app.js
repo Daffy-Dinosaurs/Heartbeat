@@ -5,7 +5,6 @@ import CountryList from '../containers/countryList';
 import TwitterFeed from './twitter_feed';
 import Globe from '../containers/globeContainer';
 import ActiveCountry from '../containers/country-view';
-import Navbar from './Navbar';
 
 //Globe
 
