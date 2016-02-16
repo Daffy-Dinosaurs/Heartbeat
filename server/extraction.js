@@ -16,46 +16,56 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
   },
 
 });
+// Read in the data from the file system
 fs.readFile(__dirname + '/../Datasets/Improved_Water_Resource.json', 'utf-8', function(err, data) {
   if (err) {
     console.log(err);
-  } else {
-    var cleanData = JSON.parse(data), stats = [];
+  }
+    var cleanData = JSON.parse(data);
 
-    var allStats = [];
-      for (var i = 0; i < cleanData.length; i++){
+    // Init loop function to iterate through the data array one object at a time.
+    function initLoop(i){
+      if(i === cleanData.length){
+        return;
+      }
 
-        var statKeys = Object.keys(cleanData[i])
-        var count = 0;
-        console.log("Length of statKeys.length", statKeys.length);
+      var allStats = [];
+      var statKeys = Object.keys(cleanData[i]);
+      var count = 0;
 
+        // recursive function to iterate through each object and parse out the data
         function asyncForLoop(count, obj){
+          // base case to check if we are at the end of the object
           if ( count === statKeys.length){
             return;
           }
 
+          // create foreign keys by finding the country realted to the data being parsed
           return model.Country.findOne({ where: {countryName: obj["Country Name"] }
           }).then(function(country){
-          //recurse
+            // Build the Country Statistic model instance
           if (statKeys[count].length === 4){
             allStats.push({
               year: statKeys[count],
               value: obj[statKeys[count]],
               category: "Water Pollution",
               CountryId: country.id
-            })
+            });
           }
-
+          // recurse to the next key in the object
           return asyncForLoop(count+1, obj);
-          });
-
-        }
-
-        asyncForLoop(1, cleanData[i]).then(function(){
-          console.log("this is allStats", allStats);
-          model.CountryStatistic.bulkCreate(allStats);
         });
       }
 
-  }
+
+      return asyncForLoop(0, cleanData[i]).then(function(){
+        // Bulk insert all rows into DB
+        model.CountryStatistic.bulkCreate(allStats);
+        // increment array
+        return initLoop(i+1);
+      });
+    }
+    initLoop(0).then(function(){
+      console.log("Start");
+    });
 });
