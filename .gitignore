@@ -1,4 +1,4 @@
 node_modules
+server/.env
 public
 .DS_Store
-npm-debug.log
