@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 export default class MenuItem extends Component {
 
-  navigate(hash) {
-    window.location.hash = hash;
+  saySome() {
+    console.log('I want my page to render');
   }
 
   render() {
-    return <div className='menu-item' onClick={this.navigate.bind(this, this.props.hash)}>{this.props.children}</div>;
+    return <div className='menu-item' onClick={this.saySome}>{this.props.children}</div>;
   }
 }

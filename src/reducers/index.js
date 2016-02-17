@@ -7,6 +7,7 @@ import TwitterFeed from './reducer_twitter_feed';
 import GlobeAction from './reducer_globe_action';
 import { GLOBE_ACTION_SELECTED } from '../actions/globe_action';
 import { CLEAR_COUNTRY } from '../actions/clear_country';
+import { CLEAR_TWEETS } from '../actions/clear_tweets';
 
 // import ClearCountry from './reducer_clear_country';
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   countryList: CountryList,
   twitterFeed: TwitterFeed,
   clearCountry: ActiveCountry,
+  clearTweets: TwitterFeed,
 });
 
 export default rootReducer;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { clearCountry } from '../actions/clear_country'
+import { clearCountry } from '../actions/clear_country';
 
 class ActiveCountry extends Component {
 
@@ -9,30 +9,28 @@ class ActiveCountry extends Component {
     super(props);
     this.state = this.props.activeCountry;
 
-    console.log('this is state inside of constructor', this.state);
+    // console.log('this is state inside of constructor', this.state);
   }
 
   renderScreen() {
     // console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
-    console.log('STATE: ', this.props);
+    // console.log('STATE: ', this.props);
     return this.props.activeCountry.countryName;
   }
 
   changeProps() {
-    // this.setState({ activeCountry: undefined });
-    this.props.clearCountry();
-    // console.log('POST setState()', this.props.activeCountry);
 
-    // console.log('calling close function', this.props.activeCountry);
-    // return this.props.activeCountry;
+    this.props.clearCountry();
 
   }
 
   render() {
     // console.log('inside country-view');
-    if (!this.props.activeCountry) {
-      return <div>Select a country</div>;
+    if (!this.props.activeCountry.countryName) {
+      console.log('DO NOTHING');
+      return <div></div>;
     } else {
+      console.log('this is the failed test result');
       return (
         <div className="col-md-2">
         <h1 className="country-view">

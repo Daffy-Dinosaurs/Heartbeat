@@ -11,7 +11,6 @@ import App from './components/app';
 
 const loggerMiddleware = createLogger();
 
-//
 const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
 
 // store.dispatch({type: 'REQUEST_COUNTRIES'})

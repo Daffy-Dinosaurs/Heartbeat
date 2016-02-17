@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { clearTweets } from '../actions/clear_tweets';
 import { getTweets } from '../actions/get_twitter_feed';
 
 class TwitterFeed extends Component {
@@ -10,8 +10,6 @@ class TwitterFeed extends Component {
     super(props);
 
     this.state = { feed: '' };
-
-    // TODO: setState using setState()
     this.state.feed;
   }
 
@@ -23,29 +21,36 @@ class TwitterFeed extends Component {
 
     //The objects are being added to end of the twitterFeed array
     // console.log('Inside the beast', this.props.twitterFeed);
-    return this.props.twitterFeed.map((tweetList) => {
-      return tweetList.statuses.map((tweet) => {
-        return (
-          <div className="tweets">
-            <li className="tweet-date"> { tweet.created_at } </li>
+
+    return this.props.twitterFeed.statuses.map((tweet) => {
+      return (
+        <div className="tweets">
             <li className="tweet-item"> { tweet.text } </li>
-          </div>
-        );
-      });
+        </div>
+      );
     });
 
     this.props.twitterFeed = [];
   }
 
+  // <li className="tweet-date"> { tweet.created_at } </li>
+
+  clearTweet() {
+    this.props.clearTweets();
+  }
+
   render() {
-    if (!this.props.twitterFeed[0]) {
-      return <div>No Information yet</div>;
-    } else {
+
+    if (this.props.twitterFeed.statuses) {
+      // console.log('passes second conditional', this.props.twitterFeed);
       return (
         <div className="col-md-2 tweet-feed">
+        <p onClick= {this.clearTweet.bind(this)}>close</p>
            { this.renderTweets() }
         </div>
       );
+    } else {
+      return <div></div>;
     }
 
   }
@@ -57,7 +62,7 @@ function mapStateToProps({ twitterFeed }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getTweets: getTweets }, dispatch);
+  return bindActionCreators({ getTweets, clearTweets }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TwitterFeed);

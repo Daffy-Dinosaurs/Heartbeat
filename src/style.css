@@ -64,53 +64,34 @@ li.list-country-item:visited {
 }
 
 /* MENU CSS */
-
+/*
 .menu {
-    display:block;
-
-    @menu-width:250px;
-
-    >div {
-        position:absolute;
-        z-index:2;
-        top:0;
-        width:@menu-width;
-        height:100%;
-        .border-box;
-        .transition(-webkit-transform ease 250ms);
-        .transition(transform ease 250ms);
-
-        &.left {
-            background:#273D7A;
-            left:@menu-width*-1;
-        }
-
-        &.visible.left {
-            .transform(translate3d(@menu-width, 0, 0));
-        }
-
-        &.right {
-            background:#6B1919;
-            right:@menu-width*-1;
-        }
-
-        &.visible.right {
-            .transform(translate3d(@menu-width*-1, 0, 0));
-        }
-
-        >.menu-item {
-            float:left;
-            width:100%;
-            margin:0;
-            padding:10px 15px;
-            border-bottom:solid 1px #555;
-            cursor:pointer;
-            .border-box;
-            color:#B0B0B0;
-
-            &:hover {
-                color:#F0F0F0;
-            }
-        }
-    }
+  display: block;
 }
+.menu >div {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 250px;
+  height: 100%;
+}
+.menu >div.left {
+  background: #273D7A;
+  left: -250px;
+}
+.menu >div.right {
+  background: #6B1919;
+  right: -250px;
+}
+.menu >div .menu-item {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 10px 15px;
+  border-bottom: solid 1px #555;
+  cursor: pointer;
+  color: #B0B0B0;
+}
+.menu >div .menu-item:hover {
+  color: #F0F0F0;
+}*/
