@@ -36,7 +36,7 @@ class ActiveCountry extends Component {
         <h1 className="country-view">
         { this.renderScreen() }
         </h1>
-        <p onClick= {this.changeProps.bind(this)}>close</p>
+        <p onClick= {this.changeProps.bind(this)}>x</p>
 
         </div>
       );

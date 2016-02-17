@@ -45,7 +45,7 @@ class TwitterFeed extends Component {
       // console.log('passes second conditional', this.props.twitterFeed);
       return (
         <div className="col-md-2 tweet-feed">
-        <p onClick= {this.clearTweet.bind(this)}>close</p>
+        <p onClick= {this.clearTweet.bind(this)}>x</p>
            { this.renderTweets() }
         </div>
       );

@@ -63,14 +63,13 @@ new WebpackDevServer(webpack(config), {
     console.log('Listening at localhost:3001');
   });
 
-
 // get all countries
 app.get('/api/countries', function(req, res) {
   model.Country.findAll({}).then(function(countries) {
     if (countries) {
       res.status(200).send(countries);
     } else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
@@ -81,38 +80,37 @@ app.get('/api/statistics', function(req, res) {
     if (stats) {
       res.status(200).send(stats);
     } else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
 
-
 // Get individual Country Name
 app.get('/api/countries/:countryName', function(req, res) {
-  model.Country.findOne({ where: { countryName: req.params.countryName }}).then(function(country) {
+  model.Country.findOne({ where: { countryName: req.params.countryName } }).then(function(country) {
     if (country) {
       res.status(200).send(country);
     } else {
-      res.status(404).send("Country not Found");
+      res.status(404).send('Country not Found');
     }
   });
 });
 
 // Get individual Country Stats
-app.get('/api/statistics/:CountryId', function(req, res){
+app.get('/api/statistics/:CountryId', function(req, res) {
   model.CountryStatistic.findAll({
     where: {
-      CountryId: req.params.CountryId
+      CountryId: req.params.CountryId,
     },
     include:[{
       model: model.Country,
-      as: model.Country.id
-    }]
-  }).then(function(stats){
-    if(stats){
+      as: model.Country.id,
+    },],
+  }).then(function(stats) {
+    if (stats) {
       res.status(200).send(stats);
     }else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
