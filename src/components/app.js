@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 import CountryList from '../containers/countryList';
 import TwitterFeed from '../containers/twitter_feed';
@@ -33,11 +34,11 @@ export default class App extends Component{
   }
 
   render() {
+    console.log('Rendering the Main Page');
     return (
       <div className="main">
-
-
-
+        <Link to="/d3Graphs">Graphs</Link>
+        <Link to="/sandbox/jon">Jon Sandbox</Link>
         <CountryList />
         <Intro />
         <div className="col-md-8 globe">
