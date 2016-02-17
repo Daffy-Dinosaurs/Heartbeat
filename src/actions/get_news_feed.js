@@ -3,9 +3,8 @@ import axios from 'axios';
 export const GET_NEWS = 'GET_NEWS';
 
 export function getNews(country) {
-  console.log('Inside of getNews function');
 
-  const url = '';
+  const url = 'http://content.guardianapis.com/search?section=environment&q=argentina&api-key=01d2edf7-9a63-4f68-a144-d1ed24b476cb';
 
   const request = axios.get(url);
 

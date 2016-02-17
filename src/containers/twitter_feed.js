@@ -25,7 +25,7 @@ class TwitterFeed extends Component {
     return this.props.twitterFeed.statuses.map((tweet) => {
       return (
         <div className="tweets">
-            <li className="tweet-item"> { tweet.text } </li>
+            <li key={tweet.id} className="tweet-item"> { tweet.text } </li>
         </div>
       );
     });

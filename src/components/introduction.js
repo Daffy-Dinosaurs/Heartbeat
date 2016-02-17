@@ -12,7 +12,8 @@ class Intro extends Component {
     this.state = {
       visible: false,
     };
-    console.log(this.state.visible);
+
+    // console.log(this.state.visible);
     this.showIntro = this.showIntro.bind(this);
     this.hideIntro = this.hideIntro.bind(this);
   }

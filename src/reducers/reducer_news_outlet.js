@@ -1,13 +1,16 @@
 import { GET_NEWS } from '../actions/get_news_feed';
 
-export default function(state = [], action) {
+const intialState = {};
 
-  switch (action.type) {
+export default function(state = intialState, action) {
 
-  case 'GET_NEWS':
-    console.log('this is the news feed');
-    return state.concat(action.payload.data);
+  if (action.type === 'GET_NEWS') {
+    console.log('this is the news feed', action.payload.data);
+    return action.payload.data;
+  } else {
+
+    return intialState;
+
   }
 
-  return state;
 }

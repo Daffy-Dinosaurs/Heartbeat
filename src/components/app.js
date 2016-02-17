@@ -8,6 +8,7 @@ import ActiveCountry from '../containers/country-view';
 import Intro from './introduction';
 import Menu from './menu';
 import MenuItem from './menu_items';
+import NewsOutlet from '../containers/news_outlet';
 
 //Globe
 
@@ -25,7 +26,7 @@ export default class App extends Component{
   }
 
   showLeft() {
-    console.log(this.refs.left);
+    // console.log(this.refs.left);
     this.refs.left.show();
   }
 
@@ -34,7 +35,7 @@ export default class App extends Component{
   }
 
   render() {
-    console.log('Rendering the Main Page');
+    // console.log('Rendering the Main Page');
     return (
       <div className="main">
         <Link to="/d3Graphs">Graphs</Link>
@@ -44,6 +45,7 @@ export default class App extends Component{
         <div className="col-md-8 globe">
           <Globe />
         </div>
+        <NewsOutlet />
         <ActiveCountry />
         <TwitterFeed />
 

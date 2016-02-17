@@ -30,7 +30,7 @@ class ActiveCountry extends Component {
       console.log('DO NOTHING');
       return <div></div>;
     } else {
-      console.log('this is the failed test result');
+      // console.log('this is the failed test result');
       return (
         <div className="col-md-2">
         <h1 className="country-view">

@@ -44,7 +44,8 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
       .context(c); //
 
   var title = d3.select('.none');
-  console.log('????????????????????????', world);
+
+  // console.log('????????????????????????', world);
   ready(world, names);
 
   function ready(world, names, error) {
@@ -57,7 +58,8 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
 
     var i = -1;
     var n = countries.length;
-    console.log('>>>>>>>>>>>all', countries);
+
+    // console.log('>>>>>>>>>>>all', countries);
 
     var countries = countries.filter(function(d) {
       return names.some(function(n) {
@@ -73,10 +75,10 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
 
       var selectCountry = _.filter(countries, function(country) {
         if (country.id === id) {
-          console.log('>>>>>>>>>', country, country.id, id);
+          // console.log('>>>>>>>>>', country, country.id, id);
           return country;
         } else {
-          // console.log("No Match");
+          console.log('No Match');
         }
       });
 
@@ -98,7 +100,7 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
               myCountry = selectCountry[0];
             }
 
-            console.log('ccccccc', myCountry);
+            // console.log('ccccccc', myCountry);
             var p = d3.geo.centroid(myCountry), //returns sphere centroid of current country object
                 r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]); //returns interpolation from point a (current rotation) to point b (array of two values)
             // console.log('p', p, 'r', r, 'i', i, [-p[0], -p[1]]);
