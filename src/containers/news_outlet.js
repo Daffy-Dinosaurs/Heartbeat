@@ -22,6 +22,8 @@ class NewsOutlet extends Component {
                                                                                                                                                                                                                                                                 </div>
       );
     });
+
+    this.props.newsFeed = [];
   }
 
   render() {
