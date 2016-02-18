@@ -5,7 +5,6 @@ import { VictoryChart } from 'victory-chart';
 import { VictoryLine } from 'victory-line';
 import { VictoryAxis } from 'victory-axis';
 import { VictoryBar } from 'victory-bar';
-import waterData from './Improved_Water_Resource.json';
 
 // console.log('Printing the Water Data', waterData);
 

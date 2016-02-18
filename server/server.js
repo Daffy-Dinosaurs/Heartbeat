@@ -11,14 +11,10 @@ var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
 
-<<<<<<< HEAD
-
-
-=======
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
 //////////////////////////////////////////
->>>>>>> 56db5b5261ec96dda6a25652b6dbcd65d7011b55
+
 
 var env = env(__dirname + '/.env');
 var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
@@ -33,7 +29,7 @@ var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
 
-<<<<<<< HEAD
+
 
 if (process.env.NODE_ENV === 'production') {
   var static_path = path.join(__dirname, 'public');
@@ -84,8 +80,7 @@ if (process.env.NODE_ENV === 'production') {
 // }
 
 // console.log(__dirname + '/../index.html');
-=======
->>>>>>> 56db5b5261ec96dda6a25652b6dbcd65d7011b55
+
 app.listen(port);
 
 // we start a webpack-dev-server with our config
@@ -202,9 +197,6 @@ request(options, function(err, response, body) {
 // route has one param, any user's twitter handle
 app.get('/tweets/:hastag', function(req, ourResponse, next) {
   // set options
-<<<<<<< HEAD
-=======
->>>>>>> 56db5b5261ec96dda6a25652b6dbcd65d7011b55
   var options = {
     // append the user's handle to the url
     url: 'https://api.twitter.com/1.1/search/tweets.json?q=' + req.params.hastag,
