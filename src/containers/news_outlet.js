@@ -16,8 +16,8 @@ class NewsOutlet extends Component {
 
     return this.props.newsFeed.response.results.map((article) => {
       return (
-        <div className='news'>
-          <li key={article.webTitle} className='news-item'> { article.webTitle }: <a href={article.webUrl}>{ article.webUrl }</a></li>
+        <div className='newsfeed'>
+          <li key={article.webTitle} className='newsfeed-item'> { article.webTitle }: <a href={article.webUrl}>{ article.webUrl }</a></li>
 
                                                                                                                                                                                                                                                                 </div>
       );
@@ -28,7 +28,7 @@ class NewsOutlet extends Component {
     if (this.props.newsFeed.response) {
       console.log('passing conditional in news Outlet');
       return (
-        <div>
+        <div className="col-md-2 newsfeed-feed">
         <h1>News Feed</h1>
         { this.showStory() }
         </div>

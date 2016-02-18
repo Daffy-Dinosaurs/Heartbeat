@@ -25,7 +25,7 @@ class TwitterFeed extends Component {
     return this.props.twitterFeed.statuses.map((tweet) => {
       return (
         <div className="tweets">
-            <li key={tweet.id} className="tweet-item"> { tweet.text } </li>
+            <li key={ tweet.id } className="tweet-item"> { tweet.text } </li>
         </div>
       );
     });
@@ -42,10 +42,10 @@ class TwitterFeed extends Component {
   render() {
 
     if (this.props.twitterFeed.statuses) {
-      // console.log('passes second conditional', this.props.twitterFeed);
+      console.log('passes second conditional', this.props.twitterFeed.statuses);
       return (
         <div className="col-md-2 tweet-feed">
-        <p onClick= {this.clearTweet.bind(this)}>x</p>
+        <h1 onClick= {this.clearTweet.bind(this)}>Tweets</h1>
            { this.renderTweets() }
         </div>
       );

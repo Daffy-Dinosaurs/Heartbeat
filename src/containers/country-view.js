@@ -15,7 +15,7 @@ class ActiveCountry extends Component {
   renderScreen() {
     // console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
     // console.log('STATE: ', this.props);
-    return this.props.activeCountry.countryName;
+    return <div>We dont have anything here</div>;
   }
 
   changeProps() {
@@ -33,10 +33,10 @@ class ActiveCountry extends Component {
       // console.log('this is the failed test result');
       return (
         <div className="col-md-2">
-        <h1 className="country-view">
+        <h1 onClick= {this.changeProps.bind(this)}>{ this.props.activeCountry.countryName }</h1>
+        <li className="country-view">
         { this.renderScreen() }
-        </h1>
-        <p onClick= {this.changeProps.bind(this)}>x</p>
+        </li>
 
         </div>
       );
