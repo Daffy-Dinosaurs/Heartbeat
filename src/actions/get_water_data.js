@@ -3,10 +3,10 @@ import axios from 'axios';
 // Send action to server
 export const GET_WATER_DATA = 'GET_WATER_DATA';
 
-export function getWaterData() {
+export function getWaterData(pCountryId) {
   console.log('Calling Water Data Function');
 
-  const url = '//localhost:3001/api/statistics/188';
+  const url = '//localhost:3001/api/statistics/' + pCountryId;
   console.log(url);
   const request = axios.get(url);
 
