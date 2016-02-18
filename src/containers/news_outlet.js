@@ -12,14 +12,14 @@ class NewsOutlet extends Component {
   }
 
   showStory() {
-    console.log('inside of the newOutlet', this.props.newsFeed);
+    // console.log('inside of the newOutlet', this.props.newsFeed);
 
     return this.props.newsFeed.response.results.map((article) => {
       return (
         <div className='newsfeed'>
-          <li key={article.webTitle} className='newsfeed-item'> { article.webTitle }: <a href={article.webUrl}>{ article.webUrl }</a></li>
-
-                                                                                                                                                                                                                                                                </div>
+          <li key={article.webTitle} className='newsfeed-item'>
+          { article.webTitle }: <a href={article.webUrl}>{ article.webUrl }</a>
+          </li>                                                                                                                                                                                                                                          </div>
       );
     });
 
@@ -28,7 +28,7 @@ class NewsOutlet extends Component {
 
   render() {
     if (this.props.newsFeed.response) {
-      console.log('passing conditional in news Outlet');
+      // console.log('passing conditional in news Outlet');
       return (
         <div className="col-md-2 newsfeed-feed">
         <h1>News Feed</h1>

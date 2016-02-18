@@ -3,6 +3,7 @@ var fs = require('fs');
 var async = require('async');
 var csv = require('csv-parse');
 var model = require('./models/index.js');
+
 // var models = require('./models/country');
 
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
@@ -16,16 +17,18 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
   },
 
 });
+
 // Read in the data from the file system
-fs.readFile(__dirname + '/../Datasets/Improved_Water_Resource.json', 'utf-8', function(err, data) {
+fs.readFile(__dirname + '/../Datasets/Improved_Water_Resource.json', 'utf-8', function (err, data) {
   if (err) {
     console.log(err);
   }
-    var cleanData = JSON.parse(data);
 
-    // Init loop function to iterate through the data array one object at a time.
-    function initLoop(i){
-      if(i === cleanData.length){
+  var cleanData = JSON.parse(data);
+
+  // Init loop function to iterate through the data array one object at a time.
+  function initLoop(i) {
+      if (i === cleanData.length) {
         return;
       }
 
@@ -33,39 +36,41 @@ fs.readFile(__dirname + '/../Datasets/Improved_Water_Resource.json', 'utf-8', fu
       var statKeys = Object.keys(cleanData[i]);
       var count = 0;
 
-        // recursive function to iterate through each object and parse out the data
-        function asyncForLoop(count, obj){
-          // base case to check if we are at the end of the object
-          if ( count === statKeys.length){
-            return;
-          }
+      // recursive function to iterate through each object and parse out the data
+      function asyncForLoop(count, obj) {
+        // base case to check if we are at the end of the object
+        if (count === statKeys.length) {
+          return;
+        }
 
-          // create foreign keys by finding the country realted to the data being parsed
-          return model.Country.findOne({ where: {countryName: obj["Country Name"] }
-          }).then(function(country){
+        // create foreign keys by finding the country realted to the data being parsed
+        return model.Country.findOne({ where: { countryName: obj['Country Name'] },
+          }).then(function (country) {
             // Build the Country Statistic model instance
-          if (statKeys[count].length === 4){
-            allStats.push({
+            if (statKeys[count].length === 4) {
+              allStats.push({
               year: statKeys[count],
               value: obj[statKeys[count]],
-              category: "Water Pollution",
-              CountryId: country.id
+              category: 'Water Pollution',
+              CountryId: country.id,
             });
-          }
-          // recurse to the next key in the object
-          return asyncForLoop(count+1, obj);
-        });
+            }
+
+            // recurse to the next key in the object
+            return asyncForLoop(count + 1, obj);
+          });
       }
 
-
-      return asyncForLoop(0, cleanData[i]).then(function(){
+      return asyncForLoop(0, cleanData[i]).then(function () {
         // Bulk insert all rows into DB
         model.CountryStatistic.bulkCreate(allStats);
+
         // increment array
-        return initLoop(i+1);
+        return initLoop(i + 1);
       });
     }
-    initLoop(0).then(function(){
-      console.log("Start");
+
+  initLoop(0).then(function () {
+      console.log('Start');
     });
 });

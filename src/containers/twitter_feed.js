@@ -42,7 +42,7 @@ class TwitterFeed extends Component {
   render() {
 
     if (this.props.twitterFeed.statuses) {
-      console.log('passes second conditional', this.props.twitterFeed.statuses);
+      // console.log('passes second conditional', this.props.twitterFeed.statuses);
       return (
         <div className="col-md-2 tweet-feed">
         <h1 onClick= {this.clearTweet.bind(this)}>Tweets</h1>
