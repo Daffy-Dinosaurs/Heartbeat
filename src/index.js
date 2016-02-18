@@ -9,7 +9,7 @@ import rootReducer from './reducers/index';
 import promiseMiddleware from 'redux-promise';
 import { Route, Router, browserHistory, hashHistory } from 'react-router';
 import App from './components/app';
-import D3Graphs from './components/d3Graphs';
+import D3Graphs from './containers/d3Graphs';
 
 // import routes from './routes.js';
 
