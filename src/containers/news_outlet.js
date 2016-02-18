@@ -4,26 +4,29 @@ import { bindActionCreators } from 'redux';
 import { getNews } from '../actions/get_news_feed';
 
 class NewsOutlet extends Component {
-  //TODO: continue to build out this feature with the potential to use this as a model
+
   constructor(props) {
     super(props);
+
+    this.state = { feed: '' };
+    this.state.feed;
 
     // console.log('inside the constructor', this.props);
   }
 
   showStory() {
     // console.log('inside of the newOutlet', this.props.newsFeed);
-
+    // console.log(Math.random());
     return this.props.newsFeed.response.results.map((article) => {
       return (
         <div className='newsfeed'>
-          <li key={article.webTitle} className='newsfeed-item'>
+          <li key={article.webUrl} className='newsfeed-item'>
           { article.webTitle }: <a href={article.webUrl}>{ article.webUrl }</a>
-          </li>                                                                                                                                                                                                                                          </div>
+          </li></div>
       );
     });
 
-    this.props.newsFeed = [];
+    // this.props.newsFeed = [];
   }
 
   render() {
@@ -47,7 +50,7 @@ function mapStateToProps({ newsFeed }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getNews });
+  return bindActionCreators({ getNews }, dispatch);
 }
 
-export default connect(mapStateToProps)(NewsOutlet);
+export default connect(mapStateToProps, mapDispatchToProps)(NewsOutlet);
