@@ -17,7 +17,7 @@ class NewsOutlet extends Component {
     return this.props.newsFeed.response.results.map((article) => {
       return (
         <div className='news'>
-          <li key={article.id} className='news-item'> { article.webTitle }: <a href={article.webUrl}>{ article.webUrl }</a></li>
+          <li key={article.webTitle} className='news-item'> { article.webTitle }: <a href={article.webUrl}>{ article.webUrl }</a></li>
 
                                                                                                                                                                                                                                                                 </div>
       );

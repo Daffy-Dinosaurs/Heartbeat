@@ -27,7 +27,7 @@ class CountryList extends Component {
               this.props.selectCountry(country);
               this.props.globeAction(country);
               this.props.getTweets(country);
-              this.props.getNews();
+              this.props.getNews(country);
             }}>
             <a href='#'>{ country.countryName }</a>
           </li>
