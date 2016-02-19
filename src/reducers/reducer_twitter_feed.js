@@ -1,11 +1,18 @@
 import { GET_TWEETS } from '../actions/get_twitter_feed';
 
-export default function(state = [], action) {
+const initialState = {};
 
-  switch (action.type) {
+export default function(state = initialState, action) {
 
-  case GET_TWEETS:
-    return state.concat(action.payload.data);
+  if (action.type === 'GET_TWEETS') {
+    return action.payload.data;
   }
+
+  if (action.type === 'CLEAR_TWEETS') {
+    return initialState;
+
+  }
+
   return state;
+
 };
