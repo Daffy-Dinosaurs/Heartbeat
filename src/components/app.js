@@ -48,7 +48,6 @@ export default class App extends Component{
         <NewsOutlet />
         <VictoryPlots />
         <TwitterFeed />
-
       </div>
     );
   }
