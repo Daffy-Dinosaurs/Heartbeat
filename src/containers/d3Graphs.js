@@ -20,17 +20,15 @@ var plottingData = [
   { x: '1998', y: 0 },
 ];
 
-let processWaterData;
-
 class VictoryPlots extends Component {
   constructor(props) {
     super(props);
-    getWaterData();
-    this.update = this.update.bind(this);
+    console.log("What are my props:", this.props);
     this.state = {
       processed: plottingData,
       count: 2,
       countryId: 1,
+      style: this.getStyles(),
       // waterData: getWaterData(),
     };
 
@@ -46,33 +44,34 @@ class VictoryPlots extends Component {
   }
 
   processingData() {
-    processWaterData = [];
+    var processWaterData = []
+    // this.setState({ this.props.waterData: []});
 
-    console.log("CALLING WATER PROPS BEFORE:", this.props.waterData);
+    // // this.state.waterData.payload.then(function(response) {
+    // //   console.log(response.data);
+    // // })
+    console.log("Temp Value Before: ", this.props.waterData);
+    console.log("--------------------------");
 
-    // console.log("INSIDE PROCESSING: ", this.props.waterData);
-
-    // this.state.waterData.payload.then(function(response) {
-    //   console.log(response.data);
-    // })
-    console.log("WITHOUT SETTING STATE: ", this.state.processed);
     // this.setState({ processed: processWaterData}, function() {
     //   console.log("processed info before: ", this.state.processed);
     //   return processWaterData;
     // });
-
-    console.log("PROCESSED DATA BEFORE:", processWaterData);
 
     for (var i = 0; i < this.props.waterData.length; i++) {
       processWaterData.push({x: this.props.waterData[i].year, y: this.props.waterData[i].value });
     }
 
     this.setState({ processed: processWaterData}, function() {
-      console.log("processed info after: ", this.state.processed);
+      console.log("processed info after: ", this.props.waterData);
+      if (this.props.waterData.length > 1) {
+        console.log("Length of the waterData:", this.props.waterData.length);
+        this.props.waterData.splice(0, this.props.waterData.length);
+      }
     });
 
 
-    console.log("PROCESSED DATA AFTER", processWaterData);
+
     // this.setState({ processed: processed}, function() {
     //   console.log("SET State", this.state.processed);
     // });
@@ -93,12 +92,23 @@ class VictoryPlots extends Component {
   // this.props.getWaterData();
 
   onInputChange(pCountry) {
-    this.setState({ processed: plottingData });
     this.setState({countryId: pCountry}, function() {
       console.log("countryID: ", this.state.countryId);
     });
 
   }
+
+  getStyles() {
+    const colors = [
+      "red", "orange", "magenta",
+      "gold", "blue", "purple"
+    ];
+    return {
+      stroke: colors[_.random(0, 5)],
+      strokeWidth: _.random(1, 5)
+    };
+  }
+
 
   render() {
     return (
@@ -119,15 +129,22 @@ class VictoryPlots extends Component {
       Water Data
       </button>
 
-
-      <VictoryChart >
-        <VictoryBar
-          data = { this.state.processed }
-          dataAttributes= {[
+      <VictoryChart>
+      <VictoryBar
+        data = { this.state.processed }
+        dataAttributes= {[
           {fill: "cornflowerblue"}
-          ]}
-          />
+        ]}
+      />
       </VictoryChart>
+      <VictoryLine
+        style = {{data: this.state.style}}
+        data = { this.state.processed }
+        dataAttributes= {[
+          {fill: "red"}
+        ]}
+      />
+
     </div>
     );
 

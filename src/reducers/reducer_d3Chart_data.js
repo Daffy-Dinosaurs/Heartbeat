@@ -6,7 +6,7 @@ export default function(state = [], action) {
   switch (action.type) {
 
   case GET_WATER_DATA:
-    console.log('payload data:', action.payload.data);
+    // console.log('payload data:', action.payload.data);
     return state.concat(action.payload.data);
   }
   return state;
