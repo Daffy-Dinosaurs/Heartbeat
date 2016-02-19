@@ -5,7 +5,7 @@ import CountryList from '../containers/countryList';
 import TwitterFeed from '../containers/twitter_feed';
 import Globe from '../containers/globeContainer';
 
-// import VictoryPlots from '../containers/d3Graphs';
+import VictoryPlots from '../containers/d3Graphs';
 import Intro from './introduction';
 import Menu from './menu';
 import MenuItem from './menu_items';
@@ -46,6 +46,7 @@ export default class App extends Component{
         <div className="col-md-8 globe">
           <Globe />
         </div>
+        <VictoryPlots />;
         <ActiveCountry />
         <NewsOutlet />
         <TwitterFeed />
@@ -54,7 +55,6 @@ export default class App extends Component{
   }
 }
 
-// <VictoryPlots />;
 
 // <button onClick= {this.showLeft}>Show Left Menu</button>
 // <button onClick= {this.showRight}>Show Right Menu </button>

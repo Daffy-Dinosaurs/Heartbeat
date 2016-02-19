@@ -7,17 +7,18 @@ import worldGlobe from '../components/world_view.js';
 class Globe extends Component {
   componentDidMount() {
     worldGlobe.go();
-    console.log("first render");
+
+    // console.log("first render");
 
     // PASS THIS TO D3 GLOBE
     // this.props.activeCountry.localeId
 
   }
 
-
   renderGlobe() {
     worldGlobe.go(this.props.globeCountry);
-    console.log("I am rendering again ");
+
+    // console.log("I am rendering again ");
   }
 
   render() {

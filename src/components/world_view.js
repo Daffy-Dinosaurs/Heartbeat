@@ -23,7 +23,7 @@ const worldGlobe = {
 
 worldGlobe.go = function(countryObject) {
   // Map configuration
-  console.log("Being Called!!");
+  // console.log("Being Called!!");
   if(!worldGlobe.loaded){
     width  = 820;
     height = 620;
@@ -71,7 +71,7 @@ worldGlobe.go = function(countryObject) {
     worldGlobe.loaded = true;
   }
 
-console.log(projection);
+// console.log(projection);
 
 
 
@@ -115,7 +115,7 @@ console.log(projection);
     .origin(function() { var r = projection.rotate(); return {x: r[0] / sens, y: -r[1] / sens}; })
     .on("dragstart", function() {
       // d3.event.sourceEvent.stopPropagation();
-      console.log("Drag start");
+      // console.log("Drag start");
       //  pause = true;
       //  spinning_globe(pause);
     })
@@ -162,11 +162,11 @@ console.log(projection);
     // d3.selectAll("ul").selectAll("li").on("click", function() {
     //   console.log("<<<<<///>>>>>>>",this)
     if(countryObject !== null && countryObject !== undefined){
-    console.log("Am i in here to rotate the country!!!!");
+    // console.log("Am i in here to rotate the country!!!!");
 
       var rotate = projection.rotate(),
       focusedCountry = country(countries, countryObject);
-      console.log("////////", focusedCountry.id);
+      // console.log("////////", focusedCountry.id);
       var p = d3.geo.centroid(focusedCountry);
 
       svg.selectAll(".focused").classed("focused", focused = false);

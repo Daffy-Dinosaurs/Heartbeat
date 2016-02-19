@@ -43,15 +43,15 @@ class NewsOutlet extends Component {
   }
 
   clearFeed() {
-    console.log('clear feed is being called');
+    // console.log('clear feed is being called');
     this.props.clearNews();
   }
 
   render() {
     if (this.state.visible) {
-      console.log('visiblity set to true');
+      // console.log('visiblity set to true');
       if (this.props.newsFeed.response) {
-        console.log('passing conditional in news Outlet');
+        // console.log('passing conditional in news Outlet');
         return (
           <div className="col-md-2 newsfeed-feed">
           <h1 onClick= {
@@ -67,7 +67,7 @@ class NewsOutlet extends Component {
     }
 
     if (!this.state.visible) {
-      console.log('visiblity set to false');
+      // console.log('visiblity set to false');
       return <div>
       <h1 onClick={this.show.bind(this)}>News Feed</h1>
       </div>;

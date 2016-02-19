@@ -56,9 +56,9 @@ class TwitterFeed extends Component {
   render() {
 
     if (this.state.visible) {
-      console.log('visiblity set to true');
+      // console.log('visiblity set to true');
       if (this.props.twitterFeed.statuses) {
-        console.log('passes second conditional');
+        // console.log('passes second conditional');
         return (
           <div className="col-md-2 tweet-feed">
           <h1 onClick= {
@@ -73,7 +73,7 @@ class TwitterFeed extends Component {
     }
 
     if (!this.state.visible) {
-      console.log('visiblity set to false');
+      // console.log('visiblity set to false');
       return <div>
       <h1 onClick={this.show.bind(this)}>Tweets</h1>
       </div>;

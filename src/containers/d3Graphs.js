@@ -29,10 +29,9 @@ class VictoryPlots extends Component {
       countryId: 1,
       style: this.getStyles(),
 
-      // waterData: getWaterData(),
     };
 
-    console.log('this is testing props', this.props.waterData, this.props.activeCountry);
+    console.log('this is testing props', this.props.waterData);
 
   }
 
@@ -85,6 +84,7 @@ class VictoryPlots extends Component {
   }
 
   render() {
+    console.log('this is waterdata ', this.props.waterdata);
     return (
       <div className="col-md-2">
 
@@ -92,16 +92,6 @@ class VictoryPlots extends Component {
           <input value = { this.state.countryId }
           onChange = { event => this.onInputChange(event.target.value)} />
         </div>
-
-      <Link to="/">Main</Link>
-
-      <button onClick = { this.processingData.bind(this) } >
-      Plot Graph
-      </button>
-
-      <button onClick = { () => { this.props.getWaterData(this.state.countryId);}}>
-      Water Data
-      </button>
 
       <VictoryChart>
         <VictoryBar
@@ -118,12 +108,15 @@ class VictoryPlots extends Component {
   }
 }; // End of Component
 
-function mapStateToProps({ waterData, activeCountry }) {
-  return { waterData, activeCountry };
+// <button onClick = { this.processingData.bind(this) } >
+// Plot Graph
+// </button>
+function mapStateToProps({ waterData }) {
+  return { waterData };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getWaterData, selectCountry }, dispatch);
+  return bindActionCreators({ getWaterData }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VictoryPlots);
