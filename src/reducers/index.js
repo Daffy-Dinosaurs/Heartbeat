@@ -6,6 +6,7 @@ import CountryList from './reducer_countryList';
 import TwitterFeed from './reducer_twitter_feed';
 import GlobeAction from './reducer_globe_action';
 import { GLOBE_ACTION_SELECTED } from '../actions/globe_action';
+import WaterData from './reducer_d3Chart_data';
 import { CLEAR_COUNTRY } from '../actions/clear_country';
 import { CLEAR_TWEETS } from '../actions/clear_tweets';
 import { GET_NEWS } from '../actions/get_news_feed';
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   activeCountry: ActiveCountry,
   countryList: CountryList,
   twitterFeed: TwitterFeed,
+  waterData: WaterData,
   clearCountry: ActiveCountry,
   clearTweets: TwitterFeed,
   newsFeed: NewsFeed,

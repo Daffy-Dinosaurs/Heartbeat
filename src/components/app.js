@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import CountryList from '../containers/countryList';
 import TwitterFeed from '../containers/twitter_feed';
 import Globe from '../containers/globeContainer';
-import ActiveCountry from '../containers/country-view';
+import VictoryPlots from '../containers/d3Graphs';
 import Intro from './introduction';
 import Menu from './menu';
 import MenuItem from './menu_items';
@@ -46,7 +46,7 @@ export default class App extends Component{
           <Globe />
         </div>
         <NewsOutlet />
-        <ActiveCountry />
+        <VictoryPlots />
         <TwitterFeed />
 
       </div>
