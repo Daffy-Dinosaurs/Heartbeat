@@ -27,8 +27,8 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
     console.log(d3.selectAll('canvas'));
 
     var canvas = d3.select('.globe').append('canvas')
-    .attr('width', width)
-    .attr('height', height);
+      .attr('width', width)
+      .attr('height', height);
   } else {
     console.log('THERE ALREADY WAS THE CANVAS');
     var canvas = d3.selectAll('canvas');
@@ -43,8 +43,14 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
       .projection(projection) // see https://goo.gl/rJ51aF
       .context(c); //
 
+    // add water
+  canvas.append("path")
+     .datum({type: "Sphere"})
+     .attr("class", "water")
+     .attr("d", path);
+
+
   var title = d3.select('.none');
-console.log('????????????????????????',world)
   ready(world, names);
 
   function ready(world, names, error) {

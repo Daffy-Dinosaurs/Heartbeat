@@ -10,7 +10,6 @@ import ActiveCountry from '../containers/country-view';
 
 export default class App extends Component{
   render() {
-    console.log('Rendering the Main Page');
     return (
       <div className="main">
         <Link to="/d3Graphs">Graphs</Link>
@@ -21,7 +20,6 @@ export default class App extends Component{
         </div>
         <ActiveCountry />
         <TwitterFeed />
-
       </div>
     );
   }

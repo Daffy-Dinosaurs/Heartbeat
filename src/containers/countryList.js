@@ -13,16 +13,18 @@ class CountryList extends Component {
 
     this.state = { term: this.props.requestCountries() };
     this.state.term;
+    console.log("BOOM countrylist");
   }
 
   renderList() {
-    // console.log('PROPS:', this.props.countryList);
 
     return this.props.countryList.map((country) => {
       return (
           <li className="list-country-item"
             key={country.countryName}
-            onClick={() => {
+            onClick={(event) => {
+              event.preventDefault();
+
               this.props.selectCountry(country);
               this.props.globeAction(country);
               this.props.getTweets(country);

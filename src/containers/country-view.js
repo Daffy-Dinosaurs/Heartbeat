@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 class ActiveCountry extends Component {
 
   renderScreen() {
-    console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
     return this.props.activeCountry.countryName;
   }
 
@@ -15,7 +14,6 @@ class ActiveCountry extends Component {
   //The below conditional allows for the list to show but does not update once the contry is selected
 
   render() {
-    // console.log('inside country-view');
     if (!this.props.activeCountry) {
       return <div>Select a country</div>;
     } else {
