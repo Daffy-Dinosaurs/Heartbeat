@@ -28,23 +28,26 @@ class VictoryPlots extends Component {
       count: 2,
       countryId: 1,
       style: this.getStyles(),
+
       // waterData: getWaterData(),
     };
+
+    console.log('this is testing props', this.props.waterData, this.props.activeCountry);
 
   }
 
   processingData() {
-    var processWaterData = []
+    var processWaterData = [];
 
     // // this.state.waterData.payload.then(function(response) {
     // //   console.log(response.data);
     // // })
 
     for (var i = 0; i < this.props.waterData.length; i++) {
-      processWaterData.push({x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+      processWaterData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
     }
 
-    this.setState({ processed: processWaterData}, function() {
+    this.setState({ processed: processWaterData }, function () {
       // console.log("processed info after: ", this.props.waterData);
       if (this.props.waterData.length > 1) {
         // console.log("Length of the waterData:", this.props.waterData.length);
@@ -64,7 +67,7 @@ class VictoryPlots extends Component {
   }
 
   onInputChange(pCountry) {
-    this.setState({countryId: pCountry}, function() {
+    this.setState({ countryId: pCountry }, function () {
       // console.log("countryID: ", this.state.countryId);
     });
 
@@ -72,15 +75,14 @@ class VictoryPlots extends Component {
 
   getStyles() {
     const colors = [
-      "red", "orange", "magenta",
-      "gold", "blue", "purple"
+      'red', 'orange', 'magenta',
+      'gold', 'blue', 'purple',
     ];
     return {
       stroke: colors[_.random(0, 5)],
-      strokeWidth: _.random(1, 5)
+      strokeWidth: _.random(1, 5),
     };
   }
-
 
   render() {
     return (
@@ -103,9 +105,10 @@ class VictoryPlots extends Component {
 
       <VictoryChart>
         <VictoryBar
+
           data = { this.state.processed }
           dataAttributes= {[
-            {fill: "cornflowerblue"}
+            { fill: 'cornflowerblue' },
           ]}
         />
       </VictoryChart>
@@ -115,13 +118,12 @@ class VictoryPlots extends Component {
   }
 }; // End of Component
 
-function mapStateToProps({ waterData }) {
-  // console.log('WATER STATE:', { waterData });
-  return { waterData };
+function mapStateToProps({ waterData, activeCountry }) {
+  return { waterData, activeCountry };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getWaterData: getWaterData }, dispatch);
+  return bindActionCreators({ getWaterData, selectCountry }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VictoryPlots);

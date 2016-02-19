@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-
+import ActiveCountry from '../containers/country-view';
 import CountryList from '../containers/countryList';
 import TwitterFeed from '../containers/twitter_feed';
 import Globe from '../containers/globeContainer';
-import VictoryPlots from '../containers/d3Graphs';
+
+// import VictoryPlots from '../containers/d3Graphs';
 import Intro from './introduction';
 import Menu from './menu';
 import MenuItem from './menu_items';
@@ -34,25 +35,27 @@ export default class App extends Component{
     this.refs.right.show();
   }
 
+  // <Link to="/d3Graphs">Graphs</Link>
+  // <Link to="/sandbox/jon">Jon Sandbox</Link>
   render() {
     // console.log('Rendering the Main Page');
     return (
       <div className="main">
-        <Link to="/d3Graphs">Graphs</Link>
-        <Link to="/sandbox/jon">Jon Sandbox</Link>
         <CountryList />
         <Intro />
         <div className="col-md-8 globe">
           <Globe />
         </div>
+        <ActiveCountry />
         <NewsOutlet />
-        <VictoryPlots />
         <TwitterFeed />
 
       </div>
     );
   }
 }
+
+// <VictoryPlots />;
 
 // <button onClick= {this.showLeft}>Show Left Menu</button>
 // <button onClick= {this.showRight}>Show Right Menu </button>
