@@ -2,6 +2,7 @@ var Sequelize = require('sequelize');
 var fs = require('fs');
 var async = require('async');
 var csv = require('csv-parse');
+var CountryStatistics = require('./country-stats-model');
 
 var sequelize = new Sequelize('worldMapDB', 'root', '', {
   host: 'localhost',
@@ -15,17 +16,17 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 
 });
 
-var Country = sequelize.define('country', {
-  localeId: Sequelize.INTEGER,
-  countryName: Sequelize.STRING,
-});
+// var Country = sequelize.define('country', {
+//   localeId: Sequelize.INTEGER,
+//   countryName: Sequelize.STRING,
+// });
 
 // {
 //   // tableName: 'countries', // this will define the table's name
 //   timestamps: false           // this will deactivate the timestamp columns
 // });
 
-var rawData = fs.readFile(__dirname + '/../Datasets/countries.json', 'utf-8', function(err, data) {
+var rawData = fs.readFile(__dirname + '/../Datasets/Improved_Water_Resource.json', 'utf-8', function(err, data) {
   console.log(typeof data);
   var cleanData = JSON.parse(data);
   console.log(typeof cleanData);
@@ -39,11 +40,11 @@ var rawData = fs.readFile(__dirname + '/../Datasets/countries.json', 'utf-8', fu
 
       for (var i = 0; i < cleanData.length; i++) {
 
-        Country.create({
-
-          countryName: cleanData[i].countryName,
-          localeId: cleanData[i].localeId,
-
+        CountryStatistics.create({
+          
+          year: cleanData[i].countryName,
+          value: cleanData[i].value,
+          category: cleanData[i].category
           // CountryCode : cleandata[i]["Country Code"]
 
         }).then(function(data) {

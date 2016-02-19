@@ -7,11 +7,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { requestCountries } from './actions/request_country';
 import rootReducer from './reducers/index';
 import promiseMiddleware from 'redux-promise';
+import { Route, Router, browserHistory, hashHistory } from 'react-router';
 import App from './components/app';
+import D3Graphs from './containers/d3Graphs';
+
+// import routes from './routes.js';
 
 const loggerMiddleware = createLogger();
 
-//
 const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
 
 // store.dispatch({type: 'REQUEST_COUNTRIES'})
@@ -28,7 +31,11 @@ const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
 
 ReactDOM.render(
   <Provider store={ store(rootReducer) }>
-    <App />
+    <Router history={hashHistory}>
+    <Route path="/" component={App}/>
+    <Route path="/d3Graphs" component={D3Graphs}/>
+    <Route path="/sandbox/jon" component={D3Graphs}/>
+    </Router>
   </Provider>,
   document.querySelector('.container-fluid')
 );

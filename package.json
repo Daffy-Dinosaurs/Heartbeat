@@ -4,7 +4,8 @@
   "description": "Thesis Project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
+    "start": "node server/server.js",
     "frontend": "webpack-dev-server",
     "build": "webpack",
     "deploy": "",
@@ -40,10 +41,12 @@
     "es6-promise": "^3.0.2",
     "exports-loader": "^0.6.2",
     "file-loader": "^0.8.4",
+    "history": "^1.17.0",
     "hjs-webpack": "^2.6.0",
     "imports-loader": "^0.6.5",
     "isomorphic-fetch": "^2.2.1",
     "json-loader": "^0.5.4",
+    "less": "^2.6.0",
     "local-links": "^1.4.0",
     "lodash.assign": "^3.2.0",
     "lodash.has": "^3.2.1",
@@ -61,13 +64,14 @@
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
     "react-dom": "^0.14.7",
-    "react-hot-loader": "^1.2.7",
     "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
     "redux": "^3.3.1",
     "redux-logger": "^2.5.0",
     "redux-promise": "^0.5.1",
     "redux-thunk": "^1.0.3",
     "sequelize": "^3.19.2",
+    "sequelize-cli": "^2.3.1",
     "slugger": "^1.0.0",
     "standard": "^4.3.1",
     "style-loader": "^0.12.3",
@@ -75,14 +79,16 @@
     "surge": "^0.14.2",
     "topojson": "^1.6.22",
     "url-loader": "^0.5.6",
+    "victory": "^0.4.0",
     "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0",
     "whatwg-fetch": "^0.11.0",
     "xhr": "^2.0.2",
     "yeticss": "^6.0.7"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
-    "css-loader": "^0.15.6"
+    "css-loader": "^0.15.6",
+    "webpack-dev-server": "^1.9.0",
+    "react-hot-loader": "^1.2.7"
   }
 }

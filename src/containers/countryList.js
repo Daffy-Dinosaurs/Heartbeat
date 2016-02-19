@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { selectCountry } from '../actions/country_select';
 import { globeAction } from '../actions/globe_action';
 import { getTweets } from '../actions/get_twitter_feed';
+import { getNews } from '../actions/get_news_feed';
 
 class CountryList extends Component {
 
@@ -26,6 +27,7 @@ class CountryList extends Component {
               this.props.selectCountry(country);
               this.props.globeAction(country);
               this.props.getTweets(country);
+              this.props.getNews(country);
             }}>
             <a href='#'>{ country.countryName }</a>
           </li>
@@ -54,7 +56,7 @@ function mapStateToProps({ countryList }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ requestCountries, selectCountry, globeAction, getTweets }, dispatch);
+  return bindActionCreators({ requestCountries, selectCountry, globeAction, getTweets, getNews }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);
