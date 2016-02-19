@@ -4,6 +4,7 @@
   "description": "Thesis Project",
   "main": "index.js",
   "scripts": {
+    "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
     "start": "nodemon server/server.js",
     "frontend": "webpack-dev-server",
     "build": "webpack",
@@ -45,6 +46,7 @@
     "imports-loader": "^0.6.5",
     "isomorphic-fetch": "^2.2.1",
     "json-loader": "^0.5.4",
+    "less": "^2.6.0",
     "local-links": "^1.4.0",
     "lodash.assign": "^3.2.0",
     "lodash.has": "^3.2.1",
@@ -62,7 +64,6 @@
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
     "react-dom": "^0.14.7",
-    "react-hot-loader": "^1.2.7",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
     "redux": "^3.3.1",
@@ -80,13 +81,14 @@
     "url-loader": "^0.5.6",
     "victory": "^0.4.0",
     "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0",
     "whatwg-fetch": "^0.11.0",
     "xhr": "^2.0.2",
     "yeticss": "^6.0.7"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
-    "css-loader": "^0.15.6"
+    "css-loader": "^0.15.6",
+    "webpack-dev-server": "^1.9.0",
+    "react-hot-loader": "^1.2.7"
   }
 }

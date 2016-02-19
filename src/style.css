@@ -62,3 +62,54 @@ li.list-country-item:visited {
 .span {
   padding: 8px 5px;
 }
+
+.newsfeed {
+  border-top: 1px solid black;
+}
+
+.newsfeed-date {
+  font-size: 12px;
+}
+
+.newsfeed-item {
+  font-size: 14px;
+  /*padding: 8px 5px;*/
+}
+
+.newsfeed-feed {
+  width: 100%;
+  height: 690px;
+  overflow: scroll;
+}
+/* MENU CSS */
+/*
+.menu {
+  display: block;
+}
+.menu >div {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 250px;
+  height: 100%;
+}
+.menu >div.left {
+  background: #273D7A;
+  left: -250px;
+}
+.menu >div.right {
+  background: #6B1919;
+  right: -250px;
+}
+.menu >div .menu-item {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 10px 15px;
+  border-bottom: solid 1px #555;
+  cursor: pointer;
+  color: #B0B0B0;
+}
+.menu >div .menu-item:hover {
+  color: #F0F0F0;
+}*/
