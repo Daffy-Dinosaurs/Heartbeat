@@ -5,7 +5,8 @@ import { VictoryChart } from 'victory-chart';
 import { VictoryLine } from 'victory-line';
 import { VictoryAxis } from 'victory-axis';
 import { VictoryBar } from 'victory-bar';
-import waterData from './Improved_Water_Resource.json';
+
+// import waterData from './Improved_Water_Resource.json';
 
 // console.log('Printing the Water Data', waterData);
 
@@ -24,11 +25,12 @@ export default class VictoryPlots extends Component {
     this.state = {
       data: this.getData(),
     };
-    console.log('Printing the Water Data', waterData);
+
+    // console.log('Printing the Water Data', waterData);
   }
 
   getData() {
-    console.log('Printing the Water Data', waterData);
+    // console.log('Printing the Water Data', waterData);
     return _.map(plottingData, (dataPoint) => {
       return {
         x: dataPoint.x,

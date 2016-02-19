@@ -4,7 +4,7 @@ import axios from 'axios';
 export const REQUEST_COUNTRIES = 'REQUEST_COUNTRIES';
 
 export function requestCountries() {
-  console.log('REQUEST COUNTRIES HAS BEEN CALLED');
+  // console.log('REQUEST COUNTRIES HAS BEEN CALLED');
   const url = '//localhost:3001/api/countries';
   const request = axios.get(url);
 

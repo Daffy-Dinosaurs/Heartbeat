@@ -15,7 +15,6 @@ import D3Graphs from './components/d3Graphs';
 
 const loggerMiddleware = createLogger();
 
-//
 const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
 
 // store.dispatch({type: 'REQUEST_COUNTRIES'})

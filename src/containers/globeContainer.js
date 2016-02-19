@@ -14,7 +14,7 @@ class Globe extends Component {
   }
 
   renderGlobe() {
-    console.log('Globe Props: ', this.props.globeCountry);
+    // console.log('Globe Props: ', this.props.globeCountry);
     d3Globe.go(this.props.globeCountry.localeId);
   }
 

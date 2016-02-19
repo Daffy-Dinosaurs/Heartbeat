@@ -10,6 +10,7 @@ var Sequelize = require('sequelize');
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
+var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
@@ -20,29 +21,47 @@ var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
 
 var app = express();
+
+// var isDevelopment = (process.env.NODE_ENV !== 'production');
 app.use(bodyParser());
 
 var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
 
+if (process.env.NODE_ENV === 'productions') {
+  var static_path = path.join(__dirname, 'public');
+
+  app.use(express.static(static_path))
+    .get('/', function(req, res) {
+      res.sendFile('index.html', {
+        root: static_path,
+      });
+    }).listen(process.env.PORT || 8080, function(err) {
+      if (err) { console.log(err); };
+
+      console.log('Listening at localhost:8080');
+    });
+}
+
+// console.log(__dirname + '/../index.html');
 app.listen(port);
 
 // we start a webpack-dev-server with our config
+
 new WebpackDevServer(webpack(config), {
-  hot: true,
-  historyApiFallback: true,
-  proxy: {
-    '*': 'http://localhost:3000',
-  },
-}).listen(3001, 'localhost', function(err, result) {
-  if (err) {
-    console.log(err);
-  }
+    hot: true,
+    historyApiFallback: true,
+    proxy: {
+      '*': 'http://localhost:3000',
+    },
+  }).listen(3001, 'localhost', function(err, result) {
+    if (err) {
+      console.log(err);
+    }
 
-  console.log('Listening at localhost:3001');
-});
-
+    console.log('Listening at localhost:3001');
+  });
 
 // get all countries
 app.get('/api/countries', function(req, res) {
@@ -50,7 +69,7 @@ app.get('/api/countries', function(req, res) {
     if (countries) {
       res.status(200).send(countries);
     } else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
@@ -61,43 +80,40 @@ app.get('/api/statistics', function(req, res) {
     if (stats) {
       res.status(200).send(stats);
     } else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
 
-
 // Get individual Country Name
 app.get('/api/countries/:countryName', function(req, res) {
-  model.Country.findOne({ where: { countryName: req.params.countryName }}).then(function(country) {
+  model.Country.findOne({ where: { countryName: req.params.countryName } }).then(function(country) {
     if (country) {
       res.status(200).send(country);
     } else {
-      res.status(404).send("Country not Found");
+      res.status(404).send('Country not Found');
     }
   });
 });
 
 // Get individual Country Stats
-app.get('/api/statistics/:CountryId', function(req, res){
+app.get('/api/statistics/:CountryId', function(req, res) {
   model.CountryStatistic.findAll({
     where: {
-      CountryId: req.params.CountryId
+      CountryId: req.params.CountryId,
     },
     include:[{
       model: model.Country,
-      as: model.Country.id
-    }]
-  }).then(function(stats){
-    if(stats){
+      as: model.Country.id,
+    },],
+  }).then(function(stats) {
+    if (stats) {
       res.status(200).send(stats);
     }else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
-
-
 
 //////////////////////////////////////////////////////////////////
 //Set up and send a request for our application-only oAuth token.
@@ -132,10 +148,9 @@ var options = {
 };
 
 // request and save an application-only token from twitter
-request(options, function (err, response, body) {
+request(options, function(err, response, body) {
   twitterAppToken = JSON.parse(body);
 });
-
 
 ///////////////////////////////
 // get tweets
@@ -143,8 +158,9 @@ request(options, function (err, response, body) {
 
 // here we set up the get handler that will send a request for the users tweet and then send it to our client-side app.
 // route has one param, any user's twitter handle
-app.get('/tweets/:hastag', function (req, ourResponse, next) {
+app.get('/tweets/:hastag', function(req, ourResponse, next) {
   // set options
+  console.log('FROM THE SERVER:', req.params.hastag);
   var options = {
     // append the user's handle to the url
     url: 'https://api.twitter.com/1.1/search/tweets.json?q=' + req.params.hastag,
@@ -156,7 +172,7 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
   };
 
   // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
-  request(options, function (err, responseFromTwitter, body) {
+  request(options, function(err, responseFromTwitter, body) {
     // console.log(JSON.parse(body));
     ourResponse.status(200).send(JSON.parse(body));
   });

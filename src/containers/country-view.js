@@ -1,29 +1,43 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { clearCountry } from '../actions/clear_country';
 
 class ActiveCountry extends Component {
 
-  renderScreen() {
-    console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
-    return this.props.activeCountry.countryName;
+  constructor(props) {
+    super(props);
+    this.state = this.props.activeCountry;
+
+    // console.log('this is state inside of constructor', this.state);
   }
 
-  //TODO:
-  //The country list can not populate due to an errorin the above code
-  //since activeCountry is not selected upon intialization, th computer hits and error and does not run
-  //The below conditional allows for the list to show but does not update once the contry is selected
+  renderScreen() {
+    // console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
+    // console.log('STATE: ', this.props);
+    return <div>We dont have anything here</div>;
+  }
+
+  changeProps() {
+
+    this.props.clearCountry();
+
+  }
 
   render() {
     // console.log('inside country-view');
-    if (!this.props.activeCountry) {
-      return <div>Select a country</div>;
+    if (!this.props.activeCountry.countryName) {
+      console.log('DO NOTHING');
+      return <div></div>;
     } else {
+      // console.log('this is the failed test result');
       return (
         <div className="col-md-2">
-        <h1 className="country-view">
+        <h1 onClick= {this.changeProps.bind(this)}>{ this.props.activeCountry.countryName }</h1>
+        <li className="country-view">
         { this.renderScreen() }
-        </h1>
+        </li>
+
         </div>
       );
 
@@ -36,4 +50,8 @@ function mapStateToProps({ activeCountry }) {
   return { activeCountry };
 }
 
-export default connect(mapStateToProps)(ActiveCountry);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ clearCountry }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveCountry);
