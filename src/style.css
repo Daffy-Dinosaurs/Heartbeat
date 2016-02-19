@@ -72,8 +72,10 @@ li.list-country-item:visited {
 
 
 /********************
-    BAR STYLING
+    BAR STYLING http://danielstern.ca/range.css/#/
 *********************/
+
+
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;

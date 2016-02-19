@@ -23,11 +23,11 @@ export default class VictoryPlots extends Component {
     this.state = {
       data: this.getData(),
     };
-    console.log('Printing the Water Data', waterData);
+    //console.log('Printing the Water Data', waterData);
   }
 
   getData() {
-    console.log('Printing the Water Data', waterData);
+    //console.log('Printing the Water Data', waterData);
     return _.map(plottingData, (dataPoint) => {
       return {
         x: dataPoint.x,

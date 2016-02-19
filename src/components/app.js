@@ -5,7 +5,7 @@ import CountryList from '../containers/countryList';
 import TwitterFeed from './twitter_feed';
 import Globe from '../containers/globeContainer';
 import ActiveCountry from '../containers/country-view';
-// import Bar from '../containers/bar';
+import Bar from '../containers/bar';
 
 
 
@@ -27,7 +27,7 @@ class App extends Component{
         <CountryList />
         <div className="col-md-8 globe">
           <Globe />
-          <input type="range" defaultValue={50} />
+        <Bar />
         </div>
         <ActiveCountry />
         <TwitterFeed />
