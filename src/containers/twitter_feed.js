@@ -15,6 +15,7 @@ class TwitterFeed extends Component {
 
   renderTweets() {
     if (this.props.twitterFeed.length > 1) {
+
       // console.log('array size is larger than 1');
       this.props.twitterFeed.shift();
     }

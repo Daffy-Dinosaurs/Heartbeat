@@ -19,7 +19,6 @@ class ActiveCountry extends Component {
   }
 
   changeProps() {
-
     this.props.clearCountry();
 
   }
