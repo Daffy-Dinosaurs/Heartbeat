@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getNews } from '../actions/get_news_feed';
+import { clearNews } from '../actions/clear_news_feed';
 
 class NewsOutlet extends Component {
 
@@ -29,12 +30,17 @@ class NewsOutlet extends Component {
     // this.props.newsFeed = [];
   }
 
+  clearFeed() {
+    console.log('clear feed is being called');
+    this.props.clearNews();
+  }
+
   render() {
     if (this.props.newsFeed.response) {
       // console.log('passing conditional in news Outlet');
       return (
         <div className="col-md-2 newsfeed-feed">
-        <h1>News Feed</h1>
+        <h1 onClick= {this.clearFeed.bind(this)}>News Feed</h1>
         { this.showStory() }
         </div>
       );
@@ -50,7 +56,7 @@ function mapStateToProps({ newsFeed }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getNews }, dispatch);
+  return bindActionCreators({ getNews, clearNews }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsOutlet);

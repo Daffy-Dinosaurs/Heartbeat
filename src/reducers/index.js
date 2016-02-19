@@ -10,6 +10,7 @@ import { CLEAR_COUNTRY } from '../actions/clear_country';
 import { CLEAR_TWEETS } from '../actions/clear_tweets';
 import { GET_NEWS } from '../actions/get_news_feed';
 import  NewsFeed from './reducer_news_outlet';
+import { CLEAR_NEWS } from '../actions/clear_news_feed';
 
 // import ClearCountry from './reducer_clear_country';
 
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   clearCountry: ActiveCountry,
   clearTweets: TwitterFeed,
   newsFeed: NewsFeed,
+  clearNews: NewsFeed,
 });
 
 export default rootReducer;
