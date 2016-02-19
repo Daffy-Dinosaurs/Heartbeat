@@ -23,7 +23,6 @@ var plottingData = [
 class VictoryPlots extends Component {
   constructor(props) {
     super(props);
-    console.log("What are my props:", this.props);
     this.state = {
       processed: plottingData,
       count: 2,
@@ -34,48 +33,24 @@ class VictoryPlots extends Component {
 
   }
 
-  update() {
-    console.log("COUNT BEFORE:", this.state.count);
-    this.setState({count: this.state.count + 1}, function() {
-      console.log("COUNT AFTER:", this.state.count);
-
-    });
-    //this.setState({count : this.state.count + 1});
-  }
-
   processingData() {
     var processWaterData = []
-    // this.setState({ this.props.waterData: []});
 
     // // this.state.waterData.payload.then(function(response) {
     // //   console.log(response.data);
     // // })
-    console.log("Temp Value Before: ", this.props.waterData);
-    console.log("--------------------------");
-
-    // this.setState({ processed: processWaterData}, function() {
-    //   console.log("processed info before: ", this.state.processed);
-    //   return processWaterData;
-    // });
 
     for (var i = 0; i < this.props.waterData.length; i++) {
       processWaterData.push({x: this.props.waterData[i].year, y: this.props.waterData[i].value });
     }
 
     this.setState({ processed: processWaterData}, function() {
-      console.log("processed info after: ", this.props.waterData);
+      // console.log("processed info after: ", this.props.waterData);
       if (this.props.waterData.length > 1) {
-        console.log("Length of the waterData:", this.props.waterData.length);
+        // console.log("Length of the waterData:", this.props.waterData.length);
         this.props.waterData.splice(0, this.props.waterData.length);
       }
     });
-
-
-
-    // this.setState({ processed: processed}, function() {
-    //   console.log("SET State", this.state.processed);
-    // });
-
   }
 
   getData() {
@@ -88,12 +63,9 @@ class VictoryPlots extends Component {
     });
   }
 
-  // data= { this.state.data } />
-  // this.props.getWaterData();
-
   onInputChange(pCountry) {
     this.setState({countryId: pCountry}, function() {
-      console.log("countryID: ", this.state.countryId);
+      // console.log("countryID: ", this.state.countryId);
     });
 
   }
@@ -112,7 +84,7 @@ class VictoryPlots extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-md-2">
 
         <div>
           <input value = { this.state.countryId }
@@ -130,21 +102,13 @@ class VictoryPlots extends Component {
       </button>
 
       <VictoryChart>
-      <VictoryBar
-        data = { this.state.processed }
-        dataAttributes= {[
-          {fill: "cornflowerblue"}
-        ]}
-      />
+        <VictoryBar
+          data = { this.state.processed }
+          dataAttributes= {[
+            {fill: "cornflowerblue"}
+          ]}
+        />
       </VictoryChart>
-      <VictoryLine
-        style = {{data: this.state.style}}
-        data = { this.state.processed }
-        dataAttributes= {[
-          {fill: "red"}
-        ]}
-      />
-
     </div>
     );
 
