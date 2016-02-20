@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getNews } from '../actions/get_news_feed';
+import { clearNews } from '../actions/clear_news_feed';
 
 class NewsOutlet extends Component {
 
   constructor(props) {
     super(props);
 
-    this.state = { feed: '' };
-    this.state.feed;
+    this.state = {
+      visible: false,
+    };
+
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
 
     // console.log('inside the constructor', this.props);
   }
@@ -29,20 +34,47 @@ class NewsOutlet extends Component {
     // this.props.newsFeed = [];
   }
 
-  render() {
-    if (this.props.newsFeed.response) {
-      // console.log('passing conditional in news Outlet');
-      return (
-        <div className="col-md-2 newsfeed-feed">
-        <h1>News Feed</h1>
-        { this.showStory() }
-        </div>
-      );
-    } else {
-      return <div></div>;
-    }
+  show() {
+    this.setState({ visible: true });
   }
 
+  hide() {
+    this.setState({ visible: false });
+  }
+
+  clearFeed() {
+    // console.log('clear feed is being called');
+    this.props.clearNews();
+  }
+
+  render() {
+    if (this.state.visible) {
+      // console.log('visiblity set to true');
+      if (this.props.newsFeed.response) {
+        // console.log('passing conditional in news Outlet');
+        return (
+          <div className="col-md-2 newsfeed-feed">
+          <h1 onClick= {
+            this.clearFeed.bind(this),
+            this.hide.bind(this)
+          }>News Feed</h1>
+          { this.showStory() }
+          </div>
+        );
+
+      }
+
+    }
+
+    if (!this.state.visible) {
+      // console.log('visiblity set to false');
+      return <div>
+      <h1 onClick={this.show.bind(this)}>News Feed</h1>
+      </div>;
+
+    }
+
+  }
 }
 
 function mapStateToProps({ newsFeed }) {
@@ -50,7 +82,7 @@ function mapStateToProps({ newsFeed }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getNews }, dispatch);
+  return bindActionCreators({ getNews, clearNews }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsOutlet);

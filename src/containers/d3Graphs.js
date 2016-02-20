@@ -25,103 +25,97 @@ class VictoryPlots extends Component {
     super(props);
     this.state = {
       processed: plottingData,
-      count: 2,
-      countryId: 1,
-      style: this.getStyles(),
-      // waterData: getWaterData(),
+      visible: false,
+
     };
+
+    this.processingData = this.processingData.bind(this);
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
+
+    // console.log('this is testing props', this.props.waterData);
 
   }
 
   processingData() {
-    var processWaterData = []
+    var processWaterData = [];
 
-    // // this.state.waterData.payload.then(function(response) {
-    // //   console.log(response.data);
-    // // })
+    // console.log('this is the length of waterData', this.props.waterData.length);
+    // console.log('this is the content of waterData', this.props.waterData[1].category, this.props.waterData[51]);
+    // console.log('this is the content of processWaterData', processWaterData);
 
     for (var i = 0; i < this.props.waterData.length; i++) {
-      processWaterData.push({x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+      if (this.props.waterData[i].category === 'Water Pollution') {
+        processWaterData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+      }
     }
 
-    this.setState({ processed: processWaterData}, function() {
-      // console.log("processed info after: ", this.props.waterData);
-      if (this.props.waterData.length > 1) {
-        // console.log("Length of the waterData:", this.props.waterData.length);
-        this.props.waterData.splice(0, this.props.waterData.length);
-      }
-    });
+    // console.log('new length of processWaterData', processWaterData);
+    this.setState({ processed: processWaterData });
   }
 
-  getData() {
-    // console.log('Printing the Water Data', waterData);
-    return _.map(plottingData, (dataPoint) => {
-      return {
-        x: dataPoint.x,
-        y: dataPoint.y,
-      };
-    });
-  }
-
-  onInputChange(pCountry) {
-    this.setState({countryId: pCountry}, function() {
-      // console.log("countryID: ", this.state.countryId);
-    });
+  show() {
+    this.setState({ visible: true });
 
   }
 
-  getStyles() {
-    const colors = [
-      "red", "orange", "magenta",
-      "gold", "blue", "purple"
-    ];
-    return {
-      stroke: colors[_.random(0, 5)],
-      strokeWidth: _.random(1, 5)
-    };
+  hide() {
+    this.setState({ visible: false });
   }
 
-
+  // this.hide.bind(this)
+  // <h4 onClick = { this.onInputChange(this.props.waterData.localeId)}>some</h4>
   render() {
-    return (
-      <div className="col-md-2">
+    // console.log('this is  the result of array is array', Array.isArray(this.props.waterData));
+    if (this.state.visible) {
+      // console.log('the visibilty state is true');
+      if (Array.isArray(this.props.waterData)) {
+        return (
+          <div className="col-md-2">
+          <div>
+          <h3 onClick= {
+            this.processingData.bind(this)
+          }>Process</h3>
+          </div>
 
-        <div>
-          <input value = { this.state.countryId }
-          onChange = { event => this.onInputChange(event.target.value)} />
-        </div>
+          <h5 onClick={this.hide.bind(this)}>close</h5>
 
-      <Link to="/">Main</Link>
+          <VictoryChart>
+          <VictoryBar
 
-      <button onClick = { this.processingData.bind(this) } >
-      Plot Graph
-      </button>
-
-      <button onClick = { () => { this.props.getWaterData(this.state.countryId);}}>
-      Water Data
-      </button>
-
-      <VictoryChart>
-        <VictoryBar
           data = { this.state.processed }
           dataAttributes= {[
-            {fill: "cornflowerblue"}
+            { fill: 'cornflowerblue' },
           ]}
-        />
-      </VictoryChart>
-    </div>
-    );
+          />
+          </VictoryChart>
+          </div>
+        );
 
+      }
+
+    }
+
+    if (!this.state.visible) {
+      // console.log('the visibilty state is false');
+      return <div>
+      <h3 onClick={this.show.bind(this)}>Process</h3>
+      </div>;
+
+    }
   }
+
 }; // End of Component
 
+// <button onClick = { this.processingData.bind(this) } >
+// Plot Graph
+// </button>
 function mapStateToProps({ waterData }) {
-  // console.log('WATER STATE:', { waterData });
   return { waterData };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getWaterData: getWaterData }, dispatch);
+  return bindActionCreators({ getWaterData }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VictoryPlots);
