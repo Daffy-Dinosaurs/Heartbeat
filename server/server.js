@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
     }).listen(process.env.PORT || 8080, function(err) {
       if (err) { console.log(err); };
 
-      console.log('Listening at localhost:8080');
+      console.log('Listening at localhost:', process.env.PORT);
     });
 } else {
 
@@ -60,7 +60,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // console.log(__dirname + '/../index.html');
-app.listen(port);
+// app.listen(port);
 
 // we start a webpack-dev-server with our config
 
