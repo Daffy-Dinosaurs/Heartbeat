@@ -66,9 +66,9 @@ class VictoryPlots extends Component {
   // this.hide.bind(this)
   // <h4 onClick = { this.onInputChange(this.props.waterData.localeId)}>some</h4>
   render() {
-    console.log('this is  the result of array is array', Array.isArray(this.props.waterData));
+    // console.log('this is  the result of array is array', Array.isArray(this.props.waterData));
     if (this.state.visible) {
-      console.log('the visibilty state is true');
+      // console.log('the visibilty state is true');
       if (Array.isArray(this.props.waterData)) {
         return (
           <div className="col-md-2">
@@ -97,7 +97,7 @@ class VictoryPlots extends Component {
     }
 
     if (!this.state.visible) {
-      console.log('the visibilty state is false');
+      // console.log('the visibilty state is false');
       return <div>
       <h3 onClick={this.show.bind(this)}>Process</h3>
       </div>;
