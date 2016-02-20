@@ -3,8 +3,7 @@ var mysql = require('mysql');
 var CountryStatistic = require('./country-stats-model.js');
 
 //TODO: Am I adding the instantion of the database in the wrong file?
-
-var sequelize = new Sequelize('worldMapDB', 'root', '', {
+var connection = process.env.CLEARDB_DATABASE_URL || {
   host: 'localhost',
   dialect: 'mysql',
 
@@ -14,7 +13,8 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
     idle: 1000,
   },
 
-});
+}
+var sequelize = new Sequelize('worldMapDB', 'root', '', connection);
 
 //TODO: These methods successfully perform our CRUD operations
 
