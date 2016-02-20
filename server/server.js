@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
 
   var WebpackDevServer = require('webpack-dev-server');
-  
+
   new WebpackDevServer(webpack(config), {
       hot: true,
       historyApiFallback: true,
