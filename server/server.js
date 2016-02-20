@@ -10,7 +10,7 @@ var Sequelize = require('sequelize');
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
-var WebpackDevServer = require('webpack-dev-server');
+// var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
