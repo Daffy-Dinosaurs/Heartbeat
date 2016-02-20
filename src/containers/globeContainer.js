@@ -2,11 +2,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import d3 from 'd3';
-import d3Globe from '../components/d3';
+import worldGlobe from '../components/world_view.js';
 
 class Globe extends Component {
   componentDidMount() {
-    d3Globe.go();
+    worldGlobe.go();
+
+    // console.log("first render");
 
     // PASS THIS TO D3 GLOBE
     // this.props.activeCountry.localeId
@@ -14,8 +16,9 @@ class Globe extends Component {
   }
 
   renderGlobe() {
-    // console.log('Globe Props: ', this.props.globeCountry);
-    d3Globe.go(this.props.globeCountry.localeId);
+    worldGlobe.go(this.props.globeCountry);
+
+    // console.log("I am rendering again ");
   }
 
   render() {
@@ -23,7 +26,7 @@ class Globe extends Component {
       return <div> Country not selected. </div>;
     } else {
       return (
-        <h1 className="globeTitle" > { this.renderGlobe() } </h1>
+        <h1>{ this.renderGlobe() }</h1>
       );
     }
   }

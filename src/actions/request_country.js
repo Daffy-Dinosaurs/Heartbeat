@@ -8,7 +8,6 @@ export function requestCountries() {
   const url = '//localhost:3001/api/countries';
   const request = axios.get(url);
 
-  // console.log('PROMISE:', request);
 
   return {
     type: REQUEST_COUNTRIES,

@@ -9,5 +9,9 @@ export default function(state = intialState, action) {
     return action.payload.data;
   }
 
+  if (action.type === 'ClEAR_NEWS') {
+    return intialState;
+  }
+
   return state;
 }

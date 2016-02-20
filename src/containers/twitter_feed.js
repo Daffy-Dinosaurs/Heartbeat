@@ -9,12 +9,18 @@ class TwitterFeed extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { feed: '' };
-    this.state.feed;
+    this.state = {
+      visible: false,
+    };
+
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
+
   }
 
   renderTweets() {
     if (this.props.twitterFeed.length > 1) {
+
       // console.log('array size is larger than 1');
       this.props.twitterFeed.shift();
     }
@@ -39,21 +45,42 @@ class TwitterFeed extends Component {
     this.props.clearTweets();
   }
 
+  show() {
+    this.setState({ visible: true });
+  }
+
+  hide() {
+    this.setState({ visible: false });
+  }
+
   render() {
 
-    if (this.props.twitterFeed.statuses) {
-      // console.log('passes second conditional', this.props.twitterFeed.statuses);
-      return (
-        <div className="col-md-2 tweet-feed">
-        <h1 onClick= {this.clearTweet.bind(this)}>Tweets</h1>
-           { this.renderTweets() }
-        </div>
-      );
-    } else {
-      return <div></div>;
+    if (this.state.visible) {
+      // console.log('visiblity set to true');
+      if (this.props.twitterFeed.statuses) {
+        // console.log('passes second conditional');
+        return (
+          <div className="col-md-2 tweet-feed">
+          <h1 onClick= {
+            this.clearTweet.bind(this),
+            this.hide.bind(this)
+          }>Tweets</h1>
+          { this.renderTweets() }
+          </div>
+        );
+      }
+
+    }
+
+    if (!this.state.visible) {
+      // console.log('visiblity set to false');
+      return <div>
+      <h1 onClick={this.show.bind(this)}>Tweets</h1>
+      </div>;
     }
 
   }
+
 }
 
 function mapStateToProps({ twitterFeed }) {
