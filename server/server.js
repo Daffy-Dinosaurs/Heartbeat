@@ -42,6 +42,21 @@ if (process.env.NODE_ENV === 'production') {
 
       console.log('Listening at localhost:8080');
     });
+} else {
+
+  new WebpackDevServer(webpack(config), {
+      hot: true,
+      historyApiFallback: true,
+      proxy: {
+        '*': 'http://localhost:3000',
+      },
+    }).listen(3001, 'localhost', function(err, result) {
+      if (err) {
+        console.log(err);
+      }
+
+      console.log('Listening at localhost:3001');
+    });
 }
 
 // console.log(__dirname + '/../index.html');
@@ -49,19 +64,7 @@ app.listen(port);
 
 // we start a webpack-dev-server with our config
 
-new WebpackDevServer(webpack(config), {
-    hot: true,
-    historyApiFallback: true,
-    proxy: {
-      '*': 'http://localhost:3000',
-    },
-  }).listen(3001, 'localhost', function(err, result) {
-    if (err) {
-      console.log(err);
-    }
 
-    console.log('Listening at localhost:3001');
-  });
 
 // get all countries
 app.get('/api/countries', function(req, res) {
