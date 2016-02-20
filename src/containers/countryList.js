@@ -15,6 +15,7 @@ class CountryList extends Component {
 
     this.state = { term: this.props.requestCountries() };
     this.state.term;
+
     // console.log('BOOM countrylist');
   }
 
@@ -31,7 +32,7 @@ class CountryList extends Component {
               this.props.globeAction(country);
               this.props.getTweets(country);
               this.props.getNews(country);
-              this.props.getWaterData(country.localeID);
+              this.props.getWaterData(country.id);
             }}>
             <a href='#'>{ country.countryName }</a>
           </li>

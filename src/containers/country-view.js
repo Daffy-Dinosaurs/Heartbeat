@@ -45,7 +45,7 @@ class ActiveCountry extends Component {
           <h1 onClick= {
             this.changeProps.bind(this),
             this.hide.bind(this)
-          }>{ this.props.activeCountry.countryName }</h1>
+          }> {this.props.activeCountry.countryName}</h1>
           <li className="country-view">
           { this.renderScreen() }
           </li>

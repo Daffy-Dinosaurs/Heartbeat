@@ -46,15 +46,14 @@ export default class App extends Component{
         <div className="col-md-8 globe">
           <Globe />
         </div>
-        <VictoryPlots />;
         <ActiveCountry />
+        <VictoryPlots />
         <NewsOutlet />
         <TwitterFeed />
       </div>
     );
   }
 }
-
 
 // <button onClick= {this.showLeft}>Show Left Menu</button>
 // <button onClick= {this.showRight}>Show Right Menu </button>

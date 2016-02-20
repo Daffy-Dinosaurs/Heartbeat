@@ -25,27 +25,29 @@ class VictoryPlots extends Component {
     super(props);
     this.state = {
       processed: plottingData,
-      count: 2,
-      countryId: 1,
-      style: this.getStyles(),
 
     };
 
-    console.log('this is testing props', this.props.waterData);
+    this.processingData = this.processingData.bind(this);
+
+    // console.log('this is testing props', this.props.waterData);
 
   }
 
   processingData() {
     var processWaterData = [];
 
-    // // this.state.waterData.payload.then(function(response) {
-    // //   console.log(response.data);
-    // // })
+    // console.log('this is the length of waterData', this.props.waterData.length);
+    // console.log('this is the content of waterData', this.props.waterData[1].category, this.props.waterData[51]);
+    // console.log('this is the content of processWaterData', processWaterData);
 
     for (var i = 0; i < this.props.waterData.length; i++) {
-      processWaterData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+      if (this.props.waterData[i].category === 'Water Pollution') {
+        processWaterData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+      }
     }
 
+    // console.log('new length of processWaterData', processWaterData);
     this.setState({ processed: processWaterData }, function () {
       // console.log("processed info after: ", this.props.waterData);
       if (this.props.waterData.length > 1) {
@@ -55,55 +57,34 @@ class VictoryPlots extends Component {
     });
   }
 
-  getData() {
-    // console.log('Printing the Water Data', waterData);
-    return _.map(plottingData, (dataPoint) => {
-      return {
-        x: dataPoint.x,
-        y: dataPoint.y,
-      };
-    });
-  }
 
-  onInputChange(pCountry) {
-    this.setState({ countryId: pCountry }, function () {
-      // console.log("countryID: ", this.state.countryId);
-    });
 
-  }
-
-  getStyles() {
-    const colors = [
-      'red', 'orange', 'magenta',
-      'gold', 'blue', 'purple',
-    ];
-    return {
-      stroke: colors[_.random(0, 5)],
-      strokeWidth: _.random(1, 5),
-    };
-  }
-
+  // <h4 onClick = { this.onInputChange(this.props.waterData.localeId)}>some</h4>
   render() {
-    console.log('this is waterdata ', this.props.waterdata);
-    return (
-      <div className="col-md-2">
+    console.log('this is  the result of array is array', Array.isArray(this.props.waterData));
+    if (Array.isArray(this.props.waterData)) {
+      return (
+        <div className="col-md-2">
 
         <div>
-          <input value = { this.state.countryId }
-          onChange = { event => this.onInputChange(event.target.value)} />
+        <h3 onClick= {this.processingData.bind(this)}>Process</h3>
         </div>
 
-      <VictoryChart>
+        <VictoryChart>
         <VictoryBar
 
-          data = { this.state.processed }
-          dataAttributes= {[
-            { fill: 'cornflowerblue' },
-          ]}
+        data = { this.state.processed }
+        dataAttributes= {[
+          { fill: 'cornflowerblue' },
+        ]}
         />
-      </VictoryChart>
-    </div>
-    );
+        </VictoryChart>
+        </div>
+      );
+
+    } else {
+      return <div></div>;
+    }
 
   }
 }; // End of Component
