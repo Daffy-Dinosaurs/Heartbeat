@@ -25,10 +25,13 @@ class VictoryPlots extends Component {
     super(props);
     this.state = {
       processed: plottingData,
+      visible: false,
 
     };
 
     this.processingData = this.processingData.bind(this);
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
 
     // console.log('this is testing props', this.props.waterData);
 
@@ -48,45 +51,60 @@ class VictoryPlots extends Component {
     }
 
     // console.log('new length of processWaterData', processWaterData);
-    this.setState({ processed: processWaterData }, function () {
-      // console.log("processed info after: ", this.props.waterData);
-      if (this.props.waterData.length > 1) {
-        // console.log("Length of the waterData:", this.props.waterData.length);
-        this.props.waterData.splice(0, this.props.waterData.length);
-      }
-    });
+    this.setState({ processed: processWaterData });
   }
 
+  show() {
+    this.setState({ visible: true });
 
+  }
 
+  hide() {
+    this.setState({ visible: false });
+  }
+
+  // this.hide.bind(this)
   // <h4 onClick = { this.onInputChange(this.props.waterData.localeId)}>some</h4>
   render() {
     console.log('this is  the result of array is array', Array.isArray(this.props.waterData));
-    if (Array.isArray(this.props.waterData)) {
-      return (
-        <div className="col-md-2">
+    if (this.state.visible) {
+      console.log('the visibilty state is true');
+      if (Array.isArray(this.props.waterData)) {
+        return (
+          <div className="col-md-2">
+          <div>
+          <h3 onClick= {
+            this.processingData.bind(this)
+          }>Process</h3>
+          </div>
 
-        <div>
-        <h3 onClick= {this.processingData.bind(this)}>Process</h3>
-        </div>
+          <h5 onClick={this.hide.bind(this)}>close</h5>
 
-        <VictoryChart>
-        <VictoryBar
+          <VictoryChart>
+          <VictoryBar
 
-        data = { this.state.processed }
-        dataAttributes= {[
-          { fill: 'cornflowerblue' },
-        ]}
-        />
-        </VictoryChart>
-        </div>
-      );
+          data = { this.state.processed }
+          dataAttributes= {[
+            { fill: 'cornflowerblue' },
+          ]}
+          />
+          </VictoryChart>
+          </div>
+        );
 
-    } else {
-      return <div></div>;
+      }
+
     }
 
+    if (!this.state.visible) {
+      console.log('the visibilty state is false');
+      return <div>
+      <h3 onClick={this.show.bind(this)}>Process</h3>
+      </div>;
+
+    }
   }
+
 }; // End of Component
 
 // <button onClick = { this.processingData.bind(this) } >
