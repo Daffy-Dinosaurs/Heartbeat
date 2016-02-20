@@ -29,7 +29,7 @@ var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
 
-if (process.env.NODE_ENV === 'productions') {
+if (process.env.NODE_ENV === 'production') {
   var static_path = path.join(__dirname, 'public');
 
   app.use(express.static(static_path))
