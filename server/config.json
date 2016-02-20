@@ -20,7 +20,6 @@
     "password": "d9778676",
     "database": "heroku_0290dbccabb07ee",
     "host": "us-cdbr-iron-east-03.cleardb.net",
-    "dialect": "mysql",
-    "use_env_variable": "mysql://bf6e21f99a7eae:d9778676@us-cdbr-iron-east-03.cleardb.net/heroku_0290dbccabb07ee?reconnect=true"
+    "dialect": "mysql"
   }
 }
