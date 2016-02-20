@@ -11,7 +11,6 @@ var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
 
-
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
 //////////////////////////////////////////
@@ -45,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
 
   var WebpackDevServer = require('webpack-dev-server');
-
+  
   new WebpackDevServer(webpack(config), {
       hot: true,
       historyApiFallback: true,
@@ -55,14 +54,17 @@ if (process.env.NODE_ENV === 'production') {
     }).listen(3001, 'localhost', function(err, result) {
       if (err) {
         console.log(err);
+      } else {
+        console.log('Listening at localhost:3001');
       }
 
-      console.log('Listening at localhost:3001');
     });
+
+    app.listen(port);
 }
 
 // console.log(__dirname + '/../index.html');
-// app.listen(port);
+
 
 // we start a webpack-dev-server with our config
 

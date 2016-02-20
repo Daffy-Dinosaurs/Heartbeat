@@ -62,6 +62,7 @@
     "mysql": "^2.10.2",
     "node-env-file": "^0.1.8",
     "node-libs-browser": "^0.5.2",
+    "nodemon": "^1.9.0",
     "octicons": "^2.2.0",
     "postcss-loader": "^0.5.0",
     "qs": "^3.1.0",
