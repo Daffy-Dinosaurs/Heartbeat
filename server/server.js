@@ -10,7 +10,7 @@ var Sequelize = require('sequelize');
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
-// var WebpackDevServer = require('webpack-dev-server');
+
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
@@ -43,6 +43,8 @@ if (process.env.NODE_ENV === 'production') {
       console.log('Listening at localhost:', process.env.PORT);
     });
 } else {
+
+  var WebpackDevServer = require('webpack-dev-server');
 
   new WebpackDevServer(webpack(config), {
       hot: true,
