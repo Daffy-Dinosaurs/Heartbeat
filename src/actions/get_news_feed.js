@@ -7,7 +7,7 @@ export function getNews(country) {
 
   let fixedName = country.countryName.replace(' ', '+');
 
-  // console.log('this is fixedName', fixedName);
+  console.log('API KEY:', API.guardian.API_KEY);
 
   const url = 'http://content.guardianapis.com/search?section=environment&q=' + fixedName + '&api-key=' + API.guardian.API_KEY;
 

@@ -179,3 +179,8 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
+
+
+///////////////////////////////////////////////////////////////////
+// Set up Request for the News Feed from the Guardian            //
+///////////////////////////////////////////////////////////////////
