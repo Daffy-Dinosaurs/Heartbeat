@@ -11,6 +11,7 @@ class NewsOutlet extends Component {
 
     this.state = {
       visible: false,
+      newsFeed: ''
     };
 
     this.show = this.show.bind(this);
@@ -22,6 +23,8 @@ class NewsOutlet extends Component {
   showStory() {
     // console.log('inside of the newOutlet', this.props.newsFeed);
     // console.log(Math.random());
+
+
     return this.props.newsFeed.response.results.map((article) => {
       return (
         <div className='newsfeed'>
@@ -48,6 +51,10 @@ class NewsOutlet extends Component {
   }
 
   render() {
+
+    console.log("NEWS FEED PROPS:", this.props);
+    console.log("++++++++++++ BUNDLE JS IN PUBLIC FOLDER ++++++++");
+
     if (this.state.visible) {
       // console.log('visiblity set to true');
       if (this.props.newsFeed.response) {
@@ -68,9 +75,11 @@ class NewsOutlet extends Component {
 
     if (!this.state.visible) {
       // console.log('visiblity set to false');
-      return <div>
-      <h1 onClick={this.show.bind(this)}>News Feed</h1>
-      </div>;
+      return (
+        <div>
+          <h1 onClick={this.show.bind(this)}>News Feed</h1>
+        </div>
+      );
 
     }
 

@@ -2,7 +2,6 @@ var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
 var bodyParser = require('body-parser');
-var WebpackDevServer = require('webpack-dev-server');
 var config = require('../webpack.config.js');
 var model = require('./models/index.js');
 var Sequelize = require('sequelize');
