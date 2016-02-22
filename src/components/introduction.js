@@ -31,9 +31,14 @@ class Intro extends Component {
 
     if (this.state.visible) {
       return (
-        <div>
+        <div className='.overlay'>
           <h1 onClick = { this.hideIntro.bind(this) }>Intro</h1>
-        <p>Its working</p>
+
+          <h2>Welcome</h2>
+          <p>We are please to share with you HeartBeat.</p>
+          <p>An application that aims to bring awareness to the awareness of important issues of our day. In this application we have highlighted three core issues that we focus our tool on.</p>
+          <p>These issues are <strong>Poverty, Water Pollution, and Food Scarcity</strong>. </p>
+          <p>We hope that by showing you the interelationship of these issues that you might find that in reality they are not isolated topics</p>
         </div>
       );
     }

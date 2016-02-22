@@ -45,7 +45,7 @@ class VictoryPlots extends Component {
     // console.log('this is the content of processWaterData', processWaterData);
 
     for (var i = 0; i < this.props.waterData.length; i++) {
-      if (this.props.waterData[i].category === 'Water Pollution') {
+      if (this.props.waterData[i].category === 'Poverty') {
         processWaterData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
       }
     }
