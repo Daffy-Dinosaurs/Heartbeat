@@ -96,7 +96,7 @@ class VictoryPlots extends Component {
 
     }
 
-    if (!this.state.visible) {
+    if (!this.state.visible || (!this.state.waterData)) {
       console.log('the visibilty state is false');
       return <div>
       <h3 onClick={this.show.bind(this)}>Process</h3>

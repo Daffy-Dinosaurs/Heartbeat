@@ -52,7 +52,7 @@ class NewsOutlet extends Component {
 
   render() {
 
-    console.log("NEWS FEED PROPS:", this.props);
+    console.log("NEWS FEED PROPS:", this.props.newsFeed);
     console.log("++++++++++++ BUNDLE JS IN PUBLIC FOLDER ++++++++");
 
     if (this.state.visible) {
@@ -73,7 +73,7 @@ class NewsOutlet extends Component {
 
     }
 
-    if (!this.state.visible) {
+    if (!this.state.visible || (Object.keys(this.props.newsFeed).length === 0 ) ) {
       // console.log('visiblity set to false');
       return (
         <div>
@@ -82,6 +82,8 @@ class NewsOutlet extends Component {
       );
 
     }
+
+
 
   }
 }
