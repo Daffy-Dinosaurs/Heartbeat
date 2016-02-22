@@ -9,6 +9,7 @@ import Intro from './introduction';
 import Menu from './menu';
 import MenuItem from './menu_items';
 import NewsOutlet from '../containers/news_outlet';
+// import Land from '../components/world_view.js';
 
 //Globe
 
@@ -38,8 +39,6 @@ export default class App extends Component{
     // console.log('Rendering the Main Page');
     return (
       <div className="main">
-        <Link to="/d3Graphs">Graphs</Link>
-        <Link to="/sandbox/jon">Jon Sandbox</Link>
         <CountryList />
         <Intro />
         <div className="col-md-8 globe">

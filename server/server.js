@@ -74,6 +74,17 @@ app.get('/api/countries', function(req, res) {
   });
 });
 
+app.get('/api/countries/:localeId', function(req, res) {
+  console.log("this is my initial req", req.body)
+  model.Country.findOne({where: {localeId: req.params.localeId}}).then(function(country) {
+    if (country) {
+      res.status(200).send(country);
+    } else {
+      res.status(404).send('Not Found');
+    }
+  });
+});
+
 // get all stats
 app.get('/api/statistics', function(req, res) {
   model.CountryStatistic.findAll({}).then(function(stats) {
