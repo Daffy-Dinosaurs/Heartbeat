@@ -54,8 +54,6 @@ fs.readFile(__dirname + '/../Datasets/Improved_Water_Resource.json', 'utf-8', fu
               value: obj[statKeys[count]],
               category: 'Water Pollution',
               CountryId: country.id,
-              createdAt: new Date(),
-              updatedAt: new Date()
             });
             }
 
