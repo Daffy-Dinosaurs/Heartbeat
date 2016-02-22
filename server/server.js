@@ -15,6 +15,8 @@ var WebpackDevServer = require('webpack-dev-server');
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
 
+// var data = require('./extraction_food_scarcity.js');
+
 // var data = require('./extraction_poverty.js');
 
 //////////////////////////////////////////
@@ -108,7 +110,7 @@ app.get('/api/statistics/:CountryId', function (req, res) {
     include:[{
       model: model.Country,
       as: model.Country.id,
-    },],
+    }, ],
   }).then(function (stats) {
     if (stats) {
       res.status(200).send(stats);
