@@ -12,7 +12,7 @@ var request = require('request');
 var env = require('node-env-file');
 
 ////////For data extraction only//////////
-// var data = require('./extraction.js');
+//var data = require('./extraction_prevalence_of_undernourishment.js');
 //////////////////////////////////////////
 
 

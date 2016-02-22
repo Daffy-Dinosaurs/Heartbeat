@@ -23,14 +23,10 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
 
   //CREATES and APPENDS canvas element to first ".container" elem on DOM tree, returns arr [canvas]
   if (d3.selectAll('canvas')[0].length < 1) {
-    console.log('THERE WAS NO CANVAS');
-    console.log(d3.selectAll('canvas'));
-
     var canvas = d3.select('.globe').append('canvas')
     .attr('width', width)
     .attr('height', height);
   } else {
-    console.log('THERE ALREADY WAS THE CANVAS');
     var canvas = d3.selectAll('canvas');
   }
 
@@ -44,7 +40,6 @@ d3Globe.go = function(id) { //function runs the boilerplate d3 code
       .context(c); //
 
   var title = d3.select('.none');
-console.log('????????????????????????',world)
   ready(world, names);
 
   function ready(world, names, error) {
@@ -57,7 +52,7 @@ console.log('????????????????????????',world)
 
     var i = -1;
     var n = countries.length;
-    console.log(">>>>>>>>>>>all",countries)
+    //console.log(">>>>>>>>>>>all",countries)
 
     var countries = countries.filter(function(d) {
       return names.some(function(n) {
@@ -67,22 +62,20 @@ console.log('????????????????????????',world)
       return a.name.localeCompare(b.name);
     });
 
-    console.log(countries);
-
     function transition(id) {
 
       var selectCountry = _.filter(countries, function (country){
         if (country.id === id){
-          console.log(">>>>>>>>>", country, country.id, id);
+
           return country;
         } else {
-          console.log("No Match");
+
         }
       })
 
-      console.log("This is the selected country:", selectCountry, Array.isArray(selectCountry));
 
-      console.log("this________",id)
+
+
       d3.transition()
           .duration(1250)
           .each('start', function() { //transition event listener
@@ -98,10 +91,10 @@ console.log('????????????????????????',world)
             myCountry = selectCountry[0]
           }
 
-          console.log("ccccccc",myCountry)
+
             var p = d3.geo.centroid(myCountry), //returns sphere centroid of current country object
                 r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]); //returns interpolation from point a (current rotation) to point b (array of two values)
-            console.log('p', p, 'r', r, 'i', i, [-p[0], -p[1]]);
+
             return function(t) {
               projection.rotate(r(t));
               c.clearRect(0, 0, width, height);

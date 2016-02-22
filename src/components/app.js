@@ -19,7 +19,6 @@ class App extends Component{
   //getInitialState
 
   render() {
-    console.log('Rendering the Main Page');
     return (
       <div className="main">
         <Link to="/d3Graphs">Graphs</Link>
