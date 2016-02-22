@@ -2,7 +2,6 @@ var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
 var bodyParser = require('body-parser');
-var WebpackDevServer = require('webpack-dev-server');
 var config = require('../webpack.config.js');
 var model = require('./models/index.js');
 var Sequelize = require('sequelize');
@@ -10,7 +9,6 @@ var Sequelize = require('sequelize');
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
-var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
@@ -34,7 +32,7 @@ var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
 
-if (process.env.NODE_ENV === 'productions') {
+if (process.env.NODE_ENV === 'production') {
   var static_path = path.join(__dirname, 'public');
 
   app.use(express.static(static_path))
@@ -45,28 +43,29 @@ if (process.env.NODE_ENV === 'productions') {
     }).listen(process.env.PORT || 8080, function (err) {
       if (err) { console.log(err); };
 
-      console.log('Listening at localhost:8080');
+      console.log('Listening at localhost:', process.env.PORT);
     });
+} else {
+
+  var WebpackDevServer = require('webpack-dev-server');
+
+  new WebpackDevServer(webpack(config), {
+      hot: true,
+      historyApiFallback: true,
+      proxy: {
+        '*': 'http://localhost:3000',
+      },
+    }).listen(3001, 'localhost', function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Listening at localhost:3001');
+      }
+
+    });
+
+    app.listen(port);
 }
-
-// console.log(__dirname + '/../index.html');
-app.listen(port);
-
-// we start a webpack-dev-server with our config
-
-new WebpackDevServer(webpack(config), {
-    hot: true,
-    historyApiFallback: true,
-    proxy: {
-      '*': 'http://localhost:3000',
-    },
-  }).listen(3001, 'localhost', function (err, result) {
-    if (err) {
-      console.log(err);
-    }
-
-    console.log('Listening at localhost:3001');
-  });
 
 // get all countries
 app.get('/api/countries', function (req, res) {
@@ -182,3 +181,8 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
+
+
+///////////////////////////////////////////////////////////////////
+// Set up Request for the News Feed from the Guardian            //
+///////////////////////////////////////////////////////////////////
