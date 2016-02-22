@@ -9,7 +9,7 @@ export function getNews(country) {
 
   console.log('API KEY:', API.guardian.API_KEY);
 
-  const url = 'http://content.guardianapis.com/search?section=environment&q=' + fixedName + '&api-key=' + API.guardian.API_KEY;
+  const url = 'https://content.guardianapis.com/search?section=environment&q=' + fixedName + '&api-key=' + API.guardian.API_KEY;
 
   // console.log('this is url', url);
   const request = axios.get(url);
