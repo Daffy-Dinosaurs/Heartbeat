@@ -17,13 +17,9 @@ class NewsOutlet extends Component {
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
 
-    // console.log('inside the constructor', this.props);
   }
 
   showStory() {
-    // console.log('inside of the newOutlet', this.props.newsFeed);
-    // console.log(Math.random());
-
 
     return this.props.newsFeed.response.results.map((article) => {
       return (
@@ -46,14 +42,10 @@ class NewsOutlet extends Component {
   }
 
   clearFeed() {
-    // console.log('clear feed is being called');
     this.props.clearNews();
   }
 
   render() {
-
-    console.log("NEWS FEED PROPS:", this.props.newsFeed);
-    console.log("++++++++++++ BUNDLE JS IN PUBLIC FOLDER ++++++++");
 
     if (this.state.visible) {
       // console.log('visiblity set to true');
