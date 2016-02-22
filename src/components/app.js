@@ -4,32 +4,15 @@ import ActiveCountry from '../containers/country-view';
 import CountryList from '../containers/countryList';
 import TwitterFeed from '../containers/twitter_feed';
 import Globe from '../containers/globeContainer';
-<<<<<<< HEAD
-import ActiveCountry from '../containers/country-view';
+
 import Bar from '../containers/bar';
-=======
+
 
 import VictoryPlots from '../containers/d3Graphs';
 import Intro from './introduction';
 import Menu from './menu';
 import MenuItem from './menu_items';
 import NewsOutlet from '../containers/news_outlet';
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
-
-
-<<<<<<< HEAD
-
-
-//use componentDidMount to make the request for countryList
-//call getInitialState to initialize data for app
-
-//bring in all data once
-
-class App extends Component{
-  //getInitialState
-
-  render() {
-=======
 export default class App extends Component{
 
   constructor(props) {
@@ -56,7 +39,7 @@ export default class App extends Component{
   // <Link to="/sandbox/jon">Jon Sandbox</Link>
   render() {
     // console.log('Rendering the Main Page');
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
+
     return (
       <div className="main">
         <CountryList />
@@ -75,9 +58,6 @@ export default class App extends Component{
   }
 }
 
-<<<<<<< HEAD
-export default App
-=======
 // <button onClick= {this.showLeft}>Show Left Menu</button>
 // <button onClick= {this.showRight}>Show Right Menu </button>
 //
@@ -92,4 +72,3 @@ export default App
 //   <MenuItem hash='second-page'>Second Page</MenuItem>
 //   <MenuItem hash='third-page'>Third Page</MenuItem>
 // </Menu>
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf

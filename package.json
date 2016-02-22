@@ -4,13 +4,8 @@
   "description": "Thesis Project",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "start": "node server/server.js",
-    "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
-=======
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
     "start": "nodemon server/server.js",
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
     "frontend": "webpack-dev-server",
     "build": "webpack",
     "deploy": "",
@@ -75,11 +70,8 @@
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
     "react-dom": "^0.14.7",
-<<<<<<< HEAD
     "react-hot-loader": "^1.2.7",
     "react-rangeslider": "^1.0.0",
-=======
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
     "react-slider": "^0.6.1",

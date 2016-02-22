@@ -13,14 +13,9 @@ var env = require('node-env-file');
 var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
-<<<<<<< HEAD
 //var data = require('./extraction_prevalence_of_undernourishment.js');
-=======
 // var data = require('./extraction.js');
-
 // var data = require('./extraction_poverty.js');
-
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
 //////////////////////////////////////////
 
 
@@ -39,35 +34,22 @@ var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
 
-<<<<<<< HEAD
-
 
 if (process.env.NODE_ENV === 'production') {
-=======
-if (process.env.NODE_ENV === 'productions') {
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
   var static_path = path.join(__dirname, 'public');
 
   app.use(express.static(static_path))
     .get('/', function (req, res) {
       res.sendFile('index.html', {
-<<<<<<< HEAD
-        root: static_path
-      });
-    }).listen(process.env.PORT || 8080, function(err) {
-      if (err) { console.log(err)};
-=======
         root: static_path,
       });
     }).listen(process.env.PORT || 8080, function (err) {
       if (err) { console.log(err); };
-
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
       console.log('Listening at localhost:8080');
     });
 }
 
-<<<<<<< HEAD
+
 
 // Rendering the intial state of the app server sider
 // app.use(handleRender)
@@ -103,10 +85,7 @@ if (process.env.NODE_ENV === 'productions') {
 // }
 
 // console.log(__dirname + '/../index.html');
-
-=======
 // console.log(__dirname + '/../index.html');
->>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
 app.listen(port);
 
 // we start a webpack-dev-server with our config
