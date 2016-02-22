@@ -4,8 +4,13 @@
   "description": "Thesis Project",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "start": "node server/server.js",
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
+=======
+    "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
+    "start": "nodemon server/server.js",
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
     "frontend": "webpack-dev-server",
     "build": "webpack",
     "deploy": "",
@@ -51,6 +56,7 @@
     "imports-loader": "^0.6.5",
     "isomorphic-fetch": "^2.2.1",
     "json-loader": "^0.5.4",
+    "less": "^2.6.0",
     "local-links": "^1.4.0",
     "lodash.assign": "^3.2.0",
     "lodash.has": "^3.2.1",
@@ -69,8 +75,11 @@
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
     "react-dom": "^0.14.7",
+<<<<<<< HEAD
     "react-hot-loader": "^1.2.7",
     "react-rangeslider": "^1.0.0",
+=======
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
     "react-redux": "^4.4.0",
     "react-router": "^2.0.0",
     "react-slider": "^0.6.1",
@@ -89,13 +98,14 @@
     "url-loader": "^0.5.6",
     "victory": "^0.4.0",
     "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0",
     "whatwg-fetch": "^0.11.0",
     "xhr": "^2.0.2",
     "yeticss": "^6.0.7"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
-    "css-loader": "^0.15.6"
+    "css-loader": "^0.15.6",
+    "webpack-dev-server": "^1.9.0",
+    "react-hot-loader": "^1.2.7"
   }
 }

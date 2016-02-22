@@ -10,9 +10,17 @@ var Sequelize = require('sequelize');
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
+var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
+<<<<<<< HEAD
 //var data = require('./extraction_prevalence_of_undernourishment.js');
+=======
+// var data = require('./extraction.js');
+
+// var data = require('./extraction_poverty.js');
+
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
 //////////////////////////////////////////
 
 
@@ -23,28 +31,43 @@ var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 
 var app = express();
+
+// var isDevelopment = (process.env.NODE_ENV !== 'production');
 app.use(bodyParser());
 
 var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
 
+<<<<<<< HEAD
 
 
 if (process.env.NODE_ENV === 'production') {
+=======
+if (process.env.NODE_ENV === 'productions') {
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
   var static_path = path.join(__dirname, 'public');
 
   app.use(express.static(static_path))
     .get('/', function (req, res) {
       res.sendFile('index.html', {
+<<<<<<< HEAD
         root: static_path
       });
     }).listen(process.env.PORT || 8080, function(err) {
       if (err) { console.log(err)};
+=======
+        root: static_path,
+      });
+    }).listen(process.env.PORT || 8080, function (err) {
+      if (err) { console.log(err); };
+
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
       console.log('Listening at localhost:8080');
     });
 }
 
+<<<<<<< HEAD
 
 // Rendering the intial state of the app server sider
 // app.use(handleRender)
@@ -81,73 +104,75 @@ if (process.env.NODE_ENV === 'production') {
 
 // console.log(__dirname + '/../index.html');
 
+=======
+// console.log(__dirname + '/../index.html');
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
 app.listen(port);
 
 // we start a webpack-dev-server with our config
+
 new WebpackDevServer(webpack(config), {
-  hot: true,
-  historyApiFallback: true,
-  proxy: {
-    '*': 'http://localhost:3000',
-  },
-}).listen(3001, 'localhost', function(err, result) {
-  if (err) {
-    console.log(err);
-  }
+    hot: true,
+    historyApiFallback: true,
+    proxy: {
+      '*': 'http://localhost:3000',
+    },
+  }).listen(3001, 'localhost', function (err, result) {
+    if (err) {
+      console.log(err);
+    }
 
-  console.log('Listening at localhost:3001');
-});
-
+    console.log('Listening at localhost:3001');
+  });
 
 // get all countries
-app.get('/api/countries', function(req, res) {
-  model.Country.findAll({}).then(function(countries) {
+app.get('/api/countries', function (req, res) {
+  model.Country.findAll({}).then(function (countries) {
     if (countries) {
       res.status(200).send(countries);
     } else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
 
 // get all stats
-app.get('/api/statistics', function(req, res) {
-  model.CountryStatistic.findAll({}).then(function(stats) {
+app.get('/api/statistics', function (req, res) {
+  model.CountryStatistic.findAll({}).then(function (stats) {
     if (stats) {
       res.status(200).send(stats);
     } else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
 
-
 // Get individual Country Name
-app.get('/api/countries/:countryName', function(req, res) {
-  model.Country.findOne({ where: { countryName: req.params.countryName }}).then(function(country) {
+app.get('/api/countries/:countryName', function (req, res) {
+  model.Country.findOne({ where: { countryName: req.params.countryName } }).then(function (country) {
     if (country) {
       res.status(200).send(country);
     } else {
-      res.status(404).send("Country not Found");
+      res.status(404).send('Country not Found');
     }
   });
 });
 
 // Get individual Country Stats
-app.get('/api/statistics/:CountryId', function(req, res){
+app.get('/api/statistics/:CountryId', function (req, res) {
   model.CountryStatistic.findAll({
     where: {
-      CountryId: req.params.CountryId
+      CountryId: req.params.CountryId,
     },
     include:[{
       model: model.Country,
-      as: model.Country.id
-    }]
-  }).then(function(stats){
-    if(stats){
+      as: model.Country.id,
+    },],
+  }).then(function (stats) {
+    if (stats) {
       res.status(200).send(stats);
     }else {
-      res.status(404).send("Not Found");
+      res.status(404).send('Not Found');
     }
   });
 });
@@ -197,6 +222,7 @@ request(options, function(err, response, body) {
 // route has one param, any user's twitter handle
 app.get('/tweets/:hastag', function(req, ourResponse, next) {
   // set options
+  console.log('FROM THE SERVER:', req.params.hastag);
   var options = {
     // append the user's handle to the url
     url: 'https://api.twitter.com/1.1/search/tweets.json?q=' + req.params.hastag,

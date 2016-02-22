@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-
+import ActiveCountry from '../containers/country-view';
 import CountryList from '../containers/countryList';
-import TwitterFeed from './twitter_feed';
+import TwitterFeed from '../containers/twitter_feed';
 import Globe from '../containers/globeContainer';
+<<<<<<< HEAD
 import ActiveCountry from '../containers/country-view';
 import Bar from '../containers/bar';
+=======
+
+import VictoryPlots from '../containers/d3Graphs';
+import Intro from './introduction';
+import Menu from './menu';
+import MenuItem from './menu_items';
+import NewsOutlet from '../containers/news_outlet';
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
 
 
+<<<<<<< HEAD
 
 
 //use componentDidMount to make the request for countryList
@@ -19,16 +29,45 @@ class App extends Component{
   //getInitialState
 
   render() {
+=======
+export default class App extends Component{
+
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+
+    // console.log('this is state inside of the conratuctor', state);
+
+    this.showLeft = this.showLeft.bind(this);
+    this.showRight = this.showRight.bind(this);
+  }
+
+  showLeft() {
+    // console.log(this.refs.left);
+    this.refs.left.show();
+  }
+
+  showRight() {
+    this.refs.right.show();
+  }
+
+  // <Link to="/d3Graphs">Graphs</Link>
+  // <Link to="/sandbox/jon">Jon Sandbox</Link>
+  render() {
+    // console.log('Rendering the Main Page');
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
     return (
       <div className="main">
-        <Link to="/d3Graphs">Graphs</Link>
-        <Link to="/sandbox/jon">Jon Sandbox</Link>
         <CountryList />
+        <Intro />
         <div className="col-md-8 globe">
           <Globe />
         <Bar />
         </div>
         <ActiveCountry />
+        <VictoryPlots />
+        <NewsOutlet />
         <TwitterFeed />
       </div>
 
@@ -36,4 +75,21 @@ class App extends Component{
   }
 }
 
+<<<<<<< HEAD
 export default App
+=======
+// <button onClick= {this.showLeft}>Show Left Menu</button>
+// <button onClick= {this.showRight}>Show Right Menu </button>
+//
+// <Menu ref='left' alignment='left'>
+//   <MenuItem>Introduction</MenuItem>
+//   <MenuItem hash='second-page'>Second Page</MenuItem>
+//   <MenuItem hash='third-page'>Third Page</MenuItem>
+// </Menu>
+//
+// <Menu ref='right' alignment='right'>
+//   <MenuItem hash='first-Page'>First Page</MenuItem>
+//   <MenuItem hash='second-page'>Second Page</MenuItem>
+//   <MenuItem hash='third-page'>Third Page</MenuItem>
+// </Menu>
+>>>>>>> 76bcc7ad04a3c4c573fdbc46f4e3b303abb5e6cf
