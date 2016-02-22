@@ -2,6 +2,7 @@ var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
 var bodyParser = require('body-parser');
+var WebpackDevServer = require('webpack-dev-server');
 var config = require('../webpack.config.js');
 var model = require('./models/index.js');
 var Sequelize = require('sequelize');
@@ -9,6 +10,7 @@ var Sequelize = require('sequelize');
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
+var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
 //var data = require('./extraction_prevalence_of_undernourishment.js');
@@ -33,10 +35,6 @@ var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
 
-
-
-
-
 if (process.env.NODE_ENV === 'production') {
   var static_path = path.join(__dirname, 'public');
 
@@ -48,8 +46,9 @@ if (process.env.NODE_ENV === 'production') {
     }).listen(process.env.PORT || 8080, function (err) {
       if (err) { console.log(err); };
 
-      console.log('Listening at localhost:', process.env.PORT);
+      console.log('Listening at localhost:8080');
     });
+
 } else {
 
   var WebpackDevServer = require('webpack-dev-server');
@@ -68,8 +67,10 @@ if (process.env.NODE_ENV === 'production') {
       }
     });
 
-    app.listen(port);
 }
+
+// console.log(__dirname + '/../index.html');
+app.listen(port);
 
 // get all countries
 app.get('/api/countries', function (req, res) {
@@ -185,8 +186,3 @@ app.get('/tweets/:hastag', function(req, ourResponse, next) {
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
-
-
-///////////////////////////////////////////////////////////////////
-// Set up Request for the News Feed from the Guardian            //
-///////////////////////////////////////////////////////////////////
