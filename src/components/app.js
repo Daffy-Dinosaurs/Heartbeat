@@ -5,7 +5,10 @@ import CountryList from '../containers/countryList';
 import TwitterFeed from '../containers/twitter_feed';
 import Globe from '../containers/globeContainer';
 
+
 import Bar from '../containers/bar';
+
+
 
 
 import VictoryPlots from '../containers/d3Graphs';
@@ -13,6 +16,14 @@ import Intro from './introduction';
 import Menu from './menu';
 import MenuItem from './menu_items';
 import NewsOutlet from '../containers/news_outlet';
+
+
+
+// import InputRange from 'react-input-range';
+
+//Globe
+
+
 export default class App extends Component{
 
   constructor(props) {

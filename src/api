@@ -1,0 +1,6 @@
+module.exports = {
+
+    'guardian' : {
+        'API_KEY'      : '01d2edf7-9a63-4f68-a144-d1ed24b476cb'
+    }
+};

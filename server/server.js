@@ -2,7 +2,6 @@ var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
 var bodyParser = require('body-parser');
-var WebpackDevServer = require('webpack-dev-server');
 var config = require('../webpack.config.js');
 var model = require('./models/index.js');
 var Sequelize = require('sequelize');
@@ -10,11 +9,11 @@ var Sequelize = require('sequelize');
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
-var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
 //var data = require('./extraction_prevalence_of_undernourishment.js');
 // var data = require('./extraction.js');
+// var data = require('./extraction_food_scarcity.js');
 // var data = require('./extraction_poverty.js');
 //////////////////////////////////////////
 
@@ -35,6 +34,9 @@ var port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '/../'));
 
 
+
+
+
 if (process.env.NODE_ENV === 'production') {
   var static_path = path.join(__dirname, 'public');
 
@@ -45,64 +47,29 @@ if (process.env.NODE_ENV === 'production') {
       });
     }).listen(process.env.PORT || 8080, function (err) {
       if (err) { console.log(err); };
-      console.log('Listening at localhost:8080');
+
+      console.log('Listening at localhost:', process.env.PORT);
     });
+} else {
+
+  var WebpackDevServer = require('webpack-dev-server');
+
+  new WebpackDevServer(webpack(config), {
+      hot: true,
+      historyApiFallback: true,
+      proxy: {
+        '*': 'http://localhost:3000',
+      },
+    }).listen(3001, 'localhost', function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Listening at localhost:3001');
+      }
+    });
+
+    app.listen(port);
 }
-
-
-
-// Rendering the intial state of the app server sider
-// app.use(handleRender)
-//
-// function handleRender(req, res) {
-//   const store = createStore(worldApp)
-//
-//   const html = renderToString(
-//     <Provider store={store}>
-//       <App />
-//     <Provider>
-//   )
-//   const initialState = store.getState()
-//
-//   res.send(renderFullPage(html, initialState))
-// }
-// function renderFullPage(html, initialState) {
-//   return
-//    <!doctype html>
-//    <html>
-//      <head>
-//        <title>Redux Universal Example</title>
-//      </head>
-//      <body>
-//        <div id="root">${html}</div>
-//        <script>
-//          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
-//        </script>
-//        <script src="/public/bundle.js"></script>
-//      </body>
-//    </html>
-//
-// }
-
-// console.log(__dirname + '/../index.html');
-// console.log(__dirname + '/../index.html');
-app.listen(port);
-
-// we start a webpack-dev-server with our config
-
-new WebpackDevServer(webpack(config), {
-    hot: true,
-    historyApiFallback: true,
-    proxy: {
-      '*': 'http://localhost:3000',
-    },
-  }).listen(3001, 'localhost', function (err, result) {
-    if (err) {
-      console.log(err);
-    }
-
-    console.log('Listening at localhost:3001');
-  });
 
 // get all countries
 app.get('/api/countries', function (req, res) {
@@ -146,7 +113,7 @@ app.get('/api/statistics/:CountryId', function (req, res) {
     include:[{
       model: model.Country,
       as: model.Country.id,
-    },],
+    }, ],
   }).then(function (stats) {
     if (stats) {
       res.status(200).send(stats);
@@ -218,3 +185,8 @@ app.get('/tweets/:hastag', function(req, ourResponse, next) {
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
+
+
+///////////////////////////////////////////////////////////////////
+// Set up Request for the News Feed from the Guardian            //
+///////////////////////////////////////////////////////////////////

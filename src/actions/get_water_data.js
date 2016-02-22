@@ -6,7 +6,7 @@ export const GET_WATER_DATA = 'GET_WATER_DATA';
 export function getWaterData(pCountryId) {
   // console.log('Calling Water Data Function');
 
-  const url = '//localhost:3001/api/statistics/' + pCountryId;
+  const url = '/api/statistics/' + pCountryId;
 
   // console.log(url);
   const request = axios.get(url);

@@ -4,7 +4,9 @@ module.exports = function(sequelize, DataTypes) {
     year: DataTypes.INTEGER,
     value: DataTypes.FLOAT,
     category: DataTypes.STRING,
-    CountryId: DataTypes.INTEGER
+    CountryId: DataTypes.INTEGER,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
@@ -12,8 +14,6 @@ module.exports = function(sequelize, DataTypes) {
         CountryStatistic.belongsTo(models.Country, { foreignKey: 'CountryId'});
       }
     }
-  }, {
-    timestamps: false
   });
   return CountryStatistic;
 };

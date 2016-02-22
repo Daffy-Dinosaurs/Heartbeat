@@ -40,7 +40,7 @@ li.list-country-item:visited {
   fill: #33CC33;
 }
 
-.countryBox {
+.countrybox {
   background-color: #ddd
 }
 
@@ -69,7 +69,7 @@ li.list-country-item:visited {
 
 
 /********************
-    BAR STYLING http://danielstern.ca/range.css/#/
+    bar styling http://danielstern.ca/range.css/#/
 *********************/
 
 
@@ -357,6 +357,22 @@ input[type=range]:focus::-ms-fill-upper {
   height: 690px;
   overflow: scroll;
 }
+
+.form {
+  height: 200px;
+  margin: 0 auto;
+  padding-top: 100px;
+  width: 60%;
+}
+
+.formField {
+  margin-bottom: 5rem;
+}
+
+.check {
+  color: 'blue';
+}
+
 
 /* MENU CSS */
 /*

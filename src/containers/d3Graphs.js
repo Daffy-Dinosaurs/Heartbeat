@@ -24,7 +24,9 @@ class VictoryPlots extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      processed: plottingData,
+      waterProcessed: plottingData,
+      povertyProcessed: plottingData,
+      foodProcessed: plottingData,
       visible: false,
 
     };
@@ -39,6 +41,8 @@ class VictoryPlots extends Component {
 
   processingData() {
     var processWaterData = [];
+    var processPovertyData = [];
+    var processFoodData = [];
 
     // console.log('this is the length of waterData', this.props.waterData.length);
     // console.log('this is the content of waterData', this.props.waterData[1].category, this.props.waterData[51]);
@@ -50,8 +54,23 @@ class VictoryPlots extends Component {
       }
     }
 
+    for (var i = 0; i < this.props.waterData.length; i++) {
+      if (this.props.waterData[i].category === 'Poverty') {
+        processPovertyData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+      }
+    }
+
+    for (var i = 0; i < this.props.waterData.length; i++) {
+      if (this.props.waterData[i].category === 'Food Scarcity') {
+        processFoodData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+      }
+    }
+
     // console.log('new length of processWaterData', processWaterData);
-    this.setState({ processed: processWaterData });
+    this.setState({ waterProcessed: processWaterData });
+    this.setState({ povertyProcessed: processPovertyData });
+    this.setState({ foodProcessed: processFoodData });
+
   }
 
   show() {
@@ -79,16 +98,37 @@ class VictoryPlots extends Component {
           </div>
 
           <h5 onClick={this.hide.bind(this)}>close</h5>
-
+          <h6>Water Pollution</h6>
           <VictoryChart>
           <VictoryBar
 
-          data = { this.state.processed }
+          data = { this.state.waterProcessed }
           dataAttributes= {[
             { fill: 'cornflowerblue' },
           ]}
           />
           </VictoryChart>
+          <h6>Poverty</h6>
+          <VictoryChart>
+          <VictoryBar
+
+          data = { this.state.povertyProcessed }
+          dataAttributes= {[
+            { fill: 'cornflowerblue' },
+          ]}
+          />
+          </VictoryChart>
+          <h6>Food Scarcity</h6>
+          <VictoryChart>
+          <VictoryBar
+
+          data = { this.state.foodProcessed }
+          dataAttributes= {[
+            { fill: 'cornflowerblue' },
+          ]}
+          />
+          </VictoryChart>
+
           </div>
         );
 
@@ -96,8 +136,7 @@ class VictoryPlots extends Component {
 
     }
 
-    if (!this.state.visible) {
-      // console.log('the visibilty state is false');
+    if (!this.state.visible || (!this.state.waterData)) {
       return <div>
       <h3 onClick={this.show.bind(this)}>Process</h3>
       </div>;
