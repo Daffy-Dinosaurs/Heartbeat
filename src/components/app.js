@@ -9,6 +9,7 @@ import Intro from './introduction';
 import Menu from './menu';
 import MenuItem from './menu_items';
 import NewsOutlet from '../containers/news_outlet';
+// import Land from '../components/world_view.js';
 
 // import InputRange from 'react-input-range';
 

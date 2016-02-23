@@ -35,9 +35,27 @@ li.list-country-item:visited {
 .globe{
   text-align: center;
 }
+path.land:hover{
+  stroke: white;
+  stroke-width: 2; 
+  fill: red;
+}
 
 .focused {
   fill: #33CC33;
+}
+
+.countryTooltip {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+  background: #fff;
+  padding: 5px;
+  text-align: left;
+  border: solid #ccc 1px;
+  color: #666;
+  font-size: 14px;
+  font-family: sans-serif;
 }
 
 .countryBox {

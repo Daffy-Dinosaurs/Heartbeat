@@ -5,15 +5,14 @@ var bodyParser = require('body-parser');
 var config = require('../webpack.config.js');
 var model = require('./models/index.js');
 var Sequelize = require('sequelize');
-
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
+// var data = require('./extraction_poverty.js');
 // var data = require('./extraction_food_scarcity.js');
-var data = require('./extraction_poverty.js');
 //////////////////////////////////////////
 
 var env = env(__dirname + '/.env');
@@ -69,6 +68,17 @@ app.get('/api/countries', function (req, res) {
   model.Country.findAll({}).then(function (countries) {
     if (countries) {
       res.status(200).send(countries);
+    } else {
+      res.status(404).send('Not Found');
+    }
+  });
+});
+
+app.get('/api/countries/:localeId', function(req, res) {
+  console.log("this is my initial req", req.body)
+  model.Country.findOne({where: {localeId: req.params.localeId}}).then(function(country) {
+    if (country) {
+      res.status(200).send(country);
     } else {
       res.status(404).send('Not Found');
     }
@@ -178,8 +188,3 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
-
-
-///////////////////////////////////////////////////////////////////
-// Set up Request for the News Feed from the Guardian            //
-///////////////////////////////////////////////////////////////////
