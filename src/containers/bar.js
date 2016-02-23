@@ -17,23 +17,21 @@ class Bar extends Component {
       this.extraFunction = this.extraFunction.bind(this);
     }
 
-    componentWillRecieveProps(){
-
-    }
-
     extraFunction(event){
-      this.setState({ year: event.target.value });
-      this.getAnnualData();
+      this.setState({ year: event.target.value }, this.getAnnualData);
     }
 
     getAnnualData(){
+      console.log('INSIDE GET ANNUAL DATA');
       var storage = [];
       for (var i = 0; i < this.props.allData.length; i++){
-        if (this.props.allData[i].year === this.state.year){
-          console.log(this.props.allData[i].year);
-          //newData.push(this.props.allData[i]);
+        //console.log(this.state.year, this.props.allData[i].year);
+        if (this.props.allData[i].year == this.state.year){
+          //console.log(this.props.allData[i].year);
+          storage.push(this.props.allData[i]);
         }
       }
+      console.log(storage);
     }
 
 
