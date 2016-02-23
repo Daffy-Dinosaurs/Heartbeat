@@ -1,6 +1,10 @@
 .container-fluid{
   margin: 0;
+}
 
+.main {
+  position: absolute;
+  z-index: 0;
 }
 .countryList {
   width: 100%;
@@ -47,7 +51,7 @@ li.list-country-item:visited {
   width: 100%;
   height: 100%;
   top: 0;
-  left: 0; 
+  left: 0;
   z-index: 0;
 }
 path.land:hover{
