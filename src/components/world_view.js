@@ -198,5 +198,16 @@ function ready(error, world) {
 
 };
 
+worldGlobe.renderGlobeStats = function (storage) {
+  //get lowest and highest values from incoming storage object
+  console.log('INSIDE RENDER GLOBE STATS');
+  var lowest = storage[i].value;
+  for (var i = 0; i < storage.length; i++){
+
+  }
+
+  //translate value to % out of 100 (lowestVal = 0, highestVal = 100)
+}
+
 
 export default worldGlobe

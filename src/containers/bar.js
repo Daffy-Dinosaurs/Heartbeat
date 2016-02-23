@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { requestCountries } from '../actions/request_country';
 import { getAllData } from '../actions/get_all_data';
+import worldGlobe from '../components/world_view.js';
 
 //import BarListItem from '../components/bar_list_item';
 
@@ -22,16 +23,13 @@ class Bar extends Component {
     }
 
     getAnnualData(){
-      console.log('INSIDE GET ANNUAL DATA');
       var storage = [];
       for (var i = 0; i < this.props.allData.length; i++){
-        //console.log(this.state.year, this.props.allData[i].year);
         if (this.props.allData[i].year == this.state.year){
-          //console.log(this.props.allData[i].year);
           storage.push(this.props.allData[i]);
         }
       }
-      console.log(storage);
+      worldGlobe.renderGlobeStats(storage);
     }
 
 
@@ -47,7 +45,6 @@ class Bar extends Component {
                   //  onChange={ event => this.setState({ year: event.target.value }) }
                    onChange={ this.extraFunction }
                 >
-
                 <datalist id="steplist">
                 <output id="volume">2002</output>
                 </datalist>
