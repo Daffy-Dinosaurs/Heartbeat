@@ -13,7 +13,7 @@ class CountryList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: this.props.requestCountries() };
+    this.state = { term: this.props.requestCountries()  };
     this.state.term;
 
     // console.log('BOOM countrylist');
