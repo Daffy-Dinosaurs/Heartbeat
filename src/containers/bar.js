@@ -9,31 +9,33 @@ import { getAllData } from '../actions/get_all_data';
 class Bar extends Component {
     constructor(props) {
       super(props);
-      this.state = { year: 2002};
+      this.state = {
+        year: 2002
+      };
       this.props.getAllData();
       this.getAnnualData = this.getAnnualData.bind(this);
       this.extraFunction = this.extraFunction.bind(this);
     }
 
-    getAnnualData(){
-      var storage = [];
-      // this.props.allData.map(function(obj){
-      //   console.log(obj);
-      // });
-      console.log('INSIDE GET ANNUAL DATA');
-      for (var i = 0; i < this.props.allData.length; i++){
-        console.log(this.props.allData[i], this.state.year);
-        if (this.props.allData[i].year === this.state.year){
-          storage.push(this.props.allData[i]);
-          console.log('STORAGE', storage);
-        }
-      }
+    componentWillRecieveProps(){
+
     }
 
     extraFunction(event){
       this.setState({ year: event.target.value });
       this.getAnnualData();
     }
+
+    getAnnualData(){
+      var storage = [];
+      for (var i = 0; i < this.props.allData.length; i++){
+        if (this.props.allData[i].year === this.state.year){
+          console.log(this.props.allData[i].year);
+          //newData.push(this.props.allData[i]);
+        }
+      }
+    }
+
 
     render() {
     	return (
@@ -58,7 +60,6 @@ class Bar extends Component {
   }
 
   function mapStateToProps({ allData }) {
-
     return { allData };
   }
 
