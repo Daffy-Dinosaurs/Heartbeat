@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'productions') {
         root: static_path,
       });
     }).listen(process.env.PORT || 8080, function (err) {
-      if (err) { console.log(err); };
+      if (err) { console.log(err); }
 
       console.log('Listening at localhost:8080');
     });
@@ -70,6 +70,17 @@ app.get('/api/countries', function (req, res) {
   model.Country.findAll({}).then(function (countries) {
     if (countries) {
       res.status(200).send(countries);
+    } else {
+      res.status(404).send('Not Found');
+    }
+  });
+});
+
+app.get('/api/countries/:localeId', function(req, res) {
+  console.log("this is my initial req", req.body)
+  model.Country.findOne({where: {localeId: req.params.localeId}}).then(function(country) {
+    if (country) {
+      res.status(200).send(country);
     } else {
       res.status(404).send('Not Found');
     }
