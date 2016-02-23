@@ -15,9 +15,12 @@ var env = require('node-env-file');
 // var data = require('./extraction_food_scarcity.js');
 //////////////////////////////////////////
 
+
 var env = env(__dirname + '/.env');
 var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
+
+var isDevelopment = (process.env.NODE_ENV !== 'production');
 
 var app = express();
 
@@ -57,7 +60,6 @@ if (process.env.NODE_ENV === 'production') {
       } else {
         console.log('Listening at localhost:3001');
       }
-
     });
 
     app.listen(port);
@@ -159,7 +161,7 @@ var options = {
 };
 
 // request and save an application-only token from twitter
-request(options, function (err, response, body) {
+request(options, function(err, response, body) {
   twitterAppToken = JSON.parse(body);
 });
 
@@ -169,7 +171,7 @@ request(options, function (err, response, body) {
 
 // here we set up the get handler that will send a request for the users tweet and then send it to our client-side app.
 // route has one param, any user's twitter handle
-app.get('/tweets/:hastag', function (req, ourResponse, next) {
+app.get('/tweets/:hastag', function(req, ourResponse, next) {
   // set options
   console.log('FROM THE SERVER:', req.params.hastag);
   var options = {
@@ -183,7 +185,7 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
   };
 
   // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
-  request(options, function (err, responseFromTwitter, body) {
+  request(options, function(err, responseFromTwitter, body) {
     // console.log(JSON.parse(body));
     ourResponse.status(200).send(JSON.parse(body));
   });
