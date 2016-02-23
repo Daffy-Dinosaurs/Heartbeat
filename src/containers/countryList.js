@@ -23,7 +23,7 @@ class CountryList extends Component {
 
     return this.props.countryList.map((country) => {
       return (
-          <li className="list-country-item"
+          <li className="list-country-item" id={"c" + country.localeId}
             key={country.countryName}
             onClick={(event) => {
               event.preventDefault();
