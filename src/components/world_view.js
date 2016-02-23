@@ -226,10 +226,11 @@ worldGlobe.renderGlobeStats = function (storage) {
   ranges.povertyLowest = Math.min(...poverty);
   ranges.povertyHighest = Math.max(...poverty);
 
-  console.log(ranges);
-
-
   //translate value to % out of 100 (lowestVal = 0, highestVal = 100)
+
+  var red = d3.scale.linear()
+    .domain()
+
 }
 
 export default worldGlobe
