@@ -1,8 +1,7 @@
 import d3 from 'd3';
 import axios from 'axios'
-
-import world from './world-110m.json';
-import names from './countries.json';
+import world from '../../datasets/world-110m.json';
+import names from '../../datasets/countries.json';
 import _ from 'lodash';
 import topojson from 'topojson';
 
@@ -28,6 +27,7 @@ const worldGlobe = {
 
 worldGlobe.go = function(countryObject) {
   // Map configuration
+
   if(!worldGlobe.loaded){
     width  = 820;
     height = 620;
@@ -112,7 +112,7 @@ function ready(error, world) {
     .origin(function() { var r = projection.rotate(); return {x: r[0] / sens, y: -r[1] / sens}; })
     .on("dragstart", function() {
       // d3.event.sourceEvent.stopPropagation();
-      console.log("Drag start");
+      // console.log("Drag start");
       //  pause = true;
       //  spinning_globe(pause);
     })

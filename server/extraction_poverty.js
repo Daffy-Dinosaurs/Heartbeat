@@ -20,7 +20,7 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 });
 
 // Read in the data from the file system
-fs.readFile(__dirname + '/../Datasets/Improved_Water_Resource.json', 'utf-8', function (err, data) {
+fs.readFile(__dirname + '/../Datasets/poverty_data.json', 'utf-8', function (err, data) {
   if (err) {
     console.log(err);
   }
@@ -52,7 +52,7 @@ fs.readFile(__dirname + '/../Datasets/Improved_Water_Resource.json', 'utf-8', fu
               allStats.push({
               year: statKeys[count],
               value: obj[statKeys[count]],
-              category: 'Water Pollution',
+              category: 'Poverty',
               CountryId: country.id,
               createdAt: new Date(),
               updatedAt: new Date()

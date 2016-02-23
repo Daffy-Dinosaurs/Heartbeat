@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class MenuItem extends Component {
 
   saySome() {
-    console.log('I want my page to render');
+    // console.log('I want my page to render');
   }
 
   render() {

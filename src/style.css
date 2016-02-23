@@ -103,6 +103,22 @@ path.land:hover{
   height: 690px;
   overflow: scroll;
 }
+
+.form {
+  height: 200px;
+  margin: 0 auto;
+  padding-top: 100px;
+  width: 60%;
+}
+
+.formField {
+  margin-bottom: 5rem;
+}
+
+.check {
+  color: 'blue';
+}
+
 /* MENU CSS */
 /*
 .menu {

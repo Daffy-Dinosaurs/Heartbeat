@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-
+import ActiveCountry from '../containers/country-view';
 import CountryList from '../containers/countryList';
 import TwitterFeed from '../containers/twitter_feed';
 import Globe from '../containers/globeContainer';
@@ -10,6 +10,8 @@ import Menu from './menu';
 import MenuItem from './menu_items';
 import NewsOutlet from '../containers/news_outlet';
 // import Land from '../components/world_view.js';
+
+// import InputRange from 'react-input-range';
 
 //Globe
 
@@ -35,6 +37,8 @@ export default class App extends Component{
     this.refs.right.show();
   }
 
+  // <Link to="/d3Graphs">Graphs</Link>
+  // <Link to="/sandbox/jon">Jon Sandbox</Link>
   render() {
     // console.log('Rendering the Main Page');
     return (
@@ -44,8 +48,9 @@ export default class App extends Component{
         <div className="col-md-8 globe">
           <Globe />
         </div>
-        <NewsOutlet />
+        <ActiveCountry />
         <VictoryPlots />
+        <NewsOutlet />
         <TwitterFeed />
       </div>
     );
