@@ -18,6 +18,7 @@ let projection
     , countryTooltip
     , countryById = {}
     , grabId
+    , shaded
     ;
 
 const worldGlobe = {
@@ -205,24 +206,33 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
                         .rangeRound([0, 10])
                         .nice();
 
-  let color = d3.rgb("violet") // d3_Rgb object
+  let color = d3.rgb("yellow") // d3_Rgb object
 
   let colorArr = [];
 
 
   for (var i = 0; i < storage.length; i++) {
     let temp = colorScale(storage[i].value)
-
-    storage[i].colorScale = color.darker([temp])
+    storage[i].colorScale = color.darker([temp]).toString()
+    console.log(storage[i])
 
     // let sortable = worldPath[0];
     // worldPath.map(function(d){
     // console.log(d)
     // })
-    const worldData = svg.selectAll("svg")
-            .data(12);
 
-    console.log(worldData);
+    svg.selectAll("path").attr("d", path)
+    .classed("shaded", function(d, j) {
+      console.log('this is D', d)
+      if(d.id === storage[i].CountryId) {
+        console.log('passed conditional')
+        console.log('D3 item', d3.select(d.id))
+        d3.select(d).style('fill','red')
+      }
+    })
+
+
+    //console.log(worldData);
 
 
     // for(var j = 0; j < sortable.length; j++) {
