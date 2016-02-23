@@ -104,7 +104,7 @@ class VictoryPlots extends Component {
 
           data = { this.state.waterProcessed }
           dataAttributes= {[
-            { fill: 'cornflowerblue' },
+            { fill: 'green' },
           ]}
           />
           </VictoryChart>
@@ -114,7 +114,7 @@ class VictoryPlots extends Component {
 
           data = { this.state.povertyProcessed }
           dataAttributes= {[
-            { fill: 'cornflowerblue' },
+            { fill: 'yellow' },
           ]}
           />
           </VictoryChart>
@@ -124,7 +124,7 @@ class VictoryPlots extends Component {
 
           data = { this.state.foodProcessed }
           dataAttributes= {[
-            { fill: 'cornflowerblue' },
+            { fill: 'red' },
           ]}
           />
           </VictoryChart>
@@ -136,8 +136,7 @@ class VictoryPlots extends Component {
 
     }
 
-    if (!this.state.visible) {
-      // console.log('the visibilty state is false');
+    if (!this.state.visible || (!this.state.waterData)) {
       return <div>
       <h3 onClick={this.show.bind(this)}>Process</h3>
       </div>;

@@ -11,6 +11,10 @@
     "deploy": "",
     "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy"
   },
+  "engines": {
+    "node": "5.3.0",
+    "npm": "3.3.12"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Daffy-Dinosaurs/abvolt.git"
@@ -42,6 +46,7 @@
     "dsv-loader": "^1.0.3",
     "es6-promise": "^3.0.2",
     "exports-loader": "^0.6.2",
+    "express": "^4.13.4",
     "file-loader": "^0.8.4",
     "history": "^1.17.0",
     "hjs-webpack": "^2.6.0",
@@ -59,6 +64,7 @@
     "mysql": "^2.10.2",
     "node-env-file": "^0.1.8",
     "node-libs-browser": "^0.5.2",
+    "nodemon": "^1.9.0",
     "octicons": "^2.2.0",
     "postcss-loader": "^0.5.0",
     "qs": "^3.1.0",
@@ -87,6 +93,7 @@
     "url-loader": "^0.5.6",
     "victory": "^0.4.0",
     "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.14.1",
     "whatwg-fetch": "^0.11.0",
     "xhr": "^2.0.2",
     "yeticss": "^6.0.7"
