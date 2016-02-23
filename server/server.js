@@ -11,10 +11,12 @@ var env = require('node-env-file');
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
-// var data = require('./extraction_poverty.js');
-// var data = require('./extraction_food_scarcity.js');
-//////////////////////////////////////////
 
+// var data = require('./extraction_food_scarcity.js');
+
+// var data = require('./extraction_poverty.js');
+
+//////////////////////////////////////////
 
 var env = env(__dirname + '/.env');
 var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
@@ -54,15 +56,16 @@ if (process.env.NODE_ENV === 'production') {
       proxy: {
         '*': 'http://localhost:3000',
       },
-    }).listen(3001, 'localhost', function(err, result) {
+    }).listen(3001, 'localhost', function (err, result) {
       if (err) {
         console.log(err);
       } else {
         console.log('Listening at localhost:3001');
       }
+
     });
 
-    app.listen(port);
+  app.listen(port);
 }
 
 // get all countries
@@ -70,17 +73,6 @@ app.get('/api/countries', function (req, res) {
   model.Country.findAll({}).then(function (countries) {
     if (countries) {
       res.status(200).send(countries);
-    } else {
-      res.status(404).send('Not Found');
-    }
-  });
-});
-
-app.get('/api/countries/:localeId', function(req, res) {
-  console.log("this is my initial req", req.body)
-  model.Country.findOne({where: {localeId: req.params.localeId}}).then(function(country) {
-    if (country) {
-      res.status(200).send(country);
     } else {
       res.status(404).send('Not Found');
     }
@@ -161,7 +153,7 @@ var options = {
 };
 
 // request and save an application-only token from twitter
-request(options, function(err, response, body) {
+request(options, function (err, response, body) {
   twitterAppToken = JSON.parse(body);
 });
 
@@ -171,7 +163,7 @@ request(options, function(err, response, body) {
 
 // here we set up the get handler that will send a request for the users tweet and then send it to our client-side app.
 // route has one param, any user's twitter handle
-app.get('/tweets/:hastag', function(req, ourResponse, next) {
+app.get('/tweets/:hastag', function (req, ourResponse, next) {
   // set options
   console.log('FROM THE SERVER:', req.params.hastag);
   var options = {
@@ -185,8 +177,12 @@ app.get('/tweets/:hastag', function(req, ourResponse, next) {
   };
 
   // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
-  request(options, function(err, responseFromTwitter, body) {
+  request(options, function (err, responseFromTwitter, body) {
     // console.log(JSON.parse(body));
     ourResponse.status(200).send(JSON.parse(body));
   });
 });
+
+///////////////////////////////////////////////////////////////////
+// Set up Request for the News Feed from the Guardian            //
+///////////////////////////////////////////////////////////////////

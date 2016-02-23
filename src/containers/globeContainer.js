@@ -23,7 +23,7 @@ class Globe extends Component {
 
   render() {
     if (!this.props.globeCountry) {
-      return <div> Country not selected. </div>;
+      return <div></div>;
     } else {
       return (
         <h1>{ this.renderGlobe() }</h1>
