@@ -64,6 +64,7 @@ class Bar extends Component {
             if (this.props.allData[i].value === 0) {
 
             } else {
+              
               if (lowrange === undefined) {
                 lowrange = this.props.allData[i].value;
               }

@@ -205,24 +205,31 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
                         .rangeRound([0, 10])
                         .nice();
 
-  // var c=d3.rgb("violet") // d3_Rgb object
-  // c.toString(); // "#ee82ee"
-  // c.darker().toString(); // "#a65ba6"
-  // c.darker(2).toString(); // "#743f74" - even darker
-  // c.brighter().toString();// "ffb9ff"
-  // c.brighter(0.1).toString(); // "#f686f6" - only slightly brighter
-  // c.hsl(); // d3_Hsl object
-  // c.hsl().toString(
+  let color = d3.rgb("violet") // d3_Rgb object
+
+  let colorArr = [];
 
 
-  // console.log('inside the renderglobe function')
   for (var i = 0; i < storage.length; i++) {
     let temp = colorScale(storage[i].value)
-    // console.log(temp)
-    storage[i].colorScale = temp
-    // console.log(storage[i])
-  }
 
+    storage[i].colorScale = color.darker([temp])
+
+    // let sortable = worldPath[0];
+    // worldPath.map(function(d){
+    // console.log(d)
+    // })
+    const worldData = svg.selectAll("svg")
+            .data(12);
+
+    console.log(worldData);
+
+
+    // for(var j = 0; j < sortable.length; j++) {
+    //   console.log('this is world path item', sortable[j]);
+    // }
+
+  }
   //we still need to match a number to a color
 
 
