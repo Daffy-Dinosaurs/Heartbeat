@@ -54,6 +54,8 @@ fs.readFile(__dirname + '/../Datasets/food_scarcity.json', 'utf-8', function (er
               value: obj[statKeys[count]],
               category: 'Food Scarcity',
               CountryId: country.id,
+              createdAt: new Date(),
+              updatedAt: new Date()
             });
             }
 
