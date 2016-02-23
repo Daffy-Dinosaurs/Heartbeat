@@ -1,15 +1,15 @@
 import axios from 'axios';
 
 // Send action to server
-export const REQUEST_COUNTRIES = 'REQUEST_COUNTRIES';
+export const COUNTRY_DATA = 'COUNTRY_DATA';
 
-export function requestCountries() {
+export function getAllData() {
   // console.log('REQUEST COUNTRIES HAS BEEN CALLED');
-  const url = '/api/countries';
+  const url = '/api/statistics';
   const request = axios.get(url);
 
   return {
-    type: REQUEST_COUNTRIES,
+    type: COUNTRY_DATA,
     payload: request,
   };
 }

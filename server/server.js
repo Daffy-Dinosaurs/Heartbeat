@@ -2,15 +2,12 @@ var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
 var bodyParser = require('body-parser');
-var WebpackDevServer = require('webpack-dev-server');
 var config = require('../webpack.config.js');
 var model = require('./models/index.js');
 var Sequelize = require('sequelize');
-
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
-var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
@@ -18,9 +15,12 @@ var WebpackDevServer = require('webpack-dev-server');
 // var data = require('./extraction_food_scarcity.js');
 //////////////////////////////////////////
 
+
 var env = env(__dirname + '/.env');
 var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
+
+var isDevelopment = (process.env.NODE_ENV !== 'production');
 
 var app = express();
 
@@ -31,7 +31,7 @@ var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/../'));
 
-if (process.env.NODE_ENV === 'productions') {
+if (process.env.NODE_ENV === 'production') {
   var static_path = path.join(__dirname, 'public');
 
   app.use(express.static(static_path))
@@ -40,30 +40,30 @@ if (process.env.NODE_ENV === 'productions') {
         root: static_path,
       });
     }).listen(process.env.PORT || 8080, function (err) {
-      if (err) { console.log(err); }
+      if (err) { console.log(err); };
 
-      console.log('Listening at localhost:8080');
+      console.log('Listening at localhost:', process.env.PORT);
     });
+} else {
+
+  var WebpackDevServer = require('webpack-dev-server');
+
+  new WebpackDevServer(webpack(config), {
+      hot: true,
+      historyApiFallback: true,
+      proxy: {
+        '*': 'http://localhost:3000',
+      },
+    }).listen(3001, 'localhost', function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Listening at localhost:3001');
+      }
+    });
+
+    app.listen(port);
 }
-
-// console.log(__dirname + '/../index.html');
-app.listen(port);
-
-// we start a webpack-dev-server with our config
-
-new WebpackDevServer(webpack(config), {
-    hot: true,
-    historyApiFallback: true,
-    proxy: {
-      '*': 'http://localhost:3000',
-    },
-  }).listen(3001, 'localhost', function (err, result) {
-    if (err) {
-      console.log(err);
-    }
-
-    console.log('Listening at localhost:3001');
-  });
 
 // get all countries
 app.get('/api/countries', function (req, res) {
@@ -161,7 +161,7 @@ var options = {
 };
 
 // request and save an application-only token from twitter
-request(options, function (err, response, body) {
+request(options, function(err, response, body) {
   twitterAppToken = JSON.parse(body);
 });
 
@@ -171,7 +171,7 @@ request(options, function (err, response, body) {
 
 // here we set up the get handler that will send a request for the users tweet and then send it to our client-side app.
 // route has one param, any user's twitter handle
-app.get('/tweets/:hastag', function (req, ourResponse, next) {
+app.get('/tweets/:hastag', function(req, ourResponse, next) {
   // set options
   console.log('FROM THE SERVER:', req.params.hastag);
   var options = {
@@ -185,7 +185,7 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
   };
 
   // Send a get request to twitter, notice that the response that we send in the callback is the response from the outer-function passed in through closure.
-  request(options, function (err, responseFromTwitter, body) {
+  request(options, function(err, responseFromTwitter, body) {
     // console.log(JSON.parse(body));
     ourResponse.status(200).send(JSON.parse(body));
   });
