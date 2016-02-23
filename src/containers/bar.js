@@ -41,11 +41,12 @@ class Bar extends Component {
           // console.log(this.props.allData[i].year);
 
           storage.push(this.props.allData[i]);
-          worldGlobe.renderGlobeStats(storage);
+
 
           // console.log('this is storage', storage);
         }
       }
+      worldGlobe.renderGlobeStats(storage);
     }
 
     povertyButton() {
