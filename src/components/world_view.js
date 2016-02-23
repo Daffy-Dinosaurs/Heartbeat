@@ -200,14 +200,36 @@ function ready(error, world) {
 
 worldGlobe.renderGlobeStats = function (storage) {
   //get lowest and highest values from incoming storage object
-  console.log('INSIDE RENDER GLOBE STATS');
-  var lowest = storage[i].value;
-  for (var i = 0; i < storage.length; i++){
+  var food = [], water = [], poverty = [];
 
+  for (var i = 0; i < storage.length; i++){
+    if (storage[i].category === "Food Scarcity" && storage[i].value !== 0){
+      food.push(storage[i].value)
+    }
+    else if (storage[i].category === "Water Pollution" && storage[i].value !== 0){
+      water.push(storage[i].value)
+    }
+    else if (storage[i].category === "Poverty" && storage[i].value !== 0){
+      poverty.push(storage[i].value)
+    }
   }
+
+  var ranges = {
+  };
+
+  ranges.foodLowest = Math.min(...food);
+  ranges.foodHighest = Math.max(...food);
+
+  ranges.waterLowest = Math.min(...water);
+  ranges.waterHighest = Math.max(...water);
+
+  ranges.povertyLowest = Math.min(...poverty);
+  ranges.povertyHighest = Math.max(...poverty);
+
+  console.log(ranges);
+
 
   //translate value to % out of 100 (lowestVal = 0, highestVal = 100)
 }
-
 
 export default worldGlobe
