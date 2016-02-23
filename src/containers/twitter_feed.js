@@ -72,7 +72,7 @@ class TwitterFeed extends Component {
 
     }
 
-    if (!this.state.visible || (Object.keys(this.props.twitterFeed).length === 0 )) {
+    if (!this.state.visible) {
       // console.log('visiblity set to false');
       return <div>
       <h1 onClick={this.show.bind(this)}>Tweets</h1>
