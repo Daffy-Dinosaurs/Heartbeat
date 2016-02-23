@@ -47,7 +47,7 @@ class CountryList extends Component {
     // } else {
     // <button className="btn btn-primary" onClick={ ()=>this.props.requestCountries() }>Fetch country list!</button>
     return (
-      <div className="col-md-2">
+      <div className="side-view-left">
         <div className="countryList">
           <ul className="list" > { this.renderList() } </ul>
         </div>

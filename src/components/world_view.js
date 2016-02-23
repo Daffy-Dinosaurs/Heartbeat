@@ -18,6 +18,9 @@ let projection
     , countryTooltip
     , countryById = {}
     , grabId
+    , time
+    , rotate
+    , velocity
     ;
 
 const worldGlobe = {
@@ -29,17 +32,17 @@ worldGlobe.go = function(countryObject) {
   // Map configuration
 
   if(!worldGlobe.loaded){
-    width  = 820;
-    height = 620;
+    width  = 925;
+    height = 820;
     sens = 0.25;
     // var rScale = d3.scale.sqrt();
     // var peoplePerPixel = 50000;
     // var max_population = [];
 
   // Configuration for the spinning effect
-  var time = Date.now();
-  var rotate = [0, 0];
-  var velocity = [0.005, -0];
+  time = Date.now();
+  rotate = [0, 0];
+  velocity = [0.005, -0];
 
   // Tool tip div
   countryTooltip = d3.select("body").append("div").attr("class", "countryTooltip");
@@ -49,8 +52,8 @@ worldGlobe.go = function(countryObject) {
 
   // set projection type and parameters
   projection = d3.geo.orthographic(3)
-    .scale(350)
-    .translate([(width / 2) + 50, (height / 2) + 50])
+    .scale(400)
+    .translate([(width / 2) + 10, (height / 2) ])
     .clipAngle(90)
     .precision(0.3);
 
@@ -58,8 +61,8 @@ worldGlobe.go = function(countryObject) {
     .projection(projection);
 
   svg = d3.select(".globe").append("svg")
-    .attr("width", "820")
-    .attr("height", "720")
+    .attr("width", "925")
+    .attr("height", "980")
   g = svg.append("g");
 
   g.append("path")
@@ -83,7 +86,7 @@ worldGlobe.go = function(countryObject) {
   worldGlobe.loaded = true;
 }
 
-   ready(null, world);
+ready(null, world);
 
 function ready(error, world) {
 
@@ -164,12 +167,13 @@ function ready(error, world) {
 
       var rotate = projection.rotate(),
       focusedCountry = country(countries, countryObject);
-      console.log(">>>>>>>>>>>",focusedCountry);
       var p = d3.geo.centroid(focusedCountry);
 
       svg.selectAll(".focused").classed("focused", focused = false);
       if (focusedCountry){
         transition();
+      } else {
+        console.log("There is no Country!!");
       }
       //  Globe rotating
       function transition() {

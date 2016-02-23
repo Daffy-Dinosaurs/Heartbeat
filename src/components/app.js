@@ -45,7 +45,7 @@ export default class App extends Component{
       <div className="main">
         <CountryList />
         <Intro />
-        <div className="col-md-8 globe">
+        <div className="globe">
           <Globe />
         </div>
         <ActiveCountry />
