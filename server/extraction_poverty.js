@@ -54,6 +54,8 @@ fs.readFile(__dirname + '/../Datasets/poverty_data.json', 'utf-8', function (err
               value: obj[statKeys[count]],
               category: 'Poverty',
               CountryId: country.id,
+              createdAt: new Date(),
+              updatedAt: new Date()
             });
             }
 
