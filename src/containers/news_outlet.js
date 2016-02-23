@@ -16,12 +16,10 @@ class NewsOutlet extends Component {
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
 
-    // console.log('inside the constructor', this.props);
   }
 
   showStory() {
-    // console.log('inside of the newOutlet', this.props.newsFeed);
-    // console.log(Math.random());
+
     return this.props.newsFeed.response.results.map((article) => {
       return (
         <div className='newsfeed'>
@@ -43,15 +41,12 @@ class NewsOutlet extends Component {
   }
 
   clearFeed() {
-    // console.log('clear feed is being called');
     this.props.clearNews();
   }
 
   render() {
     if (this.state.visible) {
-      // console.log('visiblity set to true');
       if (this.props.newsFeed.response) {
-        // console.log('passing conditional in news Outlet');
         return (
           <div className="col-md-2 newsfeed-feed">
           <h1 onClick= {
@@ -66,11 +61,13 @@ class NewsOutlet extends Component {
 
     }
 
-    if (!this.state.visible) {
+    if (!this.state.visible || (Object.keys(this.props.newsFeed).length === 0 ) ) {
       // console.log('visiblity set to false');
-      return <div>
-      <h1 onClick={this.show.bind(this)}>News Feed</h1>
-      </div>;
+      return (
+        <div>
+          <h1 onClick={this.show.bind(this)}>News Feed</h1>
+        </div>
+      );
 
     }
 
