@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { requestCountries } from '../actions/request_country';
 import { getAllData } from '../actions/get_all_data';
+import worldGlobe from '../components/world_view.js';
 
 //import BarListItem from '../components/bar_list_item';
 
@@ -40,6 +41,7 @@ class Bar extends Component {
           // console.log(this.props.allData[i].year);
 
           storage.push(this.props.allData[i]);
+          worldGlobe.renderGlobeStats(storage);
 
           // console.log('this is storage', storage);
         }

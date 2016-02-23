@@ -263,15 +263,6 @@ input[type=range]:focus::-ms-fill-upper {
   background: rgba(111, 145, 205, 0.65);
 }
 
-
-
-
-
-
-
-
-
-
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
@@ -394,6 +385,7 @@ input[type=range]:focus::-ms-fill-upper {
 .category {
   display: inline-block;
   margin-left: 50px;
+  margin-right: 50px;
 }
 
 

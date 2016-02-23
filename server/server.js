@@ -5,7 +5,6 @@ var bodyParser = require('body-parser');
 var config = require('../webpack.config.js');
 var model = require('./models/index.js');
 var Sequelize = require('sequelize');
-
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
@@ -47,7 +46,6 @@ if (process.env.NODE_ENV === 'production') {
 
       console.log('Listening at localhost:', process.env.PORT);
     });
-
 } else {
 
   var WebpackDevServer = require('webpack-dev-server');
@@ -112,7 +110,7 @@ app.get('/api/statistics/:CountryId', function (req, res) {
     include:[{
       model: model.Country,
       as: model.Country.id,
-    },],
+    }, ],
   }).then(function (stats) {
     if (stats) {
       res.status(200).send(stats);
