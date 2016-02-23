@@ -164,12 +164,15 @@ function ready(error, world) {
 
       var rotate = projection.rotate(),
       focusedCountry = country(countries, countryObject);
+      console.log(">>>>>>>>>>>",focusedCountry);
       var p = d3.geo.centroid(focusedCountry);
 
       svg.selectAll(".focused").classed("focused", focused = false);
-
+      if (focusedCountry){
+        transition();
+      }
       //  Globe rotating
-      (function transition() {
+      function transition() {
         d3.transition()
         .duration(2500)
         .tween("rotate", function() {
@@ -177,11 +180,12 @@ function ready(error, world) {
           return function(t) {
             projection.rotate(r(t));
             svg.selectAll("path").attr("d", path)
-            .classed("focused", function(d, i) { return d.id == focusedCountry.id ? focused = d : false;
+            .classed("focused", function(d, i) {
+                return d.id == focusedCountry.id ? focused = d : false;
              });
           };
         });
-      })();
+      };
     }
       // });
 
