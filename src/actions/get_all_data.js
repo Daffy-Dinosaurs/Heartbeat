@@ -5,7 +5,7 @@ export const COUNTRY_DATA = 'COUNTRY_DATA';
 
 export function getAllData() {
   // console.log('REQUEST COUNTRIES HAS BEEN CALLED');
-  const url = '//localhost:3001/api/statistics';
+  const url = '/api/statistics';
   const request = axios.get(url);
 
   return {

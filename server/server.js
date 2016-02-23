@@ -2,15 +2,12 @@ var express = require('express');
 var webpack = require('webpack');
 var path = require('path');
 var bodyParser = require('body-parser');
-var WebpackDevServer = require('webpack-dev-server');
 var config = require('../webpack.config.js');
 var model = require('./models/index.js');
 var Sequelize = require('sequelize');
-
 var mysql = require('mysql');
 var request = require('request');
 var env = require('node-env-file');
-var WebpackDevServer = require('webpack-dev-server');
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
@@ -43,11 +40,10 @@ if (process.env.NODE_ENV === 'production') {
         root: static_path,
       });
     }).listen(process.env.PORT || 8080, function (err) {
-      if (err) { console.log(err); }
+      if (err) { console.log(err); };
 
-      console.log('Listening at localhost:8080');
+      console.log('Listening at localhost:', process.env.PORT);
     });
-
 } else {
 
   var WebpackDevServer = require('webpack-dev-server');
@@ -66,10 +62,8 @@ if (process.env.NODE_ENV === 'production') {
       }
     });
 
+    app.listen(port);
 }
-
-// console.log(__dirname + '/../index.html');
-app.listen(port);
 
 // get all countries
 app.get('/api/countries', function (req, res) {
