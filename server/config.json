@@ -1,12 +1,11 @@
 {
-  "development": {
+  "development1": {
     "username": "root",
     "password": null,
     "database": "worldMapDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "seederStorage": "sequelize",
-    "define": { "timestamps": false}
+    "seederStorage": "sequelize"
   },
   "test": {
     "username": "root",
@@ -15,7 +14,7 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
+  "development": {
     "username": "bf6e21f99a7eae",
     "password": "d9778676",
     "database": "heroku_0290dbccabb07ee",

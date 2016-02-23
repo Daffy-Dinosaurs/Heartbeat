@@ -110,7 +110,7 @@ app.get('/api/statistics/:CountryId', function (req, res) {
     include:[{
       model: model.Country,
       as: model.Country.id,
-    }, ],
+    },],
   }).then(function (stats) {
     if (stats) {
       res.status(200).send(stats);
