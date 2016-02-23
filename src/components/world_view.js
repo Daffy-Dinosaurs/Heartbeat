@@ -198,38 +198,74 @@ function ready(error, world) {
 
 };
 
-worldGlobe.renderGlobeStats = function (storage) {
-  //get lowest and highest values from incoming storage object
-  var food = [], water = [], poverty = [];
+worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
+  // console.log('info coming through', storage, lowrange, highrange);
+  let colorScale = d3.scale.linear()
+                        .domain([lowrange, highrange])
+                        .rangeRound([0, 10])
+                        .nice();
 
-  for (var i = 0; i < storage.length; i++){
-    if (storage[i].category === "Food Scarcity" && storage[i].value !== 0){
-      food.push(storage[i].value)
-    }
-    else if (storage[i].category === "Water Pollution" && storage[i].value !== 0){
-      water.push(storage[i].value)
-    }
-    else if (storage[i].category === "Poverty" && storage[i].value !== 0){
-      poverty.push(storage[i].value)
-    }
+  let color = d3.rgb("violet") // d3_Rgb object
+
+  let colorArr = [];
+
+
+  for (var i = 0; i < storage.length; i++) {
+    let temp = colorScale(storage[i].value)
+
+    storage[i].colorScale = color.darker([temp])
+
+    // let sortable = worldPath[0];
+    // worldPath.map(function(d){
+    // console.log(d)
+    // })
+    const worldData = svg.selectAll("svg")
+            .data(12);
+
+    console.log(worldData);
+
+
+    // for(var j = 0; j < sortable.length; j++) {
+    //   console.log('this is world path item', sortable[j]);
+    // }
+
   }
+  //we still need to match a number to a color
 
-  var ranges = {
-  };
 
-  ranges.foodLowest = Math.min(...food);
-  ranges.foodHighest = Math.max(...food);
 
-  ranges.waterLowest = Math.min(...water);
-  ranges.waterHighest = Math.max(...water);
 
-  ranges.povertyLowest = Math.min(...poverty);
-  ranges.povertyHighest = Math.max(...poverty);
+
+
+  //get lowest and highest values from incoming storage object
+  // var food = [], water = [], poverty = [];
+  //
+  // for (var i = 0; i < storage.length; i++){
+  //   if (storage[i].category === "Food Scarcity" && storage[i].value !== 0){
+  //     food.push(storage[i].value)
+  //   }
+  //   else if (storage[i].category === "Water Pollution" && storage[i].value !== 0){
+  //     water.push(storage[i].value)
+  //   }
+  //   else if (storage[i].category === "Poverty" && storage[i].value !== 0){
+  //     poverty.push(storage[i].value)
+  //   }
+  // }
+
+  // var ranges = {
+  // };
+  //
+  // ranges.foodLowest = Math.min(...food);
+  // ranges.foodHighest = Math.max(...food);
+  //
+  // ranges.waterLowest = Math.min(...water);
+  // ranges.waterHighest = Math.max(...water);
+  //
+  // ranges.povertyLowest = Math.min(...poverty);
+  // ranges.povertyHighest = Math.max(...poverty);
 
   //translate value to % out of 100 (lowestVal = 0, highestVal = 100)
 
-  var red = d3.scale.linear()
-    .domain()
 
 }
 
