@@ -391,6 +391,11 @@ input[type=range]:focus::-ms-fill-upper {
   color: 'blue';
 }
 
+.category {
+  display: inline-block;
+  margin-left: 50px;
+}
+
 
 /* MENU CSS */
 /*

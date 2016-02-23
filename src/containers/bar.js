@@ -114,9 +114,9 @@ class Bar extends Component {
           <output id="volume">2002</output>
           </datalist>
         </input>
-        <h2 onClick={this.povertyButton}>Poverty</h2>
-        <h2 onClick={this.waterPollutionButton}>Water Pollution</h2>
-        <h2 onClick={this.foodScarcityButton}>Food Scarcity</h2>
+        <h2 className='category' onClick={this.povertyButton}>Poverty</h2>
+        <h2 className='category' onClick={this.waterPollutionButton}>Water Pollution</h2>
+        <h2 className='category' onClick={this.foodScarcityButton}>Food Scarcity</h2>
       </div>
       );
     }
