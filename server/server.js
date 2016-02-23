@@ -12,11 +12,8 @@ var env = require('node-env-file');
 
 ////////For data extraction only//////////
 // var data = require('./extraction.js');
-
 // var data = require('./extraction_food_scarcity.js');
-
-// var data = require('./extraction_poverty.js');
-
+var data = require('./extraction_poverty.js');
 //////////////////////////////////////////
 
 var env = env(__dirname + '/.env');
