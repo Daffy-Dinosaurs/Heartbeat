@@ -46,6 +46,7 @@ export default class App extends Component{
   render() {
     // console.log('Rendering the Main Page');
     // <Intro />
+    // <VictoryPlots />
 
     return (
       <div className="main">
@@ -54,9 +55,8 @@ export default class App extends Component{
           <Globe />
         </div>
         <Bar />
+        <ActiveCountry />
         <div className="countryData">
-          <VictoryPlots />
-          <ActiveCountry />
           <NewsOutlet />
           <TwitterFeed />
         </div>
