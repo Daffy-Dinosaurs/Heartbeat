@@ -2,4 +2,3 @@ node_modules
 server/.env
 public
 .DS_Store
-datasets/data_csv
