@@ -207,39 +207,26 @@ function ready(error, world) {
 
 };
 
-worldGlobe.renderGlobeStats = function (storage) {
-  //get lowest and highest values from incoming storage object
-  var food = [], water = [], poverty = [];
+worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
+  console.log('going')
+  let colorScale = d3.scale.linear()
+                        .domain([lowrange, highrange])
+                        .rangeRound([0, 14])
+                        .nice();
 
-  for (var i = 0; i < storage.length; i++){
-    if (storage[i].category === "Food Scarcity" && storage[i].value !== 0){
-      food.push(storage[i].value)
-    }
-    else if (storage[i].category === "Water Pollution" && storage[i].value !== 0){
-      water.push(storage[i].value)
-    }
-    else if (storage[i].category === "Poverty" && storage[i].value !== 0){
-      poverty.push(storage[i].value)
-    }
+  let colorArr = ['b3ffb3', '99ff99', '80ff80', '66ff66', '4dff4d', '33ff33', '1aff1a', '00ff00', '00e600', '00cc00', '00b300', '009900', '008000', '006600', '004d00'];
+
+  for (var i = 0; i < storage.length; i++) {
+    let temp = colorScale(storage[i].value);
+    storage[i].shade = colorArr[temp - 1];
+    svg.selectAll("path").attr("d", path)
+    .classed(".focused", function(d, j) {
+      if(d.id === storage[i].CountryId) {
+        d3.select(this).attr("class", "land").style("fill", function() {
+          return storage[i].shade;
+        })
+      }
+    })
   }
-
-  var ranges = {
-  };
-
-  ranges.foodLowest = Math.min(...food);
-  ranges.foodHighest = Math.max(...food);
-
-  ranges.waterLowest = Math.min(...water);
-  ranges.waterHighest = Math.max(...water);
-
-  ranges.povertyLowest = Math.min(...poverty);
-  ranges.povertyHighest = Math.max(...poverty);
-
-  //translate value to % out of 100 (lowestVal = 0, highestVal = 100)
-
-  var red = d3.scale.linear()
-    .domain()
-
 }
-
 export default worldGlobe

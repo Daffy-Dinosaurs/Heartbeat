@@ -42,58 +42,122 @@ class Bar extends Component {
 
           storage.push(this.props.allData[i]);
 
-
           // console.log('this is storage', storage);
         }
       }
-      worldGlobe.renderGlobeStats(storage);
+
+      // worldGlobe.renderGlobeStats(storage);
     }
 
     povertyButton() {
       let stats = [];
-      console.log('inside poverty function');
+      let lowrange = undefined;
+      let highrange = 0;
+
+      // console.log('inside poverty function');
+
       for (var i = 0; i < this.props.allData.length; i++) {
 
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Poverty') {
-            // console.log('in poverty', this.props.allData[i]);
 
-            stats.push(this.props.allData[i]);
+            if (this.props.allData[i].value === 0) {
+
+            } else {
+
+              if (lowrange === undefined) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (lowrange > this.props.allData[i].value) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (highrange < this.props.allData[i].value) {
+                highrange = this.props.allData[i].value;
+              }
+
+              stats.push(this.props.allData[i]);
+            }
+
           }
         }
       }
 
-      console.log('stats for', this.state.year, stats);
+      // console.log('stats for', this.state.year, stats, lowrange, highrange);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
 
     }
 
     foodScarcityButton() {
       let stats = [];
+      let lowrange = undefined;
+      let highrange = 0;
 
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Food Scarcity') {
-            stats.push(this.props.allData[i]);
+
+            if (this.props.allData[i].value === 0) {
+
+            } else {
+
+              if (lowrange === undefined) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (lowrange > this.props.allData[i].value) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (highrange < this.props.allData[i].value) {
+                highrange = this.props.allData[i].value;
+              }
+
+              stats.push(this.props.allData[i]);
+            }
+
           }
         }
       }
 
-      console.log('food scarcity', stats);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
 
     }
 
     waterPollutionButton() {
       let stats = [];
+      let lowrange = undefined;
+      let highrange = 0;
 
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Water Pollution') {
-            stats.push(this.props.allData[i]);
+
+            if (this.props.allData[i].value === 0) {
+
+            } else {
+
+              if (lowrange === undefined) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (lowrange > this.props.allData[i].value) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (highrange < this.props.allData[i].value) {
+                highrange = this.props.allData[i].value;
+              }
+
+              stats.push(this.props.allData[i]);
+            }
+
           }
         }
       }
 
-      console.log('pollution stats', stats);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
 
     }
 
