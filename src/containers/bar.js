@@ -64,7 +64,7 @@ class Bar extends Component {
             if (this.props.allData[i].value === 0) {
 
             } else {
-              
+
               if (lowrange === undefined) {
                 lowrange = this.props.allData[i].value;
               }
@@ -91,31 +91,73 @@ class Bar extends Component {
 
     foodScarcityButton() {
       let stats = [];
+      let lowrange = undefined;
+      let highrange = 0;
 
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Food Scarcity') {
-            stats.push(this.props.allData[i]);
+
+            if (this.props.allData[i].value === 0) {
+
+            } else {
+
+              if (lowrange === undefined) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (lowrange > this.props.allData[i].value) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (highrange < this.props.allData[i].value) {
+                highrange = this.props.allData[i].value;
+              }
+
+              stats.push(this.props.allData[i]);
+            }
+
           }
         }
       }
 
-      console.log('food scarcity', stats);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
 
     }
 
     waterPollutionButton() {
       let stats = [];
+      let lowrange = undefined;
+      let highrange = 0;
 
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Water Pollution') {
-            stats.push(this.props.allData[i]);
+
+            if (this.props.allData[i].value === 0) {
+
+            } else {
+
+              if (lowrange === undefined) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (lowrange > this.props.allData[i].value) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (highrange < this.props.allData[i].value) {
+                highrange = this.props.allData[i].value;
+              }
+
+              stats.push(this.props.allData[i]);
+            }
+
           }
         }
       }
 
-      console.log('pollution stats', stats);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
 
     }
 
