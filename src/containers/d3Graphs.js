@@ -117,7 +117,7 @@ class VictoryPlots extends Component {
 
           data = { this.state.povertyProcessed }
           dataAttributes= {[
-            { fill: 'yellow' },
+            { fill: 'orange' },
           ]}
           />
           </VictoryChart>

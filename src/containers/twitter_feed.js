@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux'
+import _ from 'lodash';;
 import { clearTweets } from '../actions/clear_tweets';
 import { getTweets } from '../actions/get_twitter_feed';
 
@@ -22,11 +23,35 @@ class TwitterFeed extends Component {
     if (this.props.twitterFeed.length > 1) {
       this.props.twitterFeed.shift();
     }
+    //The objects are being added to end of the twitterFeed array
+    // console.log('Inside the beast', this.props.twitterFeed);
 
-    return this.props.twitterFeed.statuses.map((tweet) => {
+    var cleanTweets = this.props.twitterFeed.statuses;
+    var cleanTweetsObject = {};
+    var tweetsArray = []
+    var regex = new RegExp(/htt\w+:\/\/\S+/);
+
+    for (var i = 0; i < cleanTweets.length; i++) {
+      // console.log('HELOO', cleanTweets[i].text.match(/htt\w+:\/\/\S+/));
+      var object = {};
+      object.id = cleanTweets[i].id;
+
+      if (cleanTweets[i].text.match(/htt\w+:\/\/\S+/)) {
+        object.url = cleanTweets[i].text.match(/htt\w+:\/\/\S+/)[0];
+      } else {
+        object.url = '';
+      }
+      object.text = cleanTweets[i].text.replace(/htt\w+:\/\/\S+/g, ""),
+
+      tweetsArray.push(object);
+    }
+
+    return _.map(tweetsArray, function(tweet) {
       return (
         <div className="tweets">
-            <li key={ tweet.id } className="tweet-item"> { tweet.text } </li>
+            <li key={ tweet.id } className="tweet-item"> { tweet.text }
+            <a href={tweet.url} target="_blank">{tweet.url}</a>
+            </li>
         </div>
       );
     });
