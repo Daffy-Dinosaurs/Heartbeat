@@ -78,7 +78,7 @@ path.land:hover{
 }
 
 .focused {
-  fill: #33CC33;
+  fill: orange;
 }
 
 .countryTooltip {

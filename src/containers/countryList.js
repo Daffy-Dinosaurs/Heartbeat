@@ -21,6 +21,7 @@ class CountryList extends Component {
   renderList() {
 
     return this.props.countryList.map((country) => {
+      console.log('country selected', country);
       return (
           <li className="list-country-item" id={'c' + country.localeId}
             key={country.countryName}
@@ -66,7 +67,7 @@ function mapDispatchToProps(dispatch) {
     globeAction,
     getTweets,
     getNews,
-    getWaterData
+    getWaterData,
   }, dispatch);
 }
 
