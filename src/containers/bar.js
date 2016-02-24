@@ -85,7 +85,7 @@ class Bar extends Component {
       }
 
       // console.log('stats for', this.state.year, stats, lowrange, highrange);
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'poverty');
 
     }
 
@@ -121,7 +121,7 @@ class Bar extends Component {
         }
       }
 
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'food scarcity');
 
     }
 
@@ -157,7 +157,7 @@ class Bar extends Component {
         }
       }
 
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'water pollution');
 
     }
 
