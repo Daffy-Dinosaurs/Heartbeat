@@ -203,19 +203,19 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
   // console.log('info coming through', storage, lowrange, highrange);
   let colorScale = d3.scale.linear()
                         .domain([lowrange, highrange])
-                        .range([0, 5])
+                        .rangeRound([0, 14])
                         .nice();
 
   // let color = d3.rgb(240, 248, 255) // d3_Rgb object
 
-  let colorArr = ['86C98A', '54A759', '2D8633', '116416', '004304'];
+  let colorArr = ['b3ffb3', '99ff99', '80ff80', '66ff66', '4dff4d', '33ff33', '1aff1a', '00ff00', '00e600', '00cc00', '00b300', '009900', '008000', '006600', '004d00'];
 
 
   for (var i = 0; i < storage.length; i++) {
     let temp = colorScale(storage[i].value)
-    console.log('this is the temp variable', temp)
-    // storage[i].shade = colorArr[temp];
-    console.log(storage[i].shade)
+    // console.log('this is the temp variable', temp)
+    storage[i].shade = colorArr[temp - 1];
+    // console.log(storage[i].shade)
 
     // let sortable = worldPath[0];
     // worldPath.map(function(d){
