@@ -227,7 +227,7 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange, category) 
   if(category === 'poverty') {
     for (var i = 0; i < storage.length; i++) {
       let temp = colorScale(storage[i].value);
-      storage[i].shade = colorArr1[temp];
+      storage[i].shade = colorArr2[temp];
       svg.selectAll("path").attr("d", path)
       .classed(".focused", function(d, j) {
         if(d.id === storage[i].Country.localeId) {
@@ -242,7 +242,7 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange, category) 
   if(category === 'water pollution') {
     for (var i = 0; i < storage.length; i++) {
       let temp = colorScale(storage[i].value);
-      storage[i].shade = colorArr2[temp];
+      storage[i].shade = colorArr1[temp];
       svg.selectAll("path").attr("d", path)
       .classed(".focused", function(d, j) {
         if(d.id === storage[i].Country.localeId) {
