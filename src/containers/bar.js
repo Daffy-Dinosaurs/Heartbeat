@@ -164,27 +164,33 @@ class Bar extends Component {
     // { this.getAnnualData.bind(this) }
     render() {
       return (
-      <div>
-      <span>{this.state.year}</span>
-        <input type="range" min="1990"
-          max="2015"
-          step="1"
-          id="fader"
+        <div>
+          <div className="barSlider">
+            <input type="range" min="1990"
+              max="2015"
+              step="1"
+              id="fader"
 
-          //  onChange={ event => this.setState({ year: event.target.value }) }
-          onChange={
-             this.extraFunction
-          }
-          >
+              //  onChange={ event => this.setState({ year: event.target.value }) }
+              onChange={
+                 this.extraFunction
+              }
+              >
 
-          <datalist id="steplist">
-          <output id="volume">2002</output>
-          </datalist>
-        </input>
-        <h2 className='category' onClick={this.povertyButton}>Poverty</h2>
-        <h2 className='category' onClick={this.waterPollutionButton}>Water Pollution</h2>
-        <h2 className='category' onClick={this.foodScarcityButton}>Food Scarcity</h2>
-      </div>
+              <datalist id="steplist">
+              <output id="volume">2002</output>
+              </datalist>
+            </input>
+            <span>{this.state.year}</span>
+          </div>
+          <div className="issues">
+            <ul>
+              <li className='category' onClick={this.povertyButton}>Poverty</li>
+              <li className='category' onClick={this.waterPollutionButton}>Water Pollution</li>
+              <li className='category' onClick={this.foodScarcityButton}>Food Scarcity</li>
+            </ul>
+          </div>
+        </div>
       );
     }
   }

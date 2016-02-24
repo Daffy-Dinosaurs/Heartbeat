@@ -18,7 +18,9 @@ let projection
     , countryTooltip
     , countryById = {}
     , grabId
-    , shaded
+    , time
+    , rotate
+    , velocity
     ;
 
 const worldGlobe = {
@@ -30,17 +32,17 @@ worldGlobe.go = function(countryObject) {
   // Map configuration
 
   if(!worldGlobe.loaded){
-    width  = 820;
-    height = 620;
+    width  = 925;
+    height = 820;
     sens = 0.25;
     // var rScale = d3.scale.sqrt();
     // var peoplePerPixel = 50000;
     // var max_population = [];
 
   // Configuration for the spinning effect
-  var time = Date.now();
-  var rotate = [0, 0];
-  var velocity = [0.005, -0];
+  time = Date.now();
+  rotate = [0, 0];
+  velocity = [0.005, -0];
 
   // Tool tip div
   countryTooltip = d3.select("body").append("div").attr("class", "countryTooltip");
@@ -50,8 +52,8 @@ worldGlobe.go = function(countryObject) {
 
   // set projection type and parameters
   projection = d3.geo.orthographic(3)
-    .scale(350)
-    .translate([(width / 2) + 50, (height / 2) + 50])
+    .scale(300)
+    .translate([(width / 2) + 10, (height / 2) ])
     .clipAngle(90)
     .precision(0.3);
 
@@ -59,15 +61,18 @@ worldGlobe.go = function(countryObject) {
     .projection(projection);
 
   svg = d3.select(".globe").append("svg")
-    .attr("width", "820")
+    .attr("width", "900")
     .attr("height", "720")
-  g = svg.append("g");
+  g = svg.append("g")
+
 
   g.append("path")
     .datum({type: "Sphere"})
     .attr("class", "sphere")
     .attr("d", path)
-    .attr("fill", "lightblue");
+    .attr("fill", "lightblue")
+    .attr("transform", "translate(0, -20)");
+
 
   worldPath = svg.selectAll("path.land")
     .data(countries)
@@ -75,6 +80,8 @@ worldGlobe.go = function(countryObject) {
     .attr("class", "land")
     .attr("d", path)
     .attr("fill", "#383a3a")
+    .attr("transform", "translate(0, -20)")
+
 
   // Parse names for tool tip
   names.forEach(function(d){
@@ -84,7 +91,7 @@ worldGlobe.go = function(countryObject) {
   worldGlobe.loaded = true;
 }
 
-   ready(null, world);
+ready(null, world);
 
 function ready(error, world) {
 
@@ -170,6 +177,8 @@ function ready(error, world) {
       svg.selectAll(".focused").classed("focused", focused = false);
       if (focusedCountry){
         transition();
+      } else {
+        console.log("There is no Country!!");
       }
       //  Globe rotating
       function transition() {
