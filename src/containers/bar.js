@@ -99,8 +99,10 @@ class Bar extends Component {
       }
 
       // console.log('stats for', this.state.year, stats, lowrange, highrange);
+
       this.setState({ currentIssue: "poverty" });
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'poverty');
+
 
     }
 
@@ -135,8 +137,13 @@ class Bar extends Component {
           }
         }
       }
+
       this.setState({ currentIssue: "foodScarcity" });
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
+
+
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'food scarcity');
+
+
     }
 
     waterPollutionButton() {
@@ -170,8 +177,13 @@ class Bar extends Component {
           }
         }
       }
+
       this.setState({ currentIssue: "waterPollution" });
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
+
+
+
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'water pollution');
+
 
     }
 
