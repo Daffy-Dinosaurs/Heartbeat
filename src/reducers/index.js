@@ -16,8 +16,6 @@ import { COUNTRY_DATA } from '../actions/get_all_data';
 import AllData from './reducer_all_data';
 
 
-// import ClearCountry from './reducer_clear_country';
-
 const rootReducer = combineReducers({
   globeCountry: GlobeAction,
   activeCountry: ActiveCountry,

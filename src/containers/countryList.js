@@ -13,17 +13,16 @@ class CountryList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: this.props.requestCountries()  };
+    this.state = { term: this.props.requestCountries() };
     this.state.term;
 
-    // console.log('BOOM countrylist');
   }
 
   renderList() {
 
     return this.props.countryList.map((country) => {
       return (
-          <li className="list-country-item" id={"c" + country.localeId}
+          <li className="list-country-item" id={'c' + country.localeId}
             key={country.countryName}
             onClick={(event) => {
               event.preventDefault();
@@ -45,7 +44,7 @@ class CountryList extends Component {
     // if (!this.props.country) {
     //   return <div>Select Country</div>;
     // } else {
-    // <button className="btn btn-primary" onClick={ ()=>this.props.requestCountries() }>Fetch country list!</button>
+
     return (
       <div className="side-view-left">
         <div className="countryList">
@@ -61,7 +60,14 @@ function mapStateToProps({ countryList }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ requestCountries, selectCountry, globeAction, getTweets, getNews, getWaterData }, dispatch);
+  return bindActionCreators({
+    requestCountries,
+    selectCountry,
+    globeAction,
+    getTweets,
+    getNews,
+    getWaterData
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountryList);

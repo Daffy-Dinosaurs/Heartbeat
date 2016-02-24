@@ -15,7 +15,6 @@ import NewsOutlet from '../containers/news_outlet';
 
 // import Land from '../components/world_view.js';
 
-// import InputRange from 'react-input-range';
 
 //Globe
 
@@ -26,14 +25,11 @@ export default class App extends Component{
 
     this.state = {};
 
-    // console.log('this is state inside of the conratuctor', state);
-
     this.showLeft = this.showLeft.bind(this);
     this.showRight = this.showRight.bind(this);
   }
 
   showLeft() {
-    // console.log(this.refs.left);
     this.refs.left.show();
   }
 
@@ -41,10 +37,7 @@ export default class App extends Component{
     this.refs.right.show();
   }
 
-  // <Link to="/d3Graphs">Graphs</Link>
-  // <Link to="/sandbox/jon">Jon Sandbox</Link>
   render() {
-    // console.log('Rendering the Main Page');
     // <Intro />
 
     return (
@@ -64,18 +57,3 @@ export default class App extends Component{
     );
   }
 }
-
-// <button onClick= {this.showLeft}>Show Left Menu</button>
-// <button onClick= {this.showRight}>Show Right Menu </button>
-//
-// <Menu ref='left' alignment='left'>
-//   <MenuItem>Introduction</MenuItem>
-//   <MenuItem hash='second-page'>Second Page</MenuItem>
-//   <MenuItem hash='third-page'>Third Page</MenuItem>
-// </Menu>
-//
-// <Menu ref='right' alignment='right'>
-//   <MenuItem hash='first-Page'>First Page</MenuItem>
-//   <MenuItem hash='second-page'>Second Page</MenuItem>
-//   <MenuItem hash='third-page'>Third Page</MenuItem>
-// </Menu>
