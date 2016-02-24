@@ -52,7 +52,7 @@ worldGlobe.go = function(countryObject) {
 
   // set projection type and parameters
   projection = d3.geo.orthographic(3)
-    .scale(400)
+    .scale(300)
     .translate([(width / 2) + 10, (height / 2) ])
     .clipAngle(90)
     .precision(0.3);
@@ -61,15 +61,18 @@ worldGlobe.go = function(countryObject) {
     .projection(projection);
 
   svg = d3.select(".globe").append("svg")
-    .attr("width", "925")
-    .attr("height", "980")
-  g = svg.append("g");
+    .attr("width", "900")
+    .attr("height", "720")
+  g = svg.append("g")
+
 
   g.append("path")
     .datum({type: "Sphere"})
     .attr("class", "sphere")
     .attr("d", path)
-    .attr("fill", "lightblue");
+    .attr("fill", "lightblue")
+    .attr("transform", "translate(0, -20)");
+
 
   worldPath = svg.selectAll("path.land")
     .data(countries)
@@ -77,6 +80,8 @@ worldGlobe.go = function(countryObject) {
     .attr("class", "land")
     .attr("d", path)
     .attr("fill", "#383a3a")
+    .attr("transform", "translate(0, -20)")
+
 
   // Parse names for tool tip
   names.forEach(function(d){
