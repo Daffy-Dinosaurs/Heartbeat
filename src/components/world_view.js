@@ -209,6 +209,12 @@ function ready(error, world) {
 
 worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
   console.log('going')
+
+  // d3.selectAll('path').attr("").attr('fill', '#383a3a');
+  d3.selectAll('path.land').attr("class", "land").style("fill", function() {
+    return '#383a3a';
+  })
+
   let colorScale = d3.scale.linear()
                         .domain([lowrange, highrange])
                         .rangeRound([0, 14])
@@ -221,7 +227,7 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
     storage[i].shade = colorArr[temp - 1];
     svg.selectAll("path").attr("d", path)
     .classed(".focused", function(d, j) {
-      if(d.id === storage[i].CountryId) {
+      if(d.id === storage[i].Country.localeId) {
         d3.select(this).attr("class", "land").style("fill", function() {
           return storage[i].shade;
         })

@@ -81,7 +81,10 @@ app.get('/api/countries', function (req, res) {
 
 // get all stats
 app.get('/api/statistics', function (req, res) {
-  model.CountryStatistic.findAll({}).then(function (stats) {
+  model.CountryStatistic.findAll({ include: [
+    { model: model.Country,
+      as: model.Country.id, }, ],
+ }).then(function (stats) {
     if (stats) {
       res.status(200).send(stats);
     } else {
@@ -110,7 +113,7 @@ app.get('/api/statistics/:CountryId', function (req, res) {
     include:[{
       model: model.Country,
       as: model.Country.id,
-    },],
+    }, ],
   }).then(function (stats) {
     if (stats) {
       res.status(200).send(stats);
@@ -119,6 +122,8 @@ app.get('/api/statistics/:CountryId', function (req, res) {
     }
   });
 });
+
+//additional call
 
 //////////////////////////////////////////////////////////////////
 //Set up and send a request for our application-only oAuth token.
