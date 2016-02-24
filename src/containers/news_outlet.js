@@ -29,7 +29,6 @@ class NewsOutlet extends Component {
       );
     });
 
-    // this.props.newsFeed = [];
   }
 
   show() {
@@ -61,8 +60,8 @@ class NewsOutlet extends Component {
 
     }
 
-    if (!this.state.visible || (Object.keys(this.props.newsFeed).length === 0 ) ) {
-      // console.log('visiblity set to false');
+    if (!this.state.visible || (Object.keys(this.props.newsFeed).length === 0)) {
+    
       return (
         <div>
           <h1 onClick={this.show.bind(this)}>News Feed</h1>

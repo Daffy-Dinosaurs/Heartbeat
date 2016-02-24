@@ -17,8 +17,6 @@ class Globe extends Component {
 
   renderGlobe() {
     worldGlobe.go(this.props.globeCountry);
-
-    // console.log("I am rendering again ");
   }
 
   render() {
