@@ -44,29 +44,33 @@ class VictoryPlots extends Component {
     var processPovertyData = [];
     var processFoodData = [];
 
-    // console.log('this is the length of waterData', this.props.waterData.length);
-    // console.log('this is the content of waterData', this.props.waterData[1].category, this.props.waterData[51]);
-    // console.log('this is the content of processWaterData', processWaterData);
-
     for (var i = 0; i < this.props.waterData.length; i++) {
       if (this.props.waterData[i].category === 'Water Pollution') {
-        processWaterData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+        processWaterData.push({
+          x: this.props.waterData[i].year,
+          y: this.props.waterData[i].value,
+        });
       }
     }
 
     for (var i = 0; i < this.props.waterData.length; i++) {
       if (this.props.waterData[i].category === 'Poverty') {
-        processPovertyData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+        processPovertyData.push({
+          x: this.props.waterData[i].year,
+          y: this.props.waterData[i].value,
+        });
       }
     }
 
     for (var i = 0; i < this.props.waterData.length; i++) {
       if (this.props.waterData[i].category === 'Food Scarcity') {
-        processFoodData.push({ x: this.props.waterData[i].year, y: this.props.waterData[i].value });
+        processFoodData.push({
+          x: this.props.waterData[i].year,
+          y: this.props.waterData[i].value,
+        });
       }
     }
 
-    // console.log('new length of processWaterData', processWaterData);
     this.setState({ waterProcessed: processWaterData });
     this.setState({ povertyProcessed: processPovertyData });
     this.setState({ foodProcessed: processFoodData });
@@ -85,9 +89,8 @@ class VictoryPlots extends Component {
   // this.hide.bind(this)
   // <h4 onClick = { this.onInputChange(this.props.waterData.localeId)}>some</h4>
   render() {
-    // console.log('this is  the result of array is array', Array.isArray(this.props.waterData));
     if (this.state.visible) {
-      // console.log('the visibilty state is true');
+
       if (Array.isArray(this.props.waterData)) {
         return (
           <div className="col-md-2">
@@ -114,7 +117,7 @@ class VictoryPlots extends Component {
 
           data = { this.state.povertyProcessed }
           dataAttributes= {[
-            { fill: 'yellow' },
+            { fill: 'orange' },
           ]}
           />
           </VictoryChart>
@@ -146,9 +149,6 @@ class VictoryPlots extends Component {
 
 }; // End of Component
 
-// <button onClick = { this.processingData.bind(this) } >
-// Plot Graph
-// </button>
 function mapStateToProps({ waterData }) {
   return { waterData };
 }
