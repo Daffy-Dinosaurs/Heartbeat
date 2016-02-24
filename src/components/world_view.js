@@ -203,18 +203,19 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
   // console.log('info coming through', storage, lowrange, highrange);
   let colorScale = d3.scale.linear()
                         .domain([lowrange, highrange])
-                        .rangeRound([0, 10])
+                        .range([0, 5])
                         .nice();
 
-  let color = d3.rgb("yellow") // d3_Rgb object
+  // let color = d3.rgb(240, 248, 255) // d3_Rgb object
 
-  let colorArr = [];
+  let colorArr = ['86C98A', '54A759', '2D8633', '116416', '004304'];
 
 
   for (var i = 0; i < storage.length; i++) {
     let temp = colorScale(storage[i].value)
-    storage[i].colorScale = color.darker([temp]).toString()
-    console.log(storage[i])
+    console.log('this is the temp variable', temp)
+    // storage[i].shade = colorArr[temp];
+    console.log(storage[i].shade)
 
     // let sortable = worldPath[0];
     // worldPath.map(function(d){
@@ -223,11 +224,15 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
 
     svg.selectAll("path").attr("d", path)
     .classed("shaded", function(d, j) {
-      console.log('this is D', d)
+      // console.log('this is D', d)
       if(d.id === storage[i].CountryId) {
-        console.log('passed conditional')
-        console.log('D3 item', d3.select(d.id))
-        d3.select(d).style('fill','red')
+        // console.log('passed conditional')
+        // console.log('D3 item', d3.select(d))
+
+        d3.select(this).attr("class", "").style("fill", function() {
+          //console.log('this is the hex color', storage[i].color)
+          return storage[i].shade;
+        })
       }
     })
 
