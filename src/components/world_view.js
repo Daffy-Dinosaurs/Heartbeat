@@ -201,6 +201,7 @@ function ready(error, world) {
 
 worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
   // console.log('info coming through', storage, lowrange, highrange);
+  console.log('going')
   let colorScale = d3.scale.linear()
                         .domain([lowrange, highrange])
                         .rangeRound([0, 14])
@@ -223,16 +224,18 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
     // })
 
     svg.selectAll("path").attr("d", path)
-    .classed("shaded", function(d, j) {
+    .classed(".focused", function(d, j) {
       // console.log('this is D', d)
       if(d.id === storage[i].CountryId) {
         // console.log('passed conditional')
         // console.log('D3 item', d3.select(d))
 
-        d3.select(this).attr("class", "").style("fill", function() {
+        d3.select(this).attr("class", ".focused").style("fill", function() {
           //console.log('this is the hex color', storage[i].color)
           return storage[i].shade;
         })
+      } else {
+        focused = false;
       }
     })
 
