@@ -37,5 +37,5 @@ ReactDOM.render(
     <Route path="/sandbox/jon" component={D3Graphs}/>
     </Router>
   </Provider>,
-  document.querySelector('.container-fluid')
+  document.querySelector('body')
 );

@@ -31,7 +31,7 @@ class Intro extends Component {
 
     if (this.state.visible) {
       return (
-        <div className='.overlay'>
+        <div className=".overlay">
           <h1 onClick = { this.hideIntro.bind(this) }>Intro</h1>
 
           <h2>Welcome</h2>
@@ -45,7 +45,7 @@ class Intro extends Component {
 
     if (!this.state.visible) {
       return (
-        <div>
+        <div className=".overlay">
         <h1 onClick = { this.showIntro.bind(this) }>Intro</h1>
         </div>
       );

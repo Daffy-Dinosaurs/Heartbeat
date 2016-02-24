@@ -18,6 +18,9 @@ let projection
     , countryTooltip
     , countryById = {}
     , grabId
+    , time
+    , rotate
+    , velocity
     ;
 
 const worldGlobe = {
@@ -29,17 +32,17 @@ worldGlobe.go = function(countryObject) {
   // Map configuration
 
   if(!worldGlobe.loaded){
-    width  = 820;
-    height = 620;
+    width  = 925;
+    height = 820;
     sens = 0.25;
     // var rScale = d3.scale.sqrt();
     // var peoplePerPixel = 50000;
     // var max_population = [];
 
   // Configuration for the spinning effect
-  var time = Date.now();
-  var rotate = [0, 0];
-  var velocity = [0.005, -0];
+  time = Date.now();
+  rotate = [0, 0];
+  velocity = [0.005, -0];
 
   // Tool tip div
   countryTooltip = d3.select("body").append("div").attr("class", "countryTooltip");
@@ -49,8 +52,8 @@ worldGlobe.go = function(countryObject) {
 
   // set projection type and parameters
   projection = d3.geo.orthographic(3)
-    .scale(350)
-    .translate([(width / 2) + 50, (height / 2) + 50])
+    .scale(300)
+    .translate([(width / 2) + 10, (height / 2) ])
     .clipAngle(90)
     .precision(0.3);
 
@@ -58,15 +61,18 @@ worldGlobe.go = function(countryObject) {
     .projection(projection);
 
   svg = d3.select(".globe").append("svg")
-    .attr("width", "820")
+    .attr("width", "900")
     .attr("height", "720")
-  g = svg.append("g");
+  g = svg.append("g")
+
 
   g.append("path")
     .datum({type: "Sphere"})
     .attr("class", "sphere")
     .attr("d", path)
-    .attr("fill", "lightblue");
+    .attr("fill", "lightblue")
+    .attr("transform", "translate(0, -20)");
+
 
   worldPath = svg.selectAll("path.land")
     .data(countries)
@@ -74,6 +80,8 @@ worldGlobe.go = function(countryObject) {
     .attr("class", "land")
     .attr("d", path)
     .attr("fill", "#383a3a")
+    .attr("transform", "translate(0, -20)")
+
 
   // Parse names for tool tip
   names.forEach(function(d){
@@ -83,7 +91,7 @@ worldGlobe.go = function(countryObject) {
   worldGlobe.loaded = true;
 }
 
-   ready(null, world);
+ready(null, world);
 
 function ready(error, world) {
 
@@ -164,12 +172,13 @@ function ready(error, world) {
 
       var rotate = projection.rotate(),
       focusedCountry = country(countries, countryObject);
-      console.log(">>>>>>>>>>>",focusedCountry);
       var p = d3.geo.centroid(focusedCountry);
 
       svg.selectAll(".focused").classed("focused", focused = false);
       if (focusedCountry){
         transition();
+      } else {
+        console.log("There is no Country!!");
       }
       //  Globe rotating
       function transition() {
@@ -199,74 +208,25 @@ function ready(error, world) {
 };
 
 worldGlobe.renderGlobeStats = function (storage, lowrange, highrange) {
-  // console.log('info coming through', storage, lowrange, highrange);
+  console.log('going')
   let colorScale = d3.scale.linear()
                         .domain([lowrange, highrange])
-                        .rangeRound([0, 10])
+                        .rangeRound([0, 14])
                         .nice();
 
-  let color = d3.rgb("violet") // d3_Rgb object
-
-  let colorArr = [];
-
+  let colorArr = ['b3ffb3', '99ff99', '80ff80', '66ff66', '4dff4d', '33ff33', '1aff1a', '00ff00', '00e600', '00cc00', '00b300', '009900', '008000', '006600', '004d00'];
 
   for (var i = 0; i < storage.length; i++) {
-    let temp = colorScale(storage[i].value)
-
-    storage[i].colorScale = color.darker([temp])
-
-    // let sortable = worldPath[0];
-    // worldPath.map(function(d){
-    // console.log(d)
-    // })
-    const worldData = svg.selectAll("svg")
-            .data(12);
-
-    console.log(worldData);
-
-
-    // for(var j = 0; j < sortable.length; j++) {
-    //   console.log('this is world path item', sortable[j]);
-    // }
-
+    let temp = colorScale(storage[i].value);
+    storage[i].shade = colorArr[temp - 1];
+    svg.selectAll("path").attr("d", path)
+    .classed(".focused", function(d, j) {
+      if(d.id === storage[i].CountryId) {
+        d3.select(this).attr("class", "land").style("fill", function() {
+          return storage[i].shade;
+        })
+      }
+    })
   }
-  //we still need to match a number to a color
-
-
-
-
-
-
-  //get lowest and highest values from incoming storage object
-  // var food = [], water = [], poverty = [];
-  //
-  // for (var i = 0; i < storage.length; i++){
-  //   if (storage[i].category === "Food Scarcity" && storage[i].value !== 0){
-  //     food.push(storage[i].value)
-  //   }
-  //   else if (storage[i].category === "Water Pollution" && storage[i].value !== 0){
-  //     water.push(storage[i].value)
-  //   }
-  //   else if (storage[i].category === "Poverty" && storage[i].value !== 0){
-  //     poverty.push(storage[i].value)
-  //   }
-  // }
-
-  // var ranges = {
-  // };
-  //
-  // ranges.foodLowest = Math.min(...food);
-  // ranges.foodHighest = Math.max(...food);
-  //
-  // ranges.waterLowest = Math.min(...water);
-  // ranges.waterHighest = Math.max(...water);
-  //
-  // ranges.povertyLowest = Math.min(...poverty);
-  // ranges.povertyHighest = Math.max(...poverty);
-
-  //translate value to % out of 100 (lowestVal = 0, highestVal = 100)
-
-
 }
-
 export default worldGlobe

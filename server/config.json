@@ -1,4 +1,13 @@
 {
+  "development1": {
+    "username": "root",
+    "password": null,
+    "database": "worldMapDB",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "seederStorage": "sequelize",
+    "define": { "timestamps": false}
+  },
   "test": {
     "username": "root",
     "password": null,

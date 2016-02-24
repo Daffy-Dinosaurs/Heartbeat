@@ -45,21 +45,22 @@ export default class App extends Component{
   // <Link to="/sandbox/jon">Jon Sandbox</Link>
   render() {
     // console.log('Rendering the Main Page');
+    // <Intro />
 
     return (
       <div className="main">
         <CountryList />
-        <Intro />
-        <div className="col-md-8 globe">
+        <div className="globe">
           <Globe />
-        <Bar />
-        <VictoryPlots />
         </div>
-        <ActiveCountry />
-        <NewsOutlet />
-        <TwitterFeed />
+        <Bar />
+        <div className="countryData">
+          <VictoryPlots />
+          <ActiveCountry />
+          <NewsOutlet />
+          <TwitterFeed />
+        </div>
       </div>
-
     );
   }
 }

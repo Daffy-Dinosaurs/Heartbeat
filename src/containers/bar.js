@@ -64,7 +64,7 @@ class Bar extends Component {
             if (this.props.allData[i].value === 0) {
 
             } else {
-              
+
               if (lowrange === undefined) {
                 lowrange = this.props.allData[i].value;
               }
@@ -91,58 +91,106 @@ class Bar extends Component {
 
     foodScarcityButton() {
       let stats = [];
+      let lowrange = undefined;
+      let highrange = 0;
 
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Food Scarcity') {
-            stats.push(this.props.allData[i]);
+
+            if (this.props.allData[i].value === 0) {
+
+            } else {
+
+              if (lowrange === undefined) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (lowrange > this.props.allData[i].value) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (highrange < this.props.allData[i].value) {
+                highrange = this.props.allData[i].value;
+              }
+
+              stats.push(this.props.allData[i]);
+            }
+
           }
         }
       }
 
-      console.log('food scarcity', stats);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
 
     }
 
     waterPollutionButton() {
       let stats = [];
+      let lowrange = undefined;
+      let highrange = 0;
 
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Water Pollution') {
-            stats.push(this.props.allData[i]);
+
+            if (this.props.allData[i].value === 0) {
+
+            } else {
+
+              if (lowrange === undefined) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (lowrange > this.props.allData[i].value) {
+                lowrange = this.props.allData[i].value;
+              }
+
+              if (highrange < this.props.allData[i].value) {
+                highrange = this.props.allData[i].value;
+              }
+
+              stats.push(this.props.allData[i]);
+            }
+
           }
         }
       }
 
-      console.log('pollution stats', stats);
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange);
 
     }
 
     // { this.getAnnualData.bind(this) }
     render() {
       return (
-      <div>
-      <span>{this.state.year}</span>
-        <input type="range" min="1990"
-          max="2015"
-          step="1"
-          id="fader"
+        <div>
+          <div className="barSlider">
+            <input type="range" min="1990"
+              max="2015"
+              step="1"
+              id="fader"
 
-          //  onChange={ event => this.setState({ year: event.target.value }) }
-          onChange={
-             this.extraFunction
-          }
-          >
+              //  onChange={ event => this.setState({ year: event.target.value }) }
+              onChange={
+                 this.extraFunction
+              }
+              >
 
-          <datalist id="steplist">
-          <output id="volume">2002</output>
-          </datalist>
-        </input>
-        <h2 className='category' onClick={this.povertyButton}>Poverty</h2>
-        <h2 className='category' onClick={this.waterPollutionButton}>Water Pollution</h2>
-        <h2 className='category' onClick={this.foodScarcityButton}>Food Scarcity</h2>
-      </div>
+              <datalist id="steplist">
+              <output id="volume">2002</output>
+              </datalist>
+            </input>
+            <span>{this.state.year}</span>
+          </div>
+          <div className="issues">
+            <ul>
+              <li className='category' onClick={this.povertyButton}>Poverty</li>
+              <li className='category' onClick={this.waterPollutionButton}>Water Pollution</li>
+              <li className='category' onClick={this.foodScarcityButton}>Food Scarcity</li>
+            </ul>
+          </div>
+        </div>
       );
     }
   }
