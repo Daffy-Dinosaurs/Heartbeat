@@ -14,12 +14,10 @@ class ActiveCountry extends Component {
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
 
-    // console.log('this is state inside of constructor', this.state);
   }
 
   renderScreen() {
-    // console.log('these are the props: ', this.props.activeCountry, this.props.activeCountry.localeId);
-    // console.log('STATE: ', this.props);
+
     return <div>We dont have anything here</div>;
   }
 
@@ -37,7 +35,6 @@ class ActiveCountry extends Component {
   }
 
   render() {
-    // console.log('inside country-view');
     if (this.state.visible) {
       if (this.props.activeCountry.countryName) {
         return (
@@ -60,8 +57,6 @@ class ActiveCountry extends Component {
       return <div>
       <h1 onClick={this.show.bind(this)}>{this.props.activeCountry.countryName}</h1>
       </div>;
-
-      // console.log('this is the failed test result');
 
     }
 

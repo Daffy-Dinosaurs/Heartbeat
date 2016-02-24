@@ -20,13 +20,8 @@ class TwitterFeed extends Component {
 
   renderTweets() {
     if (this.props.twitterFeed.length > 1) {
-
-      // console.log('array size is larger than 1');
       this.props.twitterFeed.shift();
     }
-
-    //The objects are being added to end of the twitterFeed array
-    // console.log('Inside the beast', this.props.twitterFeed);
 
     return this.props.twitterFeed.statuses.map((tweet) => {
       return (
@@ -38,8 +33,6 @@ class TwitterFeed extends Component {
 
     this.props.twitterFeed = [];
   }
-
-  // <li className="tweet-date"> { tweet.created_at } </li>
 
   clearTweet() {
     this.props.clearTweets();
@@ -58,7 +51,6 @@ class TwitterFeed extends Component {
     if (this.state.visible) {
       // console.log('visiblity set to true');
       if (this.props.twitterFeed.statuses) {
-        // console.log('passes second conditional');
         return (
           <div className="col-md-2 tweet-feed">
           <h1 onClick= {
@@ -72,7 +64,7 @@ class TwitterFeed extends Component {
 
     }
 
-    if (!this.state.visible || (Object.keys(this.props.twitterFeed).length === 0 )) {
+    if (!this.state.visible || (Object.keys(this.props.twitterFeed).length === 0)) {
       // console.log('visiblity set to false');
       return (
         <div>
@@ -86,7 +78,6 @@ class TwitterFeed extends Component {
 }
 
 function mapStateToProps({ twitterFeed }) {
-  // console.log('TWEETS STATE:', { twitterFeed });
   return { twitterFeed };
 }
 
