@@ -41,8 +41,8 @@ We used to following stack:
 
 From within the root directory:
 
-####run npm install
-####run npm start
+######run npm install
+######run npm start
 
 
 ## Contributing
