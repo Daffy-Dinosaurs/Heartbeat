@@ -23,11 +23,14 @@ Heartbeat is an interactive global map that allows users to see visual represent
 
 #####The three datasets represent:
 
--POVERTY: Percentage of population who survive on $3.90 USD per day \n
--WATER POLLUTION: Percentage of drinkable water (Karun... please elaborate) \n
--FOOD SCARCITY(Jon I forget the actual data set): (Jon... please elaborate) \n
+-POVERTY: Percentage of population who survive on $3.90 USD per day
 
-We have also intergrated the usage of Twitter and various news outlets to give our users a holistic understanding of the factual evidence, the media representation, and on the ground reality of the people experiencing the effects of these issues
+-WATER POLLUTION: Percentage of drinkable water (Karun... please elaborate)
+
+-FOOD SCARCITY(Jon I forget the actual data set): (Jon... please elaborate)
+
+
+We have also integrated the usage of Twitter and various news outlets to give our users a holistic understanding of the factual evidence, the media representation, and on the ground reality of the people experiencing the effects of these issues.
 
 
 
