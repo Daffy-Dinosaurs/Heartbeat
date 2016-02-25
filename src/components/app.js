@@ -13,7 +13,6 @@ export default class App extends Component{
 
   render() {
     // <Intro />
-    // <VictoryPlots />
 
     return (
       <div className="main">
@@ -25,6 +24,7 @@ export default class App extends Component{
         <ActiveCountry />
         <NewsOutlet />
         <TwitterFeed />
+        <VictoryPlots />
       </div>
     );
   }
