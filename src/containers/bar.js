@@ -10,6 +10,7 @@ class Bar extends Component {
       super(props);
       this.state = {
         year: 2002,
+        currentIssue: ""
       };
       this.props.getAllData();
       this.getAnnualData = this.getAnnualData.bind(this);
@@ -17,11 +18,13 @@ class Bar extends Component {
       this.povertyButton = this.povertyButton.bind(this);
       this.waterPollutionButton = this.waterPollutionButton.bind(this);
       this.foodScarcityButton = this.foodScarcityButton.bind(this);
+      this.getCurrentIssue = this.getCurrentIssue.bind(this);
     }
 
     extraFunction(event) {
-      console.log('this is the new state', this.state.year);
+      //console.log('this is the new state', this.state.year);
       this.setState({ year: event.target.value }, this.getAnnualData.bind(this));
+      this.getCurrentIssue();
 
     }
 
@@ -33,6 +36,20 @@ class Bar extends Component {
           storage.push(this.props.allData[i]);
         }
       }
+
+
+      // worldGlobe.renderGlobeStats(storage);
+      var currentData = this.state.currentIssue;
+      if (currentData === "poverty"){
+        this.povertyButton()
+      };
+      if (currentData === "waterPollution"){
+        this.waterPollutionButton()
+      };
+      if (currentData === "foodScarcity"){
+        this.foodScarcityButton()
+      };
+
     }
 
     povertyButton() {
@@ -64,7 +81,12 @@ class Bar extends Component {
         }
       }
 
+
+      // console.log('stats for', this.state.year, stats, lowrange, highrange);
+
+      this.setState({ currentIssue: "poverty" });
       worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'poverty');
+
     }
 
     foodScarcityButton() {
@@ -95,6 +117,9 @@ class Bar extends Component {
           }
         }
       }
+
+      this.setState({ currentIssue: "foodScarcity" });
+
 
       worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'food scarcity');
     }
@@ -128,7 +153,18 @@ class Bar extends Component {
         }
       }
 
+      this.setState({ currentIssue: "waterPollution" });
+
+
+
       worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'water pollution');
+
+
+
+    }
+
+    getCurrentIssue () {
+      console.log('CURRENT ISSUE : ', this.state.currentIssue )
     }
 
     render() {
