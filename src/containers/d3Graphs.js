@@ -10,8 +10,6 @@ import { VictoryBar } from 'victory-bar';
 import { getWaterData } from '../actions/get_water_data';
 import CountryList from '../containers/countryList';
 
-// console.log('Printing the Water Data', waterData);
-
 var plottingData = [
   { x: '1990', y: 0 },
   { x: '1992', y: 0 },
@@ -34,9 +32,6 @@ class VictoryPlots extends Component {
     this.processingData = this.processingData.bind(this);
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
-
-    // console.log('this is testing props', this.props.waterData);
-
   }
 
   processingData() {
@@ -79,18 +74,14 @@ class VictoryPlots extends Component {
 
   show() {
     this.setState({ visible: true });
-
   }
 
   hide() {
     this.setState({ visible: false });
   }
 
-  // this.hide.bind(this)
-  // <h4 onClick = { this.onInputChange(this.props.waterData.localeId)}>some</h4>
   render() {
     if (this.state.visible) {
-
       if (Array.isArray(this.props.waterData)) {
         return (
           <div className="col-md-2">
@@ -99,12 +90,10 @@ class VictoryPlots extends Component {
             this.processingData.bind(this)
           }>Process</h3>
           </div>
-
           <h5 onClick={this.hide.bind(this)}>close</h5>
           <h6>Water Pollution</h6>
           <VictoryChart>
           <VictoryBar
-
           data = { this.state.waterProcessed }
           dataAttributes= {[
             { fill: 'green' },
@@ -114,7 +103,6 @@ class VictoryPlots extends Component {
           <h6>Poverty</h6>
           <VictoryChart>
           <VictoryBar
-
           data = { this.state.povertyProcessed }
           dataAttributes= {[
             { fill: 'orange' },
@@ -124,29 +112,23 @@ class VictoryPlots extends Component {
           <h6>Food Scarcity</h6>
           <VictoryChart>
           <VictoryBar
-
           data = { this.state.foodProcessed }
           dataAttributes= {[
             { fill: 'red' },
           ]}
           />
           </VictoryChart>
-
           </div>
         );
-
       }
-
     }
 
     if (!this.state.visible || (!this.state.waterData)) {
       return <div>
       <h3 onClick={this.show.bind(this)}>Process</h3>
       </div>;
-
     }
   }
-
 }; // End of Component
 
 function mapStateToProps({ waterData }) {

@@ -5,8 +5,6 @@ import { requestCountries } from '../actions/request_country';
 import { getAllData } from '../actions/get_all_data';
 import worldGlobe from '../components/world_view.js';
 
-//import BarListItem from '../components/bar_list_item';
-
 class Bar extends Component {
     constructor(props) {
       super(props);
@@ -21,10 +19,6 @@ class Bar extends Component {
       this.foodScarcityButton = this.foodScarcityButton.bind(this);
     }
 
-    // componentWillRecieveProps() {
-    //
-    // }
-
     extraFunction(event) {
       console.log('this is the new state', this.state.year);
       this.setState({ year: event.target.value }, this.getAnnualData.bind(this));
@@ -34,19 +28,11 @@ class Bar extends Component {
     getAnnualData() {
       let storage = [];
 
-      // console.log('get Annual called', this.props.allData[0]);
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
-          // console.log('inside the second for loop');
-          // console.log(this.props.allData[i].year);
-
           storage.push(this.props.allData[i]);
-
-          // console.log('this is storage', storage);
         }
       }
-
-      // worldGlobe.renderGlobeStats(storage);
     }
 
     povertyButton() {
@@ -54,17 +40,12 @@ class Bar extends Component {
       let lowrange = undefined;
       let highrange = 0;
 
-      // console.log('inside poverty function');
-
       for (var i = 0; i < this.props.allData.length; i++) {
-
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Poverty') {
-
             if (this.props.allData[i].value === 0) {
-
+              //do nothing
             } else {
-
               if (lowrange === undefined) {
                 lowrange = this.props.allData[i].value;
               }
@@ -79,14 +60,11 @@ class Bar extends Component {
 
               stats.push(this.props.allData[i]);
             }
-
           }
         }
       }
 
-      // console.log('stats for', this.state.year, stats, lowrange, highrange);
       worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'poverty');
-
     }
 
     foodScarcityButton() {
@@ -97,11 +75,9 @@ class Bar extends Component {
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Food Scarcity') {
-
             if (this.props.allData[i].value === 0) {
-
+              //do nothing
             } else {
-
               if (lowrange === undefined) {
                 lowrange = this.props.allData[i].value;
               }
@@ -116,13 +92,11 @@ class Bar extends Component {
 
               stats.push(this.props.allData[i]);
             }
-
           }
         }
       }
 
       worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'food scarcity');
-
     }
 
     waterPollutionButton() {
@@ -133,11 +107,9 @@ class Bar extends Component {
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
           if (this.props.allData[i].category === 'Water Pollution') {
-
             if (this.props.allData[i].value === 0) {
-
+              //do nothing
             } else {
-
               if (lowrange === undefined) {
                 lowrange = this.props.allData[i].value;
               }
@@ -152,16 +124,13 @@ class Bar extends Component {
 
               stats.push(this.props.allData[i]);
             }
-
           }
         }
       }
 
       worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'water pollution');
-
     }
 
-    // { this.getAnnualData.bind(this) }
     render() {
       return (
         <div>
@@ -170,13 +139,10 @@ class Bar extends Component {
               max="2015"
               step="1"
               id="fader"
-
-              //  onChange={ event => this.setState({ year: event.target.value }) }
               onChange={
                  this.extraFunction
               }
               >
-
               <datalist id="steplist">
               <output id="volume">2002</output>
               </datalist>
