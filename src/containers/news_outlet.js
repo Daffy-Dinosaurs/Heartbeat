@@ -47,11 +47,11 @@ class NewsOutlet extends Component {
     if (this.state.visible) {
       if (this.props.newsFeed.response) {
         return (
-          <div className="col-md-2 newsfeed-feed">
+          <div className="newsfeed-feed-visible">
           <h1 onClick= {
             this.clearFeed.bind(this),
             this.hide.bind(this)
-          }>News Feed</h1>
+          }><img src="/src/images/news.png" alt="news" /></h1>
           { this.showStory() }
           </div>
         );
@@ -61,10 +61,12 @@ class NewsOutlet extends Component {
     }
 
     if (!this.state.visible || (Object.keys(this.props.newsFeed).length === 0)) {
-    
+
       return (
-        <div>
-          <h1 onClick={this.show.bind(this)}>News Feed</h1>
+        <div className="newsfeed-feed">
+          <h1 onClick={this.show.bind(this)}>
+            <img src="/src/images/news.png" alt="news" />
+          </h1>
         </div>
       );
 

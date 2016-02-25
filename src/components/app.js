@@ -49,10 +49,8 @@ export default class App extends Component{
         </div>
         <Bar />
         <ActiveCountry />
-        <div className="countryData">
-          <NewsOutlet />
-          <TwitterFeed />
-        </div>
+        <NewsOutlet />
+        <TwitterFeed />
       </div>
     );
   }

@@ -70,7 +70,7 @@ worldGlobe.go = function(countryObject) {
     .datum({type: "Sphere"})
     .attr("class", "sphere")
     .attr("d", path)
-    .attr("fill", "lightblue")
+    .attr("fill", "#1C6BA0")
     .attr("transform", "translate(0, -20)");
 
 
@@ -79,7 +79,7 @@ worldGlobe.go = function(countryObject) {
     .enter().append("path")
     .attr("class", "land")
     .attr("d", path)
-    .attr("fill", "#383a3a")
+    .attr("fill", "#C1B398")
     .attr("transform", "translate(0, -20)")
 
 
