@@ -3,6 +3,5 @@ export default function(state = null, action) {
     case 'GLOBE_ACTION_SELECTED':
       return action.payload;
   }
-
   return state;
 }

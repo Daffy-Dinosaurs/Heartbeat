@@ -5,7 +5,6 @@ const intialState = {};
 export default function(state = intialState, action) {
 
   if (action.type === 'GET_NEWS') {
-  
     return action.payload.data;
   }
 
