@@ -69,11 +69,11 @@ class TwitterFeed extends Component {
     if (this.state.visible) {
       if (this.props.twitterFeed.statuses) {
         return (
-          <div className="col-md-2 tweet-feed">
+          <div className="tweet-feed-visible">
           <h1 onClick= {
             this.clearTweet.bind(this),
             this.hide.bind(this)
-          }>Tweets</h1>
+          }><img src="/src/images/twitter.png" alt="twitter" /></h1>
           { this.renderTweets() }
           </div>
         );
@@ -83,8 +83,8 @@ class TwitterFeed extends Component {
 
     if (!this.state.visible || (Object.keys(this.props.twitterFeed).length === 0)) {
       return (
-        <div>
-          <h1 onClick={this.show.bind(this)}>Tweets</h1>
+        <div className="tweet-feed">
+          <h1 onClick={this.show.bind(this)}><img src="/src/images/twitter.png" alt="twitter" /></h1>
         </div>
       );
     }

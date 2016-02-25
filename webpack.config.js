@@ -29,10 +29,9 @@ module.exports = {
         loader: 'url-loader?limit=100000',
       },
       {
-        test: /\.jpg$/,
+        test: /\.(jpg|png|gif|svg)$/,
         loader: 'file-loader',
       },
-
       // {
       //   test: /\.(otf|eot|svg|ttf|woff)/,
       //   loader: 'url-loader?limit=' + spec.urlLoaderLimit

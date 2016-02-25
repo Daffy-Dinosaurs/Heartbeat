@@ -38,7 +38,7 @@ class ActiveCountry extends Component {
     if (this.state.visible) {
       if (this.props.activeCountry.countryName) {
         return (
-          <div className="col-md-2">
+          <div className="countryTitle">
           <h1 onClick= {
             this.changeProps.bind(this),
             this.hide.bind(this)
@@ -54,7 +54,7 @@ class ActiveCountry extends Component {
 
     if (!this.state.visible) {
       console.log('DO NOTHING');
-      return <div>
+      return <div className="countryTitle">
       <h1 onClick={this.show.bind(this)}>{this.props.activeCountry.countryName}</h1>
       </div>;
 
