@@ -1,38 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 import _ from 'lodash';;
 import { clearTweets } from '../actions/clear_tweets';
 import { getTweets } from '../actions/get_twitter_feed';
 
 class TwitterFeed extends Component {
-
   constructor(props) {
     super(props);
-
     this.state = {
       visible: false,
     };
-
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
-
   }
 
   renderTweets() {
     if (this.props.twitterFeed.length > 1) {
       this.props.twitterFeed.shift();
     }
-    //The objects are being added to end of the twitterFeed array
-    // console.log('Inside the beast', this.props.twitterFeed);
 
     var cleanTweets = this.props.twitterFeed.statuses;
     var cleanTweetsObject = {};
-    var tweetsArray = []
+    var tweetsArray = [];
     var regex = new RegExp(/htt\w+:\/\/\S+/);
 
     for (var i = 0; i < cleanTweets.length; i++) {
-      // console.log('HELOO', cleanTweets[i].text.match(/htt\w+:\/\/\S+/));
       var object = {};
       object.id = cleanTweets[i].id;
 
@@ -41,12 +34,13 @@ class TwitterFeed extends Component {
       } else {
         object.url = '';
       }
-      object.text = cleanTweets[i].text.replace(/htt\w+:\/\/\S+/g, ""),
+
+      object.text = cleanTweets[i].text.replace(/htt\w+:\/\/\S+/g, ''),
 
       tweetsArray.push(object);
     }
 
-    return _.map(tweetsArray, function(tweet) {
+    return _.map(tweetsArray, function (tweet) {
       return (
         <div className="tweets">
             <li key={ tweet.id } className="tweet-item"> { tweet.text }
@@ -72,9 +66,7 @@ class TwitterFeed extends Component {
   }
 
   render() {
-
     if (this.state.visible) {
-      // console.log('visiblity set to true');
       if (this.props.twitterFeed.statuses) {
         return (
           <div className="col-md-2 tweet-feed">
@@ -90,16 +82,13 @@ class TwitterFeed extends Component {
     }
 
     if (!this.state.visible || (Object.keys(this.props.twitterFeed).length === 0)) {
-      // console.log('visiblity set to false');
       return (
         <div>
           <h1 onClick={this.show.bind(this)}>Tweets</h1>
         </div>
       );
     }
-
   }
-
 }
 
 function mapStateToProps({ twitterFeed }) {
