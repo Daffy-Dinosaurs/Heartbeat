@@ -10,43 +10,38 @@ Heartbeat is a tool to enhance the awareness of issues that effect us as a socie
 
 ## Table of Contents
 
-1. [Installation](#installation)
-1. [Tech Stack](#techstack)
+1. [Purpose](#purpose)
+1. [Usage](#usage)
+1. [Tech Stack](#tech-stack)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
     1. [Developing](#developing)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
-## Usage
+## Purpose
 
 Heartbeat is an interactive global map that allows our users to see visual representations of key data sets provided to the application. Currently Heartbeat is set to display data from acquired from the world back (add something). We hope this can be used as a tool to highlight important issues and be leveraged to produce educational value and awareness toward these key topics.
 
 #####The three datasets represent:
 
--POVERTY: Percentage of population who survive on $3.90 USD per day
+######-POVERTY: Percentage of population who survive on $3.90 USD per day
 
--WATER POLLUTION: Percentage of drinkable water (Karun... please elaborate)
+######-WATER POLLUTION: Percentage of drinkable water (Karun... please elaborate)
 
--FOOD SCARCITY(Jon I forget the actual data set): (Jon... please elaborate)
+######-FOOD SCARCITY(Jon I forget the actual data set): (Jon... please elaborate)
 
 
 We have also integrated the usage of Twitter and various news outlets to give our users a holistic understanding of the factual evidence, the media representation, and on the ground reality of the people experiencing the effects of these issues.
 
+##Usage
 
+To use Heartbeat please got to (Karun.... what is the website)
 
 ## Tech Stack
 
 We used to following stack:
-####ES6
-####Web-pack
-####mySql
-####Sequelize
-####Axios
-####Redux
-####React.js
-####D3
-
+####ES6, Web-pack, mySql, Sequelize, Axios, Redux, React.js, D3
 
 ## Development
 
