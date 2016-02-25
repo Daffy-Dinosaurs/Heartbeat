@@ -208,9 +208,6 @@ function ready(error, world) {
 };
 
 worldGlobe.renderGlobeStats = function (storage, lowrange, highrange, category) {
-  console.log('going')
-
-  // d3.selectAll('path').attr("").attr('fill', '#383a3a');
   d3.selectAll('path.land').attr("class", "land").style("fill", function() {
     return '#383a3a';
   })
@@ -224,49 +221,32 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange, category) 
   const colorArr2 = ['b3ffb3', '99ff99', '80ff80', '66ff66', '4dff4d', '33ff33', '1aff1a', '00ff00', '00e600', '00cc00', '00b300', '009900', '008000', '006600', '004d00'];
   const colorArr3 = ['fff2e6', 'ffe6cc', 'ffd9b3', 'ffcc99', 'ffbf80', 'ffb366', 'ffa64d', 'ff9933', 'ff8c1a', 'ff8000', 'e67300', 'cc6600', 'b35900', '994d00', '804000'];
 
-  if(category === 'poverty') {
-    for (var i = 0; i < storage.length; i++) {
-      let temp = colorScale(storage[i].value);
-      storage[i].shade = colorArr2[temp];
-      svg.selectAll("path").attr("d", path)
-      .classed(".focused", function(d, j) {
-        if(d.id === storage[i].Country.localeId) {
-          d3.select(this).attr("class", "land").style("fill", function() {
-            return storage[i].shade;
-          })
-        }
-      })
-    }
+  function addingColor (array) {
+      for (var i = 0; i < storage.length; i++) {
+        let temp = colorScale(storage[i].value);
+        storage[i].shade = array[temp];
+        svg.selectAll('path').attr('d', path)
+        .classed('.focused', function (d, j) {
+          if (d.id === storage[i].Country.localeId) {
+            d3.select(this).attr('class', 'land').style('fill', function () {
+              return storage[i].shade;
+            });
+          }
+        });
+      }
+    };
+
+  if(category === 'Poverty') {
+    addingColor(colorArr2);
   }
 
-  if(category === 'water pollution') {
-    for (var i = 0; i < storage.length; i++) {
-      let temp = colorScale(storage[i].value);
-      storage[i].shade = colorArr1[temp];
-      svg.selectAll("path").attr("d", path)
-      .classed(".focused", function(d, j) {
-        if(d.id === storage[i].Country.localeId) {
-          d3.select(this).attr("class", "land").style("fill", function() {
-            return storage[i].shade;
-          })
-        }
-      })
-    }
+  if(category === 'Water Pollution') {
+    addingColor(colorArr1);
   }
 
-  if(category === 'food scarcity') {
-    for (var i = 0; i < storage.length; i++) {
-      let temp = colorScale(storage[i].value);
-      storage[i].shade = colorArr3[temp];
-      svg.selectAll("path").attr("d", path)
-      .classed(".focused", function(d, j) {
-        if(d.id === storage[i].Country.localeId) {
-          d3.select(this).attr("class", "land").style("fill", function() {
-            return storage[i].shade;
-          })
-        }
-      })
-    }
+  if(category === 'Food Scarcity') {
+    addingColor(colorArr3);
   }
 }
+
 export default worldGlobe
