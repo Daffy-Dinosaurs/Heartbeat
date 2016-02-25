@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
   up: function (queryInterface, Sequelize) {
     var countriesArray = [];
-    fs.readFile(__dirname + '/../../Datasets/countries.json', 'utf-8', function (err, data) {
+    fs.readFile(__dirname + '/../../datasets/countries.json', 'utf-8', function (err, data) {
         var cleanData = JSON.parse(data);
         if (err) {
           console.log(err);
