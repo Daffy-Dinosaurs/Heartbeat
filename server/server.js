@@ -175,7 +175,7 @@ app.get('/tweets/:hastag', function (req, ourResponse, next) {
   console.log('FROM THE SERVER:', req.params.hastag);
   var options = {
     // append the user's handle to the url
-    url: 'https://api.twitter.com/1.1/search/tweets.json?q=' + req.params.hastag,
+    url: 'https://api.twitter.com/1.1/search/tweets.json?q=-RT' + req.params.hastag,
     method: 'GET',
     headers: {
       // append the access token to the string Bearer with a space.
