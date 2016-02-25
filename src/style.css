@@ -5,6 +5,7 @@ body.app{
   -o-background-size: cover;
   background-size: cover;
   height: 1000px;
+  overflow: hidden;
 }
 
 .container-fluid{
@@ -26,18 +27,21 @@ body.app{
   z-index: 2;
   display: block;
 }
-.countryList {
+/*.countryList-visible {
   width: 100%;
-  /* position: relative; */
   height: 690px;
   margin: 0;
+}*/
+
+.side-view-left img {
+  width: 12%;
+  height: auto;
 }
 
 .list{
   list-style-type: none;
   height: 100%;
   padding: 0;
-  /* position: relative; */
   overflow: scroll;
 }
 
@@ -45,10 +49,12 @@ body.app{
   display: block;
   position: absolute;
   top: 51px;
+  height: 680px;
   background-color: rgba(255, 255, 255, 0.1);;
   border-radius: 10px;
   padding: 18px;
   z-index: 1;
+  overflow: scroll;
 }
 li.list-country-item {
   padding: 8px;
@@ -146,20 +152,7 @@ li.category:hover{
   color: whitesmoke;
 }
 
-
-.tweets {
-  border-top: 1px solid black;
-}
-
-.tweet-date {
-  font-size: 12px;
-}
-
-.tweet-item {
-  font-size: 14px;
-  color: white;
-  /*padding: 8px 5px;*/
-}
+ /*TWEETS*/
 
 .tweet-feed-visible{
   position: absolute;
@@ -191,7 +184,6 @@ li.category:hover{
   padding: 5px;
 }
 
-
 .tweet-feed img{
   width: 100%;
   height: auto;
@@ -201,6 +193,24 @@ li.category:hover{
   width: 50px;
   height: 50px;
 }
+
+.tweets {
+  border-top: 1px solid black;
+}
+
+.tweet-date {
+  font-size: 12px;
+}
+
+.tweet-item {
+  font-size: 14px;
+  color: white;
+  /*padding: 8px 5px;*/
+}
+
+
+/*NEWS FEED*/
+
 .newsfeed-feed-visible{
   position: absolute;
   z-index: 2;
@@ -218,20 +228,6 @@ li.category:hover{
 .newsfeed-feed-visible img{
   width: 6%;
   height: auto;
-}
-
-.newsfeed {
-  border-top: 1px solid black;
-}
-
-.newsfeed-date {
-  font-size: 12px;
-}
-
-.newsfeed-item {
-  font-size: 14px;
-  color: white;
-  /*padding: 8px 5px;*/
 }
 
 .newsfeed-feed {
@@ -252,6 +248,63 @@ li.category:hover{
   height: auto;
 }
 .newsfeed-feed h1{
+  width: 50px;
+  height: 50px;
+}
+
+.newsfeed {
+  border-top: 1px solid black;
+}
+
+.newsfeed-date {
+  font-size: 12px;
+}
+
+.newsfeed-item {
+  font-size: 14px;
+  color: white;
+  /*padding: 8px 5px;*/
+}
+
+/*GRAPHS*/
+
+.graphs {
+  position: absolute;
+  z-index: 3;
+  top: 200px;
+  right: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+  padding: 5px;
+}
+
+.graphs-visible {
+  position: absolute;
+  z-index: 3;
+  top: 52px;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  border-radius: 5px;
+  width: 50%;
+  height: 400px;
+  padding: 5px;
+  z-index: 4;
+  overflow: scroll;
+}
+
+.graphs-visible img{
+  width: 6%;
+  height: auto;
+}
+
+.graphs img{
+  width: 100%;
+  height: auto;
+}
+
+.graphs h1{
   width: 50px;
   height: 50px;
 }

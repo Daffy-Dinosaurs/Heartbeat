@@ -84,21 +84,20 @@ class VictoryPlots extends Component {
     if (this.state.visible) {
       if (Array.isArray(this.props.waterData)) {
         return (
-          <div className="col-md-2">
+          <div className="graphs-visible">
           <div>
-          <h3 onClick= {
+          <h1 onClick= {
             this.processingData.bind(this)
-          }>Process</h3>
+          }><img src="/src/images/chart.png" alt="chart" /></h1>
           </div>
           <h5 onClick={this.hide.bind(this)}>close</h5>
           <h6>Water Pollution</h6>
           <VictoryChart>
-          <VictoryBar
-          data = { this.state.waterProcessed }
-          dataAttributes= {[
-            { fill: 'green' },
-          ]}
-          />
+            <VictoryBar
+            data = { this.state.waterProcessed }
+            dataAttributes= {[
+              { fill: 'green' },
+            ]} />
           </VictoryChart>
           <h6>Poverty</h6>
           <VictoryChart>
@@ -124,8 +123,8 @@ class VictoryPlots extends Component {
     }
 
     if (!this.state.visible || (!this.state.waterData)) {
-      return <div>
-      <h3 onClick={this.show.bind(this)}>Process</h3>
+      return <div className="graphs">
+      <h1 onClick={this.show.bind(this)}><img src="/src/images/chart.png" alt="chart" /></h1>
       </div>;
     }
   }

@@ -14,20 +14,10 @@ class CountryList extends Component {
     super(props);
     this.state = {
       term: this.props.requestCountries(),
-      visible: false,
     };
     this.state.term;
-    this.show = this.show.bind(this);
-    this.hide = this.hide.bind(this);
   }
 
-  show() {
-    this.setState({ visible: true });
-  }
-
-  hide() {
-    this.setState({ visible: false });
-  }
 
   renderList() {
 
@@ -50,28 +40,12 @@ class CountryList extends Component {
   }
 
   render() {
-    if (this.state.visible) {
-      console.log('made visible');
-      return (
-        <div className="side-view-left">
-        <div className="countryList">
-        <h2 onClick={ this.hide.bind(this) }>Country List</h2>
+    return (
+      <div className="side-view-left">
+        <h2><img src="/src/images/Globe.png" alt="Globe" /></h2>
           <ul className="list" > { this.renderList() } </ul>
-        </div>
-        </div>
-      );
-    }
-
-    if (!this.state.visible) {
-      console.log('set to invisible');
-      return (
-        <div className="side-view-left">
-        <div className="countryList">
-          <h2 onClick={ this.show.bind(this) }>Country List</h2>
-        </div>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
