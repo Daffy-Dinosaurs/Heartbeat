@@ -1,6 +1,6 @@
-# Project Name
+# HEARTBEAT
 
-> Pithy project description
+Heartbeat is a tool to enhance the awareness of issues that effect us as a society.
 
 ## Team
 
@@ -14,25 +14,24 @@
 1. [Tech Stack](#techstack)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
 ## Usage
 
-> Some usage instructions
+
 
 ## Tech Stack
 
 We used to following stack:
-
-###mySql
-###Sequelize
-###Axios
-###Redux
-###React.js
-###D3
-
+####ES6
+####Web-pack
+####mySql
+####Sequelize
+####Axios
+####Redux
+####React.js
+####D3
 
 
 ## Development
@@ -42,8 +41,12 @@ We used to following stack:
 From within the root directory:
 
 #####-run npm install
-#####-run npm start
 
+### Developing
+
+Once you have installed all of the dependencies our web-pack configuration allows for you to run Heartbeat directly from your computer. Simple go to localhost:3001 in your browser and in your terminal:
+
+#####-run npm start
 
 ## Contributing
 
