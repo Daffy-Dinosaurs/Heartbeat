@@ -12,16 +12,13 @@ class CountryList extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = { term: this.props.requestCountries() };
     this.state.term;
-
   }
 
   renderList() {
 
     return this.props.countryList.map((country) => {
-      console.log('country selected', country);
       return (
           <li className="list-country-item" id={'c' + country.localeId}
             key={country.countryName}
@@ -41,10 +38,6 @@ class CountryList extends Component {
   }
 
   render() {
-
-    // if (!this.props.country) {
-    //   return <div>Select Country</div>;
-    // } else {
 
     return (
       <div className="side-view-left">
