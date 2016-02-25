@@ -4,14 +4,14 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Blaine Degannes, Jon Tippens
+  - __Scrum Master__: Juan Guardado
+  - __Development Team Members__: Karun Siddana
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
+1. [Installation](#installation)
+1. [Tech Stack](#techstack)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
     1. [Tasks](#tasks)
@@ -22,13 +22,18 @@
 
 > Some usage instructions
 
-## Requirements
+## Tech Stack
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+We used to following stack:
+
+mySql
+Sequelize
+Axios
+Redux
+React.js
+D3
+
+
 
 ## Development
 
@@ -36,17 +41,12 @@
 
 From within the root directory:
 
-```sh
-sudo npm install -g bower
-npm install
-bower install
-```
-
-### Roadmap
-
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+run npm install
+run npm start
 
 
 ## Contributing
+
+Contributors should upload changes to their own fork and make a pull request
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
