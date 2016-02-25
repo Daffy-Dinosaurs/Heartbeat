@@ -13,6 +13,7 @@ export default class App extends Component{
 
   render() {
     // <Intro />
+    // <VictoryPlots />
 
     return (
       <div className="main">
@@ -21,12 +22,9 @@ export default class App extends Component{
           <Globe />
         </div>
         <Bar />
-        <div className="countryData">
-          <VictoryPlots />
-          <ActiveCountry />
-          <NewsOutlet />
-          <TwitterFeed />
-        </div>
+        <ActiveCountry />
+        <NewsOutlet />
+        <TwitterFeed />
       </div>
     );
   }

@@ -1,6 +1,12 @@
-body{
-  background-color: black;
+body.app{
+  background: url("/src/images/bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 1000px;
 }
+
 .container-fluid{
   margin: 0;
   width: 100%;
@@ -39,7 +45,7 @@ body{
   display: block;
   position: absolute;
   top: 51px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);;
   border-radius: 10px;
   padding: 18px;
   z-index: 1;
@@ -49,7 +55,7 @@ li.list-country-item {
 }
 
 li.list-country-item:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 li.list-country-item:visited {
@@ -103,7 +109,7 @@ path.land:hover{
   z-index: 3;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);;
   border-radius: 5px;
   width: 216px;
   height: 150px;
@@ -116,17 +122,28 @@ path.land:hover{
 .category{
   list-style: none;
   padding: 8px 0 8px 30px;
+  color: #C1B398;
 }
 
 li.category:hover{
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .countryData{
   position: absolute;
   z-index: 1;
+  top: 52px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);;
+  padding: 10px;
+}
+
+.countryTitle {
+  position: absolute;
+  z-index: 2;
   top: 0;
   right: 0;
+  color: whitesmoke;
 }
 
 
@@ -140,13 +157,103 @@ li.category:hover{
 
 .tweet-item {
   font-size: 14px;
+  color: white;
   /*padding: 8px 5px;*/
 }
 
-.tweet-feed {
-  width: 100%;
-  height: 690px;
+.tweet-feed-visible{
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  border-radius: 5px;
+  top: 52px;
+  width: 50%;
+  height: 400px;
+  padding: 5px;
   overflow: scroll;
+}
+
+.tweet-feed-visible img{
+  width: 6%;
+  height: auto;
+}
+
+.tweet-feed{
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  top: 126px;
+  width: auto;
+  height: auto;
+  padding: 5px;
+}
+
+
+.tweet-feed img{
+  width: 100%;
+  height: auto;
+}
+
+.tweet-feed h1{
+  width: 50px;
+  height: 50px;
+}
+.newsfeed-feed-visible{
+  position: absolute;
+  z-index: 2;
+  top: 52px;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  border-radius: 5px;
+  width: 50%;
+  height: 400px;
+  padding: 5px;
+  z-index: 4;
+  overflow: scroll;
+}
+
+.newsfeed-feed-visible img{
+  width: 6%;
+  height: auto;
+}
+
+.newsfeed {
+  border-top: 1px solid black;
+}
+
+.newsfeed-date {
+  font-size: 12px;
+}
+
+.newsfeed-item {
+  font-size: 14px;
+  color: white;
+  /*padding: 8px 5px;*/
+}
+
+.newsfeed-feed {
+  position: absolute;
+  z-index: 2;
+  top: 52px;
+  right: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  overflow: scroll;
+}
+
+.newsfeed-feed img{
+  width: 100%;
+  height: auto;
+}
+.newsfeed-feed h1{
+  width: 50px;
+  height: 50px;
 }
 
 .span {
@@ -262,24 +369,8 @@ input[type=range]:focus::-ms-fill-upper {
 }*/
 
 
-.newsfeed {
-  border-top: 1px solid black;
-}
 
-.newsfeed-date {
-  font-size: 12px;
-}
 
-.newsfeed-item {
-  font-size: 14px;
-  /*padding: 8px 5px;*/
-}
-
-.newsfeed-feed {
-  width: 100%;
-  height: 690px;
-  overflow: scroll;
-}
 
 .form {
   height: 200px;
