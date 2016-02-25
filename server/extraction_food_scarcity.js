@@ -20,7 +20,7 @@ var sequelize = new Sequelize('worldMapDB', 'root', '', {
 });
 
 // Read in the data from the file system
-fs.readFile(__dirname + '/../Datasets/food_scarcity.json', 'utf-8', function (err, data) {
+fs.readFile(__dirname + '/../datasets/food_scarcity.json', 'utf-8', function (err, data) {
   if (err) {
     console.log(err);
   }
