@@ -4,9 +4,7 @@ const intialState = {};
 
 export default function(state = intialState, action) {
 
-
   if (action.type === 'GET_WATER_DATA') {
-
     return action.payload.data;
   }
 

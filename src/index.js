@@ -11,23 +11,9 @@ import { Route, Router, browserHistory, hashHistory } from 'react-router';
 import App from './components/app';
 import D3Graphs from './containers/d3Graphs';
 
-// import routes from './routes.js';
-
 const loggerMiddleware = createLogger();
 
 const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
-
-// store.dispatch({type: 'REQUEST_COUNTRIES'})
-// store.dispatch(requestCountries()).then(() =>
-//   console.log(store.getState());
-// )
-// )
-//
-
-// var Globe = React.createClass({
-//   componentDidMount: function() {
-//     d3Globe.go();
-// }
 
 ReactDOM.render(
   <Provider store={ store(rootReducer) }>

@@ -10,9 +10,7 @@ export default function(state = initialState, action) {
 
   if (action.type === 'CLEAR_TWEETS') {
     return initialState;
-
   }
 
   return state;
-
 };

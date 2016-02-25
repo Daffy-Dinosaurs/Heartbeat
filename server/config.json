@@ -14,7 +14,8 @@
     "database": "worldMapDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "seederStorage": "sequelize"
+    "seederStorage": "sequelize",
+    "define": { "timestamps": false}
   },
   "production": {
     "username": "bf6e21f99a7eae",

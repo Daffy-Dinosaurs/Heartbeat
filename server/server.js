@@ -42,9 +42,11 @@ if (process.env.NODE_ENV === 'production') {
         root: static_path,
       });
     }).listen(process.env.PORT || 8080, function (err) {
-      if (err) { console.log(err); };
-
-      console.log('Listening at localhost:', process.env.PORT);
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Listening at localhost:', process.env.PORT);
+      }
     });
 } else {
 

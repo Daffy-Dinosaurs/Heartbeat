@@ -8,18 +8,14 @@ class NewsOutlet extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       visible: false,
     };
-
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
-
   }
 
   showStory() {
-
     return this.props.newsFeed.response.results.map((article) => {
       return (
         <div className='newsfeed'>
@@ -28,7 +24,6 @@ class NewsOutlet extends Component {
           </li></div>
       );
     });
-
   }
 
   show() {
@@ -55,9 +50,7 @@ class NewsOutlet extends Component {
           { this.showStory() }
           </div>
         );
-
       }
-
     }
 
     if (!this.state.visible || (Object.keys(this.props.newsFeed).length === 0)) {
@@ -69,9 +62,7 @@ class NewsOutlet extends Component {
           </h1>
         </div>
       );
-
     }
-
   }
 }
 

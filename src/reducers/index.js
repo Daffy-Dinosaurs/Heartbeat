@@ -15,7 +15,6 @@ import { CLEAR_NEWS } from '../actions/clear_news_feed';
 import { COUNTRY_DATA } from '../actions/get_all_data';
 import AllData from './reducer_all_data';
 
-
 const rootReducer = combineReducers({
   globeCountry: GlobeAction,
   activeCountry: ActiveCountry,
