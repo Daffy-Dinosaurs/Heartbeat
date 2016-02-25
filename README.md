@@ -1,4 +1,4 @@
-# HEARTBEAT
+# Heartbeat
 
 Heartbeat is a tool to enhance the awareness of issues that effect us as a society.
 
@@ -14,12 +14,13 @@ Heartbeat is a tool to enhance the awareness of issues that effect us as a socie
 1. [Tech Stack](#techstack)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
+    1. [Developing](#developing)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
 ## Usage
 
-Heartbeat is an interactive global map that allows users to see visual representations of key data sets provided to the application. Currently Heartbeat is set to display data from acquired from the world back (add something).
+Heartbeat is an interactive global map that allows our users to see visual representations of key data sets provided to the application. Currently Heartbeat is set to display data from acquired from the world back (add something). We hope this can be used as a tool to highlight important issues and be leveraged to produce educational value and awareness toward these key topics.
 
 #####The three datasets represent:
 
