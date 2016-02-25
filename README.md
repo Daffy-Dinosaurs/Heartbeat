@@ -25,37 +25,49 @@ Heartbeat is an interactive global map that allows our users to see visual repre
 
 #####The three datasets represent:
 
-######-POVERTY: Percentage of population who survive on $3.90 USD per day
+###### POVERTY: Percentage of population who survive on $3.90 USD per day
 
-######-WATER POLLUTION: Percentage of drinkable water (Karun... please elaborate)
+##### Safe Drinking Water
+Data received from the World Bank shows the percentage of population that has access to improved drinkable water. Access to an improved water resources within households includes the use of standard pipes, tube wells, boreholes, fresh water reservoirs that are able to provide clean water for cooking and drinking.
+
+The dataset includes the improved water resource since the year 1960, however this includes a very small subset of countries. Since 1990, all countries have been reporting their indicator for improved water resource to the [World Health Organization](http://data.worldbank.org/indicator/SH.H2O.SAFE.ZS) (WHO).
+
+"The Global water crisis also includes water pollution, because to be useful for drinking, cooking and irrigation, water must not be polluted. According to the World Health Organization, in 2008 approximately 880 million people in the world (or 13% of world population) did not have access to safe drinking water." At the same time, about 2.6 billion people (or 40% of the world population) lived without improved sanitation.
+
+[_Water Pollution_](http://cnx.org/contents/F0Hv_Zza@43.4:L4NPRKrh@8/Water-Pollution) _by Steve Altaner_
 
 ######-FOOD SCARCITY(Jon I forget the actual data set): (Jon... please elaborate)
 
 
 We have also integrated the usage of Twitter and various news outlets to give our users a holistic understanding of the factual evidence, the media representation, and on the ground reality of the people experiencing the effects of these issues.
 
-##Usage
+## Usage
 
-To use Heartbeat please got to (Karun.... what is the website)
+Checkout the application [Heartbeat](https://abvolt.herokuapp.com/)
 
 ## Tech Stack
 
-We used to following stack:
-####ES6, Web-pack, mySql, Sequelize, Axios, Redux, React.js, D3
+The application uses the following tech stack:
+* React.js
+* Redux
+* D3.js
+* webpack
+* Node.js/Express.js
+* Sequelize (ORM)
+* mySQL
 
 ## Development
 
 ### Installing Dependencies
 
-From within the root directory:
+To get started with the project, download the project and run the following commands from your terminal. The `package.json` files has all the necessary dependencies to run the application.
 
-#####-run npm install
+```
+npm install
+npm start
+```
 
-### Developing
-
-Once you have installed all of the dependencies our web-pack configuration allows for you to run Heartbeat directly from your computer. Simple go to localhost:3001 in your browser and in your terminal:
-
-#####-run npm start
+Once you have installed all of the dependencies the webpack configuration allows for you to run Heartbeat directly from your host computer. Simply go to http://localhost:3001 in your browser.
 
 ## Contributing
 
