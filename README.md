@@ -19,6 +19,16 @@ Heartbeat is a tool to enhance the awareness of issues that effect us as a socie
 
 ## Usage
 
+Heartbeat is an interactive global map that allows users to see visual representations of key data sets provided to the application. Currently Heartbeat is set to display data from acquired from the world back (add something).
+
+#####The three datasets represent:
+
+-POVERTY: Percentage of population who survive on $3.90 USD per day
+-WATER POLLUTION: Percentage of drinkable water (Karun... please elaborate)
+-FOOD SCARCITY(Jon I forget the actual data set): (Jon... please elaborate)
+
+We have also intergrated the usage of Twitter and various news outlets to give our users a holistic understanding of the factual evidence, the media representation, and on the ground reality of the people experiencing the effects of these issues
+
 
 
 ## Tech Stack
