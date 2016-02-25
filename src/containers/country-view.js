@@ -13,7 +13,6 @@ class ActiveCountry extends Component {
 
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
-
   }
 
   renderScreen() {
@@ -23,7 +22,6 @@ class ActiveCountry extends Component {
 
   changeProps() {
     this.props.clearCountry();
-
   }
 
   show() {
@@ -49,7 +47,6 @@ class ActiveCountry extends Component {
           </div>
         );
       }
-
     }
 
     if (!this.state.visible) {
@@ -57,9 +54,7 @@ class ActiveCountry extends Component {
       return <div className="countryTitle">
       <h1 onClick={this.show.bind(this)}>{this.props.activeCountry.countryName}</h1>
       </div>;
-
     }
-
   }
 }
 

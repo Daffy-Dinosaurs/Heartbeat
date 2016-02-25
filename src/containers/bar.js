@@ -15,10 +15,8 @@ class Bar extends Component {
       this.props.getAllData();
       this.getAnnualData = this.getAnnualData.bind(this);
       this.extraFunction = this.extraFunction.bind(this);
-      this.povertyButton = this.povertyButton.bind(this);
-      this.waterPollutionButton = this.waterPollutionButton.bind(this);
-      this.foodScarcityButton = this.foodScarcityButton.bind(this);
       this.getCurrentIssue = this.getCurrentIssue.bind(this);
+      this.statsButton = this.statsButton.bind(this);
     }
 
     extraFunction(event) {
@@ -37,29 +35,18 @@ class Bar extends Component {
         }
       }
 
-      var currentData = this.state.currentIssue;
-      if (currentData === 'poverty') {
-        this.povertyButton();
-      };
-
-      if (currentData === 'waterPollution') {
-        this.waterPollutionButton();
-      };
-
-      if (currentData === 'foodScarcity') {
-        this.foodScarcityButton();
-      };
-
+      this.statsButton(this.state.currentIssue);
     }
 
-    povertyButton() {
+    statsButton(category) {
+      console.log('stats button being called');
       let stats = [];
       let lowrange = undefined;
       let highrange = 0;
 
       for (var i = 0; i < this.props.allData.length; i++) {
         if (this.props.allData[i].year == this.state.year) {
-          if (this.props.allData[i].category === 'Poverty') {
+          if (this.props.allData[i].category === category) {
             if (this.props.allData[i].value === 0) {
               //do nothing
             } else {
@@ -81,74 +68,8 @@ class Bar extends Component {
         }
       }
 
-      this.setState({ currentIssue: 'poverty' });
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'poverty');
-    }
-
-    foodScarcityButton() {
-      let stats = [];
-      let lowrange = undefined;
-      let highrange = 0;
-
-      for (var i = 0; i < this.props.allData.length; i++) {
-        if (this.props.allData[i].year == this.state.year) {
-          if (this.props.allData[i].category === 'Food Scarcity') {
-            if (this.props.allData[i].value === 0) {
-              //do nothing
-            } else {
-              if (lowrange === undefined) {
-                lowrange = this.props.allData[i].value;
-              }
-
-              if (lowrange > this.props.allData[i].value) {
-                lowrange = this.props.allData[i].value;
-              }
-
-              if (highrange < this.props.allData[i].value) {
-                highrange = this.props.allData[i].value;
-              }
-
-              stats.push(this.props.allData[i]);
-            }
-          }
-        }
-      }
-
-      this.setState({ currentIssue: 'foodScarcity' });
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'food scarcity');
-    }
-
-    waterPollutionButton() {
-      let stats = [];
-      let lowrange = undefined;
-      let highrange = 0;
-
-      for (var i = 0; i < this.props.allData.length; i++) {
-        if (this.props.allData[i].year == this.state.year) {
-          if (this.props.allData[i].category === 'Water Pollution') {
-            if (this.props.allData[i].value === 0) {
-              //do nothing
-            } else {
-              if (lowrange === undefined) {
-                lowrange = this.props.allData[i].value;
-              }
-
-              if (lowrange > this.props.allData[i].value) {
-                lowrange = this.props.allData[i].value;
-              }
-
-              if (highrange < this.props.allData[i].value) {
-                highrange = this.props.allData[i].value;
-              }
-
-              stats.push(this.props.allData[i]);
-            }
-          }
-        }
-      }
-
-      this.setState({ currentIssue: 'waterPollution' });
-      worldGlobe.renderGlobeStats(stats, lowrange, highrange, 'water pollution');
+      this.setState({ currentIssue: category });
+      worldGlobe.renderGlobeStats(stats, lowrange, highrange, category);
     }
 
     getCurrentIssue () {
@@ -175,9 +96,9 @@ class Bar extends Component {
           </div>
           <div className="issues">
             <ul>
-              <li className='category' onClick={this.povertyButton}>Poverty</li>
-              <li className='category' onClick={this.waterPollutionButton}>Water Pollution</li>
-              <li className='category' onClick={this.foodScarcityButton}>Food Scarcity</li>
+              <li className='category' onClick={ function () {this.statsButton('Poverty');}.bind(this)}>Poverty</li>
+              <li className='category' onClick={ function () {this.statsButton('Water Pollution');}.bind(this)}>Water Pollution</li>
+              <li className='category' onClick={ function () {this.statsButton('Food Scarcity');}.bind(this)}>Food Scarcity</li>
             </ul>
           </div>
         </div>
