@@ -8,6 +8,8 @@ import Bar from '../containers/bar';
 import VictoryPlots from '../containers/d3Graphs';
 import Intro from './introduction';
 import NewsOutlet from '../containers/news_outlet';
+import UserTour from './tourTips';
+
 
 export default class App extends Component{
 
@@ -25,6 +27,7 @@ export default class App extends Component{
         <NewsOutlet />
         <TwitterFeed />
         <VictoryPlots />
+        <UserTour />
       </div>
     );
   }
