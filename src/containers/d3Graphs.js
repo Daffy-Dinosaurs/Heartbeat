@@ -104,11 +104,12 @@ class VictoryPlots extends Component {
             dataAttributes= {[
               { fill: 'cornflowerblue' },
             ]}
+            animate={{velocity: 0.02}}
             />
           </VictoryChart>
           <VictoryChart>
           <VictoryAxis
-            label="population of undernourished"
+            label="% of population undernourished"
             />
             <VictoryAxis dependentAxis
             label="% of population"
@@ -118,6 +119,7 @@ class VictoryPlots extends Component {
           dataAttributes= {[
             { fill: 'orange' },
           ]}
+          animate={{velocity: 0.02}}
           />
           </VictoryChart>
           <VictoryChart>
@@ -132,6 +134,7 @@ class VictoryPlots extends Component {
           dataAttributes= {[
             { fill: 'green' },
           ]}
+          animate={{velocity: 0.02}}
           />
           </VictoryChart>
           </div>
