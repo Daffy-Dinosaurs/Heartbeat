@@ -33,7 +33,7 @@ class CountryList extends Component {
               this.props.getNews(country);
               this.props.getWaterData(country.id);
             }}>
-            <a href='#'>{ country.countryName }</a>
+            { country.countryName }
           </li>
       );
     });

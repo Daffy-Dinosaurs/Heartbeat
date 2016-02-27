@@ -49,15 +49,20 @@ body.app{
   display: block;
   position: absolute;
   top: 51px;
+  left: 3%;
+  width: 240px;
   height: 680px;
-  background-color: rgba(255, 255, 255, 0.1);;
+  background-color: rgba(12,22,34,0.9);
   border-radius: 10px;
   padding: 18px;
   z-index: 1;
   overflow: scroll;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
 }
 li.list-country-item {
   padding: 8px;
+  color: #C1B398;
+  cursor: pointer;
 }
 
 li.list-country-item:hover {
@@ -115,11 +120,13 @@ path.land:hover{
   z-index: 3;
   bottom: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.1);;
+  background: rgba(12,22,34,0.9);
   border-radius: 5px;
   width: 216px;
   height: 150px;
   padding: 10px 0;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
+
 }
 .issues ul{
   margin: 0;
@@ -158,13 +165,15 @@ li.category:hover{
   position: absolute;
   z-index: 2;
   right: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(12,22,34,0.9);
   border-radius: 5px;
   top: 52px;
   width: 50%;
   height: 400px;
   padding: 5px;
   overflow: scroll;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
+
 }
 
 .tweet-feed-visible img{
@@ -176,12 +185,14 @@ li.category:hover{
   position: absolute;
   z-index: 2;
   right: 0;
-  background: rgba(255,255,255,0.2);
+  background: rgba(12,22,34,0.9);
   border-radius: 5px;
   top: 126px;
   width: auto;
   height: auto;
   padding: 5px;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
+
 }
 
 .tweet-feed img{
@@ -216,13 +227,15 @@ li.category:hover{
   z-index: 2;
   top: 52px;
   right: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(12,22,34,0.9);
   border-radius: 5px;
   width: 50%;
   height: 400px;
   padding: 5px;
   z-index: 4;
   overflow: scroll;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
+
 }
 
 .newsfeed-feed-visible img{
@@ -235,12 +248,14 @@ li.category:hover{
   z-index: 2;
   top: 52px;
   right: 0;
-  background: rgba(255,255,255,0.2);
+  background: rgba(12,22,34,0.9);
   border-radius: 5px;
   width: auto;
   height: auto;
   padding: 5px;
   overflow: scroll;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
+
 }
 
 .newsfeed-feed img{
@@ -273,11 +288,13 @@ li.category:hover{
   z-index: 3;
   top: 200px;
   right: 0;
-  background: rgba(255,255,255,0.2);
+  background: rgba(12,22,34,0.9);
   border-radius: 5px;
   width: auto;
   height: auto;
   padding: 5px;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
+
 }
 
 .graphs-visible {
@@ -285,13 +302,15 @@ li.category:hover{
   z-index: 3;
   top: 52px;
   right: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(12,22,34,0.9);
   border-radius: 5px;
   width: 32%;
   height: 700px;
   padding: 5px;
   z-index: 4;
   overflow: scroll;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
+
 }
 
 .graphs-visible img{
@@ -326,19 +345,23 @@ li.category:hover{
   margin: 0 auto;
   bottom: 0;
   left: 30%;
-  background: rgba(0,0,0,0.1);
+  background: rgba(12,22,34,0.9);
   padding: 5px 21px;
   border-radius: 5px;
+  box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
+
 }
 
 .barSlider span{
   font-size: 22px;
+  color: white;
 }
 
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
   margin: 15.6px 0;
+  border-radius: 10px;
 }
 input[type=range]:focus {
   outline: none;
@@ -350,7 +373,7 @@ input[type=range]::-webkit-slider-runnable-track {
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
   background: #383a3a;
   border-radius: 3px;
-  border: 0.4px solid #204b23;
+  border: 0.4px solid black;
 }
 input[type=range]::-webkit-slider-thumb {
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
