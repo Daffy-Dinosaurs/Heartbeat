@@ -225,7 +225,7 @@ worldGlobe.renderGlobeStats = function (storage, lowrange, highrange, category) 
       for (var i = 0; i < storage.length; i++) {
         let temp = colorScale(storage[i].value);
         storage[i].shade = array[temp];
-        svg.selectAll('path').attr('d', path)
+        svg.selectAll('path')
         .classed('.focused', function (d, j) {
           if (d.id === storage[i].Country.localeId) {
             d3.select(this).attr('class', 'land').style('fill', function () {

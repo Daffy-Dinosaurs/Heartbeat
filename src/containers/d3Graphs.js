@@ -88,33 +88,53 @@ class VictoryPlots extends Component {
           <div>
           <h1 onClick= {
             this.processingData.bind(this)
-          }><img src="/src/images/chart.png" alt="chart" /></h1>
+          }><img src="/src/images/chart.png" alt="chart" />
+          </h1>
+          <h3 onClick = {this.hide.bind(this)}>X</h3>
           </div>
-          <h5 onClick={this.hide.bind(this)}>close</h5>
-          <h6>Water Pollution</h6>
           <VictoryChart>
+          <VictoryAxis
+            label="Improved water resource"
+            />
+            <VictoryAxis dependentAxis
+            label="% of population"
+            />
             <VictoryBar
             data = { this.state.waterProcessed }
             dataAttributes= {[
-              { fill: 'green' },
-            ]} />
+              { fill: 'cornflowerblue' },
+            ]}
+            animate={{velocity: 0.02}}
+            />
           </VictoryChart>
-          <h6>Poverty</h6>
           <VictoryChart>
-          <VictoryBar
-          data = { this.state.povertyProcessed }
-          dataAttributes= {[
-            { fill: 'orange' },
-          ]}
-          />
-          </VictoryChart>
-          <h6>Food Scarcity</h6>
-          <VictoryChart>
+          <VictoryAxis
+            label="% of population undernourished"
+            />
+            <VictoryAxis dependentAxis
+            label="% of population"
+            />
           <VictoryBar
           data = { this.state.foodProcessed }
           dataAttributes= {[
-            { fill: 'red' },
+            { fill: 'orange' },
           ]}
+          animate={{velocity: 0.02}}
+          />
+          </VictoryChart>
+          <VictoryChart>
+          <VictoryAxis
+            label="people living under $3.90/day"
+            />
+            <VictoryAxis dependentAxis
+            label="% of population"
+            />
+          <VictoryBar
+          data = { this.state.povertyProcessed }
+          dataAttributes= {[
+            { fill: 'green' },
+          ]}
+          animate={{velocity: 0.02}}
           />
           </VictoryChart>
           </div>

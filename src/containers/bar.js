@@ -84,9 +84,7 @@ class Bar extends Component {
               max="2015"
               step="1"
               id="fader"
-              onChange={
-                 this.extraFunction
-              }
+              onChange={ this.extraFunction }
               >
               <datalist id="steplist">
               <output id="volume">2002</output>
