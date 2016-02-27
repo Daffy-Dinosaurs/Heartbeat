@@ -12,7 +12,7 @@ export default class UserTour extends Component {
     }
     render() {
         return (
-            <div>
+                <div>
                 <Tour
                     active={this.state.isTourActive}
                     step={this.state.tourStep}
@@ -22,13 +22,13 @@ export default class UserTour extends Component {
                     steps={[
                         {
                             step: 1,
-                            selector: ".sphere",
+                            selector: "#c20",
                             title: <div style={{color: "blue"}}>WELCOME TO HEARTBEAT!</div>,
                             body: <div style={{color: "black"}}>Here you can click on any country to find out more about its poverty levels, water pollution index, and food security. </div>
                         },
                         {
                             step: 2,
-                            selector: ".side-view-left",
+                            selector: "#c20",
                             title: <div style={{color: "blue"}}>Country List</div>,
                             body: <div style={{color: "black"}}>Click on any country to view it on the globe and read more about its statistics.</div>
                         },
@@ -52,7 +52,7 @@ export default class UserTour extends Component {
                         },
                         {
                             step: 6,
-                            selector: ".sphere",
+                            selector: ".land",
                             title: <div style={{color: "blue"}}>GLOBE</div>,
                             body: <div style={{color: "black"}}>Drag the globe to browse regions of the world, and click on a country to learn more about that country.</div>
                         }
