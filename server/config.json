@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "bf6e21f99a7eae",
+    "password": "d9778676",
+    "database": "heroku_0290dbccabb07ee",
+    "host": "us-cdbr-iron-east-03.cleardb.net",
+    "dialect": "mysql",
+    "seederStorage": "sequelize",
+    "define": { "timestamps": false}
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "worldMapDB",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "seederStorage": "sequelize",
+    "define": { "timestamps": false}
+  },
+  "production": {
+    "username": "bf6e21f99a7eae",
+    "password": "d9778676",
+    "database": "heroku_0290dbccabb07ee",
+    "host": "us-cdbr-iron-east-03.cleardb.net",
+    "dialect": "mysql",
+    "seederStorage": "sequelize",
+    "define": { "timestamps": false}
+  }
+}

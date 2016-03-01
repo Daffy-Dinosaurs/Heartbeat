@@ -1,11 +1,11 @@
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.js',
   ],
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'public/bundle.js',
   },
   module: {
     loaders: [
@@ -13,24 +13,24 @@ module.exports = {
         test: /(\.js$)|(\.jsx$)/,
         exclude: /node_modules/,
         loaders: [
-          'babel-loader'
-        ]
+          'babel-loader',
+        ],
       },
       {
         test: /\.json$/,
-        loaders: ['json']
+        loaders: ['json'],
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: 'style-loader!css-loader',
       },
       {
         test: /\.png$/,
-        loader: "url-loader?limit=100000"
+        loader: 'url-loader?limit=100000',
       },
       {
-        test: /\.jpg$/,
-        loader: "file-loader"
+        test: /\.(jpg|png|gif|svg)$/,
+        loader: 'file-loader',
       },
       // {
       //   test: /\.(otf|eot|svg|ttf|woff)/,
@@ -42,15 +42,15 @@ module.exports = {
       // },
       {
         test: /\.jade$/,
-        loaders: ['jade']
-      }
-    ]
+        loaders: ['jade'],
+      },
+    ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './'
-  }
+    contentBase: './',
+  },
 };

@@ -9,26 +9,11 @@ import rootReducer from './reducers/index';
 import promiseMiddleware from 'redux-promise';
 import { Route, Router, browserHistory, hashHistory } from 'react-router';
 import App from './components/app';
-import D3Graphs from './components/d3Graphs';
-
-// import routes from './routes.js';
+import D3Graphs from './containers/d3Graphs';
 
 const loggerMiddleware = createLogger();
 
-//
 const store = applyMiddleware(promiseMiddleware, loggerMiddleware)(createStore);
-
-// store.dispatch({type: 'REQUEST_COUNTRIES'})
-// store.dispatch(requestCountries()).then(() =>
-//   console.log(store.getState());
-// )
-// )
-//
-
-// var Globe = React.createClass({
-//   componentDidMount: function() {
-//     d3Globe.go();
-// }
 
 ReactDOM.render(
   <Provider store={ store(rootReducer) }>
@@ -38,5 +23,5 @@ ReactDOM.render(
     <Route path="/sandbox/jon" component={D3Graphs}/>
     </Router>
   </Provider>,
-  document.querySelector('.container-fluid')
+  document.querySelector('.app')
 );
