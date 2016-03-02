@@ -25,9 +25,9 @@ Heartbeat is an interactive global map that allows our users to see visual repre
 
 #####The three datasets represent:
 
-###### POVERTY: Percentage of population who survive on $3.90 USD per day
+##### POVERTY: Percentage of population who survive on $3.90 USD per day
 
-##### Safe Drinking Water
+##### SAFE DRINKING WATER
 Data received from the World Bank shows the percentage of population that has access to improved drinkable water. Access to an improved water resources within households includes the use of standard pipes, tube wells, boreholes, fresh water reservoirs that are able to provide clean water for cooking and drinking.
 
 The dataset includes the improved water resource since the year 1960, however this includes a very small subset of countries. Since 1990, all countries have been reporting their indicator for improved water resource to the [World Health Organization](http://data.worldbank.org/indicator/SH.H2O.SAFE.ZS) (WHO).
@@ -36,7 +36,8 @@ The dataset includes the improved water resource since the year 1960, however th
 
 [_Water Pollution_](http://cnx.org/contents/F0Hv_Zza@43.4:L4NPRKrh@8/Water-Pollution) _by Steve Altaner_
 
-######-FOOD SCARCITY(Jon I forget the actual data set): (Jon... please elaborate)
+#####-FOOD SCARCITY: Prevalence of Undernourishment
+The FAO measure of food deprivation, which is referred to as the prevalence of undernourishment, is based on a comparison of usual food consumption expressed in terms of dietary energy (kcal) with certain energy requirement norms. The part of the population with food consumption below the energy requirement norm is considered undernourished ("underfed"). [ More info about POU ](http://www.fao.org/docrep/005/y4249e/y4249e06.htm)
 
 
 We have also integrated the usage of Twitter and various news outlets to give our users a holistic understanding of the factual evidence, the media representation, and on the ground reality of the people experiencing the effects of these issues.
