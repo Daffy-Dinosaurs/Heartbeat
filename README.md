@@ -36,7 +36,7 @@ The dataset includes the improved water resource since the year 1960, however th
 
 [_Water Pollution_](http://cnx.org/contents/F0Hv_Zza@43.4:L4NPRKrh@8/Water-Pollution) _by Steve Altaner_
 
-#####-FOOD SCARCITY: Prevalence of Undernourishment
+##### FOOD SCARCITY: Prevalence of Undernourishment
 The FAO measure of food deprivation, which is referred to as the prevalence of undernourishment, is based on a comparison of usual food consumption expressed in terms of dietary energy (kcal) with certain energy requirement norms. The part of the population with food consumption below the energy requirement norm is considered undernourished ("underfed"). [ More info about POU ](http://www.fao.org/docrep/005/y4249e/y4249e06.htm)
 
 
@@ -78,7 +78,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ## License
 The MIT License (MIT)
-Copyright (c) 2016 Breakaway-Bikers
+Copyright (c) 2016 Daffy-Dinosaurs
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
 files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify,
 merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
