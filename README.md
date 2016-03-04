@@ -1,33 +1,32 @@
-# Heartbeat
+# [Heartbeat](https://abvolt.herokuapp.com/)
 
 Heartbeat is a tool to enhance the awareness of issues that effect us as a society.
+
+<span class="snapshot"><img src="/images/Heartbeat1.png" alt=""></span>
 
 ## Team
 
   - __Product Owner__: Blaine Degannes, Jon Tippens
   - __Scrum Master__: Juan Guardado
-  - __Development Team Members__: Karun Siddana
+  - __Development Team Members__: Karun Siddana, Juan Guardado, Blaine Degannes, Jon Tippens  
 
 ## Table of Contents
-
-1. [Purpose](#purpose)
-1. [Usage](#usage)
 1. [Tech Stack](#tech-stack)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Developing](#developing)
-1. [Team](#team)
-1. [Contributing](#contributing)
+2. [Development](#development)
+3. [Installing Dependencies](#installing-dependencies)
+4. [Developing](#developing)
+5. [Team](#team)
+6. [Contributing](#contributing)   
 
 ## Purpose
 
-Heartbeat is an interactive global map that allows our users to see visual representations of key data sets provided to the application. Currently Heartbeat is set to display data from acquired from the world back (add something). We hope this can be used as a tool to highlight important issues and be leveraged to produce educational value and awareness toward these key topics.
+Heartbeat is an interactive visualization platform that allows users to represent their data in a graphical format that is useful in performing trend analysis across the dataset. Heartbeat uses the data that is collected by the World Bank and the WHO for all countries since the 1990's to date on the following issues:
 
-#####The three datasets represent:
+* POVERTY: Percentage of population who survive on $3.90 USD per day.
+* SAFE DRINKING WATER: Percentage of the population that is using improved water resource.
+* FOOD SECURITY   
 
-###### POVERTY: Percentage of population who survive on $3.90 USD per day
-
-##### Safe Drinking Water
+##### SAFE DRINKING WATER
 Data received from the World Bank shows the percentage of population that has access to improved drinkable water. Access to an improved water resources within households includes the use of standard pipes, tube wells, boreholes, fresh water reservoirs that are able to provide clean water for cooking and drinking.
 
 The dataset includes the improved water resource since the year 1960, however this includes a very small subset of countries. Since 1990, all countries have been reporting their indicator for improved water resource to the [World Health Organization](http://data.worldbank.org/indicator/SH.H2O.SAFE.ZS) (WHO).
@@ -36,8 +35,8 @@ The dataset includes the improved water resource since the year 1960, however th
 
 [_Water Pollution_](http://cnx.org/contents/F0Hv_Zza@43.4:L4NPRKrh@8/Water-Pollution) _by Steve Altaner_
 
-######-FOOD SCARCITY(Jon I forget the actual data set): (Jon... please elaborate)
-
+##### POVERTY 
+##### FOOD SECURITY
 
 We have also integrated the usage of Twitter and various news outlets to give our users a holistic understanding of the factual evidence, the media representation, and on the ground reality of the people experiencing the effects of these issues.
 
@@ -77,13 +76,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ## License
 The MIT License (MIT)
-Copyright (c) 2016 Breakaway-Bikers
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify,
-merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
-NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Copyright (c) 2016 Daffy-Dinosaurs
