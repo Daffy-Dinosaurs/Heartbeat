@@ -8,28 +8,25 @@ Heartbeat is a tool to enhance the awareness of issues that effect us as a socie
 
   - __Product Owner__: Blaine Degannes, Jon Tippens
   - __Scrum Master__: Juan Guardado
-  - __Development Team Members__: Karun Siddana, Juan Guardado, Blaine Degannes, Jon Tippens
----
+  - __Development Team Members__: Karun Siddana, Juan Guardado, Blaine Degannes, Jon Tippens  
+
 ## Table of Contents
 1. [Tech Stack](#tech-stack)
 2. [Development](#development)
 3. [Installing Dependencies](#installing-dependencies)
 4. [Developing](#developing)
 5. [Team](#team)
-6. [Contributing](#contributing)
----
+6. [Contributing](#contributing)   
+
 ## Purpose
 
 Heartbeat is an interactive visualization platform that allows users to represent their data in a graphical format that is useful in performing trend analysis across the dataset. Heartbeat uses the data that is collected by the World Bank and the WHO for all countries since the 1990's to date on the following issues:
 
 * POVERTY: Percentage of population who survive on $3.90 USD per day.
 * SAFE DRINKING WATER: Percentage of the population that is using improved water resource.
-* FOOD SECURITY
----
-##### POVERTY 
----
-##### SAFE DRINKING WATER
+* FOOD SECURITY   
 
+##### SAFE DRINKING WATER
 Data received from the World Bank shows the percentage of population that has access to improved drinkable water. Access to an improved water resources within households includes the use of standard pipes, tube wells, boreholes, fresh water reservoirs that are able to provide clean water for cooking and drinking.
 
 The dataset includes the improved water resource since the year 1960, however this includes a very small subset of countries. Since 1990, all countries have been reporting their indicator for improved water resource to the [World Health Organization](http://data.worldbank.org/indicator/SH.H2O.SAFE.ZS) (WHO).
@@ -38,10 +35,8 @@ The dataset includes the improved water resource since the year 1960, however th
 
 [_Water Pollution_](http://cnx.org/contents/F0Hv_Zza@43.4:L4NPRKrh@8/Water-Pollution) _by Steve Altaner_
 
----
+##### POVERTY 
 ##### FOOD SECURITY
-
----
 
 We have also integrated the usage of Twitter and various news outlets to give our users a holistic understanding of the factual evidence, the media representation, and on the ground reality of the people experiencing the effects of these issues.
 
