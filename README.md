@@ -8,7 +8,11 @@ Heartbeat is a tool to enhance the awareness of issues that effect us as a socie
 
   - __Product Owner__: Blaine Degannes, Jon Tippens
   - __Scrum Master__: Juan Guardado
+<<<<<<< HEAD
   - __Development Team Members__: Karun Siddana, Juan Guardado, Blaine Degannes, Jon Tippens
+=======
+  - __Development Team Members__: Karun Siddana, Juan Guardado, Blaine Degannes, Jon Tippens  
+>>>>>>> f2148aca51f22b850e8ff76657abafde55a34423
 
 ## Table of Contents
 1. [Tech Stack](#tech-stack)
@@ -16,7 +20,11 @@ Heartbeat is a tool to enhance the awareness of issues that effect us as a socie
 3. [Installing Dependencies](#installing-dependencies)
 4. [Developing](#developing)
 5. [Team](#team)
+<<<<<<< HEAD
 6. [Contributing](#contributing)
+=======
+6. [Contributing](#contributing)   
+>>>>>>> f2148aca51f22b850e8ff76657abafde55a34423
 
 ## Purpose
 
@@ -25,7 +33,11 @@ Heartbeat is an interactive visualization platform that allows users to represen
 * POVERTY: Percentage of population who survive on $3.90 USD per day.
 * SAFE DRINKING WATER: Percentage of the population that is using improved water resource.
 * FOOD SECURITY   
+<<<<<<< HEAD
 ---
+=======
+
+>>>>>>> f2148aca51f22b850e8ff76657abafde55a34423
 ##### SAFE DRINKING WATER
 Data received from the World Bank shows the percentage of population that has access to improved drinkable water. Access to an improved water resources within households includes the use of standard pipes, tube wells, boreholes, fresh water reservoirs that are able to provide clean water for cooking and drinking.
 
