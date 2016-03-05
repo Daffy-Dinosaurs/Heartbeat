@@ -42,7 +42,7 @@ class CountryList extends Component {
   render() {
     return (
       <div className="side-view-left">
-        <h2><img src="/src/images/Globe.png" alt="Globe" /></h2>
+        <h4>Select a Country </h4>
           <ul className="list" > { this.renderList() } </ul>
       </div>
     );

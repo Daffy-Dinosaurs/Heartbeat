@@ -43,7 +43,7 @@ class TwitterFeed extends Component {
     return _.map(tweetsArray, function (tweet) {
       return (
         <div className="tweets">
-            <li key={ tweet.id } className="tweet-item"> { tweet.text }
+            <li key={ tweet.id } className="tweet-item"> <h6>{ tweet.text }</h6>
             <a href={tweet.url} target="_blank">{tweet.url}</a>
             </li>
         </div>
