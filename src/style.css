@@ -1,4 +1,5 @@
 body.app{
+  font-family: 'Lato', sans-serif;
   background: url("/src/images/bg.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -7,6 +8,14 @@ body.app{
   height: 1000px;
   overflow: hidden;
 }
+
+/*.heartbeat h1{
+  color: white;
+  position: absolute;
+  top: 5px;
+  left: 35px;
+  font-family: 'Vollkorn', serif
+}*/
 
 .container-fluid{
   margin: 0;
@@ -38,6 +47,10 @@ body.app{
   height: auto;
 }
 
+.side-view-left h4 {
+  color: white;
+}
+
 .list{
   list-style-type: none;
   height: 100%;
@@ -48,10 +61,10 @@ body.app{
 .side-view-left{
   display: block;
   position: absolute;
-  top: 51px;
+  top: 150px;
   left: 3%;
   width: 240px;
-  height: 680px;
+  height: 520px;
   background-color: rgba(12,22,34,0.9);
   border-radius: 10px;
   padding: 18px;
@@ -163,21 +176,24 @@ li.category:hover{
 
 .tweet-feed-visible{
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   right: 0;
   background: rgba(12,22,34,0.9);
   border-radius: 5px;
   top: 52px;
-  width: 50%;
-  height: 400px;
+  width: 480px;
+  height: 530px;
   padding: 5px;
   overflow: scroll;
   box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
-
+  /*transition-property: width height background-color font-size left top color;
+  transition-duration: 2s;
+  transition-timing-function: ease;
+  transform: (translate3d(50%, 0, 0));*/
 }
 
 .tweet-feed-visible img{
-  width: 6%;
+  width: 12%;
   height: auto;
 }
 
@@ -196,7 +212,7 @@ li.category:hover{
 }
 
 .tweet-feed img{
-  width: 100%;
+  width: 50px;
   height: auto;
 }
 
@@ -206,7 +222,7 @@ li.category:hover{
 }
 
 .tweets {
-  border-top: 1px solid black;
+  /*border-top: 1px solid black;*/
 }
 
 .tweet-date {
@@ -216,7 +232,11 @@ li.category:hover{
 .tweet-item {
   font-size: 14px;
   color: white;
-  /*padding: 8px 5px;*/
+  list-style: none;
+  background: black;
+  margin: 10px 3px;
+  padding: 12px;
+  border-radius: 6px;
 }
 
 
@@ -229,8 +249,8 @@ li.category:hover{
   right: 0;
   background: rgba(12,22,34,0.9);
   border-radius: 5px;
-  width: 50%;
-  height: 400px;
+  width: 30%;
+  height: 530px;
   padding: 5px;
   z-index: 4;
   overflow: scroll;
@@ -238,9 +258,9 @@ li.category:hover{
 
 }
 
-.newsfeed-feed-visible img{
-  width: 6%;
+.newsfeed-feed-visible h3{
   height: auto;
+  color: white;
 }
 
 .newsfeed-feed {
@@ -259,7 +279,7 @@ li.category:hover{
 }
 
 .newsfeed-feed img{
-  width: 100%;
+  width: 46px;
   height: auto;
 }
 .newsfeed-feed h1{
@@ -268,7 +288,7 @@ li.category:hover{
 }
 
 .newsfeed {
-  border-top: 1px solid black;
+  /*border-top: 1px solid black;*/
 }
 
 .newsfeed-date {
@@ -278,7 +298,11 @@ li.category:hover{
 .newsfeed-item {
   font-size: 14px;
   color: white;
-  /*padding: 8px 5px;*/
+  list-style: none;
+  background: black;
+  margin: 10px 3px;
+  padding: 12px;
+  border-radius: 6px;
 }
 
 /*GRAPHS*/
@@ -319,7 +343,7 @@ li.category:hover{
 }
 
 .graphs img{
-  width: 100%;
+  width: 46px;
   height: auto;
 }
 
@@ -368,84 +392,27 @@ input[type=range]:focus {
 }
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 13px;
+  height: 16px;
   cursor: pointer;
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
   background: #383a3a;
   border-radius: 3px;
-  border: 0.4px solid black;
+  border: 0.4px solid rgba(0, 0, 0, 0.5);
 }
 input[type=range]::-webkit-slider-thumb {
   /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
-  border: 1.5px solid #000000;
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
   height: 22px;
   width: 22px;
   border-radius: 36px;
   background: lightgrey;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -5px;
+  margin-top: -4px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #383a3a;
 }
-/*input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 12px;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: rgba(41, 68, 117, 0.65);
-  border-radius: 4.5px;
-  border: 0.4px solid #204b23;
-}
-input[type=range]::-moz-range-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 2.4px solid #000000;
-  height: 39px;
-  width: 18px;
-  border-radius: 36px;
-  background: #ffffff;
-  cursor: pointer;
-}
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 12px;
-  cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  background: rgba(0, 0, 0, 0.65);
-  border: 0.4px solid #204b23;
-  border-radius: 9px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-input[type=range]::-ms-fill-upper {
-  background: rgba(41, 68, 117, 0.65);
-  border: 0.4px solid #204b23;
-  border-radius: 9px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-}
-input[type=range]::-ms-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 2.4px solid #000000;
-  height: 39px;
-  width: 18px;
-  border-radius: 36px;
-  background: #ffffff;
-  cursor: pointer;
-  height: 7.8px;
-}
-input[type=range]:focus::-ms-fill-lower {
-  background: rgba(41, 68, 117, 0.65);
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: rgba(111, 145, 205, 0.65);
-}*/
-
-
-
 
 
 .form {
@@ -462,36 +429,3 @@ input[type=range]:focus::-ms-fill-upper {
 .check {
   color: 'blue';
 }
-
-/* MENU CSS */
-/*
-.menu {
-  display: block;
-}
-.menu >div {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  width: 250px;
-  height: 100%;
-}
-.menu >div.left {
-  background: #273D7A;
-  left: -250px;
-}
-.menu >div.right {
-  background: #6B1919;
-  right: -250px;
-}
-.menu >div .menu-item {
-  float: left;
-  width: 100%;
-  margin: 0;
-  padding: 10px 15px;
-  border-bottom: solid 1px #555;
-  cursor: pointer;
-  color: #B0B0B0;
-}
-.menu >div .menu-item:hover {
-  color: #F0F0F0;
-}*/
