@@ -21,7 +21,7 @@ Heartbeat is a tool to enhance the awareness of issues that affect us as a socie
 
 ## Purpose
 
-Heartbeat is an interactive global map that allows our users to see visual representations of key data sets provided to the application. Currently Heartbeat is set to display data from acquired from the world back (add something). We hope this can be used as a tool to highlight important issues and be leveraged to produce educational value and awareness toward these key topics.
+Heartbeat is an interactive global map that allows our users to see visual representations of key data sets provided to the application. Currently Heartbeat is set to display data from acquired from the World Bank, the FAO, and the WHO. We hope this can be used as a tool to highlight important issues and be leveraged to produce educational value and awareness toward these key topics.
 
 #####The three datasets represent:
 
