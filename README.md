@@ -2,7 +2,7 @@
 
 Heartbeat is a tool to enhance the awareness of issues that affect us as a society. Heartbeat uses data visualization to convert the complexity of large datasets into an alluring visual experience that anyone can connect with and enjoy.
 
-<span class="snapshot"><img src="/images/Heartbeat1.png" alt=""></span>
+<span class="snapshot"><img src="/images/Heartbeat.jpg" alt=""></span>
 
 ## Team
 
