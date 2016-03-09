@@ -9,6 +9,10 @@ body.app{
   overflow: hidden;
 }
 
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 /*.heartbeat h1{
   color: white;
   position: absolute;
@@ -72,6 +76,7 @@ body.app{
   overflow: scroll;
   box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
 }
+
 li.list-country-item {
   padding: 8px;
   color: #C1B398;
@@ -329,7 +334,7 @@ li.category:hover{
   border-radius: 5px;
   width: 32%;
   height: 700px;
-  padding: 5px;
+  padding: 10px;
   z-index: 4;
   overflow: scroll;
   box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
@@ -348,6 +353,10 @@ li.category:hover{
 .graphs-visible .btn-close {
   float: right;
   display: inline-block;
+}
+
+.graphs-visible .btn-close {
+    clear: left;
 }
 
 .graphs img{
