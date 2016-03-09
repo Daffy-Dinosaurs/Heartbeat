@@ -23,7 +23,8 @@ class NewsOutlet extends Component {
           <li key={article.webUrl} className='newsfeed-item'>
             <h5>{ article.webTitle }</h5>
             <a href={article.webUrl}>Read More...</a>
-          </li></div>
+          </li>
+        </div>
       );
     });
   }

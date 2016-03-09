@@ -84,7 +84,9 @@ class TwitterFeed extends Component {
     if (!this.state.visible || (Object.keys(this.props.twitterFeed).length === 0)) {
       return (
         <div className="tweet-feed">
-          <h1 onClick={this.show.bind(this)}><img src="/src/images/twitter.png" alt="twitter" /></h1>
+          <h1 onClick={this.show.bind(this)}>
+            <img src="/src/images/twitter.png" alt="twitter" />
+          </h1>
         </div>
       );
     }

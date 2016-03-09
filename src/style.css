@@ -273,14 +273,13 @@ li.category:hover{
   width: auto;
   height: auto;
   padding: 5px;
-  overflow: scroll;
   box-shadow: 7px 8px 17px -5px rgba(0,0,0,1);
 
 }
 
 .newsfeed-feed img{
   width: 46px;
-  height: auto;
+  height: 46px;
 }
 .newsfeed-feed h1{
   width: 50px;
@@ -340,6 +339,15 @@ li.category:hover{
 .graphs-visible img{
   width: 6%;
   height: auto;
+}
+
+.graphs-visible .btn-plot {
+
+}
+
+.graphs-visible .btn-close {
+  float: right;
+  display: inline-block;
 }
 
 .graphs img{
