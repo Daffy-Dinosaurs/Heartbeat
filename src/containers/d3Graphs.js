@@ -74,6 +74,7 @@ class VictoryPlots extends Component {
 
   show() {
     this.setState({ visible: true });
+    this.processingData();
   }
 
   hide() {
@@ -86,10 +87,7 @@ class VictoryPlots extends Component {
         return (
           <div className="graphs-visible">
           <div>
-          <button className="btn-plot" onClick = { 
-            this.processingData.bind(this) }>Plot Graph
-          </button>
-          <button className="btn-close" onClick = { 
+          <button className="btn-close" onClick = {
             this.hide.bind(this)}>X
           </button>
           </div>
