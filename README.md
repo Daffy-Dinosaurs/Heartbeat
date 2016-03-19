@@ -9,6 +9,7 @@ Heartbeat is a tool to enhance the awareness of issues that affect us as a socie
   - __Product Owner__: Blaine Degannes, Jon Tippens
   - __Scrum Master__: Juan Guardado
   - __Development Team Members__: Karun Siddana, Juan Guardado, Blaine Degannes, Jon Tippens  
+  - __DevOps__: Daniel Kim
 
 ## Table of Contents
 1. [Tech Stack](#tech-stack)
@@ -37,7 +38,7 @@ The dataset includes the improved water resource since the year 1960, however th
 References: [_Water Pollution_](http://cnx.org/contents/F0Hv_Zza@43.4:L4NPRKrh@8/Water-Pollution) _by Steve Altaner_
 
 
-##### POVERTY 
+##### POVERTY
 
 ##### FOOD SCARCITY: Prevalence of Undernourishment
 The FAO measure of food deprivation, which is referred to as the prevalence of undernourishment, is based on a comparison of usual food consumption expressed in terms of dietary energy (kcal) with certain energy requirement norms. The part of the population with food consumption below the energy requirement norm is considered undernourished ("underfed"). [More info about POU](http://www.fao.org/docrep/005/y4249e/y4249e06.htm)
