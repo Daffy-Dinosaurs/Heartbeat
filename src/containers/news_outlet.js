@@ -17,11 +17,14 @@ class NewsOutlet extends Component {
 
   showStory() {
     return this.props.newsFeed.response.results.map((article) => {
+      console.log(article);
       return (
         <div className='newsfeed'>
           <li key={article.webUrl} className='newsfeed-item'>
-          { article.webTitle }: <a href={article.webUrl}>{ article.webUrl }</a>
-          </li></div>
+            <h5>{ article.webTitle }</h5>
+            <a href={article.webUrl}>Read More...</a>
+          </li>
+        </div>
       );
     });
   }
@@ -43,10 +46,10 @@ class NewsOutlet extends Component {
       if (this.props.newsFeed.response) {
         return (
           <div className="newsfeed-feed-visible">
-          <h1 onClick= {
-            this.clearFeed.bind(this),
-            this.hide.bind(this)
-          }><img src="/src/images/news.png" alt="news" /></h1>
+            <h3 onClick= {
+              this.clearFeed.bind(this),
+              this.hide.bind(this)
+            }>Local News</h3>
           { this.showStory() }
           </div>
         );

@@ -18,7 +18,7 @@ var env = require('node-env-file');
 
 //////////////////////////////////////////
 
-var env = env(__dirname + '/.env');
+var env = env(__dirname + '/env');
 var TWITTER_CONSUMER_KEY = process.env.TWITTERAPIKEY;
 var TWITTER_CONSUMER_SECRET = process.env.TWITTERSECRET;
 

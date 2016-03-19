@@ -43,7 +43,7 @@ class TwitterFeed extends Component {
     return _.map(tweetsArray, function (tweet) {
       return (
         <div className="tweets">
-            <li key={ tweet.id } className="tweet-item"> { tweet.text }
+            <li key={ tweet.id } className="tweet-item"> <h6>{ tweet.text }</h6>
             <a href={tweet.url} target="_blank">{tweet.url}</a>
             </li>
         </div>
@@ -84,7 +84,9 @@ class TwitterFeed extends Component {
     if (!this.state.visible || (Object.keys(this.props.twitterFeed).length === 0)) {
       return (
         <div className="tweet-feed">
-          <h1 onClick={this.show.bind(this)}><img src="/src/images/twitter.png" alt="twitter" /></h1>
+          <h1 onClick={this.show.bind(this)}>
+            <img src="/src/images/twitter.png" alt="twitter" />
+          </h1>
         </div>
       );
     }

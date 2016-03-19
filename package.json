@@ -9,7 +9,9 @@
     "frontend": "webpack-dev-server",
     "build": "webpack",
     "deploy": "",
-    "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy"
+    "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.js'",
+    "test:watch": "npm run test -- --watch"
   },
   "engines": {
     "node": "5.3.0",
@@ -61,8 +63,6 @@
     "lodash.pick": "^3.1.0",
     "lodash.result": "^3.1.2",
     "milliseconds": "^1.0.3",
-    "mysql": "2.5.0",
-    "node-env-file": "^0.1.8",
     "node-libs-browser": "^0.5.2",
     "nodemon": "^1.9.0",
     "octicons": "^2.2.0",
@@ -84,8 +84,6 @@
     "redux-logger": "^2.5.0",
     "redux-promise": "^0.5.1",
     "redux-thunk": "^1.0.3",
-    "sequelize": "^3.19.2",
-    "sequelize-cli": "^2.3.1",
     "slugger": "^1.0.0",
     "standard": "^4.3.1",
     "style-loader": "^0.12.3",
@@ -102,8 +100,17 @@
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
+    "chai": "^3.5.0",
+    "chai-jquery": "^2.0.0",
     "css-loader": "^0.15.6",
-    "webpack-dev-server": "^1.9.0",
-    "react-hot-loader": "^1.2.7"
+    "jquery": "^2.2.2",
+    "jsdom": "^8.1.0",
+    "mysql": "2.5.0",
+    "node-env-file": "^0.1.8",
+    "react-addons-test-utils": "^0.14.7",
+    "react-hot-loader": "^1.2.7",
+    "sequelize": "^3.19.2",
+    "sequelize-cli": "^2.3.1",
+    "webpack-dev-server": "^1.9.0"
   }
 }
