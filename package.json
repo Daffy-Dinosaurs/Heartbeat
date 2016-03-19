@@ -9,7 +9,9 @@
     "frontend": "webpack-dev-server",
     "build": "webpack",
     "deploy": "",
-    "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy"
+    "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.js'",
+    "test:watch": "npm run test -- --watch"
   },
   "engines": {
     "node": "5.3.0",
@@ -102,8 +104,13 @@
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
+    "chai": "^3.5.0",
+    "chai-jquery": "^2.0.0",
     "css-loader": "^0.15.6",
-    "webpack-dev-server": "^1.9.0",
-    "react-hot-loader": "^1.2.7"
+    "jquery": "^2.2.2",
+    "jsdom": "^8.1.0",
+    "react-addons-test-utils": "^0.14.7",
+    "react-hot-loader": "^1.2.7",
+    "webpack-dev-server": "^1.9.0"
   }
 }
